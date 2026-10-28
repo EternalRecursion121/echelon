@@ -1,0 +1,638 @@
+msgid ""
+msgstr "Project-Id-Version: Game v4.35.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-28\n"
+"Last-Translator: \n"
+"Language-Team: none\n"
+"Language: en\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-SearchPath-0: ."
+
+#: GameServer/RpcHandlers.lean:169
+msgid "level completed! 🎉"
+msgstr ""
+
+#: GameServer/RpcHandlers.lean:177
+msgid "level completed with warnings… 🎭"
+msgstr ""
+
+#: GameServer/RpcHandlers.lean:190
+msgid "intermediate goal solved! 🎉"
+msgstr ""
+
+#: Game/Levels/LeanBasics/L01_Exact.lean:5
+msgid "Goals and hypotheses"
+msgstr ""
+
+#. §0: `⊢`
+#. §1: `h`
+#: Game/Levels/LeanBasics/L01_Exact.lean:7
+msgid "A Lean proof is a conversation with a *goal* (after §0) and the *hypotheses* above it.\n"
+"Here the hypothesis §1 says exactly what the goal says."
+msgstr ""
+
+#. §0: $x = 3$
+#. §1: $x = 3$
+#: Game/Levels/LeanBasics/L01_Exact.lean:12
+#: Game/Levels/LeanBasics/L03_NormNum.lean:13
+#: Game/Levels/LeanBasics/L06_Not.lean:12
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:40
+msgid "If §0 then §1."
+msgstr ""
+
+#. §0: `exact h`
+#. §1: `h`
+#: Game/Levels/LeanBasics/L01_Exact.lean:14
+msgid "§0 closes the goal when §1 is literally the goal."
+msgstr ""
+
+#: Game/Levels/LeanBasics/L01_Exact.lean:17
+msgid "Every proof in this game ends, eventually, with a step like this one."
+msgstr ""
+
+#. §0: `exact h`
+#. §1: `h`
+#: Game/Levels/LeanBasics/L01_Exact.lean:19
+msgid "§0 closes the goal using a term §1 whose type is exactly the goal."
+msgstr ""
+
+#: Game/Levels/LeanBasics/L02_Rewrite.lean:5
+msgid "Rewriting"
+msgstr ""
+
+#. §0: `rw [h]`
+#. §1: `h : a = b`
+#. §2: `a`
+#. §3: `b`
+#. §4: `rw [← h]`
+#. §5: `b`
+#. §6: `a`
+#: Game/Levels/LeanBasics/L02_Rewrite.lean:7
+msgid "§0 uses an equation §1 to replace §2 by §3 in the goal.\n"
+"§4 replaces §5 by §6 instead."
+msgstr ""
+
+#. §0: $x = y$
+#. §1: $y = 5$
+#. §2: $x = 5$
+#: Game/Levels/LeanBasics/L02_Rewrite.lean:12
+msgid "If §0 and §1 then §2."
+msgstr ""
+
+#. §0: `x`
+#. §1: `«{h₁}»`
+#: Game/Levels/LeanBasics/L02_Rewrite.lean:14
+msgid "Rewrite the §0 in the goal using §1."
+msgstr ""
+
+#. §0: `«{h₂}»`
+#: Game/Levels/LeanBasics/L02_Rewrite.lean:16
+msgid "The goal is now exactly §0."
+msgstr ""
+
+#. §0: `rw [h]`
+#. §1: `h`
+#. §2: `rw [h] at h'`
+#. §3: `rw [← h]`
+#: Game/Levels/LeanBasics/L02_Rewrite.lean:19
+msgid "§0 rewrites the goal with the equation §1. §2 rewrites a hypothesis\n"
+"instead, and §3 rewrites right-to-left."
+msgstr ""
+
+#: Game/Levels/LeanBasics/L03_NormNum.lean:5
+msgid "The calculator"
+msgstr ""
+
+#. §0: `norm_num`
+#. §1: `2 + 2 = 4`
+#. §2: `(3 : ℝ) ≠ 5`
+#: Game/Levels/LeanBasics/L03_NormNum.lean:7
+msgid "§0 does arithmetic with explicit numbers: it proves §1 or that\n"
+"§2. It is a calculator, not a mathematician. Some worlds switch it off when\n"
+"it would do the interesting part of the work for you."
+msgstr ""
+
+#. §0: `x`
+#. §1: `rw`
+#. §2: `norm_num`
+#: Game/Levels/LeanBasics/L03_NormNum.lean:15
+msgid "First get rid of §0 with §1, then let §2 add up."
+msgstr ""
+
+#. §0: `norm_num`
+#. §1: `2 + 2 = 4`
+#. §2: `(1 : ℝ) ≠ 2`
+#. §3: `norm_num at h`
+#: Game/Levels/LeanBasics/L03_NormNum.lean:19
+msgid "§0 proves goals about explicit numerals (§1, §2). Use\n"
+"§3 to simplify a hypothesis."
+msgstr ""
+
+#: Game/Levels/LeanBasics/L04_And.lean:5
+msgid "And"
+msgstr ""
+
+#. §0: `h : P ∧ Q`
+#. §1: `obtain ⟨hp, hq⟩ := h`
+#. §2: `P ∧ Q`
+#. §3: `constructor`
+#: Game/Levels/LeanBasics/L04_And.lean:7
+msgid "A system of equations is a big \"and\". To *use* §0, split it with\n"
+"§1. To *prove* §2, use §3, which leaves two goals."
+msgstr ""
+
+#. §0: $x = 1$
+#. §1: $y = 2$
+#. §2: $y = 2$
+#. §3: $x = 1$
+#: Game/Levels/LeanBasics/L04_And.lean:12
+msgid "If §0 and §1, then §2 and §3."
+msgstr ""
+
+#. §0: `«{h}»`
+#. §1: `obtain ⟨hx, hy⟩ := «{h}»`
+#: Game/Levels/LeanBasics/L04_And.lean:14
+msgid "Take §0 apart: §1."
+msgstr ""
+
+#. §0: `constructor`
+#: Game/Levels/LeanBasics/L04_And.lean:16
+msgid "Now §0 splits the goal into two."
+msgstr ""
+
+#. §0: `constructor`
+#. §1: `P ∧ Q`
+#. §2: `P ↔ Q`
+#: Game/Levels/LeanBasics/L04_And.lean:21
+msgid "§0 splits a goal §1 (or §2) into separate goals."
+msgstr ""
+
+#. §0: `obtain ⟨a, b⟩ := h`
+#. §1: `h : P ∧ Q`
+#. §2: `h : ∃ x, P x`
+#: Game/Levels/LeanBasics/L04_And.lean:23
+msgid "§0 takes apart a hypothesis §1 or §2."
+msgstr ""
+
+#: Game/Levels/LeanBasics/L05_Exists.lean:5
+msgid "There exists"
+msgstr ""
+
+#. §0: `∃ x, …`
+#. §1: `use 3`
+#. §2: `3`
+#. §3: `x`
+#: Game/Levels/LeanBasics/L05_Exists.lean:7
+msgid "\"Solve this equation\" is often the goal §0. Prove it by naming a solution:\n"
+"§1 puts §2 in place of §3, and you then check that it works."
+msgstr ""
+
+#. §0: $x$
+#. §1: $2x = 6$
+#: Game/Levels/LeanBasics/L05_Exists.lean:12
+msgid "There is a real number §0 with §1."
+msgstr ""
+
+#. §0: `use`
+#: Game/Levels/LeanBasics/L05_Exists.lean:14
+msgid "Which number works? §0 it."
+msgstr ""
+
+#: Game/Levels/LeanBasics/L05_Exists.lean:18
+msgid "Many \"find the solution\" questions on the sheets look like this: you supply\n"
+"the witness, Lean checks it."
+msgstr ""
+
+#. §0: `use a`
+#. §1: `∃ x, P x`
+#. §2: `a`
+#. §3: `P a`
+#: Game/Levels/LeanBasics/L05_Exists.lean:21
+msgid "§0 proves §1 by supplying §2, leaving §3 to prove."
+msgstr ""
+
+#: Game/Levels/LeanBasics/L06_Not.lean:5
+msgid "Not"
+msgstr ""
+
+#. §0: `¬ P`
+#. §1: `intro hp`
+#. §2: `P`
+#. §3: `False`
+#. §4: `1 = 2`
+#. §5: `False`
+#. §6: `norm_num at h`
+#: Game/Levels/LeanBasics/L06_Not.lean:7
+msgid "§0 means \"P leads to a contradiction\". To prove it, §1 assumes §2; your goal\n"
+"becomes §3. A hypothesis like §4 gives you §5 via §6."
+msgstr ""
+
+#. §0: `≠`
+#. §1: `¬ (… = …)`
+#. §2: `intro h2`
+#: Game/Levels/LeanBasics/L06_Not.lean:14
+msgid "§0 is §1. Start with §2."
+msgstr ""
+
+#. §0: `x`
+#. §1: `«{h2}»`
+#. §2: `rw [«{h}»] at «{h2}»`
+#: Game/Levels/LeanBasics/L06_Not.lean:16
+msgid "Substitute what you know about §0 into §1: §2."
+msgstr ""
+
+#. §0: `«{h2}»`
+#. §1: `1 = 2`
+#. §2: `norm_num at «{h2}»`
+#: Game/Levels/LeanBasics/L06_Not.lean:18
+msgid "§0 now claims §1. §2 sees that it is false."
+msgstr ""
+
+#. §0: `intro h`
+#. §1: `P → Q`
+#. §2: `¬ P`
+#. §3: `∀ x, …`
+#: Game/Levels/LeanBasics/L06_Not.lean:21
+msgid "§0 moves an assumption into the context: for goals §1, §2 and §3."
+msgstr ""
+
+#: Game/Levels/LeanBasics/L07_Or.lean:5
+msgid "Or, and case splits"
+msgstr ""
+
+#. §0: `P ∨ Q`
+#. §1: `left`
+#. §2: `right`
+#. §3: `h : P ∨ Q`
+#. §4: `rcases h with hp | hq`
+#: Game/Levels/LeanBasics/L07_Or.lean:7
+msgid "To prove §0, pick a side with §1 or §2. To use §3, split into\n"
+"two cases with §4."
+msgstr ""
+
+#. §0: $x = 1$
+#. §1: $x = 2$
+#. §2: $x^2 = 1$
+#. §3: $x^2 = 4$
+#: Game/Levels/LeanBasics/L07_Or.lean:12
+msgid "If §0 or §1, then §2 or §3."
+msgstr ""
+
+#. §0: `«{h}»`
+#. §1: `rcases «{h}» with h1 | h2`
+#: Game/Levels/LeanBasics/L07_Or.lean:14
+msgid "Split on §0: §1."
+msgstr ""
+
+#. §0: `x = 1`
+#: Game/Levels/LeanBasics/L07_Or.lean:16
+msgid "Here §0. Which side of the goal is true?"
+msgstr ""
+
+#. §0: `left`
+#. §1: `right`
+#. §2: `P ∨ Q`
+#: Game/Levels/LeanBasics/L07_Or.lean:24
+msgid "§0 / §1 choose which side of a goal §2 to prove."
+msgstr ""
+
+#. §0: `left`
+#: Game/Levels/LeanBasics/L07_Or.lean:26
+msgid "See §0."
+msgstr ""
+
+#. §0: `rcases h with h1 | h2`
+#. §1: `h : P ∨ Q`
+#. §2: `rcases h with ⟨a, b⟩`
+#. §3: `∧`
+#. §4: `∃`
+#: Game/Levels/LeanBasics/L07_Or.lean:28
+msgid "§0 splits §1 into two cases; §2\n"
+"takes apart §3 and §4."
+msgstr ""
+
+#: Game/Levels/LeanBasics/L08_Vectors.lean:5
+msgid "Vectors and matrices"
+msgstr ""
+
+#. §0: $\\mathbb R^n$
+#. §1: `![a, b, …]`
+#. §2: `!![a, b; c, d]`
+#. §3: `;`
+#. §4: `A *ᵥ v`
+#. §5: `ext i`
+#. §6: `fin_cases i`
+#. §7: `0`
+#: Game/Levels/LeanBasics/L08_Vectors.lean:7
+msgid "In this game a vector in §0 is written §1 and a matrix\n"
+"§2 (rows separated by §3). §4 is the matrix–vector product.\n"
+"\n"
+"Two vectors are equal when they agree in every component. §5 asks you to prove that,\n"
+"and §6 splits into one goal per component (numbered from §7)."
+msgstr ""
+
+#. §0: $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}1\\\\1\\end{pmatrix} = \\begin{pmatrix}3\\\\7\\end{pmatrix}$
+#: Game/Levels/LeanBasics/L08_Vectors.lean:16
+#: Game/Levels/LeanBasics/L08_Vectors.lean:34
+#: Game/Levels/Axioms/L02_NegUnique.lean:43
+#: Game/Levels/Axioms/L03_NegOneSmul.lean:14
+msgid "§0."
+msgstr ""
+
+#. §0: `ext i`
+#. §1: `fin_cases i`
+#: Game/Levels/LeanBasics/L08_Vectors.lean:18
+msgid "Compare component by component: §0, then §1."
+msgstr ""
+
+#. §0: `norm_num [mulVec, dotProduct, Fin.sum_univ_two]`
+#: Game/Levels/LeanBasics/L08_Vectors.lean:21
+msgid "Row 1 times the vector. §0 unfolds\n"
+"the product and adds it up."
+msgstr ""
+
+#. §0: `ext i`
+#. §1: `ext i j`
+#. §2: `i`
+#: Game/Levels/LeanBasics/L08_Vectors.lean:26
+msgid "§0 reduces an equation between vectors (or matrices, §1) to one component §2."
+msgstr ""
+
+#. §0: `fin_cases i`
+#. §1: `i : Fin n`
+#. §2: `0, …, n-1`
+#: Game/Levels/LeanBasics/L08_Vectors.lean:28
+msgid "§0 splits a goal about §1 into one goal per value §2."
+msgstr ""
+
+#. §0: `A *ᵥ v`
+#: Game/Levels/LeanBasics/L08_Vectors.lean:30
+msgid "§0: the matrix–vector product."
+msgstr ""
+
+#. §0: `u ⬝ᵥ v`
+#: Game/Levels/LeanBasics/L08_Vectors.lean:32
+msgid "§0: the dot product."
+msgstr ""
+
+#: Game/Levels/LeanBasics/L09_Decide.lean:5
+msgid "Commit, then prove"
+msgstr ""
+
+#. §0: `¬ P ∨ P`
+#. §1: `left`
+#. §2: `right`
+#. §3: $x$
+#. §4: $x \\cdot x = x$
+#: Game/Levels/LeanBasics/L09_Decide.lean:8
+msgid "Many sheet questions say *\"true or false?\"*. In this game they look like this: the goal\n"
+"is §0. You commit with §1 (false) or §2 (true), then prove your choice.\n"
+"Choose wrong and you will get stuck — which is the lesson.\n"
+"\n"
+"**Claim:** for every real §3, §4."
+msgstr ""
+
+#. §0: $x$
+#. §1: $x \\cdot x = x$
+#: Game/Levels/LeanBasics/L09_Decide.lean:16
+msgid "True or false: for every real §0, §1."
+msgstr ""
+
+#. §0: $x = 2$
+#: Game/Levels/LeanBasics/L09_Decide.lean:18
+msgid "Decide first. Is it true for §0?"
+msgstr ""
+
+#. §0: `intro h`
+#: Game/Levels/LeanBasics/L09_Decide.lean:20
+msgid "To refute a \"for all\", assume it with §0 and find a counterexample."
+msgstr ""
+
+#. §0: `have h2 := «{h}» 2`
+#. §1: $x = 2$
+#: Game/Levels/LeanBasics/L09_Decide.lean:22
+msgid "§0 specialises it to §1."
+msgstr ""
+
+#. §0: `have h : P := proof`
+#. §1: `have h := f a`
+#. §2: `f`
+#. §3: `a`
+#: Game/Levels/LeanBasics/L09_Decide.lean:26
+msgid "§0 adds a new fact; §1 specialises §2 to §3."
+msgstr ""
+
+#: Game/Levels/LeanBasics.lean:12
+msgid "Lean Basics"
+msgstr ""
+
+#: Game/Levels/LeanBasics.lean:14
+msgid "Before any linear algebra: the handful of Lean moves every later proof uses. Nine short\n"
+"levels, about twenty minutes."
+msgstr ""
+
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:5
+msgid "Zero times anything"
+msgstr ""
+
+#. §0: $V$
+#. §1: $+$
+#. §2: $\\cdot$
+#. §3: $0 \\cdot \\vec v = \\vec 0$
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:7
+msgid "A vector space is a set §0 with §1 and §2 satisfying Hefferon's ten conditions\n"
+"(Definition Two.I.1.1). Your inventory holds just the conditions this proof needs, plus one cancellation law. There is no automation.\n"
+"\n"
+"Our first theorem is Lemma Two.I.1.16 (1): §3.\n"
+"It is *not* one of the axioms; we must earn it."
+msgstr ""
+
+#. §0: $\\vec v$
+#. §1: $0 \\cdot \\vec v = \\vec 0$
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:17
+msgid "For every vector §0, §1."
+msgstr ""
+
+#. §0: $0 = 0 + 0$
+#. §1: $0 \\cdot v$
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:20
+msgid "Idea: §0. What does that say about §1?"
+msgstr ""
+
+#. §0: $0 \\cdot v + 0 \\cdot v = 0 \\cdot v + \\vec 0$
+#. §1: `have`
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:21
+msgid "So §0. State that with §1, then cancel."
+msgstr ""
+
+#. §0: `have h : (0:ℝ) • «{v}» + (0:ℝ) • «{v}» = (0:ℝ) • «{v}» + 0`
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:22
+#: Game/Levels/Axioms/L03_NegOneSmul.lean:22
+msgid "§0"
+msgstr ""
+
+#. §0: `← add_smul`
+#. §1: `add_zero`
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:24
+msgid "Rewrite the left side with §0, then §1 twice."
+msgstr ""
+
+#. §0: $0 \\cdot v$
+#. §1: `«{h}»`
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:26
+msgid "Cancel §0 on the left of both sides of §1."
+msgstr ""
+
+#. §0: `zero_smul_eq_zero`
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:31
+msgid "That is exactly the textbook proof, line for line. From now on §0 is in\n"
+"your inventory."
+msgstr ""
+
+#. §0: $(r+s)\\cdot v = r\\cdot v + s\\cdot v$
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:36
+msgid "§0 — Hefferon's condition (7)."
+msgstr ""
+
+#. §0: $v + \\vec 0 = v$
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:38
+msgid "§0 — Hefferon's condition (4)."
+msgstr ""
+
+#: Game/Levels/Axioms/L01_ZeroSmul.lean:44
+msgid "Mathlib's version; disabled here."
+msgstr ""
+
+#: Game/Levels/Axioms/L02_NegUnique.lean:5
+msgid "Inverses are unique"
+msgstr ""
+
+#. §0: $w$
+#. §1: $w'$
+#. §2: $v$
+#: Game/Levels/Axioms/L02_NegUnique.lean:14
+msgid "**Problem Sheet 4, Question 3.** In a vector space every element has an additive\n"
+"inverse. Can some elements have two or more?\n"
+"\n"
+"Decide what you believe, then prove it. Suppose §0 and §1 are both inverses of §2."
+msgstr ""
+
+#. §0: $w$
+#. §1: $w'$
+#. §2: $v$
+#. §3: $w = w'$
+#: Game/Levels/Axioms/L02_NegUnique.lean:23
+msgid "If §0 and §1 are both additive inverses of §2, then §3."
+msgstr ""
+
+#. §0: $w = w + 0 = w + (v + w') = (w + v) + w' = 0 + w' = w'$
+#. §1: `calc`
+#: Game/Levels/Axioms/L02_NegUnique.lean:26
+msgid "Write §0.\n"
+"A §1 block lets you write exactly that chain."
+msgstr ""
+
+#. §0: $w$
+#. §1: $w'$
+#. §2: $v$
+#. §3: $w = w + (v + w') = (w + v) + w' = w'$
+#: Game/Levels/Axioms/L02_NegUnique.lean:36
+msgid "**Answer to Sheet 4 Q3: no.** If §0 and §1 are both inverses of §2 then\n"
+"§3."
+msgstr ""
+
+#. §0: $(a + b) + c = a + (b + c)$
+#: Game/Levels/Axioms/L02_NegUnique.lean:41
+msgid "§0 — Hefferon's condition (3)."
+msgstr ""
+
+#. §0: `calc`
+#: Game/Levels/Axioms/L02_NegUnique.lean:45
+msgid "§0 writes a chain of equalities, each with its own justification."
+msgstr ""
+
+#: Game/Levels/Axioms/L02_NegUnique.lean:50
+#: Game/Levels/Axioms/L02_NegUnique.lean:52
+#: Game/Levels/Axioms/L03_NegOneSmul.lean:38
+msgid "disabled"
+msgstr ""
+
+#: Game/Levels/Axioms/L03_NegOneSmul.lean:5
+msgid "Minus one times a vector"
+msgstr ""
+
+#. §0: $(-1)\\cdot\\vec v + \\vec v = \\vec 0$
+#. §1: $(-1)\\cdot\\vec v$
+#. §2: $\\vec v$
+#: Game/Levels/Axioms/L03_NegOneSmul.lean:7
+msgid "Lemma Two.I.1.16 (2): §0, i.e. §1 *is* the\n"
+"additive inverse of §2. Your two earlier theorems are now tools."
+msgstr ""
+
+#. §0: $v$
+#. §1: $1 \\cdot v$
+#: Game/Levels/Axioms/L03_NegOneSmul.lean:17
+msgid "Idea: write the second §0 as §1, then combine the scalars."
+msgstr ""
+
+#. §0: `nth_rw 2 [← one_smul ℝ «{v}»]`
+#. §1: `rw [← add_smul]`
+#: Game/Levels/Axioms/L03_NegOneSmul.lean:18
+msgid "§0, then §1."
+msgstr ""
+
+#. §0: `-v`
+#. §1: `(-1)•v`
+#. §2: `simp`
+#: Game/Levels/Axioms/L03_NegOneSmul.lean:27
+msgid "Now §0 and §1 are interchangeable — the game will let §2 do this from here on."
+msgstr ""
+
+#. §0: $1 \\cdot v = v$
+#: Game/Levels/Axioms/L03_NegOneSmul.lean:29
+msgid "§0 — Hefferon's condition (10)."
+msgstr ""
+
+#. §0: `nth_rw n [h]`
+#: Game/Levels/Axioms/L03_NegOneSmul.lean:31
+msgid "§0 rewrites only the n-th occurrence."
+msgstr ""
+
+#. §0: $-a + a = 0$
+#: Game/Levels/Axioms/L03_NegOneSmul.lean:33
+msgid "§0 (in ℝ, or in any group)."
+msgstr ""
+
+#: Game/Levels/Axioms.lean:6
+msgid "The Ten Conditions"
+msgstr ""
+
+#: Game/Levels/Axioms.lean:8
+msgid "Every theorem in this game will ultimately rest on the ten conditions of\n"
+"Definition Two.I.1.1. In this world you derive the first consequences by hand."
+msgstr ""
+
+#: Game.lean:5
+msgid "Echelon"
+msgstr ""
+
+#: Game.lean:6
+msgid "**Echelon** is Oxford's first-year Linear Algebra course (MT2026, after Hefferon) as a game.\n"
+"Every problem-sheet question is a level. Solve them in Lean, then export your own proofs\n"
+"for your tutorial."
+msgstr ""
+
+#: Game.lean:13
+msgid "Based on Jim Hefferon's *Linear Algebra* (4th ed.) and the MT2026 problem sheets.\n"
+"Built on lean4game and Mathlib."
+msgstr ""
+
+#: Game.lean:20
+msgid "Hefferon in Lean"
+msgstr ""
+
+#: Game.lean:21
+msgid "The Oxford first-year Linear Algebra course, as a game: every problem-sheet question is a level."
+msgstr ""

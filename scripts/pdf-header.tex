@@ -1,0 +1,5 @@
+% Monospace font for Lean code with fallbacks for symbols Menlo lacks (ℝ, ⟨⟩, ᵥ, …).
+\directlua{luaotfload.add_fallback("leanfallback", {"STIX Two Math:mode=harf;", "STIX Two Text:mode=harf;"})}
+\setmonofont{Menlo}[Scale=0.85, RawFeature={fallback=leanfallback}]
+\directlua{luaotfload.add_fallback("textfallback", {"STIX Two Math:mode=harf;"})}
+\setmainfont{STIX Two Text}[RawFeature={fallback=textfallback}]
