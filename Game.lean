@@ -1,5 +1,24 @@
 import Game.Levels.LeanBasics
+import Game.Levels.RowOps
+import Game.Levels.DotProduct
+import Game.Levels.Echelon
 import Game.Levels.Axioms
+import Game.Levels.Subspaces
+import Game.Levels.Independence
+import Game.Levels.BasisDim
+import Game.Levels.Dimension
+import Game.Levels.Isomorphisms
+import Game.Levels.Homomorphisms
+import Game.Levels.MatrixOfMap
+import Game.Levels.MatrixAlgebra
+import Game.Levels.ChangeOfBasis
+import Game.Levels.Projection
+import Game.Levels.Determinant
+import Game.Levels.Volume
+import Game.Levels.Eigen
+import Game.Levels.Diagonalisation
+import Game.Levels.Puzzles
+import Game.Levels.FromScratch
 
 -- Here's what we'll put on the title screen
 Title "Echelon"
@@ -23,6 +42,27 @@ CaptionLong "The Oxford first-year Linear Algebra course, as a game: every probl
 -- CoverImage "images/cover.png"
 
 /-! Build the game. Show's warnings if it found a problem with your game. -/
-Dependency LeanBasics → Axioms
+-- Core path, in lecture order.
+Dependency LeanBasics → RowOps
+Dependency RowOps → DotProduct
+Dependency DotProduct → Echelon
+Dependency Echelon → Axioms
+Dependency Axioms → Subspaces
+Dependency Subspaces → Independence
+Dependency Independence → BasisDim
+Dependency BasisDim → Dimension
+Dependency Dimension → Isomorphisms
+Dependency Isomorphisms → Homomorphisms
+Dependency Homomorphisms → MatrixOfMap
+Dependency MatrixOfMap → MatrixAlgebra
+Dependency MatrixAlgebra → ChangeOfBasis
+Dependency ChangeOfBasis → Projection
+Dependency Projection → Determinant
+Dependency Determinant → Volume
+Dependency Volume → Eigen
+Dependency Eigen → Diagonalisation
+-- Optional side worlds.
+Dependency Echelon → Puzzles
+Dependency Independence → FromScratch
 
 MakeGame

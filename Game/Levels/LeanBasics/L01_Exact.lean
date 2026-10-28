@@ -16,6 +16,4 @@ Statement (x : ℝ) (h : x = 3) : x = 3 := by
 
 Conclusion "Every proof in this game ends, eventually, with a step like this one."
 
-/-- `exact h` closes the goal using a term `h` whose type is exactly the goal. -/
-TacticDoc exact
 NewTactic exact

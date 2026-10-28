@@ -1,6 +1,7 @@
 import GameServer
 import Mathlib
 import Game.Lib
+import Game.Doc.Tactics
 
 /-! Things available in every level.
 

@@ -18,6 +18,4 @@ Statement (x : ℝ) (h : x = 1) : x ≠ 2 := by
   Hint (hidden := true) "`{h2}` now claims `1 = 2`. `norm_num at {h2}` sees that it is false."
   norm_num at h2
 
-/-- `intro h` moves an assumption into the context: for goals `P → Q`, `¬ P` and `∀ x, …`. -/
-TacticDoc intro
 NewTactic intro

@@ -1,4 +1,5 @@
 import Game.Metadata
+import Game.Ch2a
 
 World "Axioms"
 Level 1
@@ -33,15 +34,7 @@ That is exactly the textbook proof, line for line. From now on `zero_smul_eq_zer
 your inventory.
 "
 
-/-- $(r+s)\cdot v = r\cdot v + s\cdot v$ — Hefferon's condition (7). -/
-TheoremDoc add_smul as "add_smul" in "Axioms"
-/-- $v + \vec 0 = v$ — Hefferon's condition (4). -/
-TheoremDoc add_zero as "add_zero" in "Axioms"
-/-- If $a + b = a + c$ then $b = c$. -/
-TheoremDoc add_left_cancel as "add_left_cancel" in "Axioms"
-DisabledTactic norm_num
-NewTheorem add_smul add_zero add_left_cancel
-/-- Mathlib's version; disabled here. -/
-TheoremDoc zero_smul as "zero_smul" in "Axioms"
+DisabledTactic norm_num simp
 DisabledTheorem zero_smul
-TheoremTab "Axioms"
+TheoremTab "Vector spaces"
+NewTheorem add_left_cancel add_smul add_zero

@@ -23,6 +23,4 @@ Statement : (¬ ∀ x : ℝ, x * x = x) ∨ (∀ x : ℝ, x * x = x) := by
   have h2 := h 2
   norm_num at h2
 
-/-- `have h : P := proof` adds a new fact; `have h := f a` specialises `f` to `a`. -/
-TacticDoc «have»
 NewTactic «have»

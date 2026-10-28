@@ -21,11 +21,4 @@ Statement (x : ℝ) (h : x = 1 ∨ x = 2) : x * x = 1 ∨ x * x = 4 := by
     rw [h2]
     norm_num
 
-/-- `left` / `right` choose which side of a goal `P ∨ Q` to prove. -/
-TacticDoc left
-/-- See `left`. -/
-TacticDoc right
-/-- `rcases h with h1 | h2` splits `h : P ∨ Q` into two cases; `rcases h with ⟨a, b⟩`
-takes apart `∧` and `∃`. -/
-TacticDoc rcases
 NewTactic left right rcases

@@ -26,16 +26,7 @@ end LinearAlgebraGame
 
 Conclusion "Now `-v` and `(-1)•v` are interchangeable — the game will let `simp` do this from here on."
 
-/-- $1 \cdot v = v$ — Hefferon's condition (10). -/
-TheoremDoc one_smul as "one_smul" in "Axioms"
-/-- `nth_rw n [h]` rewrites only the n-th occurrence. -/
-TacticDoc nth_rw
-/-- $-a + a = 0$ (in ℝ, or in any group). -/
-TheoremDoc neg_add_cancel as "neg_add_cancel" in "Axioms"
-
 NewTactic nth_rw
-NewTheorem one_smul neg_add_cancel LinearAlgebraGame.zero_smul_eq_zero
-/-- disabled -/
-TheoremDoc neg_one_smul as "neg_one_smul" in "Axioms"
 DisabledTheorem neg_one_smul
-DisabledTactic norm_num
+DisabledTactic norm_num simp
+NewTheorem neg_add_cancel LinearAlgebraGame.zero_smul_eq_zero one_smul

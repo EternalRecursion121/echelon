@@ -18,8 +18,4 @@ Statement (x y : ℝ) (h : x = 1 ∧ y = 2) : y = 2 ∧ x = 1 := by
   · exact hy
   · exact hx
 
-/-- `constructor` splits a goal `P ∧ Q` (or `P ↔ Q`) into separate goals. -/
-TacticDoc constructor
-/-- `obtain ⟨a, b⟩ := h` takes apart a hypothesis `h : P ∧ Q` or `h : ∃ x, P x`. -/
-TacticDoc obtain
 NewTactic constructor obtain

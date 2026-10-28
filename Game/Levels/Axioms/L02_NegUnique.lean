@@ -38,18 +38,8 @@ Conclusion "
 $w = w + (v + w') = (w + v) + w' = w'$.
 "
 
-/-- $(a + b) + c = a + (b + c)$ — Hefferon's condition (3). -/
-TheoremDoc add_assoc as "add_assoc" in "Axioms"
-/-- $\vec 0 + v = v$. -/
-TheoremDoc zero_add as "zero_add" in "Axioms"
-/-- `calc` writes a chain of equalities, each with its own justification. -/
-TacticDoc «calc»
-
 NewTactic «calc»
-NewTheorem add_assoc zero_add
-/-- disabled -/
-TheoremDoc neg_eq_of_add_eq_zero_right as "neg_eq_of_add_eq_zero_right" in "Axioms"
-/-- disabled -/
-TheoremDoc neg_eq_of_add_eq_zero_left as "neg_eq_of_add_eq_zero_left" in "Axioms"
+
 DisabledTheorem neg_eq_of_add_eq_zero_right neg_eq_of_add_eq_zero_left
-DisabledTactic norm_num
+DisabledTactic norm_num simp
+NewTheorem add_assoc zero_add

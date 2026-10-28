@@ -18,6 +18,4 @@ Statement : ∃ x : ℝ, 2 * x = 6 := by
 Conclusion "Many \"find the solution\" questions on the sheets look like this: you supply
 the witness, Lean checks it."
 
-/-- `use a` proves `∃ x, P x` by supplying `a`, leaving `P a` to prove. -/
-TacticDoc use
 NewTactic use

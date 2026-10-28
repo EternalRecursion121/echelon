@@ -16,8 +16,5 @@ Statement (x y : ℝ) (h₁ : x = y) (h₂ : y = 5) : x = 5 := by
   Hint (hidden := true) "The goal is now exactly `{h₂}`."
   exact h₂
 
-/-- `rw [h]` rewrites the goal with the equation `h`. `rw [h] at h'` rewrites a hypothesis
-instead, and `rw [← h]` rewrites right-to-left. -/
-TacticDoc rw
 NewTactic rw
 NewHiddenTactic rewrite

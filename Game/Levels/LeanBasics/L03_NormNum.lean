@@ -16,7 +16,4 @@ Statement (x : ℝ) (h : x = 2) : x + x = 4 := by
   rw [h]
   norm_num
 
-/-- `norm_num` proves goals about explicit numerals (`2 + 2 = 4`, `(1 : ℝ) ≠ 2`). Use
-`norm_num at h` to simplify a hypothesis. -/
-TacticDoc norm_num
 NewTactic norm_num
