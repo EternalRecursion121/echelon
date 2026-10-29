@@ -1,4 +1,4 @@
-import Game.Levels.RowOps.L09_SheetOneQ9b
+import Game.Levels.RowOps.L09_Classify
 
 World "RowOps"
 Level 10
@@ -16,18 +16,12 @@ a unique solution, no solution, or infinitely many solutions.
 
 (a) $-3x + 2y = 0,\\ -2y = 0$ (b) $x + y = 4,\\ y - z = 0$ (c) $x + y = 4,\\ 0 = 4$
 
-A system is now a condition on a vector `v`, written `fun v : Fin 2 → ℝ => …` (\"the
-condition, as a function of `v`\"); `v 0, v 1, v 2` play the roles of $x, y, z$.
-`Classify S` means `NoSolution S ∨ UniqueSolution S ∨ InfinitelyMany S`: choose with
-`left` (none), `right` then `left` (unique), or `right` twice (infinitely many).
-
-Tools (see the Systems tab):
+As in the last level: `left` (none), `right` then `left` (unique), or `right` twice
+(infinitely many). Tools (Theorems tab, **Systems**):
 - none: `NoSolution S` is `¬ ∃ v, S v` — assume a solution and derive something false.
-- unique: `rw [uniqueSolution_iff]` turns the goal into \"some `p` solves it, and every
+- unique: **new** `rw [uniqueSolution_iff]` turns the goal into \"some `p` solves it, and every
   solution equals `p`\"; then `use` your solution.
-- infinitely many: `apply infinitelyMany_of_line p d i` with a point `p`, a direction `d` and
-  a position `i` where `d` is nonzero. **New:** `apply f` reduces the goal to what `f` still
-  needs — here `d i ≠ 0` and \"every point of the line is a solution\".
+- infinitely many: `apply infinitelyMany_of_line p d i`, as in the last level.
 "
 
 namespace LinearAlgebraGame
@@ -80,10 +74,7 @@ end LinearAlgebraGame
 
 Conclusion "**Answers:** (a) unique, (b) infinitely many, (c) none."
 
-NewDefinition LinearAlgebraGame.Classify LinearAlgebraGame.NoSolution LinearAlgebraGame.UniqueSolution LinearAlgebraGame.InfinitelyMany
-
-NewTheorem LinearAlgebraGame.infinitelyMany_of_line LinearAlgebraGame.uniqueSolution_iff
+NewTheorem LinearAlgebraGame.uniqueSolution_iff
 TheoremTab "Systems"
 
 DisabledTactic linarith nlinarith
-NewTactic apply

@@ -1,7 +1,7 @@
-import Game.Levels.RowOps.L05_SheetOneQ3a
+import Game.Levels.RowOps.L04_SheetOneQ3a
 
 World "RowOps"
-Level 6
+Level 5
 Title "Three equations, four unknowns"
 
 -- @sheet 1 Q3c

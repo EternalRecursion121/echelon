@@ -25,6 +25,6 @@ Conclusion "
 Every function-space identity reduces, point by point, to an identity of real numbers.
 "
 
-NewTheorem Pi.zero_apply Pi.neg_apply mul_add
+NewTheorem Pi.neg_apply mul_add
 DisabledTactic simp norm_num
 TheoremTab "Vector spaces"

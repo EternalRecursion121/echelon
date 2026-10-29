@@ -50,10 +50,10 @@ Statement : ∃ R : Matrix (Fin 3) (Fin 3) ℝ,
     is $\\rho_2 - 2\\rho_1$:
     `use !![0, 0, -1; 1/3, 0, 1/3; -2, 1, 0], !![1, 3, 0; 2, 6, 1; -1, 0, 0]`"
     use !![0, 0, -1; 1/3, 0, 1/3; -2, 1, 0], !![1, 3, 0; 2, 6, 1; -1, 0, 0]
-    Hint (hidden := true) "`constructor`, then for each `entrywise <;> norm_num [mul_apply, Fin.sum_univ_three]`."
+    Hint (hidden := true) "`constructor`, then for each `entrywise <;> norm_num [Matrix.mul_apply, Fin.sum_univ_three]`."
     constructor
-    · entrywise <;> norm_num [mul_apply, Fin.sum_univ_three]
-    · entrywise <;> norm_num [mul_apply, Fin.sum_univ_three]
+    · entrywise <;> norm_num [Matrix.mul_apply, Fin.sum_univ_three]
+    · entrywise <;> norm_num [Matrix.mul_apply, Fin.sum_univ_three]
 
 end LinearAlgebraGame
 

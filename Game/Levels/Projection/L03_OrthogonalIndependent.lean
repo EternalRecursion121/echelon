@@ -44,4 +44,4 @@ basis*, in which coordinates are just $c_i = \\vec v\\cdot\\vec\\kappa_i / \\vec
 "
 
 TheoremTab "Projection"
-NewTheorem sum_dotProduct Finset.sum_eq_single Finset.mem_univ
+NewTheorem sum_dotProduct Finset.sum_eq_single

@@ -46,8 +46,10 @@ Statement : ((¬ IsNonsingular !![(1 : ℝ), 2; 1, 3]) ∨ IsNonsingular !![(1 :
     entrywise
     · exact h0
     · exact h1
-  · Hint "(b): row 2 is a multiple of row 1. Find a nonzero solution."
+  · Hint "(b): solve the homogeneous system again. Is $\\vec v = \\vec 0$ forced this time?"
     left
+    Hint "Row 2 is a multiple of row 1, so there is a nonzero solution. Assume nonsingularity
+    and feed it that solution."
     intro h
     Hint (hidden := true) "`have h0 := h ![2, -1] (by entrywise <;> norm_num [mulVec, dotProduct, Fin.sum_univ_two])`"
     have h0 := h ![2, -1] (by entrywise <;> norm_num [mulVec, dotProduct, Fin.sum_univ_two])

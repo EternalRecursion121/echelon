@@ -18,7 +18,7 @@ New: `nlinarith` (`linarith` that may multiply hypotheses).
 
 **Dot notation on facts.** If `h : a ≤ b` then `h.eq_or_lt : a = b ∨ a < b` (the lemma
 `LE.le.eq_or_lt` applied to `h`), `h.symm` flips an equation, and for an iff `h.mp`/`h.mpr`
-are its two directions (Row Ops level 3).
+are its two directions (Lean Basics, level 10).
 "
 
 namespace LinearAlgebraGame

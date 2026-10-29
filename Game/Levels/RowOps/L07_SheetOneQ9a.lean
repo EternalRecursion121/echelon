@@ -1,7 +1,7 @@
-import Game.Levels.RowOps.L07_SheetOneQ2
+import Game.Levels.RowOps.L06_SheetOneQ2
 
 World "RowOps"
-Level 8
+Level 7
 Title "Gauss–Jordan, two by two"
 
 -- @sheet 1 Q9a
@@ -17,7 +17,7 @@ Introduction "
 $x + y = 2,\\ x - y = 0$.
 
 Gauss–Jordan keeps going until every leading entry is $1$ with zeros above it: each
-`rowop` should leave a row of the reduced form. As in level 3, supply the solution with `use`.
+`rowop` should leave a row of the reduced form. As in level 2, supply the solution with `use`.
 "
 
 namespace LinearAlgebraGame

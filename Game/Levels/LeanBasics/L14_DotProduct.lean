@@ -1,7 +1,7 @@
-import Game.Levels.LeanBasics.L09_VectorEq
+import Game.Levels.LeanBasics.L13_Vectors
 
 World "LeanBasics"
-Level 10
+Level 14
 Title "The dot product"
 
 Introduction "
@@ -25,9 +25,5 @@ Statement : (![1, 2] : Fin 2 → ℝ) ⬝ᵥ ![3, 4] = 11 := by
   Hint (hidden := true) "`norm_num` (or, writing the sum out yourself, `norm_num [dotProduct, Fin.sum_univ_two]`)"
   norm_num
 
-/-- `u ⬝ᵥ v`: the dot product. -/
-DefinitionDoc dotProduct as "⬝ᵥ"
-/-- $\sum_{i<2} f(i) = f(0) + f(1)$. -/
-TheoremDoc Fin.sum_univ_two as "Fin.sum_univ_two" in "Vectors"
 NewTheorem Fin.sum_univ_two
 NewDefinition dotProduct

@@ -1,7 +1,7 @@
-import Game.Levels.RowOps.L06_SheetOneQ3c
+import Game.Levels.RowOps.L05_SheetOneQ3c
 
 World "RowOps"
-Level 7
+Level 6
 Title "More unknowns than equations"
 
 -- @sheet 1 Q2

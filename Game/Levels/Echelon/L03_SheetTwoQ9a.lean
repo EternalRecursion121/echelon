@@ -29,8 +29,8 @@ Statement (k : ℝ) (C : Matrix (Fin 3) (Fin 3) ℝ)
   intro i
   rw [hC]
   Hint "Check each row."
-  Hint (hidden := true) "`fin_cases i <;> simp [combo, Matrix.add_mul, mul_apply, Fin.sum_univ_three, Matrix.single_apply] <;> ring`"
-  fin_cases i <;> simp [combo, Matrix.add_mul, mul_apply, Fin.sum_univ_three, Matrix.single_apply] <;> ring
+  Hint (hidden := true) "`fin_cases i <;> simp [combo, Matrix.add_mul, Matrix.mul_apply, Fin.sum_univ_three, Matrix.single_apply] <;> ring`"
+  fin_cases i <;> simp [combo, Matrix.add_mul, Matrix.mul_apply, Fin.sum_univ_three, Matrix.single_apply] <;> ring
 
 end LinearAlgebraGame
 

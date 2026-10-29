@@ -21,7 +21,7 @@ if m:
     if m.group(1): print("Claim:", m.group(1)[3:-2].strip())
     print("Lean statement:\nStatement" + m.group(2).rstrip() + " := by\n")
 visible, hidden = [], []
-for hm in re.finditer(r"Hint\s*(\([^)]*\))?\s*\"((?:[^\"\\]|\\.)*)\"", src, re.S):
+for hm in re.finditer(r"Hint\s*((?:\([^)]*\)\s*)*)\"((?:[^\"\\]|\\.)*)\"", src, re.S):
     text = " ".join(hm.group(2).split()).replace("\\\\", "\\")
     (hidden if hm.group(1) and "hidden" in hm.group(1) else visible).append(text)
 print("Visible hints (shown when your goal matches):"); [print("  -", h) for h in visible]

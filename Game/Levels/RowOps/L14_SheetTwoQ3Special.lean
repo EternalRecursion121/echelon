@@ -17,8 +17,11 @@ $ax + y = a^2,\\ x + ay = 1$ when $a = 1$, and when $a = -1$.
 
 The claim has two parts (`constructor`):
 1. for $a = 1$: the solution set is a line $\\{\\vec p + t\\vec d\\}$ — supply $\\vec p$, $\\vec d$
-   as in level 5;
+   as in level 4;
 2. for $a = -1$: decide whether there is a solution (`left`: none, `right`: there is one).
+
+(The value of $a$ is substituted and tidied: for $a = 1$ the system reads $x + y = 1,\\ x + y = 1$;
+for $a = -1$ it reads $-x + y = 1,\\ x - y = 1$.)
 "
 
 namespace LinearAlgebraGame
@@ -26,9 +29,9 @@ namespace LinearAlgebraGame
 /-- The cases $a = 1$ and $a = -1$ of $ax + y = a^2,\ x + ay = 1$. -/
 Statement :
     (∃ p d : Fin 2 → ℝ, ∀ x y : ℝ,
-      (1 * x + y = 1 ^ 2 ∧ x + 1 * y = 1) ↔ ∃ t : ℝ, ![x, y] = p + t • d) ∧
-    ((¬ ∃ x y : ℝ, -1 * x + y = (-1) ^ 2 ∧ x + -1 * y = 1) ∨
-      (∃ x y : ℝ, -1 * x + y = (-1) ^ 2 ∧ x + -1 * y = 1)) := by
+      (x + y = 1 ∧ x + y = 1) ↔ ∃ t : ℝ, ![x, y] = p + t • d) ∧
+    ((¬ ∃ x y : ℝ, -x + y = 1 ∧ x - y = 1) ∨
+      (∃ x y : ℝ, -x + y = 1 ∧ x - y = 1)) := by
   constructor
   · Hint "For $a = 1$ the two rows are the same equation. Which variable is free?"
     Hint (hidden := true) "`use ![1, 0], ![-1, 1]`, then `intro x y` and `constructor`."
@@ -41,7 +44,9 @@ Statement :
       `linear_combination h2`."
       use y
       entrywise
-      · norm_num
+      · Hint "The entries are still unevaluated (`(p + t • d) 0` and so on): `norm_num` evaluates
+        them first, then the entry is ordinary algebra."
+        norm_num
         linear_combination h2
       · norm_num
     · intro h

@@ -12,8 +12,8 @@ $\\begin{pmatrix}1&0&-1\\\\3&1&0\\\\-1&1&1\\end{pmatrix}$. Check its solution in
 
 New: `simp` — a general simplifier that rewrites with the facts and definitions you list:
 `simp [mulVec, dotProduct, Fin.sum_univ_three]` writes a row times a vector out. Unlike
-`norm_num` it does not finish arithmetic with real numbers such as `-3 + 4 = 1`, so follow it
-with `norm_num`. Recall `t₁ <;> t₂` runs `t₂` on every goal `t₁` produces.
+`norm_num` it may leave real-number arithmetic unfinished (e.g. `-(3 * 2) + 6 = 0`); if it
+does, follow it with `norm_num` (`… <;> norm_num` is harmless when nothing is left). Recall `t₁ <;> t₂` runs `t₂` on every goal `t₁` produces.
 "
 
 namespace LinearAlgebraGame

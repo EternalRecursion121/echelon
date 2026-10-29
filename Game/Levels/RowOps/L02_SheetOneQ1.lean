@@ -1,7 +1,7 @@
-import Game.Levels.RowOps.L02_RowOp
+import Game.Levels.RowOps.L01_RowOps
 
 World "RowOps"
-Level 3
+Level 2
 Title "The unique solution"
 
 -- @sheet 1 Q1
@@ -15,12 +15,11 @@ Introduction "
 $$x - z = 0,\\quad 3x + y = 1,\\quad -x + y + z = 4.$$
 
 You supply the solution: the claim says there are numbers $a, b, c$ such that the system
-holds **if and only if** $x = a$, $y = b$, $z = c$. Start with `use` and your three numbers,
-then `intro x y z`.
+holds **if and only if** $x = a$, $y = b$, $z = c$. Start with `use` and your three numbers
+(separated by commas, `use a, b, c`), then `intro x y z` (one name per variable).
 
 The direction `→` of the `↔` is Gauss's method (no other triple works); `←` checks your triple
-is a solution. `constructor` splits the `↔`. (`↔` is typed `\\iff`. If `h : P ↔ Q` then
-`h.mp : P → Q` and `h.mpr : Q → P` are its two directions, and `rw [h]` swaps `P` for `Q`.)
+is a solution. `constructor` splits the `↔` (Lean Basics, level 10).
 "
 
 namespace LinearAlgebraGame

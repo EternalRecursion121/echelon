@@ -1,7 +1,7 @@
-import Game.Levels.LeanBasics.L10_DotProduct
+import Game.Levels.LeanBasics.L14_DotProduct
 
 World "LeanBasics"
-Level 11
+Level 15
 Title "Matrix times vector"
 
 Introduction "
@@ -29,6 +29,4 @@ Statement : (!![1, 2; 3, 4] : Matrix (Fin 2) (Fin 2) ℝ) *ᵥ ![1, 1] = ![3, 7]
   · Hint "Entry 1 (the second row): $3 \\cdot 1 + 4 \\cdot 1 = 7$. Same command as before."
     norm_num
 
-/-- `A *ᵥ v`: the matrix–vector product. -/
-DefinitionDoc Matrix.mulVec as "*ᵥ"
 NewDefinition Matrix.mulVec

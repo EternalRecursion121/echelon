@@ -1,7 +1,7 @@
-import Game.Levels.LeanBasics.L06_Not
+import Game.Levels.LeanBasics.L08_Not
 
 World "LeanBasics"
-Level 7
+Level 9
 Title "Or, and case splits"
 
 Introduction "

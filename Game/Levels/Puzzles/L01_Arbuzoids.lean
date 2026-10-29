@@ -23,9 +23,9 @@ A state is a triple (red, green, blue) of integers. `Meet s t` is one meeting, a
 `Reachable s t` means some finite sequence of meetings leads from `s` to `t`. All blue means
 the state $(0, 0, 45)$. Use linear algebra: find a quantity that no meeting changes.
 
-`x % 3` is the remainder of the integer `x` on division by 3. New:
-`Int.add_mul_emod_self_left a b c : (a + b * c) % b = a % b` — adding a multiple of 3 does not
-change the remainder.
+`x % m` is the remainder of the integer `x` on division by `m`. New:
+`Int.add_mul_emod_self_left a b c : (a + b * c) % b = a % b` — adding a multiple of `b` does not
+change the remainder mod `b`.
 
 **Induction along a sequence of meetings.** To prove that every reachable state `s` has some
 property, use `induction hs with` on `hs : Reachable (13, 15, 17) s`; there are two cases,
@@ -45,7 +45,10 @@ namespace LinearAlgebraGame
 /-- The arbuzoids can never all be blue. -/
 Statement : ¬ Reachable (13, 15, 17) (0, 0, 45) := by
   intro h
-  Hint "Look at red − green modulo 3. Prove it stays the same along every sequence of meetings."
+  Hint "Find a quantity built from the three counts that no single meeting changes (perhaps
+  only up to a remainder), and compare its value at the start with its value at all-blue."
+  Hint (hidden := true) "Look at red − green modulo 3. Prove it stays the same along every
+  sequence of meetings."
   Hint (hidden := true) "`have key : ∀ s, Reachable (13, 15, 17) s → (s.1 - s.2.1) % 3 = 1 := by`
   then `intro s hs` and `induction hs with` `| refl => …` `| tail _ hstep ih => …`."
   have key : ∀ s, Reachable (13, 15, 17) s → (s.1 - s.2.1) % 3 = 1 := by

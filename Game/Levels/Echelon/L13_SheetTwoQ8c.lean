@@ -34,9 +34,9 @@ Statement (a : ℝ) (B : Matrix (Fin 2) (Fin 2) ℝ) :
     use E 0 0, E 1 0
     constructor
     · exact firstCol_ne_zero E F hFE
-    · Hint (hidden := true) "`rw [← hE]`, then `entrywise <;> simp [mul_apply, Fin.sum_univ_two, mul_comm]`."
+    · Hint (hidden := true) "`rw [← hE]`, then `entrywise <;> simp [Matrix.mul_apply, Fin.sum_univ_two, mul_comm]`."
       rw [← hE]
-      entrywise <;> simp [mul_apply, Fin.sum_univ_two, mul_comm]
+      entrywise <;> simp [Matrix.mul_apply, Fin.sum_univ_two, mul_comm]
   · intro h
     obtain ⟨p, q, hpq, hB⟩ := h
     Hint (hidden := true) "`obtain ⟨E, hdet, h0, h1⟩ := exists_firstCol hpq`, then
@@ -44,7 +44,7 @@ Statement (a : ℝ) (B : Matrix (Fin 2) (Fin 2) ℝ) :
     obtain ⟨E, hdet, h0, h1⟩ := exists_firstCol hpq
     apply rowEquiv_of_det E hdet
     rw [hB]
-    entrywise <;> simp [mul_apply, Fin.sum_univ_two, h0, h1, mul_comm]
+    entrywise <;> simp [Matrix.mul_apply, Fin.sum_univ_two, h0, h1, mul_comm]
 
 end LinearAlgebraGame
 

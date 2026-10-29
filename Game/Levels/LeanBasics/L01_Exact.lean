@@ -15,7 +15,13 @@ Here the hypothesis `h` says exactly what the goal says.
   *Clear Progress → Delete this Level*.
 - **Editor mode** (toggle at the top) shows your whole proof as editable text — handy for
   longer proofs.
-- Stuck? Hints appear on the left; some are hidden until you ask for more help.
+- Stuck? Hints appear on the left; some are hidden until you ask for more help. (The
+  hand-in export records how many hidden hints you opened — see *Game Info* in the menu.)
+
+**Inventory.** The panel on the right lists what you have unlocked so far, in tabs:
+**Tactics** (proof steps like `exact`), **Theorems** (named facts, grouped by topic) and
+**Definitions**. Click any item to read what it does and how to use it. New items appear as
+you clear levels.
 "
 
 /-- If $x = 3$ then $x = 3$. -/

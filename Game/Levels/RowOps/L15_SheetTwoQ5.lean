@@ -30,6 +30,18 @@ method never leaves $\\mathbb Q$.
 
 Inside your proof also write your sketch of (a) and (b) as a comment block starting
 `-- Explain:`.
+
+**How to write an explanation** (this is the first explain level; later ones work the same
+way). In Lean, `--` starts a *comment*: Lean ignores the rest of the line. Switch to
+**Editor mode** (toggle at the top) and add, anywhere inside the proof (e.g. as the first
+lines), a block like
+```
+-- Explain: (a) Every multiplier in Gauss's method is …
+-- (b) …
+```
+Each line starts with `--`; the block starts with `-- Explain:` and ends at the first line
+that is not a comment. The hand-in export copies it into your answer for this question.
+(Typewriter mode takes one line at a time, so write the block in Editor mode.)
 "
 
 namespace LinearAlgebraGame

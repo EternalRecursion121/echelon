@@ -20,6 +20,11 @@ Describe the matrices in each class.
 This level: the classes of the zero matrix and of the identity. Levels 12 and 13 do the
 other two. For the identity we use the $2\\times 2$ nonsingularity test $ad - bc \\ne 0$;
 `rowEquiv_of_det` and `det_mul`, `det_fin_two` (Chapter Four material, borrowed) help.
+
+New: `congrArg f h` applies the same function to both sides of an equation: from
+`hFE : F * E = 1`, `congrArg det hFE : det (F * E) = det 1`.
+Careful: `rw [det_fin_two]` rewrites the *first* determinant it finds. To expand a particular
+one, give the matrix: `det_fin_two B`.
 "
 
 namespace LinearAlgebraGame
@@ -49,6 +54,7 @@ Statement : (∀ B : Matrix (Fin 2) (Fin 2) ℝ, RowEquiv 0 B ↔ B = 0) ∧
       rw [Matrix.mul_one] at hE
       rw [← hE, ← det_fin_two]
       intro h0
+      Hint "Take the determinant of both sides of `{hFE}` (`congrArg det …`)."
       have hd := congrArg det hFE
       rw [det_mul, h0, det_one] at hd
       simp at hd

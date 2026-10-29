@@ -20,9 +20,14 @@ proofs** for their problem sheets (their tutor accepts Lean). So:
 
 - Your worlds: `Game/Levels/<WorldId>.lean` and `Game/Levels/<WorldId>/Lnn_Name.lean`.
 - Your chapter file `Game/<ChapterFile>.lean` (name given in your brief): game-local
-  definitions (e.g. `MatSimilar`) and **all `TheoremDoc` / `DefinitionDoc` commands** for
-  your chapter. It starts with `import GameServer`, `import Mathlib`, `import Game.Lib`.
-  Your first level of each world imports `Game.Metadata` and your chapter file.
+  definitions (e.g. `MatSimilar`) and granted lemmas. It starts with `import GameServer`,
+  `import Mathlib`, `import Game.Lib`. Your first level of each world imports `Game.Metadata`
+  and your chapter file.
+- **Docs:** every `TheoremDoc` / `DefinitionDoc` lives in `Game/Doc/Theorems.lean` (imported by
+  `Game.Metadata`, so a doc is visible in every level). Add one only if the name has none there
+  yet — the engine keeps the *first* doc for a name, so duplicates are dead text. A bare short
+  name under `open Matrix` (e.g. `mul_apply`) can resolve to an unrelated root lemma: write
+  `Matrix.mul_apply` in sample proofs.
 
 **Never edit**: `Game.lean`, `Game/Metadata.lean`, `Game/Lib/*`, `Game/Doc/Tactics.lean`,
 other worlds, `scripts/`, `lakefile.lean`. If you need a tactic doc that isn't in
@@ -70,7 +75,7 @@ end LinearAlgebraGame
 Conclusion "One or two sentences."
 
 NewTactic …            -- tactics first used in this level
-NewTheorem …           -- fully qualified names; every one needs a TheoremDoc in your chapter file
+NewTheorem …           -- fully qualified names; every one needs a TheoremDoc in Game/Doc/Theorems.lean
 DisabledTactic …       -- automation that would bypass this level
 DisabledTheorem …      -- Mathlib lemmas that ARE this level's statement
 TheoremTab "<Tab>"

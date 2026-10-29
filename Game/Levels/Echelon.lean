@@ -16,6 +16,13 @@ World "Echelon"
 Title "Echelon"
 
 Introduction "
-Hefferon One.III: matrices, row operations as matrices, reduced echelon form and row
-equivalence.
+Hefferon One.I.2 and One.III: matrices, row operations as matrices, reduced echelon form
+and row equivalence.
+
+- Levels 1–4: a system as $A\\vec x = \\vec b$; row operations are elementary matrices; linear
+  relations between columns survive row operations (Sheet 2 Q9).
+- Levels 5–8: computing a reduced echelon form, all possible shapes, an invariant, and whether
+  the swap operation is redundant (Sheet 1 Q10–Q12, Sheet 2 Q2).
+- Level 9: singular or nonsingular (Sheet 1 Q4).
+- Levels 10–13: the row-equivalence classes of $2\\times 2$ matrices (Sheet 2 Q8).
 "

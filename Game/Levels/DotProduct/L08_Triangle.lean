@@ -23,6 +23,9 @@ Statement len_add_le {n : ℕ} (u v : Fin n → ℝ) : len (u + v) ≤ len u + l
   have e : (u + v) ⬝ᵥ (u + v) = u ⬝ᵥ u + 2 * (u ⬝ᵥ v) + v ⬝ᵥ v := by
     rw [add_dotProduct, dotProduct_add, dotProduct_add, dotProduct_comm v u]
     ring
+  Hint (strict := true) "Both sides are $\\ge 0$, so compare their squares: $|\\vec u+\\vec v|^2$ is
+  the expansion `{e}`, and $|\\vec u|^2$, $|\\vec v|^2$ are dot products (`len_sq`). The middle term
+  $2\\,\\vec u\\cdot\\vec v$ is at most $2|\\vec u\\cdot\\vec v| \\le 2|\\vec u||\\vec v|$ by `{h}`."
   Hint (strict := true) (hidden := true) "`nlinarith [len_sq (u + v), len_sq u, len_sq v, len_nonneg (u + v),
   len_nonneg u, len_nonneg v, le_abs_self (u ⬝ᵥ v)]`"
   nlinarith [len_sq (u + v), len_sq u, len_sq v, len_nonneg (u + v), len_nonneg u, len_nonneg v,

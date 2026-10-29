@@ -21,4 +21,10 @@ Title "Eigen"
 Introduction "
 Hefferon Five.II. Similar matrices represent the same map in different bases; eigenvalues
 and eigenvectors are what survives the change of basis.
+
+Levels 1–4: similarity (Sheet 9 Q5, Q6). Levels 5–9: eigenvalues as roots of the
+characteristic polynomial, eigenspaces and multiplicities of a $2\\times2$ example
+(Sheet 9 Q7). Levels 10–12: the eigenvalues of differentiation (Sheet 9 Q8). Levels 13–15:
+row sums, column sums and inverses (Sheet 10 Q4, Q6). Boss: eigenvectors for distinct
+eigenvalues are independent.
 "

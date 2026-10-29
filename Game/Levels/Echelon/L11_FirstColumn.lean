@@ -29,9 +29,9 @@ Statement firstCol_ne_zero (E F : Matrix (Fin 2) (Fin 2) ℝ) (h : F * E = 1) :
   intro h0
   Hint "Look at entry $(0, 0)$ of $FE = I$."
   Hint (hidden := true) "`have h1 := congrFun (congrFun h 0) 0`, then
-  `simp [mul_apply, Fin.sum_univ_two, h0.1, h0.2] at h1` (`h0.1`, `h0.2` are the two halves of `h0`)."
+  `simp [Matrix.mul_apply, Fin.sum_univ_two, h0.1, h0.2] at h1` (`h0.1`, `h0.2` are the two halves of `h0`)."
   have h1 := congrFun (congrFun h 0) 0
-  simp [mul_apply, Fin.sum_univ_two, h0.1, h0.2] at h1
+  simp [Matrix.mul_apply, Fin.sum_univ_two, h0.1, h0.2] at h1
 
 end LinearAlgebraGame
 

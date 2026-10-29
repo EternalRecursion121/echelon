@@ -1,7 +1,7 @@
-import Game.Levels.LeanBasics.L04_And
+import Game.Levels.LeanBasics.L05_AndProve
 
 World "LeanBasics"
-Level 5
+Level 6
 Title "There exists"
 
 Introduction "

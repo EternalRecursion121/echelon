@@ -22,8 +22,7 @@ Statement {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) (b : Fin m → ℝ) :
   obtain ⟨v, w, hne, h⟩ := h
   Hint "First note that $\\vec v$ and $\\vec w$ themselves are solutions."
   Hint (hidden := true) "`have hv : A *ᵥ v = b := by`, then (indented) `rw [h v]`, `left`,
-  `norm_num` — or in one line `(h v).mpr (Or.inl rfl)`: `.mpr` is the `←` direction of the
-  iff `h v`, `Or.inl` proves an \"or\" from its left side, and `rfl` proves `v = v`."
+  and `norm_num` closes `v = v`. The same for `w`, with `right`."
   have hv : A *ᵥ v = b := by
     rw [h v]
     left
@@ -44,13 +43,20 @@ Statement {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) (b : Fin m → ℝ) :
   Hint (hidden := true) "`rw [h] at hu`, then `rcases hu with h3 | h3`."
   rw [h] at hu
   rcases hu with h3 | h3
-  · have hvw : v = w := by
+  · Hint "`{h3}` is an equation of vectors. Prove `v = w` entry by entry, then contradict `{hne}`."
+    Hint (hidden := true) "`have hvw : v = w := by` then (indented) `ext i`,
+    `have hi := congrFun {h3} i`, `norm_num at hi`, `linear_combination hi`. Finish with
+    `exact {hne} hvw`."
+    have hvw : v = w := by
       ext i
       have hi := congrFun h3 i
       norm_num at hi
       linear_combination hi
     exact hne hvw
-  · have hvw : v = w := by
+  · Hint (hidden := true) "As in the other case, but entry `i` of `{h3}` says $2v_i - w_i = w_i$:
+    `linear_combination` cannot divide a *vector* equation, so work with entries:
+    `ext i`, `have hi := congrFun {h3} i`, `norm_num at hi`, `linear_combination hi / 2`."
+    have hvw : v = w := by
       ext i
       have hi := congrFun h3 i
       norm_num at hi

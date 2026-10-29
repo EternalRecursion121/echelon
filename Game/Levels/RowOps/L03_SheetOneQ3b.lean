@@ -1,7 +1,7 @@
-import Game.Levels.RowOps.L03_SheetOneQ1
+import Game.Levels.RowOps.L02_SheetOneQ1
 
 World "RowOps"
-Level 4
+Level 3
 Title "Two lines that cross"
 
 -- @sheet 1 Q3b

@@ -18,6 +18,13 @@ $\\vec u \\cdot (k\\vec v + m\\vec w) = k(\\vec u\\cdot\\vec v) + m(\\vec u\\cdo
 term by term, `congr 1` then `ext i`.
 
 New: `ring` proves any identity of commutative algebra (from now on it does the job of bare `linear_combination`).
+
+New rewrite rules (Theorems tab, **Sums** and **Vectors**):
+- `Finset.mul_sum` : $c \\cdot \\sum_i f(i) = \\sum_i c\\, f(i)$ (pull a factor into a sum);
+- `Finset.sum_add_distrib` : $\\sum_i (f(i) + g(i)) = \\sum_i f(i) + \\sum_i g(i)$ (use it with `←`
+  to merge two sums into one);
+- `Pi.add_apply` : $(\\vec v + \\vec w)_i = v_i + w_i$, `Pi.smul_apply` : $(k\\vec v)_i = k \\bullet v_i$;
+- `smul_eq_mul` : for numbers, `k • x = k * x`.
 "
 
 namespace LinearAlgebraGame

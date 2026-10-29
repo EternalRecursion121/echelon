@@ -36,9 +36,9 @@ Statement (B : Matrix (Fin 2) (Fin 2) ℝ) :
     constructor
     · Hint (hidden := true) "`exact firstCol_ne_zero E F hFE`"
       exact firstCol_ne_zero E F hFE
-    · Hint (hidden := true) "`rw [← hE]`, then `entrywise <;> simp [mul_apply, Fin.sum_univ_two]`."
+    · Hint (hidden := true) "`rw [← hE]`, then `entrywise <;> simp [Matrix.mul_apply, Fin.sum_univ_two]`."
       rw [← hE]
-      entrywise <;> simp [mul_apply, Fin.sum_univ_two]
+      entrywise <;> simp [Matrix.mul_apply, Fin.sum_univ_two]
   · intro h
     obtain ⟨p, q, hpq, hB⟩ := h
     Hint "Build an invertible $E$ whose first column is $(p, q)$."
@@ -46,9 +46,9 @@ Statement (B : Matrix (Fin 2) (Fin 2) ℝ) :
     `apply rowEquiv_of_det E hdet`."
     obtain ⟨E, hdet, h0, h1⟩ := exists_firstCol hpq
     apply rowEquiv_of_det E hdet
-    Hint (hidden := true) "`rw [hB]`, then `entrywise <;> simp [mul_apply, Fin.sum_univ_two, h0, h1]`."
+    Hint (hidden := true) "`rw [hB]`, then `entrywise <;> simp [Matrix.mul_apply, Fin.sum_univ_two, h0, h1]`."
     rw [hB]
-    entrywise <;> simp [mul_apply, Fin.sum_univ_two, h0, h1]
+    entrywise <;> simp [Matrix.mul_apply, Fin.sum_univ_two, h0, h1]
 
 end LinearAlgebraGame
 

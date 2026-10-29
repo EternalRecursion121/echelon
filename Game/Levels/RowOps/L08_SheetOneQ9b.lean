@@ -1,7 +1,7 @@
-import Game.Levels.RowOps.L08_SheetOneQ9a
+import Game.Levels.RowOps.L07_SheetOneQ9a
 
 World "RowOps"
-Level 9
+Level 8
 Title "Gauss–Jordan with a free variable"
 
 -- @sheet 1 Q9b
@@ -16,7 +16,7 @@ Introduction "
 **Problem Sheet 1, Question 9(b).** Use Gauss–Jordan reduction to solve
 $x - z = 4,\\ 2x + 2y = 1$.
 
-As in level 5, supply the solution set as a line: a point $\\vec p$ and a direction $\\vec d$.
+As in level 4, supply the solution set as a line: a point $\\vec p$ and a direction $\\vec d$.
 "
 
 namespace LinearAlgebraGame
@@ -39,7 +39,9 @@ Statement : ∃ p d : Fin 3 → ℝ, ∀ x y z : ℝ,
     `entrywise`."
     use z
     entrywise
-    · norm_num
+    · Hint "The entries are still unevaluated (`(p + t • d) 0` and so on): `norm_num` evaluates
+      them first, then the entry is ordinary algebra."
+      norm_num
       linear_combination h1
     · norm_num
       linear_combination h2

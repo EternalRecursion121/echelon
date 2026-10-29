@@ -18,6 +18,9 @@ If it is true then it would generalise the Triangle Inequality.
 Decide with `left`/`right`. The vectors are `u 0, u 1, …` and
 $\\sum_{i < n}$ is `∑ i ∈ Finset.range n` (`∑` is typed `\\sum`, `∈` is `\\in`). New: `induction n with` — prove the case
 `zero`, then the case `succ n ih` using the hypothesis `ih` for $n$.
+
+(A sum over *all* positions, `∑ i, f i`, runs over `Finset.univ`; `Finset.mem_univ i` says
+`i ∈ Finset.univ`. Not needed here, but you will meet it.)
 "
 
 namespace LinearAlgebraGame
@@ -50,4 +53,4 @@ end LinearAlgebraGame
 Conclusion "**Answer: yes**, by induction from the triangle inequality."
 
 NewTactic induction
-NewTheorem Finset.sum_range_zero Finset.sum_range_succ Real.sqrt_zero
+NewTheorem Finset.sum_range_zero Finset.sum_range_succ Real.sqrt_zero Finset.mem_univ

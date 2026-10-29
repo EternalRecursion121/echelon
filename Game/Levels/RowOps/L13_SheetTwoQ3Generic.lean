@@ -21,11 +21,11 @@ numbers, which is why the answer splits into three cases. This level is the case
 $a \\ne 1,\\ a \\ne -1$, given in the form you need: `hp : a + 1 ≠ 0` and `hm : a - 1 ≠ 0`.
 The next level is $a = \\pm 1$.
 
-As in level 3 you supply the solution (now formulas in $a$) with `use`.
+As in level 2 you supply the solution (now formulas in $a$) with `use`.
 
 Useful (Systems tab): `mul_left_cancel₀ hm : (a - 1) * u = (a - 1) * w → u = w`,
 `mul_right_cancel₀ hp : u * (a + 1) = w * (a + 1) → u = w`, and
-`eq_div_iff hp : u = w / (a + 1) ↔ u * (a + 1) = w`. (The `₀` is typed `\\\\0`.)
+`eq_div_iff hp : u = w / (a + 1) ↔ u * (a + 1) = w`. (The `₀` is typed `\\0`.)
 "
 
 namespace LinearAlgebraGame
@@ -57,7 +57,7 @@ Statement (a : ℝ) (hp : a + 1 ≠ 0) (hm : a - 1 ≠ 0) :
       linear_combination hy'
   · intro h
     obtain ⟨hx, hy⟩ := h
-    Hint "Clear the denominators in `hx`, `hy`; then it is enough to check each equation
+    Hint "Clear the denominators in `{hx}`, `{hy}`; then it is enough to check each equation
     multiplied by $a + 1$."
     Hint (hidden := true) "`rw [eq_div_iff hp] at hx hy`, `constructor`, then
     `apply mul_right_cancel₀ hp` and `linear_combination a * hx + hy`."

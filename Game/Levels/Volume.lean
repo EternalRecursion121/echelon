@@ -12,6 +12,10 @@ Title "Volume"
 Introduction "
 Hefferon Four.II. The determinant measures how a matrix scales areas and volumes.
 
+Levels 1–2: $\\det(AB) = \\det A\\,\\det B$ and $\\det(A^{-1}) = 1/\\det A$. Level 3: the area of the
+image of a square (Sheet 9 Q2). Levels 4–7: the area of a triangle as a determinant, built up
+step by step, and the equation of the line through two points (Sheet 10 Q1).
+
 Read the four conditions geometrically, with $|\\det|$ as the (signed) area of the box spanned
 by the rows:
 * **combination** — adding a multiple of one row to another is a *shear*: the box slides

@@ -1,19 +1,16 @@
-import Game.Levels.LeanBasics.L11_MatVec
+import Game.Levels.LeanBasics.L11_ForAll
 
 World "LeanBasics"
 Level 12
-Title "Using a \"for all\""
+Title "Feeding in a proof"
 
 Introduction "
-A hypothesis `h : ∀ a b : ℝ, a < b → P a b` is a machine: feed it two numbers and a proof
-that the first is smaller, and it gives you `P` for those numbers. You feed it like a
-function, arguments separated by spaces:
-
+A \"for all\" can also ask for a *proof*: `h : ∀ a b : ℝ, a < b → P a b` wants two numbers
+and a proof that the first is smaller. Arguments are separated by spaces:
 `h 1 2 proof` is the fact `P 1 2`, where `proof` shows `1 < 2`.
 
 A short proof can be written in place, in brackets: `(by norm_num)`. So `h 1 2 (by norm_num)`
-is `P 1 2`. To keep the result under a name, write `have h12 := h 1 2 (by norm_num)` (`have`
-adds a new fact to your assumptions).
+is `P 1 2`.
 
 If the result is an \"exists\", take it apart with `obtain`, just like an \"and\":
 `obtain ⟨c, hc⟩ := …` gives you the object `c` and its property `hc`.
@@ -35,4 +32,3 @@ Conclusion "Applying a \"for all\" to the objects you care about is how you *use
 fact. You will do it constantly: in Row Ops you will feed a claim about all matrices your
 own counterexample."
 
-NewTactic «have»

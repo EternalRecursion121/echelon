@@ -40,12 +40,12 @@ Statement : ((!![0, 1; 1, 0] : Matrix (Fin 2) (Fin 2) ℝ) ∉ Submonoid.closure
   right
   Hint (hidden := true) "Add row 1 to row 2, subtract row 2 from row 1, add row 1 to row 2, negate row 1:
   `rw [show (!![0, 1; 1, 0] : Matrix (Fin 2) (Fin 2) ℝ) = scale 0 (-1) * combo 0 1 1 * combo 1 0 (-1) * combo 0 1 1 by …]`
-  where `…` is `ext i j` and `fin_cases i <;> fin_cases j <;> simp [scale, combo, mul_apply, Fin.sum_univ_two, Matrix.single, Function.update]`."
+  where `…` is `ext i j` and `fin_cases i <;> fin_cases j <;> simp [scale, combo, Matrix.mul_apply, Fin.sum_univ_two, Matrix.single, Function.update]`."
   rw [show (!![0, 1; 1, 0] : Matrix (Fin 2) (Fin 2) ℝ) =
       scale 0 (-1) * combo 0 1 1 * combo 1 0 (-1) * combo 0 1 1 by
     ext i j
     fin_cases i <;> fin_cases j <;>
-      simp [scale, combo, mul_apply, Fin.sum_univ_two, Matrix.single, Function.update]]
+      simp [scale, combo, Matrix.mul_apply, Fin.sum_univ_two, Matrix.single, Function.update]]
   Hint (hidden := true) "`apply Submonoid.mul_mem` three times, then each factor:
   `apply Submonoid.subset_closure`, choose `left` (combination) or `right` (rescaling), `use …`."
   apply Submonoid.mul_mem

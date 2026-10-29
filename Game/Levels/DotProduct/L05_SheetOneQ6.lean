@@ -24,6 +24,8 @@ The angle is given by $\\cos\\theta = \\dfrac{\\vec u\\cdot\\vec v}{|\\vec u|\\,
 works in $\\mathbb R^n$ for every $n$ (part (c)); (a) and (b) are $n = 2, 3$, and the angle is
 $\\arccos$ of the cosine. The diagonal is `ones n` $= (1, \\dots, 1)$ and an axis is
 `axis i` $= \\vec e_i$ (entry $1$ in position $i$, zeros elsewhere) — see the Definitions tab.
+To unfold `ones` inside a dot product use `norm_num [ones, dotProduct]`: `rw [ones]` only
+works on an entry `ones n i`.
 
 The claim offers three candidate values for the cosine. Commit to one with `left` / `right`
 (`right` then `left` picks the middle one), then prove it.

@@ -37,7 +37,8 @@ are disjoint and nonempty; the last level, `biUnion_reads_nonempty`, connects \"
 book\" with \"nonempty\".
 
 `Finset.univ.filter (fun i => 0 < c i)` is the set $\\{i : c_i > 0\\}$; membership is
-`Finset.mem_filter`. An underscore `_` stands for an argument you do not need to name
+`Finset.mem_filter` (and `Finset.mem_univ i : i ∈ Finset.univ`). An entry of the zero vector
+shows as `0 i`; `Pi.zero_apply` turns it into `0`. An underscore `_` stands for an argument you do not need to name
 (e.g. `fun j _ h1 h2 => …`) or one Lean can fill in itself.
 "
 
@@ -61,16 +62,19 @@ Statement (n : ℕ) (reads : Fin (n + 1) → Finset (Fin n)) (hne : ∀ i, (read
     rw [← biUnion_reads_nonempty n reads hne, ← biUnion_reads_nonempty n reads hne, hbal]
   Hint (strict := true) (hidden := true) "Some coefficient is nonzero: `obtain ⟨i, hi⟩ := Function.ne_iff.mp hc`."
   obtain ⟨i, hi⟩ := Function.ne_iff.mp hc
+  Hint (hidden := true) "`{hi}` shows `0 i`: entry `i` of the zero vector. `rw [Pi.zero_apply] at {hi}`
+  makes it `c i ≠ 0`."
+  rw [Pi.zero_apply] at hi
   refine ⟨Finset.univ.filter (fun i => 0 < c i), Finset.univ.filter (fun i => c i < 0),
     ?_, ?_, ?_, hbal⟩
   · Hint (hidden := true) "`rcases hi.lt_or_gt with h | h`: in one case use `key`, in the other
-    `⟨i, Finset.mem_filter.mpr ⟨by simp, h⟩⟩` directly."
+    `⟨i, Finset.mem_filter.mpr ⟨Finset.mem_univ i, h⟩⟩` directly."
     rcases hi.lt_or_gt with h | h
-    · exact key.mpr ⟨i, Finset.mem_filter.mpr ⟨by simp, h⟩⟩
-    · exact ⟨i, Finset.mem_filter.mpr ⟨by simp, h⟩⟩
+    · exact key.mpr ⟨i, Finset.mem_filter.mpr ⟨Finset.mem_univ i, h⟩⟩
+    · exact ⟨i, Finset.mem_filter.mpr ⟨Finset.mem_univ i, h⟩⟩
   · rcases hi.lt_or_gt with h | h
-    · exact ⟨i, Finset.mem_filter.mpr ⟨by simp, h⟩⟩
-    · exact key.mp ⟨i, Finset.mem_filter.mpr ⟨by simp, h⟩⟩
+    · exact ⟨i, Finset.mem_filter.mpr ⟨Finset.mem_univ i, h⟩⟩
+    · exact key.mp ⟨i, Finset.mem_filter.mpr ⟨Finset.mem_univ i, h⟩⟩
   · Hint (hidden := true) "`exact Finset.disjoint_filter.mpr (fun j _ h1 h2 => by linarith)`"
     exact Finset.disjoint_filter.mpr (fun j _ h1 h2 => by linarith)
 

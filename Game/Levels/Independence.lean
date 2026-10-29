@@ -19,4 +19,9 @@ Title "Independence"
 Introduction "
 Hefferon Two.II: when does a set have no redundancy? A set is linearly independent when the
 only linear relation among its members is the trivial one.
+
+Levels 1–7: deciding independence for vectors, polynomials and functions (Sheet 3 Q4–Q6).
+Levels 8–13: the lemmas behind bases — enlarging and pruning spanning sets, the extension
+lemma, and the boss: in a dependent sequence some vector is a combination of earlier ones.
+Level 14: infinitely many independent functions (Sheet 4 Q8).
 "
