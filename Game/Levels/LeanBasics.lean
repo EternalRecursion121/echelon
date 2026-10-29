@@ -9,12 +9,13 @@ import Game.Levels.LeanBasics.L08_Components
 import Game.Levels.LeanBasics.L09_VectorEq
 import Game.Levels.LeanBasics.L10_DotProduct
 import Game.Levels.LeanBasics.L11_MatVec
-import Game.Levels.LeanBasics.L12_Decide
+import Game.Levels.LeanBasics.L12_ForAll
+import Game.Levels.LeanBasics.L13_Decide
 
 World "LeanBasics"
 Title "Lean Basics"
 
 Introduction "
-Before any linear algebra: the handful of Lean moves every later proof uses. Twelve short
+Before any linear algebra: the handful of Lean moves every later proof uses. Thirteen short
 levels, about half an hour.
 "

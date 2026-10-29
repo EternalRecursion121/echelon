@@ -20,31 +20,43 @@ Introduction "
 $\\mathbb R^2$ (a), of the unit cube in $\\mathbb R^3$ (b), and of the unit cube in
 $\\mathbb R^n$ (c), and any one of the axes.
 
-The angle is given by $\\cos\\theta = \\dfrac{\\vec u\\cdot\\vec v}{|\\vec u|\\,|\\vec v|}$. Lean proves
-the cosine for every $n \\ge 1$ (part (c)); (a) and (b) are $n = 2, 3$, and the angle is
-$\\arccos$ of the result. Here the diagonal is `fun _ => 1` (all entries $1$) and the first
-axis is `Pi.single ⟨0, hn⟩ 1` (entry $1$ in position $0$, zeros elsewhere).
+The angle is given by $\\cos\\theta = \\dfrac{\\vec u\\cdot\\vec v}{|\\vec u|\\,|\\vec v|}$. Lean
+works in $\\mathbb R^n$ for every $n$ (part (c)); (a) and (b) are $n = 2, 3$, and the angle is
+$\\arccos$ of the cosine. The diagonal is `ones n` $= (1, \\dots, 1)$ and an axis is
+`axis i` $= \\vec e_i$ (entry $1$ in position $i$, zeros elsewhere) — see the Definitions tab.
+
+The claim offers three candidate values for the cosine. Commit to one with `left` / `right`
+(`right` then `left` picks the middle one), then prove it.
 "
 
 namespace LinearAlgebraGame
 
-/-- The cosine of the angle between $(1,\dots,1)$ and $\vec e_1$ in $\mathbb R^n$ is $1/\sqrt n$. -/
-Statement (n : ℕ) (hn : 0 < n) :
-    ((fun _ => 1 : Fin n → ℝ) ⬝ᵥ Pi.single ⟨0, hn⟩ 1) /
-      (len (fun _ => 1 : Fin n → ℝ) * len (Pi.single ⟨0, hn⟩ 1 : Fin n → ℝ)) =
-    1 / Real.sqrt n := by
-  Hint "Compute the three ingredients: $\\vec d \\cdot \\vec d$, $\\vec e_1\\cdot\\vec e_1$ and
-  $\\vec d\\cdot\\vec e_1$."
-  Hint (hidden := true) "`have h1 : (fun _ => 1 : Fin n → ℝ) ⬝ᵥ (fun _ => 1) = n := by norm_num [dotProduct]`"
-  have h1 : (fun _ => 1 : Fin n → ℝ) ⬝ᵥ (fun _ => 1) = n := by
-    norm_num [dotProduct]
+/-- The cosine of the angle between the diagonal $(1,\dots,1)$ and the axis $\vec e_i$ in
+$\mathbb R^n$ is one of $1/n$, $1/\sqrt n$, $1/2$. -/
+Statement (n : ℕ) (i : Fin n) :
+    ones n ⬝ᵥ axis i / (len (ones n) * len (axis i)) = 1 / n ∨
+    ones n ⬝ᵥ axis i / (len (ones n) * len (axis i)) = 1 / Real.sqrt n ∨
+    ones n ⬝ᵥ axis i / (len (ones n) * len (axis i)) = 1 / 2 := by
+  Hint "Compute the three ingredients on paper: $\\vec d \\cdot \\vec d$, $\\vec e_i\\cdot\\vec e_i$
+  and $\\vec d\\cdot\\vec e_i$. Which option is the cosine? Then commit."
+  Hint (hidden := true) "It is the middle one: `right`, then `left`."
+  right
+  left
+  Hint "Record the three dot products as facts with `have`, then unfold `len` and rewrite."
+  Hint (hidden := true) "`have h1 : ones n ⬝ᵥ ones n = n := by norm_num [ones, dotProduct]`"
+  have h1 : ones n ⬝ᵥ ones n = n := by
+    norm_num [ones, dotProduct]
   Hint (strict := true) (hidden := true) "`dotProduct_single v x i : v ⬝ᵥ Pi.single i x = v i * x`.
-  `have h2 : (Pi.single ⟨0, hn⟩ 1 : Fin n → ℝ) ⬝ᵥ Pi.single ⟨0, hn⟩ 1 = 1 := by`
-  `rw [dotProduct_single, Pi.single_eq_same, mul_one]`"
-  have h2 : (Pi.single ⟨0, hn⟩ 1 : Fin n → ℝ) ⬝ᵥ Pi.single ⟨0, hn⟩ 1 = 1 := by
-    rw [dotProduct_single, Pi.single_eq_same, mul_one]
-  Hint (strict := true) (hidden := true) "`rw [len, len, h1, h2, dotProduct_single, mul_one, Real.sqrt_one, mul_one]`"
-  rw [len, len, h1, h2, dotProduct_single, mul_one, Real.sqrt_one, mul_one]
+  `have h2 : axis i ⬝ᵥ axis i = 1 := by`
+  `rw [axis, dotProduct_single, Pi.single_eq_same, mul_one]`"
+  have h2 : axis i ⬝ᵥ axis i = 1 := by
+    rw [axis, dotProduct_single, Pi.single_eq_same, mul_one]
+  Hint (strict := true) (hidden := true) "`have h3 : ones n ⬝ᵥ axis i = 1 := by`
+  `rw [axis, dotProduct_single, ones, mul_one]`"
+  have h3 : ones n ⬝ᵥ axis i = 1 := by
+    rw [axis, dotProduct_single, ones, mul_one]
+  Hint (strict := true) (hidden := true) "`rw [len, len, h1, h2, h3, Real.sqrt_one, mul_one]`"
+  rw [len, len, h1, h2, h3, Real.sqrt_one, mul_one]
 
 end LinearAlgebraGame
 
@@ -54,3 +66,4 @@ $\\cos\\theta = 1/\\sqrt n$: (a) $\\theta = \\pi/4$; (b) $\\theta = \\arccos(1/\
 perpendicular to every axis.
 "
 NewTheorem dotProduct_single Pi.single_eq_same Real.sqrt_one mul_one
+NewDefinition LinearAlgebraGame.ones LinearAlgebraGame.axis

@@ -43,13 +43,14 @@ Statement : ((¬ IsNonsingular !![(1 : ℝ), 2; 1, 3]) ∨ IsNonsingular !![(1 :
     Hint (hidden := true) "`rowop h1 : v 1 = 0 := h1 - h0`, then `rowop h0 : v 0 = 0 := h0 - 2 * h1`."
     rowop h1 : v 1 = 0 := h1 - h0
     rowop h0 : v 0 = 0 := h0 - 2 * h1
-    ext i
-    fin_cases i <;> simp [h0, h1]
+    entrywise
+    · exact h0
+    · exact h1
   · Hint "(b): row 2 is a multiple of row 1. Find a nonzero solution."
     left
     intro h
-    Hint (hidden := true) "`have h0 := h ![2, -1] (by ext i; fin_cases i <;> norm_num [mulVec, dotProduct, Fin.sum_univ_two])`"
-    have h0 := h ![2, -1] (by ext i; fin_cases i <;> norm_num [mulVec, dotProduct, Fin.sum_univ_two])
+    Hint (hidden := true) "`have h0 := h ![2, -1] (by entrywise <;> norm_num [mulVec, dotProduct, Fin.sum_univ_two])`"
+    have h0 := h ![2, -1] (by entrywise <;> norm_num [mulVec, dotProduct, Fin.sum_univ_two])
     have h1 := congrFun h0 0
     simp at h1
 

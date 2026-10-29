@@ -15,9 +15,30 @@ open Lean Elab Tactic Meta
 
 syntax (name := rowop) "rowop " ident (" : " term)? " := " term : tactic
 
+/-- The type of the first equation hypothesis named in the combination `e` (e.g. `ℝ`). -/
+def rowType? (e : Term) : TacticM (Option Expr) := withMainContext do
+  let lctx ← getLCtx
+  let mut out : Option Expr := none
+  for stx in e.raw.topDown do
+    if out.isNone && stx.isIdent then
+      if let some d := lctx.findFromUserName? stx.getId then
+        if let some (α, _, _) := (← instantiateMVars d.type).eq? then
+          out := some α
+  return out
+
 elab_rules : tactic
-  | `(tactic| rowop $h:ident : $t:term := $e:term) => do
-    evalTactic (← `(tactic| replace $h:ident : $t := by linear_combination ($e:term)))
+  | `(tactic| rowop $h:ident : $t:term := $e:term) => withMainContext do
+    -- elaborate the stated row at the equations' type, so `rowop h3 : 0 = 1 := …` means the
+    -- real numbers 0 and 1 (bare numerals would otherwise default to ℕ)
+    let t' ← match t with
+      | `($a = $b) =>
+        match ← rowType? e with
+        | some α => do
+          let αs ← PrettyPrinter.delab α
+          `((($a : $αs) = $b))
+        | none => pure t
+      | _ => pure t
+    evalTactic (← `(tactic| replace $h:ident : $t' := by linear_combination ($e:term)))
   | `(tactic| rowop $h:ident := $e:term) => withMainContext do
     let lctx ← getLCtx
     -- the new row: substitute each equation's left (resp. right) side into the combination

@@ -29,12 +29,17 @@ def Classify {n : ℕ} (S : (Fin n → ℝ) → Prop) : Prop :=
 
 /-- A whole line $\{\vec p + t\vec d\}$ ($\vec d \ne \vec 0$) of solutions means infinitely
 many solutions. -/
-theorem infinitelyMany_of_line {n : ℕ} (S : (Fin n → ℝ) → Prop) (p d : Fin n → ℝ)
-    (hd : d ≠ 0) (h : ∀ t : ℝ, S (p + t • d)) : InfinitelyMany S := by
+theorem infinitelyMany_of_line {n : ℕ} {S : (Fin n → ℝ) → Prop} (p d : Fin n → ℝ) (i : Fin n)
+    (hd : d i ≠ 0) (h : ∀ t : ℝ, S (p + t • d)) : InfinitelyMany S := by
+  have hd' : d ≠ 0 := fun h0 => hd (by rw [h0]; rfl)
   refine Set.infinite_of_injective_forall_mem (f := fun t : ℝ => p + t • d) ?_ h
   intro s t hst
   have : (s - t) • d = 0 := by rw [sub_smul]; exact sub_eq_zero.mpr (add_left_cancel hst)
-  exact sub_eq_zero.mp ((smul_eq_zero.mp this).resolve_right hd)
+  exact sub_eq_zero.mp ((smul_eq_zero.mp this).resolve_right hd')
+
+/-- Exactly one solution means: some `p` solves `S`, and every solution equals `p`. -/
+theorem uniqueSolution_iff {n : ℕ} {S : (Fin n → ℝ) → Prop} :
+    UniqueSolution S ↔ ∃ p, S p ∧ ∀ v, S v → v = p := Iff.rfl
 
 /-- `x` is a rational number (the image of some `q : ℚ`). -/
 def IsRat (x : ℝ) : Prop := ∃ q : ℚ, (q : ℝ) = x
@@ -58,6 +63,12 @@ theorem dot_expand {n : ℕ} (u v : Fin n → ℝ) (a b : ℝ) :
   simp only [sub_dotProduct, dotProduct_sub, smul_dotProduct, dotProduct_smul, smul_eq_mul,
     dotProduct_comm v u]
   ring
+
+/-- The all-ones vector $(1, 1, \dots, 1)$ in $\mathbb R^n$ (the diagonal of the unit cube). -/
+def ones (n : ℕ) : Fin n → ℝ := fun _ => 1
+
+/-- The unit vector along axis `i`: entry $1$ in position `i`, $0$ elsewhere. -/
+def axis {n : ℕ} (i : Fin n) : Fin n → ℝ := Pi.single i 1
 
 /-! ## Echelon -/
 
@@ -84,6 +95,14 @@ def NoSwapOps {n : ℕ} : Set (Matrix (Fin n) (Fin n) ℝ) :=
 theorem rowEquiv_of_det {m n : ℕ} {A B : Matrix (Fin m) (Fin n) ℝ} (E : Matrix (Fin m) (Fin m) ℝ)
     (hE : E.det ≠ 0) (h : E * A = B) : RowEquiv A B :=
   ⟨E, E⁻¹, Matrix.nonsing_inv_mul E (isUnit_iff_ne_zero.mpr hE), h⟩
+
+/-- Every nonzero $(p, q)$ is the first column of some $2\times2$ matrix with nonzero
+determinant. -/
+theorem exists_firstCol {p q : ℝ} (h : p ≠ 0 ∨ q ≠ 0) :
+    ∃ E : Matrix (Fin 2) (Fin 2) ℝ, E.det ≠ 0 ∧ E 0 0 = p ∧ E 1 0 = q := by
+  rcases h with hp | hq
+  · exact ⟨!![p, 0; q, 1], by simp [det_fin_two, hp], rfl, rfl⟩
+  · exact ⟨!![p, 1; q, 0], by simp [det_fin_two, hq], rfl, rfl⟩
 
 /-! ## Puzzles -/
 
@@ -147,8 +166,8 @@ end LinearAlgebraGame
 
 /-- `NoSolution S`: the system `S` has no solution, i.e. `¬ ∃ v, S v`. -/
 DefinitionDoc LinearAlgebraGame.NoSolution as "NoSolution"
-/-- `UniqueSolution S`: exactly one solution, `∃! v, S v`. Prove it with `use` (the solution),
-then show every solution equals it. -/
+/-- `UniqueSolution S`: exactly one solution, `∃! v, S v`. Prove it with
+`rw [uniqueSolution_iff]`, then `use` the solution, check it, and show every solution equals it. -/
 DefinitionDoc LinearAlgebraGame.UniqueSolution as "UniqueSolution"
 /-- `InfinitelyMany S`: the solution set of `S` is infinite. Prove it with
 `infinitelyMany_of_line`. -/
@@ -156,6 +175,15 @@ DefinitionDoc LinearAlgebraGame.InfinitelyMany as "InfinitelyMany"
 /-- `Classify S` is `NoSolution S ∨ UniqueSolution S ∨ InfinitelyMany S`: `left` picks
 "none", `right; left` "unique", `right; right` "infinitely many". -/
 DefinitionDoc LinearAlgebraGame.Classify as "Classify"
+/-- `ones n` $= (1, 1, \dots, 1) \in \mathbb R^n$; `ones n i = 1` for every `i`
+(`rw [ones]` or `norm_num [ones]` unfolds it). -/
+DefinitionDoc LinearAlgebraGame.ones as "ones"
+/-- `axis i` $= \vec e_i$: entry $1$ in position `i`, $0$ elsewhere. It is `Pi.single i 1`
+(`rw [axis]` unfolds it). -/
+DefinitionDoc LinearAlgebraGame.axis as "axis"
+/-- Mathlib's echelon form: each row's leading entry is strictly to the right of the leading
+entries of the rows above it, and zero rows come last. -/
+DefinitionDoc Matrix.IsRowEchelon as "IsRowEchelon"
 /-- `IsRat x`: the real number `x` is rational, `∃ q : ℚ, (q : ℝ) = x`. -/
 DefinitionDoc LinearAlgebraGame.IsRat as "IsRat"
 /-- `len v` $= |\vec v| = \sqrt{\vec v\cdot\vec v}$. `rw [len]` unfolds it. -/
@@ -187,9 +215,19 @@ DefinitionDoc LinearAlgebraGame.bookVec as "bookVec"
 TheoremDoc congrFun as "congrFun" in "Vectors"
 /-- $\sum_{i<3} f(i) = f(0) + f(1) + f(2)$. -/
 TheoremDoc Fin.sum_univ_three as "Fin.sum_univ_three" in "Vectors"
-/-- If $\vec d \ne \vec 0$ and $\vec p + t\vec d$ solves `S` for every $t$, then `S` has
-infinitely many solutions. -/
+/-- `infinitelyMany_of_line p d i (hd : d i ≠ 0) (h : ∀ t, S (p + t • d))`: a whole line of
+solutions (with direction $\vec d$ nonzero in position `i`) means infinitely many solutions.
+Use it as `apply infinitelyMany_of_line p d i` with your `p`, `d` and a position `i`. -/
 TheoremDoc LinearAlgebraGame.infinitelyMany_of_line as "infinitelyMany_of_line" in "Systems"
+/-- `uniqueSolution_iff : UniqueSolution S ↔ ∃ p, S p ∧ ∀ v, S v → v = p`. After
+`rw [uniqueSolution_iff]`, `use` your solution, check it, then show every solution equals it. -/
+TheoremDoc LinearAlgebraGame.uniqueSolution_iff as "uniqueSolution_iff" in "Systems"
+/-- If `F * E = 1` for $2\times2$ matrices, the first column of `E` is not zero:
+`E 0 0 ≠ 0 ∨ E 1 0 ≠ 0`. -/
+TheoremDoc LinearAlgebraGame.firstCol_ne_zero as "firstCol_ne_zero" in "Matrices"
+/-- `exists_firstCol (h : p ≠ 0 ∨ q ≠ 0) : ∃ E, E.det ≠ 0 ∧ E 0 0 = p ∧ E 1 0 = q` — any
+nonzero column is the first column of an invertible matrix. -/
+TheoremDoc LinearAlgebraGame.exists_firstCol as "exists_firstCol" in "Matrices"
 /-- `eq_div_iff (hc : c ≠ 0) : a = b / c ↔ a * c = b`. -/
 TheoremDoc eq_div_iff as "eq_div_iff" in "Systems"
 /-- `mul_left_cancel₀ (ha : a ≠ 0) : a * b = a * c → b = c`. -/

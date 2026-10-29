@@ -24,7 +24,9 @@ $\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$, is a product of combination and resc
 (`NoSwapOps`). `Submonoid.closure NoSwapOps` is the set of all such products. Decide with
 `left` or `right`.
 
-Useful: `Submonoid.mul_mem`, `Submonoid.subset_closure`.
+Useful: `Submonoid.mul_mem`, `Submonoid.subset_closure`. An underscore `_` in an argument
+list (e.g. `Submonoid.mul_mem _ h1 h2`) asks Lean to fill in an argument it can work out
+itself. `∉` (\"not in\") is typed `\\notin`.
 "
 
 namespace LinearAlgebraGame
@@ -33,7 +35,8 @@ open Matrix in
 /-- Is the swap matrix a product of combination and rescaling matrices? -/
 Statement : ((!![0, 1; 1, 0] : Matrix (Fin 2) (Fin 2) ℝ) ∉ Submonoid.closure NoSwapOps) ∨
     (!![0, 1; 1, 0] : Matrix (Fin 2) (Fin 2) ℝ) ∈ Submonoid.closure NoSwapOps := by
-  Hint "Try to swap two rows using only $\\rho_j \\leftarrow \\rho_j + k\\rho_i$ and rescaling."
+  Hint "Decide first: experiment on paper with a $2\\times 2$ matrix — what can you reach using
+  only $\\rho_j \\leftarrow \\rho_j + k\\rho_i$ and rescaling?"
   right
   Hint (hidden := true) "Add row 1 to row 2, subtract row 2 from row 1, add row 1 to row 2, negate row 1:
   `rw [show (!![0, 1; 1, 0] : Matrix (Fin 2) (Fin 2) ℝ) = scale 0 (-1) * combo 0 1 1 * combo 1 0 (-1) * combo 0 1 1 by …]`

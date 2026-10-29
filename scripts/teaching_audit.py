@@ -33,7 +33,8 @@ def parts(src):
     m = re.search(r"^Statement.*?(?=^Conclusion|\Z)", src, re.S | re.M)
     proof = m.group(0) if m else ""
     proof = proof.split(":= by", 1)[1] if ":= by" in proof else proof   # skip the statement line
-    hints = " ".join(re.findall(r'Hint[^"\n]*"((?:[^"\\]|\\.)*)"', proof, re.S))
+    # only *visible* hints count as an explanation (a hidden hint is a spoiler, not teaching)
+    hints = " ".join(re.findall(r'Hint(?![^"\n]*hidden)[^"\n]*"((?:[^"\\]|\\.)*)"', proof, re.S))
     proof_wo = re.sub(r'Hint[^"\n]*"(?:[^"\\]|\\.)*"', "", proof, flags=re.S)
     intro = re.search(r'Introduction\s+"((?:[^"\\]|\\.)*)"', src, re.S)
     return proof_wo, (intro.group(1) if intro else "") + " " + hints

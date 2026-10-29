@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L10_EightTen
+import Game.Levels.Dimension.L11_EightTen
 
 World "Dimension"
-Level 11
+Level 12
 Title "Five points on a conic"
 
 -- @sheet 2 Q10

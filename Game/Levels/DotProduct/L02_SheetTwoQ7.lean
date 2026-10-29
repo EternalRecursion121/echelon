@@ -16,6 +16,8 @@ $\\vec u \\cdot (k\\vec v + m\\vec w) = k(\\vec u\\cdot\\vec v) + m(\\vec u\\cdo
 
 `rw [dotProduct]` unfolds a dot product into its sum. To show two sums are equal
 term by term, `congr 1` then `ext i`.
+
+New: `ring` proves any identity of commutative algebra (from now on it does the job of bare `linear_combination`).
 "
 
 namespace LinearAlgebraGame

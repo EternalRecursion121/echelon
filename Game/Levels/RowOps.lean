@@ -8,10 +8,10 @@ import Game.Levels.RowOps.L07_SheetOneQ2
 import Game.Levels.RowOps.L08_SheetOneQ9a
 import Game.Levels.RowOps.L09_SheetOneQ9b
 import Game.Levels.RowOps.L10_SheetTwoQ1a
-import Game.Levels.RowOps.L11_SheetTwoQ1e
-import Game.Levels.RowOps.L12_SheetTwoQ3Generic
-import Game.Levels.RowOps.L13_SheetTwoQ3One
-import Game.Levels.RowOps.L14_SheetTwoQ3MinusOne
+import Game.Levels.RowOps.L11_SheetTwoQ1d
+import Game.Levels.RowOps.L12_SheetTwoQ1f
+import Game.Levels.RowOps.L13_SheetTwoQ3Generic
+import Game.Levels.RowOps.L14_SheetTwoQ3Special
 import Game.Levels.RowOps.L15_SheetTwoQ5
 import Game.Levels.RowOps.L16_NeverTwo
 

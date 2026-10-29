@@ -22,6 +22,8 @@ $\\triangle ABC = \\triangle OAB + \\triangle OBC + \\triangle OCA$.
 $\\tfrac12\\det(Q-P,\\ R-P)$, positive when $P, Q, R$ go anticlockwise. Lean proves the formal
 core: for *any* point $O$ the three signed triangles add up to $\\triangle ABC$. Write your
 explanation of the picture in a comment block starting `-- Explain:` inside your proof.
+
+New: `unfold f` replaces a definition `f` by its body everywhere in the goal.
 "
 
 namespace LinearAlgebraGame

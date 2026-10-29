@@ -13,15 +13,20 @@ Introduction "
 **Problem Sheet 4, Question 5(c).** Let $A$ be a subspace of $V$. When is the complement
 $V \\setminus A$ a subspace?
 
-In Lean the complement is `(A : Set V)ᶜ`. The statement claims your answer for every $A$.
+In Lean the complement is `(A : Set V)ᶜ`. Decide, for an arbitrary subspace $A$: is the
+complement a subspace (`right`: some subspace $W$ has exactly the complement as its set of
+vectors) or not (`left`)? Your proof must work for every $A$ — write in a comment
+`-- Explain:` what this says about *when* $V \\setminus A$ is a subspace.
 "
 
 namespace LinearAlgebraGame
 
-/-- The complement of a subspace is never a subspace. -/
+/-- Is the complement of the subspace $A$ a subspace? -/
 Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (A : Submodule ℝ V) :
-    ¬ ∃ W : Submodule ℝ V, (W : Set V) = (A : Set V)ᶜ := by
-  Hint "Where is $\\vec 0$?"
+    (¬ ∃ W : Submodule ℝ V, (W : Set V) = (A : Set V)ᶜ) ∨
+      (∃ W : Submodule ℝ V, (W : Set V) = (A : Set V)ᶜ) := by
+  Hint "Decide first. Where is $\\vec 0$?"
+  left
   intro h
   obtain ⟨W, hW⟩ := h
   have h0 : (0 : V) ∈ (W : Set V) := W.zero_mem

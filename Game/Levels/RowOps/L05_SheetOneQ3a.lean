@@ -15,29 +15,43 @@ Introduction "
 **Problem Sheet 1, Question 3(a).** Solve using matrix notation, expressing the solution
 using vectors: $3x + 6y = 18,\\ x + 2y = 6$.
 
-The claim below is the answer: the solutions are exactly the vectors
-$\\begin{pmatrix}6\\\\0\\end{pmatrix} + t\\begin{pmatrix}-2\\\\1\\end{pmatrix}$.
+When a variable is free the solution set is a line $\\{\\vec p + t\\vec d \\mid t \\in \\mathbb R\\}$.
+The claim: there are vectors $\\vec p$ (a particular solution) and $\\vec d$ (the direction)
+such that the system holds exactly on that line. You supply $\\vec p$ and $\\vec d$ with `use`.
+(`t • d` is the scalar multiple $t\\vec d$; `•` is typed `\\smul`.)
+
+To take apart an \"exists\" hypothesis `h : ∃ t, …`, use `obtain ⟨t, ht⟩ := h` (as in Lean
+Basics). At the end you may be left with an equation that is just algebra, such as
+`3 * (6 + -(t * 2)) + 6 * t = 18`: `linear_combination` with nothing after it proves any
+such identity.
 "
 
 namespace LinearAlgebraGame
 
-/-- $3x + 6y = 18,\ x + 2y = 6$ iff $(x,y) = (6,0) + t(-2,1)$ for some $t$. -/
-Statement (x y : ℝ) :
-    (3 * x + 6 * y = 18 ∧ x + 2 * y = 6) ↔ ∃ t : ℝ, ![x, y] = ![6, 0] + t • ![-2, 1] := by
+/-- The solutions of $3x + 6y = 18,\ x + 2y = 6$ form a line $\{\vec p + t\vec d\}$. -/
+Statement : ∃ p d : Fin 2 → ℝ, ∀ x y : ℝ,
+    (3 * x + 6 * y = 18 ∧ x + 2 * y = 6) ↔ ∃ t : ℝ, ![x, y] = p + t • d := by
+  Hint "Row 1 is three times row 2, so one variable is free. Write the solutions as a point
+  plus multiples of a direction, and `use` those two vectors."
+  Hint (hidden := true) "With $y$ free: `use ![6, 0], ![-2, 1]`, then `intro x y`."
+  use ![6, 0], ![-2, 1]
+  intro x y
   constructor
   · intro h
     obtain ⟨h1, h2⟩ := h
-    Hint "Row 1 is three times row 2, so $y$ is free. Which $t$ gives the point $(x, y)$?"
-    Hint (hidden := true) "`use y`, then compare components."
+    Hint "Which $t$ gives the point $(x, y)$?"
+    Hint (hidden := true) "If you chose $\\vec p = (6, 0)$, $\\vec d = (-2, 1)$: `use y`, then
+    `entrywise` and `norm_num` in each entry."
     use y
-    ext i
-    fin_cases i
+    entrywise
     · norm_num
       Hint (hidden := true) "This is row 2 rearranged: `linear_combination h2`."
       linear_combination h2
     · norm_num
   · intro h
     obtain ⟨t, ht⟩ := h
+    Hint (hidden := true) "Read off `x` and `y`: `have hx := congrFun {ht} 0`, the same for
+    entry 1, `norm_num at hx hy` and `rw [hx, hy]`."
     have hx := congrFun ht 0
     have hy := congrFun ht 1
     norm_num at hx hy

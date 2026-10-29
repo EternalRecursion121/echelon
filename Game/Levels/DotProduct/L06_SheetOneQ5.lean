@@ -19,33 +19,43 @@ Introduction "
 $$\\{t(1,1,1) + s(0,1,3) \\mid t, s \\in \\mathbb R\\},\\qquad
 \\{(1,1,0) + k(0,3,0) + m(2,0,4) \\mid k, m \\in \\mathbb R\\}.$$
 
-The claim: a vector lies on both planes iff it lies on the line
-$(1, \\tfrac23, 0) + \\mu(3, 4, 6)$.
+You supply the intersection as a line $\\{\\vec p + \\mu\\vec d\\}$ (`use p, d`): the claim
+says a vector lies on both planes exactly when it lies on your line.
+
+**New: `<;>`.** `tac1 <;> tac2` runs `tac2` on *every* goal that `tac1` produces. So
+`entrywise <;> norm_num <;> linear_combination` checks all three entries of a vector
+equation at once (when each entry is plain algebra).
 "
 
 namespace LinearAlgebraGame
 
-/-- $\vec v$ lies on both planes iff $\vec v = (1, 2/3, 0) + \mu(3,4,6)$ for some $\mu$. -/
-Statement (v : Fin 3 → ℝ) :
+/-- The two planes meet in a line $\{\vec p + \mu\vec d \mid \mu \in \mathbb R\}$. -/
+Statement : ∃ p d : Fin 3 → ℝ, ∀ v : Fin 3 → ℝ,
     ((∃ t s : ℝ, v = t • ![1, 1, 1] + s • ![0, 1, 3]) ∧
       (∃ k m : ℝ, v = ![1, 1, 0] + k • ![0, 3, 0] + m • ![2, 0, 4])) ↔
-    ∃ μ : ℝ, v = ![1, 2/3, 0] + μ • ![3, 4, 6] := by
+    ∃ μ : ℝ, v = p + μ • d := by
+  Hint "Solve on paper first: equate the two descriptions and use Gauss's method. One
+  parameter stays free — that gives the line. `use` its point and direction."
+  Hint (hidden := true) "`use ![1, 2/3, 0], ![3, 4, 6]`, then `intro v` and `constructor`."
+  use ![1, 2/3, 0], ![3, 4, 6]
+  intro v
   constructor
   · intro h
     obtain ⟨⟨t, s, h1⟩, ⟨k, m, h2⟩⟩ := h
-    Hint "Equate the two descriptions of $\\vec v$ and read off three equations."
-    Hint (hidden := true) "`have e := h1.symm.trans h2`, then `congrFun e 0` etc. and `norm_num at`."
+    Hint "Equate the two descriptions of $\\vec v$ and read off three equations. (For equations,
+    `h1.symm` flips `h1`, and `h1.trans h2` chains `a = b` and `b = c` into `a = c`.)"
+    Hint (hidden := true) "`have e := h1.symm.trans h2` (`h1.symm` flips `h1`; `.trans` chains
+    two equations), then `congrFun e 0` etc. and `norm_num at`."
     have e := h1.symm.trans h2
     have e₀ := congrFun e 0
     have e₁ := congrFun e 1
     have e₂ := congrFun e 2
     norm_num at e₀ e₁ e₂
-    Hint (hidden := true) "Gauss's method: $m$ is free and $\\mu = 2m/3$. `use 2 * m / 3`, `rw [h2]`,
-    then compare components."
+    Hint (hidden := true) "With the line $(1, 2/3, 0) + \\mu(3,4,6)$: $m$ is free and
+    $\\mu = 2m/3$. `use 2 * m / 3`, `rw [h2]`, then `entrywise`."
     use 2 * m / 3
     rw [h2]
-    ext i
-    fin_cases i
+    entrywise
     · norm_num
       linear_combination
     · norm_num
@@ -58,26 +68,13 @@ Statement (v : Fin 3 → ℝ) :
     rw [hμ]
     Hint "Find the parameters for each plane."
     constructor
-    · Hint (hidden := true) "`use 1 + 3 * μ, μ - 1/3`"
+    · Hint (hidden := true) "`use 1 + 3 * μ, μ - 1/3`, then
+      `entrywise <;> norm_num <;> linear_combination`."
       use 1 + 3 * μ, μ - 1/3
-      ext i
-      fin_cases i
-      · norm_num
-        linear_combination
-      · norm_num
-        linear_combination
-      · norm_num
-        linear_combination
+      entrywise <;> norm_num <;> linear_combination
     · Hint (hidden := true) "`use 4 * μ / 3 - 1/9, 3 * μ / 2`"
       use 4 * μ / 3 - 1/9, 3 * μ / 2
-      ext i
-      fin_cases i
-      · norm_num
-        linear_combination
-      · norm_num
-        linear_combination
-      · norm_num
-        linear_combination
+      entrywise <;> norm_num <;> linear_combination
 
 end LinearAlgebraGame
 

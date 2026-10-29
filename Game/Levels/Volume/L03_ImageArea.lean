@@ -31,7 +31,8 @@ open MeasureTheory in
 /-- The image of $[1,3]\times[2,5]$ under $\begin{pmatrix} 2 & 3 \\ 4 & -1\end{pmatrix}$ has area $84$. -/
 Statement : (volume (Matrix.toLin' (!![2, 3; 4, -1] : Matrix (Fin 2) (Fin 2) ℝ) ''
     Set.Icc ![1, 2] ![3, 5])).toReal = 84 := by
-  Hint "Idea: area of image $= |\\det T| \\cdot$ area of rectangle $= 14 \\cdot 6$."
+  Hint "Idea: area of image $= |\\det T| \\cdot$ area of the rectangle."
+  Hint (hidden := true) "$|\\det T| = 14$ and the rectangle has area $2 \\cdot 3 = 6$."
   Hint (hidden := true) "`rw [volume_image_matrix, Real.volume_Icc_pi_toReal]`. This leaves a
   side goal: the corners are in the right order."
   rw [volume_image_matrix, Real.volume_Icc_pi_toReal]

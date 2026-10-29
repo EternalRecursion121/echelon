@@ -7,6 +7,8 @@ Title "Minus one times a vector"
 Introduction "
 Lemma Two.I.1.16 (2): $(-1)\\cdot\\vec v + \\vec v = \\vec 0$, i.e. $(-1)\\cdot\\vec v$ *is* the
 additive inverse of $\\vec v$. Your two earlier theorems are now tools.
+
+New: `nth_rw n [h]` rewrites only the `n`-th occurrence of the left side of `h` (counting from 1), when plain `rw` would rewrite the wrong one.
 "
 
 namespace LinearAlgebraGame

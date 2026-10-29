@@ -19,18 +19,21 @@ $j$, entry $i,j$ equals entry $j,i$.
 **(a)** Find a basis for the vector space of symmetric $2 \\times 2$ matrices.
 
 `symMat n` is the subspace of $n\\times n$ matrices with $A^T = A$
-(`mem_symMat` unfolds membership). Prove that your candidate is a basis of it:
-independent, and its span is exactly `symMat 2`. Entries are numbered from `0`.
+(`mem_symMat` unfolds membership). You supply a basis — a number $k$ and a
+sequence `b : Fin k → Matrix (Fin 2) (Fin 2) ℝ` — and prove it is a basis: independent, and
+its span is exactly `symMat 2`. Entries are numbered from `0`.
 "
 
 namespace LinearAlgebraGame
 
 open Matrix
 
-/-- $\left\langle \begin{pmatrix}1&0\\0&0\end{pmatrix}, \begin{pmatrix}0&0\\0&1\end{pmatrix},
-\begin{pmatrix}0&1\\1&0\end{pmatrix}\right\rangle$ is a basis of the symmetric $2\times2$
-matrices. -/
-Statement : IsBasisOf ![!![(1 : ℝ), 0; 0, 0], !![0, 0; 0, 1], !![0, 1; 1, 0]] (symMat 2) := by
+/-- The symmetric $2\times 2$ matrices have a basis $b_1, \dots, b_k$. -/
+Statement : ∃ k : ℕ, ∃ b : Fin k → Matrix (Fin 2) (Fin 2) ℝ, IsBasisOf b (symMat 2) := by
+  Hint "Find a basis on paper: how many free entries does a symmetric $2\\times 2$ matrix have?
+  Then `use` the number of basis vectors and the basis (a vector `![…]` of matrices)."
+  Hint (hidden := true) "`use 3, ![!![1, 0; 0, 0], !![0, 0; 0, 1], !![0, 1; 1, 0]]`"
+  use 3, ![!![1, 0; 0, 0], !![0, 0; 0, 1], !![0, 1; 1, 0]]
   Hint "Two parts: independence, then the span is exactly the symmetric matrices."
   constructor
   · Hint "Independence: suppose $\\sum g_i E_i = 0$ and read off the entries $(0,0)$,

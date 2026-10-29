@@ -28,7 +28,8 @@ namespace LinearAlgebraGame
 
 /-- There is a linearly independent sequence of functions $\mathbb{R} \to \mathbb{R}$. -/
 Statement : ∃ f : ℕ → (ℝ → ℝ), LinearIndependent ℝ f := by
-  Hint "Pick functions that are easy to tell apart by evaluating at a single point: \"spikes\"
+  Hint "You need infinitely many functions, each one easy to tell apart from the others."
+  Hint (hidden := true) "Pick functions that are easy to tell apart by evaluating at a single point: \"spikes\"
   that are $1$ at $x = n$ and $0$ everywhere else."
   Hint (hidden := true) "`use fun n x => if x = n then 1 else 0`"
   use fun n x => if x = n then 1 else 0

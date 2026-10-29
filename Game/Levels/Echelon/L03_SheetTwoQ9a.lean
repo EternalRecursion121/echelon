@@ -15,19 +15,19 @@ Introduction "
 $B = \\begin{pmatrix}1&2&3\\\\3&0&3\\\\1&4&5\\end{pmatrix}$ the first and second columns add to
 the third. This remains true under any row operation. Show it for $k\\rho_1 + \\rho_2$.
 
-The row operation is `combo 0 1 k * B`.
+The result of the row operation is the matrix $C$ = `combo 0 1 k * B`; the claim is that in
+every row $i$ of $C$, entry 0 + entry 1 = entry 2.
 "
 
 namespace LinearAlgebraGame
 
 open Matrix in
 /-- After $k\rho_1 + \rho_2$, column 1 + column 2 = column 3 still. -/
-Statement (k : ℝ) (B : Matrix (Fin 3) (Fin 3) ℝ) (hB : B = !![1, 2, 3; 3, 0, 3; 1, 4, 5]) :
-    ∀ i, ((combo 0 1 k : Matrix (Fin 3) (Fin 3) ℝ) * B) i 0 +
-      ((combo 0 1 k : Matrix (Fin 3) (Fin 3) ℝ) * B) i 1 =
-      ((combo 0 1 k : Matrix (Fin 3) (Fin 3) ℝ) * B) i 2 := by
+Statement (k : ℝ) (C : Matrix (Fin 3) (Fin 3) ℝ)
+    (hC : C = combo 0 1 k * !![1, 2, 3; 3, 0, 3; 1, 4, 5]) :
+    ∀ i, C i 0 + C i 1 = C i 2 := by
   intro i
-  rw [hB]
+  rw [hC]
   Hint "Check each row."
   Hint (hidden := true) "`fin_cases i <;> simp [combo, Matrix.add_mul, mul_apply, Fin.sum_univ_three, Matrix.single_apply] <;> ring`"
   fin_cases i <;> simp [combo, Matrix.add_mul, mul_apply, Fin.sum_univ_three, Matrix.single_apply] <;> ring

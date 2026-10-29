@@ -8,7 +8,17 @@ Introduction "
 A system of equations is a big \"and\". To *use* `h : P ∧ Q`, split it with
 `obtain ⟨hp, hq⟩ := h`. To *prove* `P ∧ Q`, use `constructor`, which leaves two goals.
 
-**Typing:** the angle brackets `⟨ ⟩` are `\\<` and `\\>`; `∧` is `\\and`.
+**Two goals.** After `constructor` there are two goals (tabs). In the editor you write each
+goal's proof after a bullet `·` (typed `\\.`), indented under it:
+```
+constructor
+· exact …
+· exact …
+```
+**Shortcut:** if you already have both halves, `exact ⟨hp, hq⟩` builds `P ∧ Q` in one go —
+the same angle brackets as `obtain`, used the other way round.
+
+**Typing:** the angle brackets `⟨ ⟩` are `\\<` and `\\>`; `∧` is `\\and`; `·` is `\\.`.
 "
 
 /-- If $x = 1$ and $y = 2$, then $y = 2$ and $x = 1$. -/

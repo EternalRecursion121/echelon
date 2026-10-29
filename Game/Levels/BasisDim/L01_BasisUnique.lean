@@ -17,6 +17,8 @@ of $V$ can be written as a linear combination of $B$ in **exactly one** way. Tho
 coefficients are the *coordinates* $\\operatorname{Rep}_B(\\vec v)$.
 
 Prove it. (`∃! c, P c` means: some `c` satisfies `P`, and any `d` satisfying `P` equals `c`.)
+
+New: `rintro` is `intro` followed by `obtain`: `rintro ⟨a, b⟩` introduces a hypothesis and takes it apart at once (a pattern `rfl` substitutes an equation away).
 "
 
 namespace LinearAlgebraGame

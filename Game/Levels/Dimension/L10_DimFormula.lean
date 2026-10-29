@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L08_SumBasis
+import Game.Levels.Dimension.L09_SumBasis
 
 World "Dimension"
-Level 9
+Level 10
 Title "The dimension formula"
 
 -- @sheet 6 Q1c

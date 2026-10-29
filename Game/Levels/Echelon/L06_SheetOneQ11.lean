@@ -25,10 +25,10 @@ are $\\begin{pmatrix}0&0\\\\0&0\\end{pmatrix}, \\begin{pmatrix}1&a\\\\0&0\\end{p
 \\begin{pmatrix}0&1\\\\0&0\\end{pmatrix}, \\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$. Similarly list
 the reduced echelon forms possible for $2\\times 3$ and $3\\times 2$.
 
-**Explain level.** The statement is the list (the answer). Lean checks that every shape on the
-list really is in reduced echelon form for all values of the parameters. That the list is
-*complete* is your written argument: put it in a comment `-- Explain:` inside your proof
-(count the possible positions of the leading entries).
+**Explain level.** Make your own list on paper first (count the possible positions of the
+leading entries). The statement then lists the shapes, and Lean checks that every one really
+is in reduced echelon form for all values of the parameters. That the list is *complete* is
+your written argument: put it in a comment `-- Explain:` inside your proof.
 
 New: `refine ⟨?_, ?_⟩` splits a conjunction into goals in one go.
 "

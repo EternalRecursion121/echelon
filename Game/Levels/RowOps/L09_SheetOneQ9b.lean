@@ -16,25 +16,29 @@ Introduction "
 **Problem Sheet 1, Question 9(b).** Use Gauss–Jordan reduction to solve
 $x - z = 4,\\ 2x + 2y = 1$.
 
-The claim states the answer as a parametrised line in $\\mathbb R^3$.
+As in level 5, supply the solution set as a line: a point $\\vec p$ and a direction $\\vec d$.
 "
 
 namespace LinearAlgebraGame
 
-/-- $x - z = 4,\ 2x + 2y = 1$ iff $(x,y,z) = (4,-7/2,0) + t(1,-1,1)$ for some $t$. -/
-Statement (x y z : ℝ) :
-    (x - z = 4 ∧ 2 * x + 2 * y = 1) ↔
-      ∃ t : ℝ, ![x, y, z] = ![4, -7/2, 0] + t • ![1, -1, 1] := by
+/-- The solutions of $x - z = 4,\ 2x + 2y = 1$ form a line $\{\vec p + t\vec d\}$. -/
+Statement : ∃ p d : Fin 3 → ℝ, ∀ x y z : ℝ,
+    (x - z = 4 ∧ 2 * x + 2 * y = 1) ↔ ∃ t : ℝ, ![x, y, z] = p + t • d := by
+  Hint "Reduce on paper. Which variable is free? Express the others in terms of it, and `use`
+  the resulting point and direction."
+  Hint (hidden := true) "With $z$ free: `use ![4, -7/2, 0], ![1, -1, 1]`, then `intro x y z`."
+  use ![4, -7/2, 0], ![1, -1, 1]
+  intro x y z
   constructor
   · intro h
     obtain ⟨h1, h2⟩ := h
-    Hint "Reduce: $-2\\rho_1 + \\rho_2$ and $\\frac12\\rho_2$. Which variable is free?"
+    Hint "Reduce: clear $x$ from row 2, then make its leading entry $1$."
     Hint (hidden := true) "`rowop h2 : y + z = -7/2 := (h2 - 2 * h1) / 2`"
     rowop h2 : y + z = -7/2 := (h2 - 2 * h1) / 2
-    Hint (strict := true) (hidden := true) "$z$ is free: `use z`, then compare components."
+    Hint (strict := true) (hidden := true) "If $z$ is your free variable: `use z`, then
+    `entrywise`."
     use z
-    ext i
-    fin_cases i
+    entrywise
     · norm_num
       linear_combination h1
     · norm_num

@@ -32,7 +32,8 @@ open Matrix in
 /-- If an integer matrix $A$ has $\det A = -1$, then $A\vec x = \vec b$ has an integer solution for every integer $\vec b$. -/
 Statement {n : ℕ} (A : Matrix (Fin n) (Fin n) ℤ) (hA : A.det = -1) (b : Fin n → ℤ) :
     ∃ x : Fin n → ℤ, A *ᵥ x = b := by
-  Hint "Idea: the inverse of A is adj(A)/det A = −adj(A), whose entries are integers.
+  Hint "Idea: what is $A^\{-1}$ when $\\det A = -1$? Are its entries integers?"
+  Hint (hidden := true) "The inverse of A is adj(A)/det A = −adj(A), whose entries are integers.
   So try x = −adj(A) b."
   Hint (hidden := true) "`use -(adjugate A *ᵥ b)`."
   use -(adjugate A *ᵥ b)

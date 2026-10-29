@@ -20,6 +20,8 @@ elements. Assume that $\\vec v \\in V$ is not $\\vec 0$.
 **(a)** Prove that $r \\cdot \\vec v = \\vec 0$ if and only if $r = 0$.
 
 Parts (a)–(d) are levels 4–7 of this world; each part may use the previous ones.
+
+New: `by_contra h` proves a goal by contradiction: it assumes the negation of the goal as `h`, and you must derive `False`.
 "
 
 namespace LinearAlgebraGame

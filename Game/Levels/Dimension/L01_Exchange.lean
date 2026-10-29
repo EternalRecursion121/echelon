@@ -15,6 +15,8 @@ This is the engine behind *all bases have the same size*. We prove it for three 
 index bookkeeping. Independence and spanning are written out explicitly:
 - independent: the only relation $a\\vec\\beta_1 + b\\vec\\beta_2 + c\\vec\\beta_3 = \\vec 0$ is trivial;
 - spanning: every $x$ is some $a\\vec\\beta_1 + b\\vec\\beta_2 + c\\vec\\beta_3$.
+
+New: `field_simp` clears denominators (given the nonzero facts it needs), and `match_scalars` reduces an equation of vectors written as combinations to equations between their coefficients.
 "
 
 namespace LinearAlgebraGame

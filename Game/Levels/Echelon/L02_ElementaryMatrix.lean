@@ -12,7 +12,12 @@ $2\\times n$ matrix: row 1 (Lean counts from 0) is unchanged, and row 2 becomes
 $k\\rho_1 + \\rho_2$.
 
 `Matrix.of ![r₀, r₁]` is the matrix with rows `r₀`, `r₁`. To prove matrices equal:
-`ext i j`.
+`ext i j` (entry $(i, j)$; `entrywise` needs a known number of columns, and here there are $n$).
+
+Also new (Definitions tab): `scale i c`, the elementary matrix of $c\\rho_i$ (the identity with
+$c$ in place of the $i$-th $1$), and `RowEquiv A B`, \"$B$ comes from $A$ by row operations\":
+there are matrices $E$, $F$ with $E A = B$ and $F E = I$ ($E$ records the operations, $F$
+undoes them). The conclusion of this level explains why.
 "
 
 namespace LinearAlgebraGame
@@ -36,4 +41,4 @@ matrix $E = E_r\\cdots E_1$, and since each step can be undone, $E$ has an inver
 "
 
 NewDefinition LinearAlgebraGame.combo LinearAlgebraGame.scale LinearAlgebraGame.RowEquiv
-NewTheorem Matrix.add_mul Matrix.single_apply Matrix.mul_apply mul_apply
+NewTheorem Matrix.add_mul Matrix.single_apply Matrix.mul_apply

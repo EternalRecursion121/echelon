@@ -21,9 +21,17 @@ Statement {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) (b : Fin m → ℝ) :
   intro h
   obtain ⟨v, w, hne, h⟩ := h
   Hint "First note that $\\vec v$ and $\\vec w$ themselves are solutions."
-  Hint (hidden := true) "`have hv : A *ᵥ v = b := (h v).mpr (Or.inl rfl)`"
-  have hv : A *ᵥ v = b := (h v).mpr (Or.inl rfl)
-  have hw : A *ᵥ w = b := (h w).mpr (Or.inr rfl)
+  Hint (hidden := true) "`have hv : A *ᵥ v = b := by`, then (indented) `rw [h v]`, `left`,
+  `norm_num` — or in one line `(h v).mpr (Or.inl rfl)`: `.mpr` is the `←` direction of the
+  iff `h v`, `Or.inl` proves an \"or\" from its left side, and `rfl` proves `v = v`."
+  have hv : A *ᵥ v = b := by
+    rw [h v]
+    left
+    norm_num
+  have hw : A *ᵥ w = b := by
+    rw [h w]
+    right
+    norm_num
   Hint (strict := true) "Now show $2\\vec v - \\vec w$ is a solution too."
   Hint (strict := true) (hidden := true) "`have hu : A *ᵥ ((2 : ℝ) • v - w) = b := by`
   `rw [mulVec_sub, mulVec_smul, hv, hw]`, then `ext i`, `norm_num`, `linear_combination`."
@@ -33,7 +41,9 @@ Statement {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) (b : Fin m → ℝ) :
     norm_num
     linear_combination
   Hint "So $2\\vec v - \\vec w$ is $\\vec v$ or $\\vec w$. Either way $\\vec v = \\vec w$."
-  rcases (h _).mp hu with h3 | h3
+  Hint (hidden := true) "`rw [h] at hu`, then `rcases hu with h3 | h3`."
+  rw [h] at hu
+  rcases hu with h3 | h3
   · have hvw : v = w := by
       ext i
       have hi := congrFun h3 i

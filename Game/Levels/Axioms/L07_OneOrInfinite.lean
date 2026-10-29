@@ -24,6 +24,8 @@ always a solution, \"one element\" means the solution set is $\\{\\vec 0\\}$.
 `⟨x, hx⟩` with `hx : A *ᵥ x = 0`, and Lean knows that
 `Infinite (LinearMap.ker A.mulVecLin)` means the same as `Infinite` of the set below
 (`Set.infinite_coe_iff`).
+
+New: `by_cases h : P` splits the proof into two cases, one with `h : P` and one with `h : ¬P`.
 "
 
 namespace LinearAlgebraGame

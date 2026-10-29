@@ -22,7 +22,9 @@ namespace LinearAlgebraGame
 /-- If $H$ is invertible and $HG = 0$ then $G = 0$. -/
 Statement {n : ℕ} (H G : Matrix (Fin n) (Fin n) ℝ) (hH : IsUnit H.det) (h : H * G = 0) :
     G = 0 := by
-  Hint "Multiply both sides of $HG = 0$ on the left by $H^\{-1}$:
+  Hint "Use that $H$ is invertible: what happens if you multiply $HG = 0$ on the left by
+  something?"
+  Hint (hidden := true) "Multiply both sides of $HG = 0$ on the left by $H^\{-1}$:
   $G = (H^\{-1}H)G = H^\{-1}(HG) = 0$."
   Hint (hidden := true) "A `calc` chain, using `Matrix.nonsing_inv_mul H hH`, `Matrix.one_mul`, `Matrix.mul_assoc`, `Matrix.mul_zero`."
   calc G = (H⁻¹ * H) * G := by rw [Matrix.nonsing_inv_mul H hH, Matrix.one_mul]

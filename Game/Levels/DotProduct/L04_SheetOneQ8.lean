@@ -17,6 +17,8 @@ $\\vec u + \\vec v$ and $\\vec u - \\vec v$ are perpendicular.
 
 Perpendicular means the dot product is $0$. New: `linarith` (linear arithmetic from
 hypotheses) is unlocked.
+
+New: `show P` restates the goal as `P`, which must be the same statement written differently (useful to make a goal readable before rewriting).
 "
 
 namespace LinearAlgebraGame

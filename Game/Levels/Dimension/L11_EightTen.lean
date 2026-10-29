@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L09_DimFormula
+import Game.Levels.Dimension.L10_DimFormula
 
 World "Dimension"
-Level 10
+Level 11
 Title "Eight and eight in ten"
 
 -- @sheet 6 Q1d

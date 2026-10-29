@@ -15,7 +15,7 @@ Two moves with \"or\":
 **Typing:** `∨` is `\\or`; the bar `|` is on your keyboard.
 "
 
-/-- If $x = 1$ or $x = 2$, then $x^2 = 1$ or $x^2 = 4$. -/
+/-- If $x = 1$ or $x = 2$, then $x \cdot x = 1$ or $x \cdot x = 4$. -/
 Statement (x : ℝ) (h : x = 1 ∨ x = 2) : x * x = 1 ∨ x * x = 4 := by
   Hint "Split on `{h}`: `rcases {h} with h1 | h2`."
   rcases h with h1 | h2

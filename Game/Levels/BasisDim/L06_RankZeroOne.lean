@@ -28,6 +28,8 @@ Inside your proof, also write your description in words as a comment starting
 **New:** `omega` proves (in)equalities about natural numbers and integers.
 
 **New syntax:** `foo (h := e)` passes the argument named `h` explicitly, when a lemma has several arguments and you want to give just one of them.
+
+New: `choose f hf using h` turns `h : ∀ x, ∃ y, P x y` into a function `f` with `hf : ∀ x, P x (f x)`.
 "
 
 namespace LinearAlgebraGame

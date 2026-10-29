@@ -30,7 +30,8 @@ Statement (x y : ℝ) (h1 : x + y = 5) (h2 : 2 * x + 3 * y = 13) : x = 2 ∧ y =
   Hint "Now back-substitute: use the new row 2 to remove $y$ from row 1."
   Hint (hidden := true) "`rowop h1 := h1 - h2`"
   rowop h1 := h1 - h2
-  Hint "Both rows are solved. Hand them to Lean as a pair."
+  Hint "Both rows are solved. Put them together to prove the \"and\": `constructor`, or
+  `exact ⟨…, …⟩` (Lean Basics, level 4)."
   Hint (hidden := true) "`exact ⟨h1, h2⟩`"
   exact ⟨h1, h2⟩
 

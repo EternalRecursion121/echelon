@@ -22,13 +22,17 @@ says the empty sequence is independent.
 
 namespace LinearAlgebraGame
 
-/-- The empty sequence is a basis of $\{p \in\mathcal P_2 \mid p(5) = p(3) = p(1) = 0\}$, which
-has dimension 0. -/
-Statement : IsBasisOf (![] : Fin 0 → Poly 2)
-      (LinearMap.ker (Poly.evalAt (n := 2) 5) ⊓ LinearMap.ker (Poly.evalAt 3) ⊓
+/-- A basis $b_1, \dots, b_k$ of $\{p \in\mathcal P_2 \mid p(5) = p(3) = p(1) = 0\}$, which
+has dimension $k$. -/
+Statement : ∃ k : ℕ, ∃ b : Fin k → Poly 2,
+    IsBasisOf b (LinearMap.ker (Poly.evalAt (n := 2) 5) ⊓ LinearMap.ker (Poly.evalAt 3) ⊓
         LinearMap.ker (Poly.evalAt 1)) ∧
     Module.finrank ℝ ↥(LinearMap.ker (Poly.evalAt (n := 2) 5) ⊓ LinearMap.ker (Poly.evalAt 3) ⊓
-        LinearMap.ker (Poly.evalAt 1)) = 0 := by
+        LinearMap.ker (Poly.evalAt 1)) = k := by
+  Hint "What can you say about a quadratic with three roots? Supply the basis size and the
+  basis with `use`."
+  Hint (hidden := true) "`use 0, ![]`"
+  use 0, ![]
   Hint "Show the subspace is trivial: a quadratic with three roots is zero."
   have hB : IsBasisOf (![] : Fin 0 → Poly 2)
       (LinearMap.ker (Poly.evalAt (n := 2) 5) ⊓ LinearMap.ker (Poly.evalAt 3) ⊓

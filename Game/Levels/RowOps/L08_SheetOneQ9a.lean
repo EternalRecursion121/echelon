@@ -17,18 +17,24 @@ Introduction "
 $x + y = 2,\\ x - y = 0$.
 
 Gauss–Jordan keeps going until every leading entry is $1$ with zeros above it: each
-`rowop` should leave a row of the reduced form.
+`rowop` should leave a row of the reduced form. As in level 3, supply the solution with `use`.
 "
 
 namespace LinearAlgebraGame
 
-/-- $x + y = 2,\ x - y = 0$ iff $(x, y) = (1, 1)$. -/
-Statement (x y : ℝ) : (x + y = 2 ∧ x - y = 0) ↔ (x = 1 ∧ y = 1) := by
+/-- The system $x + y = 2,\ x - y = 0$ has exactly one solution $(a, b)$. -/
+Statement : ∃ a b : ℝ, ∀ x y : ℝ, (x + y = 2 ∧ x - y = 0) ↔ (x = a ∧ y = b) := by
+  Hint "Reduce on paper first and `use` the solution you find."
+  Hint (hidden := true) "`use 1, 1`, then `intro x y` and `constructor`."
+  use 1, 1
+  intro x y
   constructor
   · intro h
     obtain ⟨h1, h2⟩ := h
-    Hint "$-\\rho_1 + \\rho_2$, then $-\\frac12\\rho_2$, then $-\\rho_2 + \\rho_1$."
-    Hint (hidden := true) "`rowop h2 : -2 * y = -2 := h2 - h1`"
+    Hint "Eliminate below the first leading entry, make the second leading entry $1$, then
+    clear above it."
+    Hint (hidden := true) "$-\\rho_1 + \\rho_2$, $-\\frac12\\rho_2$, $-\\rho_2 + \\rho_1$:
+    `rowop h2 : -2 * y = -2 := h2 - h1`, …"
     rowop h2 : -2 * y = -2 := h2 - h1
     rowop h2 : y = 1 := h2 / (-2)
     rowop h1 : x = 1 := h1 - h2

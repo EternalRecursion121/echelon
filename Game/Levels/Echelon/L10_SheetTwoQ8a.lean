@@ -17,7 +17,7 @@ of $\\begin{pmatrix}0&0\\\\0&0\\end{pmatrix}$, $\\begin{pmatrix}0&1\\\\0&0\\end{
 $\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$, or $\\begin{pmatrix}1&a\\\\0&0\\end{pmatrix}$ ($a \\in \\mathbb R$).
 Describe the matrices in each class.
 
-This level: the classes of the zero matrix and of the identity. The next level does the
+This level: the classes of the zero matrix and of the identity. Levels 12 and 13 do the
 other two. For the identity we use the $2\\times 2$ nonsingularity test $ad - bc \\ne 0$;
 `rowEquiv_of_det` and `det_mul`, `det_fin_two` (Chapter Four material, borrowed) help.
 "

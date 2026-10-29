@@ -15,6 +15,8 @@ Introduction "
 
 \"Nontrivial\" means: $V$ contains some $\\vec v \\neq \\vec 0$. In Lean, `Infinite V` says
 the type $V$ is infinite.
+
+Lean writes a function as `fun x => …`: e.g. `fun r : ℝ => r • v` is the map $r \\mapsto r\\vec v$.
 "
 
 namespace LinearAlgebraGame

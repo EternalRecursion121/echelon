@@ -14,16 +14,25 @@ Introduction "
 **Problem Sheet 1, Question 1.** Use Gauss's Method to find the unique solution of
 $$x - z = 0,\\quad 3x + y = 1,\\quad -x + y + z = 4.$$
 
-\"The unique solution is $(-1, 4, -1)$\" is an *if and only if*: the system holds **iff**
-$x = -1$, $y = 4$, $z = -1$. The direction `→` (Gauss's method) says no other triple works;
-`←` checks the triple is a solution. `constructor` splits the `↔`.
+You supply the solution: the claim says there are numbers $a, b, c$ such that the system
+holds **if and only if** $x = a$, $y = b$, $z = c$. Start with `use` and your three numbers,
+then `intro x y z`.
+
+The direction `→` of the `↔` is Gauss's method (no other triple works); `←` checks your triple
+is a solution. `constructor` splits the `↔`. (`↔` is typed `\\iff`. If `h : P ↔ Q` then
+`h.mp : P → Q` and `h.mpr : Q → P` are its two directions, and `rw [h]` swaps `P` for `Q`.)
 "
 
 namespace LinearAlgebraGame
 
-/-- $x - z = 0,\ 3x + y = 1,\ -x + y + z = 4$ holds iff $(x,y,z) = (-1,4,-1)$. -/
-Statement (x y z : ℝ) :
-    (x - z = 0 ∧ 3 * x + y = 1 ∧ -x + y + z = 4) ↔ (x = -1 ∧ y = 4 ∧ z = -1) := by
+/-- The system $x - z = 0,\ 3x + y = 1,\ -x + y + z = 4$ has exactly one solution
+$(a, b, c)$. -/
+Statement : ∃ a b c : ℝ, ∀ x y z : ℝ,
+    (x - z = 0 ∧ 3 * x + y = 1 ∧ -x + y + z = 4) ↔ (x = a ∧ y = b ∧ z = c) := by
+  Hint "Run Gauss's method on paper first. Which triple do you get? `use` it."
+  Hint (hidden := true) "`use -1, 4, -1`, then `intro x y z`."
+  use -1, 4, -1
+  intro x y z
   Hint "Split the `↔` with `constructor`."
   constructor
   · Hint "Name the three rows: `intro h` and `obtain ⟨h1, h2, h3⟩ := h`."

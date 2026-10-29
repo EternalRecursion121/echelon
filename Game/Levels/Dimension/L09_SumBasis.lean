@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L07_SumInter
+import Game.Levels.Dimension.L08_Sum
 
 World "Dimension"
-Level 8
+Level 9
 Title "Boss: a basis for U + W"
 
 -- @sheet 6 Q1b

@@ -8,7 +8,9 @@ import Game.Levels.Echelon.L07_SheetOneQ12
 import Game.Levels.Echelon.L08_SheetTwoQ2
 import Game.Levels.Echelon.L09_SheetOneQ4
 import Game.Levels.Echelon.L10_SheetTwoQ8a
-import Game.Levels.Echelon.L11_SheetTwoQ8b
+import Game.Levels.Echelon.L11_FirstColumn
+import Game.Levels.Echelon.L12_SheetTwoQ8b
+import Game.Levels.Echelon.L13_SheetTwoQ8c
 
 World "Echelon"
 Title "Echelon"

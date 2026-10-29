@@ -17,43 +17,47 @@ Introduction "
 **Problem Sheet 1, Question 10.** Compute the reduced echelon form of
 $\\begin{pmatrix}1&3&1\\\\2&6&2\\\\-1&0&0\\end{pmatrix}$.
 
-The claim: $R = \\begin{pmatrix}1&0&0\\\\0&1&1/3\\\\0&0&0\\end{pmatrix}$ is in reduced echelon
-form (Mathlib's `IsReducedRowEchelon`), and is row equivalent to the given matrix. For the
-second part, supply $E$, the product of your elementary matrices (rows of $R$ in terms of the
-original rows), and its inverse $F$.
+The claim: there is a matrix $R$ in reduced echelon form (Mathlib's `IsReducedRowEchelon`)
+that is row equivalent to the given matrix. Since the reduced echelon form is unique, only the
+right answer works. Compute $R$ on paper and supply it with `use`.
+
+Checking that $R$ is reduced echelon is a finite check: `constructor` splits it into its three
+conditions (echelon — `IsRowEchelon` —, leading entries $1$, zeros above them), and
+`simp [IsRowEchelon, IsLeadingEntry, Fin.forall_fin_succ]` checks a condition by running
+through all rows and columns. For `RowEquiv`, supply $E$ (row $i$ of $E$ says which combination
+of the original rows gives row $i$ of $R$) and $F$, which undoes $E$.
 "
 
 namespace LinearAlgebraGame
 
 open Matrix in
-/-- The reduced echelon form of $\begin{pmatrix}1&3&1\\2&6&2\\-1&0&0\end{pmatrix}$ is
-$\begin{pmatrix}1&0&0\\0&1&1/3\\0&0&0\end{pmatrix}$. -/
-Statement : (!![1, 0, 0; 0, 1, 1/3; 0, 0, 0] : Matrix (Fin 3) (Fin 3) ℝ).IsReducedRowEchelon ∧
-    RowEquiv !![1, 3, 1; 2, 6, 2; -1, 0, 0] !![1, 0, 0; 0, 1, 1/3; 0, 0, 0] := by
+/-- The matrix $\begin{pmatrix}1&3&1\\2&6&2\\-1&0&0\end{pmatrix}$ is row equivalent to a
+reduced echelon matrix $R$. -/
+Statement : ∃ R : Matrix (Fin 3) (Fin 3) ℝ,
+    R.IsReducedRowEchelon ∧ RowEquiv !![1, 3, 1; 2, 6, 2; -1, 0, 0] R := by
+  Hint "Run Gauss–Jordan on paper and `use` the reduced echelon form you get."
+  Hint (hidden := true) "`use !![1, 0, 0; 0, 1, 1/3; 0, 0, 0]`, then `constructor`."
+  use !![1, 0, 0; 0, 1, 1/3; 0, 0, 0]
   constructor
   · Hint "Three conditions: echelon, leading entries are 1, zeros above leading entries.
     Each is a finite check over rows and columns."
-    Hint (hidden := true) "`constructor`, then for each part `intro` the indices, `fin_cases` them,
-    and `simp [IsLeadingEntry, Fin.forall_fin_succ] at *`."
-    constructor
-    · intro i₁ i₂ h j₂ hj
-      fin_cases i₁ <;> fin_cases i₂ <;> fin_cases j₂ <;> simp [Fin.forall_fin_succ] at h hj ⊢
-    · intro i c h
-      fin_cases i <;> fin_cases c <;> simp [IsLeadingEntry, Fin.forall_fin_succ] at h ⊢
-    · intro i₁ i₂ c h hl
-      fin_cases i₁ <;> fin_cases i₂ <;> fin_cases c <;> simp [IsLeadingEntry, Fin.forall_fin_succ] at h hl ⊢
-  · Hint "Row 1 of $R$ is $-\\rho_3$, row 2 is $\\frac13(\\rho_1 + \\rho_3)$, row 3 is $\\rho_2 - 2\\rho_1$."
-    Hint (hidden := true) "`use !![0, 0, -1; 1/3, 0, 1/3; -2, 1, 0], !![1, 3, 0; 2, 6, 1; -1, 0, 0]`"
+    Hint (hidden := true) "`constructor <;> simp [IsRowEchelon, IsLeadingEntry, Fin.forall_fin_succ]`"
+    constructor <;> simp [IsRowEchelon, IsLeadingEntry, Fin.forall_fin_succ]
+  · Hint "Record your row operations: express each row of $R$ as a combination of the
+    original rows $\\rho_1, \\rho_2, \\rho_3$. Those coefficients are the rows of $E$; $F$
+    expresses each original row in terms of the rows of $R$ (or of $E A$)."
+    Hint (hidden := true) "Row 1 of $R$ is $-\\rho_3$, row 2 is $\\frac13(\\rho_1 + \\rho_3)$, row 3
+    is $\\rho_2 - 2\\rho_1$:
+    `use !![0, 0, -1; 1/3, 0, 1/3; -2, 1, 0], !![1, 3, 0; 2, 6, 1; -1, 0, 0]`"
     use !![0, 0, -1; 1/3, 0, 1/3; -2, 1, 0], !![1, 3, 0; 2, 6, 1; -1, 0, 0]
+    Hint (hidden := true) "`constructor`, then for each `entrywise <;> norm_num [mul_apply, Fin.sum_univ_three]`."
     constructor
-    · ext i j
-      fin_cases i <;> fin_cases j <;> simp [mul_apply, Fin.sum_univ_three] <;> norm_num
-    · ext i j
-      fin_cases i <;> fin_cases j <;> simp [mul_apply, Fin.sum_univ_three] <;> norm_num
+    · entrywise <;> norm_num [mul_apply, Fin.sum_univ_three]
+    · entrywise <;> norm_num [mul_apply, Fin.sum_univ_three]
 
 end LinearAlgebraGame
 
 Conclusion "**Answer:** $\\begin{pmatrix}1&0&0\\\\0&1&1/3\\\\0&0&0\\end{pmatrix}$."
 
-NewDefinition Matrix.IsReducedRowEchelon
+NewDefinition Matrix.IsReducedRowEchelon Matrix.IsRowEchelon
 NewTheorem Matrix.IsLeadingEntry Fin.forall_fin_succ

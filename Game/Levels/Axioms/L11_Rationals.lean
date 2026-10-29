@@ -21,6 +21,8 @@ To be a vector space, $\\mathbb{Q}$ would need a scalar multiplication
 (read as a real number), and that satisfies the ten conditions.
 
 Decide: `left` for \"no\", `right` for \"yes\".
+
+An underscore `_` in an argument list means \"Lean, fill this in yourself\" — use it for an argument Lean can work out from the others.
 "
 
 namespace LinearAlgebraGame

@@ -14,14 +14,20 @@ Introduction "
 **Problem Sheet 1, Question 3(b).** Solve using matrix notation, expressing the solution
 using vectors: $x + y = 1,\\ x - y = -1$.
 
-We write the answer as a vector equation `![x, y] = ![0, 1]`. To prove two vectors equal,
-`ext i` and `fin_cases i`; `norm_num` then reads off the component.
+The answer is a vector $\\vec p$: the claim says the system holds exactly when
+`![x, y] = p`. Supply your `p` with `use`. To prove two vectors equal, `entrywise`
+(Lean Basics); to read an equation of vectors `h : u = v` entry by entry, `congrFun h 0` is
+its entry 0, `u 0 = v 0`.
 "
 
 namespace LinearAlgebraGame
 
-/-- $x + y = 1,\ x - y = -1$ iff $(x, y) = (0, 1)$. -/
-Statement (x y : ℝ) : (x + y = 1 ∧ x - y = -1) ↔ ![x, y] = ![0, 1] := by
+/-- The solution set of $x + y = 1,\ x - y = -1$ is a single vector $\vec p$. -/
+Statement : ∃ p : Fin 2 → ℝ, ∀ x y : ℝ, (x + y = 1 ∧ x - y = -1) ↔ ![x, y] = p := by
+  Hint "Solve the system on paper, then `use` the solution vector (written `![…, …]`)."
+  Hint (hidden := true) "`use ![0, 1]`, then `intro x y` and `constructor`."
+  use ![0, 1]
+  intro x y
   constructor
   · intro h
     obtain ⟨h1, h2⟩ := h
@@ -29,18 +35,18 @@ Statement (x y : ℝ) : (x + y = 1 ∧ x - y = -1) ↔ ![x, y] = ![0, 1] := by
     Hint (hidden := true) "`rowop h2 : y = 1 := (h1 - h2) / 2`"
     rowop h2 : y = 1 := (h1 - h2) / 2
     rowop h1 : x = 0 := h1 - h2
-    Hint (hidden := true) "`ext i`, `fin_cases i`, then in each case `norm_num` and `exact`."
-    ext i
-    fin_cases i
+    Hint (hidden := true) "`entrywise`, then in each case `norm_num` and `exact`."
+    entrywise
     · norm_num
       exact h1
     · norm_num
       exact h2
   · intro h
-    Hint "Read off the two components of `h` with `congrFun h 0` and `congrFun h 1`."
+    Hint "Read off the two entries of `{h}`."
+    Hint (hidden := true) "`have hx := congrFun {h} 0`, `have hy := congrFun {h} 1`, then
+    `norm_num at hx hy`, `rw [hx, hy]` and `norm_num`."
     have hx := congrFun h 0
     have hy := congrFun h 1
-    Hint (hidden := true) "`norm_num at hx hy`, then `rw [hx, hy]` and `norm_num`."
     norm_num at hx hy
     rw [hx, hy]
     norm_num
