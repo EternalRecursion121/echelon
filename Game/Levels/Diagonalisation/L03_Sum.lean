@@ -19,7 +19,7 @@ $t + s$?
 saves you from computing inverses, and your earlier results about diagonalisability are in the
 inventory.
 Concrete $2\\times2$ products can be checked entry by entry:
-`ext i j; fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two]`.
+`entrywise <;> simp [Matrix.mul_apply, Fin.sum_univ_two]`.
 "
 
 namespace LinearAlgebraGame
@@ -42,25 +42,20 @@ Statement :
   have hT : Diagonalizable (!![1, 1; 0, 0] : Matrix (Fin 2) (Fin 2) ℝ) := by
     use ![1, 0]
     apply matSimilar_of_mul_eq_one (P := !![1, 1; 0, -1]) (Q := !![1, 1; 0, -1])
-    · ext i j
-      fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two]
-    · ext i j
-      fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two]
+    · entrywise <;> simp [Matrix.mul_apply, Fin.sum_univ_two]
+    · entrywise <;> simp [Matrix.mul_apply, Fin.sum_univ_two]
   have hS : Diagonalizable (!![-1, 0; 0, 0] : Matrix (Fin 2) (Fin 2) ℝ) := by
     use ![-1, 0]
     apply matSimilar_of_mul_eq_one (P := 1) (Q := 1)
     · rw [Matrix.one_mul]
-    · ext i j
-      fin_cases i <;> fin_cases j <;> simp
+    · entrywise <;> simp
   have hTS := h 2 _ _ hT hS
   have e : (!![1, 1; 0, 0] + !![-1, 0; 0, 0] : Matrix (Fin 2) (Fin 2) ℝ) = !![0, 1; 0, 0] := by
-    ext i j
-    fin_cases i <;> fin_cases j <;> simp
+    entrywise <;> simp
   rw [e] at hTS
   Hint (hidden := true) "`apply not_diagonalizable_of_sq_eq_zero _ _ _ hTS` leaves the two facts to check."
   apply not_diagonalizable_of_sq_eq_zero _ _ _ hTS
-  · ext i j
-    fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two]
+  · entrywise <;> simp [Matrix.mul_apply, Fin.sum_univ_two]
   · intro h0
     have := congrFun (congrFun h0 0) 1
     simp at this

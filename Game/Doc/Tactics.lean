@@ -132,5 +132,10 @@ TacticDoc «show»
 /-- `entrywise` proves an equation between vectors (or matrices) by checking every entry: it
 leaves one goal per position, written like `(A *ᵥ v) 0 = ![3, 7] 0`. It is shorthand for
 `ext i` followed by `fin_cases i` (and `ext i j` with two `fin_cases` for matrices), with the
-positions tidied up. -/
+positions tidied up: entries of the identity matrix `1` become `1` or `0`, and sums `∑ x, …`
+over two, three or four positions are written out as `… + … + …`.
+
+It does not multiply matrices for you: an entry `(A * B) 0 1` of a product still needs
+`Matrix.mul_apply` (and `A *ᵥ v` needs `Matrix.mulVec`, `dotProduct`); a typical finish is
+`entrywise <;> norm_num [Matrix.mul_apply, Fin.sum_univ_three]`. -/
 TacticDoc entrywise

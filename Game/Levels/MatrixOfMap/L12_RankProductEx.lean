@@ -15,8 +15,9 @@ Introduction "
 **Problem Sheet 8, Question 2(a).** Find $n$ and two rank $n$ matrices whose product has rank
 less than $n$.
 
-Your matrices are $2\\times 2$. `Matrix.diagonal ![a, b]` is the diagonal matrix with
-entries $a, b$, and `Matrix.rank_diagonal` says its rank is the number of nonzero entries.
+Your matrices are $2\\times 2$ (so $n \\le 2$). If you go for diagonal matrices:
+`Matrix.diagonal ![a, b]` is the diagonal matrix with entries $a, b$, and
+`Matrix.rank_diagonal` says its rank is the number of nonzero entries.
 "
 
 namespace LinearAlgebraGame
@@ -24,7 +25,9 @@ namespace LinearAlgebraGame
 /-- There are $n$ and two rank-$n$ matrices whose product has rank less than $n$. -/
 Statement : ∃ n : ℕ, ∃ A B : Matrix (Fin 2) (Fin 2) ℝ,
     A.rank = n ∧ B.rank = n ∧ (A * B).rank < n := by
-  Hint "Look for two nonzero matrices whose product is zero. Diagonal ones are easiest."
+  Hint "Which $n$ leaves room for a drop in rank? Try small examples on paper first."
+  Hint (hidden := true) "Look for two nonzero matrices whose product is zero. Diagonal ones are
+  easiest."
   Hint (hidden := true) "`use 1, Matrix.diagonal ![1, 0], Matrix.diagonal ![0, 1]`"
   use 1, Matrix.diagonal ![1, 0], Matrix.diagonal ![0, 1]
   Hint (hidden := true) "For each rank: `rw [Matrix.rank_diagonal, Fintype.card_subtype,

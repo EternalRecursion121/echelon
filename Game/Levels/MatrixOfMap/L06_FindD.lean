@@ -48,9 +48,11 @@ Statement (p : (Fin 3 → ℝ) →ₗ[ℝ] (Fin 3 → ℝ)) (hp : ∀ v, p v = !
     simp [Fin.sum_univ_three] at h0 h1 h2
     intro i
     fin_cases i <;> simp <;> linarith
-  · intro j
+  · Hint "Now check the three columns."
+    Hint (hidden := true) "`intro j`, `rw [hp]`, then `fin_cases j <;> entrywise <;> norm_num`."
+    intro j
     rw [hp]
-    fin_cases j <;> ext i <;> fin_cases i <;> simp [Fin.sum_univ_three]
+    fin_cases j <;> entrywise <;> norm_num
 
 end LinearAlgebraGame
 

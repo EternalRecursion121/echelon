@@ -58,11 +58,10 @@ Statement : ∃ k : ℕ, ∃ b : Fin k → (Fin 3 → ℝ), LinearIndependent �
     constructor
     · rintro ⟨x, y, z, h0, h1, h2⟩
       Hint "Rewrite $x\\vec c_1 + y\\vec c_2 + z\\vec c_3$ using only your basis vectors."
-      Hint (hidden := true) "`refine ⟨![{x} - {z}, {y} + 7/2 * {z}], ?_⟩`, then `ext i`,
-      `fin_cases i <;> simp [Fin.sum_univ_two] <;> linarith`."
+      Hint (hidden := true) "`refine ⟨![{x} - {z}, {y} + 7/2 * {z}], ?_⟩`, then
+      `entrywise <;> simp [Fin.sum_univ_two] <;> linarith`."
       refine ⟨![x - z, y + 7/2 * z], ?_⟩
-      ext i
-      fin_cases i <;> simp [Fin.sum_univ_two] <;> linarith
+      entrywise <;> simp [Fin.sum_univ_two] <;> linarith
     · rintro ⟨c, rfl⟩
       Hint (hidden := true) "Take $z = 0$: `refine ⟨c 0, c 1, 0, ?_, ?_, ?_⟩`, then
       `<;> simp [Fin.sum_univ_two] <;> ring` (`<;>` runs the next tactic on every goal)."

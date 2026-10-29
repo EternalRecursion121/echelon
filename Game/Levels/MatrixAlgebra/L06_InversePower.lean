@@ -15,7 +15,11 @@ Introduction "
 **Problem Sheet 7, Question 5.** Let $T$ be a nonsingular matrix. Is $(T^k)^{-1} = (T^{-1})^k$?
 
 Decide (`left`: no, `right`: yes), then prove. `Matrix.inv_eq_left_inv : B * A = 1 → A⁻¹ = B`
-turns the question into a product equal to $I$.
+turns the question into a product equal to $I$, and `Matrix.nonsing_inv_mul T hT : T⁻¹ * T = 1`
+cancels.
+
+\"$T$ nonsingular\" is `hT : IsUnit T.det` here (see the world introduction):
+it is what Mathlib needs before `T⁻¹` really is an inverse.
 "
 
 namespace LinearAlgebraGame
@@ -23,7 +27,8 @@ namespace LinearAlgebraGame
 /-- For nonsingular $T$, is $(T^k)^{-1} = (T^{-1})^k$ for every $k$? -/
 Statement {n : ℕ} (T : Matrix (Fin n) (Fin n) ℝ) (hT : IsUnit T.det) :
     (¬ ∀ k : ℕ, (T ^ k)⁻¹ = (T⁻¹) ^ k) ∨ (∀ k : ℕ, (T ^ k)⁻¹ = (T⁻¹) ^ k) := by
-  Hint "Decide first: test small cases, e.g. $k = 2$. Is $(T^\{-1})^2$ an inverse of $T^2$?"
+  Hint "Decide first: test small cases, e.g. $k = 2$. Multiply $(T^\{-1})^2$ by $T^2$ and see
+  what you get."
   Hint (hidden := true) "$(T^\{-1})^2 T^2 = T^\{-1}(T^\{-1}T)T$. The middle cancels."
   right
   intro k
@@ -47,4 +52,5 @@ Conclusion "
 DisabledTheorem Matrix.inv_pow' inv_pow Matrix.inv_zpow
 DisabledTactic simp norm_num
 TheoremTab "Matrices"
-NewTheorem Matrix.inv_eq_left_inv pow_succ' pow_succ pow_zero
+NewTheorem Matrix.inv_eq_left_inv pow_succ' pow_succ pow_zero Matrix.nonsing_inv_mul Matrix.mul_nonsing_inv
+NewDefinition IsUnit

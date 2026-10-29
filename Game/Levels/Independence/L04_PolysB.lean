@@ -44,10 +44,9 @@ Statement : (¬ LinearIndependent ℝ
   Hint (hidden := true) "Gauss's method gives the relation `use ![-17, -35, 48, 5]`."
   use ![-17, -35, 48, 5]
   constructor
-  · Hint (hidden := true) "Check each coefficient: `ext i`, then
-    `fin_cases i <;> simp [Fin.sum_univ_four] <;> norm_num`."
-    ext i
-    fin_cases i <;> simp [Fin.sum_univ_four] <;> norm_num
+  · Hint (hidden := true) "Check each coefficient:
+    `entrywise <;> simp [Fin.sum_univ_four] <;> norm_num`."
+    entrywise <;> simp [Fin.sum_univ_four] <;> norm_num
   · use 0
     norm_num
 

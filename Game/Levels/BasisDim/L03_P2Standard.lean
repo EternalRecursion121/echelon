@@ -37,9 +37,8 @@ Statement : ∃ k : ℕ, ∃ b : Fin k → Poly 2, IsBasisOf b ⊤ := by
   Hint (hidden := true) "The coefficients of $x$ in the standard basis are $x$ itself:
   `refine ⟨x, ?_, ?_⟩`."
   refine ⟨x, ?_, ?_⟩
-  · Hint (hidden := true) "`ext i`, `fin_cases i`, then `simp [Fin.sum_univ_three]`."
-    ext i
-    fin_cases i <;> simp [Fin.sum_univ_three]
+  · Hint (hidden := true) "`entrywise <;> simp [Fin.sum_univ_three]`."
+    entrywise <;> simp [Fin.sum_univ_three]
   · intro c hc
     Hint (hidden := true) "Read off each coordinate of `{hc}`: `funext i`, `fin_cases i`,
     then `simp [← {hc}, Fin.sum_univ_three]`."

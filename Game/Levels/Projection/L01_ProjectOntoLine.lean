@@ -38,4 +38,5 @@ splits $\\vec v$ into a part along $\\vec s$ and a part orthogonal to it.
 
 NewDefinition LinearAlgebraGame.projLine
 NewTheorem div_mul_cancel₀
+DisabledTactic simp norm_num field_simp
 TheoremTab "Projection"

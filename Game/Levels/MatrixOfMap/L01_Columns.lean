@@ -28,15 +28,22 @@ Statement (h : (Fin 2 → ℝ) →ₗ[ℝ] (Fin 2 → ℝ)) (hh : ∀ v, h v = !
   Hint "There is one equation per column $j$. Introduce `j` and use the formula `{hh}`."
   intro j
   rw [hh]
-  Hint (hidden := true) "Split into the two columns with `fin_cases j`, then compare vectors
-  componentwise: `ext i` and `fin_cases i`. `simp [Fin.sum_univ_two]` does the arithmetic."
-  fin_cases j <;> ext i <;> fin_cases i <;> simp [Fin.sum_univ_two]
+  Hint (hidden := true) "Split into the two columns with `fin_cases j`, then compare the
+  vectors entry by entry: `fin_cases j <;> entrywise <;> norm_num`. (`entrywise` writes out the
+  sum $\\sum_i$ for you.)"
+  fin_cases j <;> entrywise <;> norm_num
 
 end LinearAlgebraGame
 
 Conclusion "
 Column 1 is $h(\\vec e_1) = (1, 3)$ and column 2 is $h(\\vec e_2) = (2, 0)$: the columns of
 the representation are the (coordinates of the) images of the basis vectors.
+
+This is what makes the matrix *useful* (Hefferon Theorem Three.III.1.9): if $\\vec v$ has
+coordinates $\\mathrm{Rep}_B(\\vec v)$ then
+$$\\mathrm{Rep}_{B,D}(h)\\cdot\\mathrm{Rep}_B(\\vec v) = \\mathrm{Rep}_D(h(\\vec v)),$$
+because $\\vec v = \\sum_j v_j\\vec\\beta_j$ and $h$ is linear. With standard bases on both sides
+the coordinates are the vectors themselves, so $h(\\vec v) = H\\vec v$.
 "
 
 NewDefinition LinearAlgebraGame.IsRep

@@ -36,8 +36,7 @@ Statement : (¬ RowEquiv (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) !![
   obtain ⟨E, F, hFE, hE⟩ := h
   Hint (hidden := true) "$(1, -1, 0)$: `have h1 : (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) *ᵥ ![1, -1, 0] = 0`."
   have h1 : (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) *ᵥ ![1, -1, 0] = 0 := by
-    ext i
-    fin_cases i <;> simp [mulVec, dotProduct, Fin.sum_univ_three]
+    entrywise <;> simp [mulVec, dotProduct, Fin.sum_univ_three]
   Hint (hidden := true) "Transport it: `rw [← hE, ← mulVec_mulVec, h1, mulVec_zero]`."
   have h2 : (!![0, 1, 2; 1, -1, 1] : Matrix (Fin 2) (Fin 3) ℝ) *ᵥ ![1, -1, 0] = 0 := by
     rw [← hE, ← mulVec_mulVec, h1, mulVec_zero]

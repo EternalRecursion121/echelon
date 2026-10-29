@@ -32,11 +32,10 @@ Statement (d : Matrix (Fin 2) (Fin 2) ℝ → ℝ) (hd : DetAxioms d) (a b c : �
   · Hint (hidden := true) "`have h := hd.combo !![a, b; 0, c] 1 0 (-b / c) (by simp)`."
     have h := hd.combo !![a, b; 0, c] 1 0 (-b / c) (by simp)
     Hint (hidden := true) "Show the new matrix is `!![a, 0; 0, c]`:
-    `have e : … = !![a, 0; 0, c] := by ext i j; fin_cases i <;> fin_cases j <;> simp; field_simp`."
+    `have e : … = !![a, 0; 0, c] := by entrywise <;> simp; field_simp`."
     have e : (!![a, b; 0, c] : Matrix (Fin 2) (Fin 2) ℝ).updateRow 0
         (!![a, b; 0, c] 0 + (-b / c) • !![a, b; 0, c] 1) = !![a, 0; 0, c] := by
-      ext i j
-      fin_cases i <;> fin_cases j <;> simp
+      entrywise <;> simp
       field_simp
       ring
     Hint (hidden := true) "`rw [e, det_diag_two d hd] at h`, then `rw [← h]`."

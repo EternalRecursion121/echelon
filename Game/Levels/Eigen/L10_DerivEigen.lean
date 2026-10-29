@@ -32,12 +32,11 @@ Statement sheet9_q8a :
     `IsEigenvalue D μ` (unfolded); then `rw [← IsEigenvalue, isEigenvalue_iff_det]`."
     simp only [deriv_eq_mulVec]
     rw [← IsEigenvalue, isEigenvalue_iff_det]
-    Hint (hidden := true) "Write `D - μ • 1` as a `!![…]` matrix (`ext i j; fin_cases i <;> fin_cases j <;> simp`),
+    Hint (hidden := true) "Write `D - μ • 1` as a `!![…]` matrix (`entrywise <;> simp`),
     then `eval_det`."
     have e : (!![0, 1, 0, 0; 0, 0, 2, 0; 0, 0, 0, 3; 0, 0, 0, 0] - μ • 1 : Matrix (Fin 4) (Fin 4) ℝ)
         = !![-μ, 1, 0, 0; 0, -μ, 2, 0; 0, 0, -μ, 3; 0, 0, 0, -μ] := by
-      ext i j
-      fin_cases i <;> fin_cases j <;> simp
+      entrywise <;> simp
     rw [e]
     eval_det
     Hint (hidden := true) "`pow_eq_zero_iff` (with `(by norm_num)`)."
@@ -55,13 +54,11 @@ Statement sheet9_q8a :
       have h1 := congrFun h 1
       have h2 := congrFun h 2
       simp [Matrix.mulVec, dotProduct, Fin.sum_univ_four] at h0 h1 h2
-      ext i
-      fin_cases i <;> simp [h0, h1, h2]
+      entrywise <;> simp [h0, h1, h2]
     · intro h
       obtain ⟨a, ha⟩ := h
       rw [← ha]
-      ext i
-      fin_cases i <;> simp [Matrix.mulVec, dotProduct, Fin.sum_univ_four]
+      entrywise <;> simp [Matrix.mulVec, dotProduct, Fin.sum_univ_four]
 
 end LinearAlgebraGame
 

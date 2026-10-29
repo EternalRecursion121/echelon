@@ -371,3 +371,9 @@ TheoremDoc Finset.mem_univ as "Finset.mem_univ" in "Puzzles"
 TheoremDoc LinearAlgebraGame.cauchy_schwarz as "cauchy_schwarz" in "Dot"
 /-- Triangle inequality: $|\vec u + \vec v| \le |\vec u| + |\vec v|$ (you proved it). -/
 TheoremDoc LinearAlgebraGame.len_add_le as "len_add_le" in "Dot"
+/-- $ab = ba$: multiplication of numbers commutes. `mul_comm a b : a * b = b * a`; plain `rw [mul_comm]` swaps the first product it finds. -/
+TheoremDoc mul_comm as "mul_comm" in "Sums"
+/-- `Int.add_mul_emod_self_left a b c : (a + b * c) % b = a % b` — adding a multiple of `b` does not change the remainder mod `b`. -/
+TheoremDoc Int.add_mul_emod_self_left as "Int.add_mul_emod_self_left" in "Puzzles"
+/-- `refl`: the zero-step case. In `induction hs with | refl => … | tail _ hstep ih => …` on a `Reachable` (a reflexive–transitive closure), `refl` is the case where no meeting has happened yet. -/
+TheoremDoc refl as "refl" in "Puzzles"

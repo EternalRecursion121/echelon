@@ -53,8 +53,7 @@ Statement : ∃ k : ℕ, ∃ b : Fin k → Matrix (Fin 2) (Fin 2) ℝ,
         obtain ⟨⟨h00, h01⟩, ⟨-, h11⟩⟩ := hA
         rw [Submodule.mem_span_range_iff_exists_fun]
         refine ⟨![A 1 0], ?_⟩
-        ext i j
-        fin_cases i <;> fin_cases j <;> simp [h00, h01, h11]
+        entrywise <;> simp [h00, h01, h11]
   Hint (hidden := true) "`exact ⟨1, _, hI, hI.finrank_eq⟩`"
   exact ⟨1, _, hI, hI.finrank_eq⟩
 

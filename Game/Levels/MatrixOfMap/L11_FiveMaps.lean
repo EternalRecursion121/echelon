@@ -22,7 +22,7 @@ namespace LinearAlgebraGame
 
 /-- Any five linear maps $\mathbb R^2 \to \mathbb R^2$ satisfy a nontrivial linear relation. -/
 Statement (t : Fin 5 → ((Fin 2 → ℝ) →ₗ[ℝ] (Fin 2 → ℝ))) :
-    ∃ c : Fin 5 → ℝ, c ≠ 0 ∧ ∑ i, c i • t i = 0 := by
+    ∃ c : Fin 5 → ℝ, (∃ i, c i ≠ 0) ∧ ∑ i, c i • t i = 0 := by
   Hint "First compute the dimension of the space of maps, using the isomorphism with matrices."
   Hint (hidden := true) "`have hdim : Module.finrank ℝ ((Fin 2 → ℝ) →ₗ[ℝ] (Fin 2 → ℝ)) = 4`,
   proved by `rw [(LinearMap.toMatrix' : ((Fin 2 → ℝ) →ₗ[ℝ] (Fin 2 → ℝ)) ≃ₗ[ℝ] _).finrank_eq,
@@ -43,11 +43,7 @@ Statement (t : Fin 5 → ((Fin 2 → ℝ) →ₗ[ℝ] (Fin 2 → ℝ))) :
   `obtain ⟨c, hc, i, hi⟩ := hdep`."
   rw [Fintype.not_linearIndependent_iff] at hdep
   obtain ⟨c, hc, i, hi⟩ := hdep
-  refine ⟨c, ?_, hc⟩
-  intro h0
-  apply hi
-  rw [h0]
-  exact rfl
+  exact ⟨c, ⟨i, hi⟩, hc⟩
 
 end LinearAlgebraGame
 

@@ -52,9 +52,8 @@ Statement :
     Hint (hidden := true) "The coefficients of $a_0 + a_1x + a_2x^2$ are
     $(a_2 - a_1,\\ a_1 - a_0,\\ a_0)$: `refine ⟨![x 2 - x 1, x 1 - x 0, x 0], ?_, ?_⟩`."
     refine ⟨![x 2 - x 1, x 1 - x 0, x 0], ?_, ?_⟩
-    · Hint (hidden := true) "`ext i; fin_cases i <;> simp [Fin.sum_univ_three]`"
-      ext i
-      fin_cases i <;> simp [Fin.sum_univ_three]
+    · Hint (hidden := true) "`entrywise <;> simp [Fin.sum_univ_three]`"
+      entrywise <;> simp [Fin.sum_univ_three]
     · intro c hc
       Hint "Compare coordinates one at a time."
       have h0 := congrFun hc 0

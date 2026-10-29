@@ -9,6 +9,9 @@ If $D$ is linearly independent, a map has only one representation with respect t
 two candidate matrices $H, H'$ give
 $\\sum_i (h_{ij} - h'_{ij})\\vec\\delta_i = h(\\vec\\beta_j) - h(\\vec\\beta_j) = \\vec 0$, so all the
 coefficients vanish. This is what makes \"*the* matrix of a map\" meaningful.
+
+Reminder: `hH : IsRep B D h H` is folded; `hH j` is the equation for column $j$ (or
+`unfold IsRep at hH`) — `rw [hH]` on its own will not work.
 "
 
 namespace LinearAlgebraGame

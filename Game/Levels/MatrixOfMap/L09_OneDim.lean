@@ -19,6 +19,10 @@ $\\mathbb R^1$ is commutative. Is this true for all one-dimensional spaces?
 
 Here $V$ is any space of dimension 1 ($\\mathbb R^1$ is one of them). Decide first:
 `left` if composition on $V$ can fail to commute, `right` if it always commutes. Then prove it.
+
+`hV` is about the whole space $V$, not a subspace, so use `finrank_eq_one_iff'` (new):
+`finrank_eq_one_iff'.mp hV : ∃ v, v ≠ 0 ∧ ∀ w, ∃ c, c • v = w` — like
+`exists_line_of_finrank_eq_one`, but with no `⊤` or `∈` to get through.
 "
 
 namespace LinearAlgebraGame
@@ -53,5 +57,5 @@ Conclusion "
 commute. (In dimension 2 it already fails.)
 "
 
-NewTheorem LinearMap.ext
+NewTheorem LinearMap.ext finrank_eq_one_iff'
 TheoremTab "Matrices"

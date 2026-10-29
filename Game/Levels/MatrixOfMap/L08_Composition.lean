@@ -12,6 +12,11 @@ represents $g : V \\to W$ (with respect to $C$, $D$), then $GH$ represents $g \\
 The computation for column $j$:
 $$g(h(\\vec\\beta_j)) = g\\Big(\\sum_l h_{lj}\\vec\\gamma_l\\Big) = \\sum_l h_{lj}\\sum_i g_{il}\\vec\\delta_i
 = \\sum_i \\Big(\\sum_l g_{il}h_{lj}\\Big)\\vec\\delta_i .$$
+
+**Lean note.** A hypothesis like `hG : IsRep C D g G` is *folded*: `rw [hG]` and
+`simp only [hG]` cannot see the equation inside, and `simp only` just reports the argument as
+unused. Either use it at a column, `hG l : g (C l) = ∑ i, G i l • D i`, or first
+`unfold IsRep at hG`.
 "
 
 namespace LinearAlgebraGame

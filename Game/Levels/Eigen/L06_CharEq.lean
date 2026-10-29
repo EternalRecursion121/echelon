@@ -32,12 +32,11 @@ Statement sheet9_q7a :
   Hint "Two parts: the polynomial, then its roots."
   constructor
   · Hint (hidden := true) "`rw [charpolyH]`, then identify the matrix:
-    `have e : … = !![C 3 - X, C 2; -C 1, -X] := by ext i j; fin_cases i <;> fin_cases j <;> simp`."
+    `have e : … = !![C 3 - X, C 2; -C 1, -X] := by entrywise <;> simp`."
     rw [charpolyH]
     have e : ((C : ℝ →+* ℝ[X]).mapMatrix !![3, 2; -1, 0] - Matrix.scalar (Fin 2) (X : ℝ[X]))
         = !![C 3 - X, C 2; -C 1, -X] := by
-      ext i j
-      fin_cases i <;> fin_cases j <;> simp
+      entrywise <;> simp
     Hint (hidden := true) "`rw [e, Matrix.det_fin_two_of]`. To finish, you need `C 3 = C 1 + C 2`
     (prove it with `rw [← C_add]; norm_num`), then `linear_combination`."
     rw [e, Matrix.det_fin_two_of]
@@ -50,8 +49,7 @@ Statement sheet9_q7a :
     `!![…]` matrix and use `Matrix.det_fin_two_of`."
     rw [isEigenvalue_iff_det]
     have e : (!![3, 2; -1, 0] - μ • 1 : Matrix (Fin 2) (Fin 2) ℝ) = !![3 - μ, 2; -1, -μ] := by
-      ext i j
-      fin_cases i <;> fin_cases j <;> simp
+      entrywise <;> simp
     rw [e, Matrix.det_fin_two_of]
     constructor
     · intro h

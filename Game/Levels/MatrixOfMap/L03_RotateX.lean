@@ -27,7 +27,9 @@ $\\vec e_2$ points right and $\\vec e_3$ points up; clockwise means $\\vec e_2$ 
 * about the $x$-axis: $R\\vec e_1 = \\vec e_1$;
 * clockwise for that observer: $R\\vec e_2 = (0, \\cos\\theta, -\\sin\\theta)$.
 
-These four facts pin $R$ down completely. Find it (`use !![…]`), then check them.
+(\"Clockwise as seen from the head\" is the opposite of the right-hand rule about the
+$x$-axis, so it does not depend on which way you call \"up\".) These four facts pin $R$ down
+completely. Find it (`use !![…]`), then check them.
 "
 
 namespace LinearAlgebraGame
@@ -44,18 +46,18 @@ Statement (θ : ℝ) : ∃ R : Matrix (Fin 3) (Fin 3) ℝ, Rᵀ * R = 1 ∧ R.de
   Hint (hidden := true) "You will need $\\sin^2\\theta + \\cos^2\\theta = 1$: `have hs := Real.sin_sq_add_cos_sq θ`."
   have hs := Real.sin_sq_add_cos_sq θ
   refine ⟨?_, ?_, ?_, ?_⟩
-  · Hint (hidden := true) "`ext i j`, `fin_cases i <;> fin_cases j`, then
-    `simp [Matrix.mul_apply, Fin.sum_univ_three]` and `linarith` for the diagonal entries."
-    ext i j
-    fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_three] <;> linarith
+  · Hint "`entrywise` splits $R^\\mathsf\{T} R = I$ into nine entries, but it does not multiply
+    the matrices for you: an entry of a product is a sum, `Matrix.mul_apply`, over three
+    positions, `Fin.sum_univ_three`."
+    Hint (hidden := true) "`entrywise <;> norm_num [Matrix.mul_apply, Fin.sum_univ_three] <;> linarith`
+    (the `linarith` uses `hs` on the diagonal entries)."
+    entrywise <;> norm_num [Matrix.mul_apply, Fin.sum_univ_three] <;> linarith
   · Hint (hidden := true) "`rw [Matrix.det_fin_three]`, then `simp` and `linear_combination hs`."
     rw [Matrix.det_fin_three]
     simp
     linear_combination hs
-  · ext i
-    fin_cases i <;> simp
-  · ext i
-    fin_cases i <;> simp
+  · entrywise <;> simp
+  · entrywise <;> simp
 
 end LinearAlgebraGame
 

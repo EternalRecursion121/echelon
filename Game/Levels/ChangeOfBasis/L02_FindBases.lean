@@ -39,10 +39,10 @@ Statement : ∃ B D : Fin 2 → (Fin 2 → ℝ),
   · rw [isRep_id_std_iff]
     intro i j
     fin_cases i <;> fin_cases j <;> simp
-  · Hint (hidden := true) "`intro j`, `fin_cases j <;> ext i <;> fin_cases i <;>
-    simp [stdBasis, Fin.sum_univ_two] <;> norm_num`"
+  · Hint (hidden := true) "`intro j`, then `fin_cases j <;> entrywise <;> simp [stdBasis]`, and
+    `norm_num` for the arithmetic left over."
     intro j
-    fin_cases j <;> ext i <;> fin_cases i <;> simp [stdBasis, Fin.sum_univ_two] <;> norm_num
+    fin_cases j <;> entrywise <;> simp [stdBasis] <;> norm_num
 
 end LinearAlgebraGame
 

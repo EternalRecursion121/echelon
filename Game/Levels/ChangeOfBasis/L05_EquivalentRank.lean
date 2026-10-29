@@ -11,8 +11,12 @@ different bases. `MatEquiv H H'` says exactly that.
 
 Changing bases cannot change the dimension of the range, so equivalent matrices have equal
 rank. In matrix language: multiplying by a nonsingular matrix on either side preserves
-rank — Mathlib's `Matrix.rank_mul_eq_left_of_isUnit_det` and
-`Matrix.rank_mul_eq_right_of_isUnit_det`.
+rank — two Mathlib lemmas, whose names are back to front (they are named after the factor
+that *stays*):
+* `Matrix.rank_mul_eq_left_of_isUnit_det Q H hQ : (H * Q).rank = H.rank` removes a nonsingular
+  factor on the **right**;
+* `Matrix.rank_mul_eq_right_of_isUnit_det P H hP : (P * H).rank = H.rank` removes a nonsingular
+  factor on the **left**.
 "
 
 namespace LinearAlgebraGame

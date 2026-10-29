@@ -57,14 +57,12 @@ Statement : ∃ k : ℕ, ∃ b : Fin k → Matrix (Fin 2) (Fin 2) ℝ,
           obtain ⟨h00, h01⟩ := hA
           rw [Submodule.mem_span_range_iff_exists_fun]
           refine ⟨![0, A 1 0, A 1 1], ?_⟩
-          ext i j
-          fin_cases i <;> fin_cases j <;> simp [Fin.sum_univ_three, h00, h01]
+          entrywise <;> simp [Fin.sum_univ_three, h00, h01]
         · intro A hA
           obtain ⟨h00, h11⟩ := hA
           rw [Submodule.mem_span_range_iff_exists_fun]
           refine ⟨![A 0 1, A 1 0, 0], ?_⟩
-          ext i j
-          fin_cases i <;> fin_cases j <;> simp [Fin.sum_univ_three, h00, h11]
+          entrywise <;> simp [Fin.sum_univ_three, h00, h11]
   Hint (hidden := true) "`exact ⟨3, _, hS, hS.finrank_eq⟩`"
   exact ⟨3, _, hS, hS.finrank_eq⟩
 

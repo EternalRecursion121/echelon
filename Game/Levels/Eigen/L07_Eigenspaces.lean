@@ -45,13 +45,11 @@ Statement sheet9_q7b :
       have h0 := congrFun h 0
       have h1 := congrFun h 1
       simp [Matrix.mulVec, dotProduct] at h0 h1
-      ext i
-      fin_cases i <;> simp <;> linarith
+      entrywise <;> simp <;> linarith
     · intro h
       obtain ⟨t, ht⟩ := h
       rw [← ht]
-      ext i
-      fin_cases i <;> simp [Matrix.mulVec, dotProduct] <;> ring
+      entrywise <;> simp [Matrix.mulVec, dotProduct] <;> ring
   · ext v
     rw [Module.End.mem_eigenspace_iff, Matrix.toLin'_apply, Submodule.mem_span_singleton]
     constructor
@@ -61,13 +59,11 @@ Statement sheet9_q7b :
       have h0 := congrFun h 0
       have h1 := congrFun h 1
       simp [Matrix.mulVec, dotProduct] at h0 h1
-      ext i
-      fin_cases i <;> simp <;> linarith
+      entrywise <;> simp <;> linarith
     · intro h
       obtain ⟨t, ht⟩ := h
       rw [← ht]
-      ext i
-      fin_cases i <;> simp [Matrix.mulVec, dotProduct] <;> ring
+      entrywise <;> simp [Matrix.mulVec, dotProduct] <;> ring
 
 end LinearAlgebraGame
 

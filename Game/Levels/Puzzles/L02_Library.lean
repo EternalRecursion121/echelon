@@ -70,13 +70,13 @@ Statement (n : ℕ) (reads : Fin (n + 1) → Finset (Fin n)) (hne : ∀ i, (read
   refine ⟨Finset.univ.filter (fun i => 0 < c i), Finset.univ.filter (fun i => c i < 0),
     ?_, ?_, ?_, hbal⟩
   · Hint (hidden := true) "`rcases hi.lt_or_gt with h | h`: in one case use `key`, in the other
-    `⟨i, Finset.mem_filter.mpr ⟨Finset.mem_univ i, h⟩⟩` directly."
+    `⟨i, Finset.mem_filter.mpr ⟨by simp, h⟩⟩` directly."
     rcases hi.lt_or_gt with h | h
-    · exact key.mpr ⟨i, Finset.mem_filter.mpr ⟨Finset.mem_univ i, h⟩⟩
-    · exact ⟨i, Finset.mem_filter.mpr ⟨Finset.mem_univ i, h⟩⟩
+    · exact key.mpr ⟨i, Finset.mem_filter.mpr ⟨by simp, h⟩⟩
+    · exact ⟨i, Finset.mem_filter.mpr ⟨by simp, h⟩⟩
   · rcases hi.lt_or_gt with h | h
-    · exact ⟨i, Finset.mem_filter.mpr ⟨Finset.mem_univ i, h⟩⟩
-    · exact key.mp ⟨i, Finset.mem_filter.mpr ⟨Finset.mem_univ i, h⟩⟩
+    · exact ⟨i, Finset.mem_filter.mpr ⟨by simp, h⟩⟩
+    · exact key.mp ⟨i, Finset.mem_filter.mpr ⟨by simp, h⟩⟩
   · Hint (hidden := true) "`exact Finset.disjoint_filter.mpr (fun j _ h1 h2 => by linarith)`"
     exact Finset.disjoint_filter.mpr (fun j _ h1 h2 => by linarith)
 

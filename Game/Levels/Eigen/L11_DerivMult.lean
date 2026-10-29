@@ -35,8 +35,7 @@ Statement :
     have e : ((C : ℝ →+* ℝ[X]).mapMatrix !![0, 1, 0, 0; 0, 0, 2, 0; 0, 0, 0, 3; 0, 0, 0, 0]
         - Matrix.scalar (Fin 4) (X : ℝ[X]))
         = !![-X, 1, 0, 0; 0, -X, C 2, 0; 0, 0, -X, C 3; 0, 0, 0, -X] := by
-      ext i j
-      fin_cases i <;> fin_cases j <;> simp
+      entrywise <;> simp
     rw [e]
     eval_det
   refine ⟨hc, ?_, ?_⟩

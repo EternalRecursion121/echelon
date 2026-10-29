@@ -548,8 +548,6 @@ TheoremDoc map_zero as "map_zero" in "Eigen"
 /-- $(ab)c = a(bc)$. -/
 TheoremDoc mul_assoc as "mul_assoc" in "Eigen"
 
-/-- $ab = ba$ (real numbers, or any commutative ring). -/
-TheoremDoc mul_comm as "mul_comm" in "Eigen"
 
 /-- $ab = 0 \iff a = 0 \lor b = 0$. -/
 TheoremDoc mul_eq_zero as "mul_eq_zero" in "Eigen"
@@ -614,3 +612,7 @@ TheoremDoc Submodule.finrank_le as "finrank_le" in "Eigen"
 
 /-- $\dim \mathbb R^n = n$: `finrank ℝ (Fin n → ℝ) = n`. -/
 TheoremDoc Module.finrank_fin_fun as "finrank_fin_fun" in "Eigen"
+/-- `Ne.symm h : b ≠ a` from `h : a ≠ b`. -/
+TheoremDoc Ne.symm as "Ne.symm" in "Determinants"
+/-- `Polynomial.coeff_natDegree : p.coeff p.natDegree = p.leadingCoeff` — the top coefficient is the leading coefficient. -/
+TheoremDoc Polynomial.coeff_natDegree as "coeff_natDegree" in "Eigen"

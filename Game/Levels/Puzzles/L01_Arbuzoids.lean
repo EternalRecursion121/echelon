@@ -23,7 +23,9 @@ A state is a triple (red, green, blue) of integers. `Meet s t` is one meeting, a
 `Reachable s t` means some finite sequence of meetings leads from `s` to `t`. All blue means
 the state $(0, 0, 45)$. Use linear algebra: find a quantity that no meeting changes.
 
-New: `omega` proves facts about integer arithmetic (including `%`).
+`x % 3` is the remainder of the integer `x` on division by 3. New:
+`Int.add_mul_emod_self_left a b c : (a + b * c) % b = a % b` — adding a multiple of 3 does not
+change the remainder.
 "
 
 namespace LinearAlgebraGame
@@ -40,9 +42,20 @@ Statement : ¬ Reachable (13, 15, 17) (0, 0, 45) := by
     | refl => norm_num
     | tail _ hstep ih =>
       Hint (hidden := true) "Split the last meeting into its three kinds:
-      `rcases hstep with ⟨r, g, b, _, _⟩ | ⟨r, g, b, _, _⟩ | ⟨r, g, b, _, _⟩`, then `simp only at ih ⊢`
-      and `omega` in each case."
-      rcases hstep with ⟨r, g, b, _, _⟩ | ⟨r, g, b, _, _⟩ | ⟨r, g, b, _, _⟩ <;> simp only at ih ⊢ <;> omega
+      `rcases hstep with ⟨r, g, b, _, _⟩ | ⟨r, g, b, _, _⟩ | ⟨r, g, b, _, _⟩ <;> simp only at ih ⊢`.
+      In each case write the new red − green as the old one plus a multiple of 3, e.g.
+      `have e : r - 1 - (g + 2) = r - g + 3 * (-1) := by ring`, then
+      `rw [e, Int.add_mul_emod_self_left]` and `exact ih`."
+      rcases hstep with ⟨r, g, b, _, _⟩ | ⟨r, g, b, _, _⟩ | ⟨r, g, b, _, _⟩ <;> simp only at ih ⊢
+      · have e : r - 1 - (g - 1) = r - g := by ring
+        rw [e]
+        exact ih
+      · have e : r - 1 - (g + 2) = r - g + 3 * (-1) := by ring
+        rw [e, Int.add_mul_emod_self_left]
+        exact ih
+      · have e : r + 2 - (g - 1) = r - g + 3 * 1 := by ring
+        rw [e, Int.add_mul_emod_self_left]
+        exact ih
   have h1 := key _ h
   Hint (hidden := true) "`norm_num at h1`"
   norm_num at h1
@@ -53,4 +66,4 @@ Conclusion "**Answer: never** — red − green is $1$ mod $3$ forever, but all-
 
 NewDefinition LinearAlgebraGame.Meet LinearAlgebraGame.Reachable
 TheoremTab "Puzzles"
-NewTheorem refl
+NewTheorem Int.add_mul_emod_self_left refl

@@ -20,6 +20,10 @@ instead. (Put the person's head at $\\vec e_2$.)
 The same convention as before, with the axes moved round cyclically
 ($x \\to y \\to z \\to x$): the observer at $\\vec e_2$ sees $\\vec e_3$ pointing right and
 $\\vec e_1$ pointing up, and clockwise means $R\\vec e_3 = (-\\sin\\theta, 0, \\cos\\theta)$.
+
+**The convention, once more:** clockwise *as seen by the observer at $\\vec e_2$ looking at the
+origin*, i.e. the opposite of the right-hand rule about the $y$-axis. (Someone who calls
+$\\vec e_3$ \"up\" sees $\\vec e_1$ pointing left — the same turn, so the same matrix.)
 "
 
 namespace LinearAlgebraGame
@@ -33,15 +37,13 @@ Statement (θ : ℝ) : ∃ R : Matrix (Fin 3) (Fin 3) ℝ, Rᵀ * R = 1 ∧ R.de
   use !![Real.cos θ, 0, -Real.sin θ; 0, 1, 0; Real.sin θ, 0, Real.cos θ]
   have hs := Real.sin_sq_add_cos_sq θ
   refine ⟨?_, ?_, ?_, ?_⟩
-  · ext i j
-    fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_three] <;> linarith
+  · Hint (hidden := true) "As before: `entrywise <;> norm_num [Matrix.mul_apply, Fin.sum_univ_three] <;> linarith`."
+    entrywise <;> norm_num [Matrix.mul_apply, Fin.sum_univ_three] <;> linarith
   · rw [Matrix.det_fin_three]
     simp
     linear_combination hs
-  · ext i
-    fin_cases i <;> simp
-  · ext i
-    fin_cases i <;> simp
+  · entrywise <;> simp
+  · entrywise <;> simp
 
 end LinearAlgebraGame
 

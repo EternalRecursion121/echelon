@@ -13,7 +13,7 @@ by $a$. Each step is condition (3); the last word is condition (4).
 
 You will need to identify matrices like `(1 : Matrix _ _ ℝ).updateRow 1 (c • 1 1)` with
 `!![1, 0; 0, c]`. Prove such equalities entry by entry:
-`ext i j; fin_cases i <;> fin_cases j <;> simp`.
+`entrywise <;> simp`.
 "
 
 namespace LinearAlgebraGame
@@ -26,15 +26,13 @@ Statement det_diag_two (d : Matrix (Fin 2) (Fin 2) ℝ → ℝ) (hd : DetAxioms 
   have h1 := hd.scale 1 1 c
   have h2 := hd.scale !![1, 0; 0, c] 0 a
   Hint (hidden := true) "Now prove the two matrix identities with `have e1 : … = !![1, 0; 0, c]`
-  (and `e2` for `!![a, 0; 0, c]`), each by `ext i j; fin_cases i <;> fin_cases j <;> simp`."
+  (and `e2` for `!![a, 0; 0, c]`), each by `entrywise <;> simp`."
   have e1 : (1 : Matrix (Fin 2) (Fin 2) ℝ).updateRow 1 (c • (1 : Matrix (Fin 2) (Fin 2) ℝ) 1)
       = !![1, 0; 0, c] := by
-    ext i j
-    fin_cases i <;> fin_cases j <;> simp
+    entrywise <;> simp
   have e2 : (!![1, 0; 0, c] : Matrix (Fin 2) (Fin 2) ℝ).updateRow 0 (a • !![1, 0; 0, c] 0)
       = !![a, 0; 0, c] := by
-    ext i j
-    fin_cases i <;> fin_cases j <;> simp
+    entrywise <;> simp
   Hint (hidden := true) "Rewrite `e1` and `hd.one` in `h1`, then `e2` and `h1` in `h2`."
   rw [e1, hd.one, mul_one] at h1
   rw [e2, h1] at h2

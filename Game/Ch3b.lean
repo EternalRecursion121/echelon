@@ -251,8 +251,6 @@ TheoremDoc Finset.sum_smul as "Finset.sum_smul" in "Sums"
 TheoremDoc Finset.sum_comm as "Finset.sum_comm" in "Sums"
 /-- $a \cdot (b \cdot v) = (ab)\cdot v$. -/
 TheoremDoc smul_smul as "smul_smul" in "Isomorphisms"
-/-- $ab = ba$. -/
-TheoremDoc mul_comm as "mul_comm" in "Sums"
 /-- `finrank ℝ V = 1 ↔ ∃ v ≠ 0, ∀ w, ∃ c, c • v = w`. -/
 TheoremDoc finrank_eq_one_iff' as "finrank_eq_one_iff'" in "Dimension"
 /-- Two linear maps are equal if they agree on every vector. -/
@@ -282,9 +280,9 @@ TheoremDoc Submodule.finrank_map_le as "finrank_map_le" in "Dimension"
 TheoremDoc LinearMap.range_comp_le_range as "range_comp_le_range" in "Maps"
 /-- If `U ≤ W` then `finrank U ≤ finrank W`. -/
 TheoremDoc Submodule.finrank_mono as "finrank_mono" in "Dimension"
-/-- `IsRep B D h H`: the matrix `H` represents `h` with respect to `B` and `D` (Hefferon Def Three.III.1.2). It unfolds to `∀ j, h (B j) = ∑ i, H i j • D i`: column $j$ of $H$ holds the coordinates of $h(\vec\beta_j)$ with respect to $D$. Prove it with `intro j`. -/
+/-- `IsRep B D h H`: the matrix `H` represents `h` with respect to `B` and `D` (Hefferon Def Three.III.1.2). It unfolds to `∀ j, h (B j) = ∑ i, H i j • D i`: column $j$ of $H$ holds the coordinates of $h(\vec\beta_j)$ with respect to $D$. Prove it with `intro j`. A *hypothesis* `hH : IsRep B D h H` is folded: use it at a column, `hH j : h (B j) = ∑ i, H i j • D i`, or `unfold IsRep at hH` first — `rw [hH]` and `simp only [hH]` cannot see inside it (simp only just reports the argument as unused). -/
 DefinitionDoc LinearAlgebraGame.IsRep as "IsRep (Rep_{B,D})"
-/-- `stdBasis n` is the standard basis $\mathcal E_n = \langle\vec e_1,\dots,\vec e_n\rangle$ of $\mathbb R^n$: `stdBasis n i = Pi.single i 1`. Unfold with `simp [stdBasis, Pi.single_apply]`. -/
+/-- `stdBasis n` is the standard basis $\mathcal E_n = \langle\vec e_1,\dots,\vec e_n\rangle$ of $\mathbb R^n$: `stdBasis n i = Pi.single i 1`. Unfold with `simp [stdBasis, Pi.single_apply]`. Not to be confused with Mathlib's `Matrix.stdBasis` (a basis of the space of *matrices*): in a file with `open Matrix`, Lean may report `Ambiguous term stdBasis` — then write `LinearAlgebraGame.stdBasis`. -/
 DefinitionDoc LinearAlgebraGame.stdBasis as "stdBasis (ℰₙ)"
 /-- `IsUpperTri A` : `∀ i j, j < i → A i j = 0` (all entries below the diagonal are zero). -/
 DefinitionDoc LinearAlgebraGame.IsUpperTri as "IsUpperTri"
@@ -298,6 +296,8 @@ DefinitionDoc LinearAlgebraGame.blockId as "blockId"
 DefinitionDoc LinearAlgebraGame.projLine as "projLine"
 /-- `Aᵀ` is the transpose: `Aᵀ i j = A j i` (`Matrix.transpose_apply`). -/
 DefinitionDoc Matrix.transpose as "ᵀ (transpose)"
+/-- `IsUnit x` says `x` has a two-sided inverse. For a real number, `IsUnit x` means $x \ne 0$; so `IsUnit H.det` says the determinant of $H$ is nonzero, i.e. $H$ is invertible (and then `H⁻¹` really is its inverse: `Matrix.nonsing_inv_mul`, `Matrix.mul_nonsing_inv`). -/
+DefinitionDoc IsUnit as "IsUnit"
 /-- `LinearMap.toMatrix B D h` is Mathlib's $\mathrm{Rep}_{B,D}(h)$ for bases `B`, `D`; it is a linear isomorphism `(V →ₗ[ℝ] W) ≃ₗ[ℝ] Matrix …`. -/
 DefinitionDoc LinearMap.toMatrix as "LinearMap.toMatrix"
 /-- `LinearMap.toMatrix'` is $\mathrm{Rep}_{\mathcal E_n,\mathcal E_m}$: the isomorphism between linear maps $\mathbb R^n\to\mathbb R^m$ and $m\times n$ matrices. -/
@@ -334,6 +334,8 @@ TheoremDoc LinearAlgebraGame.exists_cob_to as "exists_cob_to" in "Change of basi
 TheoremDoc LinearAlgebraGame.isRep_mulVecLin as "isRep_mulVecLin" in "Change of basis"
 /-- `projLine_orth s v hs : (v - projLine s v) ⬝ᵥ s = 0` for `hs : s ≠ 0`. -/
 TheoremDoc LinearAlgebraGame.projLine_orth as "projLine_orth" in "Projection"
+/-- `projLine_mem v hs : projLine s v ∈ W` for `hs : s ∈ W` — a projection onto a vector of a subspace stays in the subspace. -/
+TheoremDoc LinearAlgebraGame.projLine_mem as "projLine_mem" in "Projection"
 /-- **Granted.** `dot_self_nonneg v : 0 ≤ v ⬝ᵥ v`. -/
 TheoremDoc LinearAlgebraGame.dot_self_nonneg as "dot_self_nonneg" in "Projection"
 /-- `linearIndependent_of_orthogonal v h0 horth : LinearIndependent ℝ v` for nonzero (`h0`), mutually orthogonal (`horth`) vectors (Thm Three.VI.2.2). -/

@@ -20,10 +20,12 @@ namespace LinearAlgebraGame
 Statement isRep_toMatrix {V W : Type*} [AddCommGroup V] [Module ℝ V] [AddCommGroup W]
     [Module ℝ W] {m n : ℕ} (B : Module.Basis (Fin n) ℝ V) (D : Module.Basis (Fin m) ℝ W)
     (h : V →ₗ[ℝ] W) : IsRep B D h (LinearMap.toMatrix B D h) := by
-  Hint "Unfold the goal for one column `j`, then rewrite the entries."
+  Hint "Unfold the goal for one column `j`, then turn the entries into coordinates. The
+  entries sit inside a sum $\\sum_i$, and `rw` cannot rewrite under a `∑` (it fails with a
+  long error about \"motive\" or \"did not find an occurrence\"): use
+  `simp only [LinearMap.toMatrix_apply]` instead, which can."
   intro j
-  Hint (hidden := true) "`simp only [LinearMap.toMatrix_apply]` turns the entries into
-  coordinates; then `rw [D.sum_repr]`."
+  Hint (hidden := true) "After `simp only [LinearMap.toMatrix_apply]`: `rw [D.sum_repr]`."
   simp only [LinearMap.toMatrix_apply]
   rw [D.sum_repr]
 

@@ -62,8 +62,7 @@ Statement : ∃ k : ℕ, ∃ b : Fin k → Poly 2,
         rw [Submodule.mem_span_range_iff_exists_fun]
         Hint (hidden := true) "`refine ⟨![p 1 + 5 * p 2, p 2], ?_⟩`, then compare coefficients."
         refine ⟨![p 1 + 5 * p 2, p 2], ?_⟩
-        ext i
-        fin_cases i <;> simp <;> linarith
+        entrywise <;> simp <;> linarith
   Hint (hidden := true) "`exact ⟨2, _, hB, hB.finrank_eq⟩`"
   exact ⟨2, _, hB, hB.finrank_eq⟩
 

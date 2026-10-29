@@ -488,8 +488,6 @@ TheoremDoc le_antisymm as "le_antisymm" in "Basis"
 TheoremDoc le_sup_left as "le_sup_left" in "Sums"
 /-- The empty sequence is linearly independent. -/
 TheoremDoc linearIndependent_empty_type as "linearIndependent_empty_type" in "Dimension"
-/-- `a * b = b * a`. -/
-TheoremDoc mul_comm as "mul_comm" in "Basis"
 /-- `a * b = 0 ↔ a = 0 ∨ b = 0`. -/
 TheoremDoc mul_eq_zero as "mul_eq_zero" in "Dimension"
 /-- `a ≠ 0 → a * b = a * c → b = c`. -/

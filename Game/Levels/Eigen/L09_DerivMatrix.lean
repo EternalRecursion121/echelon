@@ -21,10 +21,9 @@ open Matrix in
 Statement deriv_eq_mulVec (p : Poly 3) :
     Poly.deriv p = (!![0, 1, 0, 0; 0, 0, 2, 0; 0, 0, 0, 3; 0, 0, 0, 0] : Matrix (Fin 4) (Fin 4) ℝ) *ᵥ p := by
   Hint "Compare the four coordinates."
-  Hint (hidden := true) "`ext i`, `fin_cases i`, and in each case
+  Hint (hidden := true) "`entrywise`, and in each case
   `simp [Poly.deriv, Matrix.mulVec, dotProduct, Fin.sum_univ_four]`, then `norm_num` for what is left."
-  ext i
-  fin_cases i <;> simp [Poly.deriv, Matrix.mulVec, dotProduct, Fin.sum_univ_four] <;> norm_num
+  entrywise <;> simp [Poly.deriv, Matrix.mulVec, dotProduct, Fin.sum_univ_four] <;> norm_num
 
 end LinearAlgebraGame
 

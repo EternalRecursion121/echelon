@@ -28,6 +28,10 @@ so these coordinates are well defined, is the narrative here, not the exercise.)
 
 Your answer is a matrix $C$ describing $h$ in the coordinates $(a, b)$: show that **every**
 linear $h$ represented by the given matrix is $v \\mapsto C v$.
+
+Lean note: once you `intro h hh`, the hypothesis `hh : IsRep B D h …` is *folded* — `rw [hh]`
+and `simp only [hh]` cannot see inside it. Use it at a column, `hh 0 : h (B 0) = …`, or
+`unfold IsRep at hh` first.
 "
 
 namespace LinearAlgebraGame
@@ -47,10 +51,9 @@ Statement : ∃ C : Matrix (Fin 2) (Fin 2) ℝ, ∀ h : (Fin 2 → ℝ) →ₗ[�
   intro h hh v
   Hint "Write $v = v_0\\,\\vec\\beta_1 + (v_0 + v_1)\\,\\vec\\beta_2$."
   Hint (hidden := true) "`have hv : v = v 0 • ![1, -1] + (v 0 + v 1) • ![0, 1] := by
-    ext i; fin_cases i <;> simp`"
+    entrywise <;> simp`"
   have hv : v = v 0 • ![1, -1] + (v 0 + v 1) • ![0, 1] := by
-    ext i
-    fin_cases i <;> simp
+    entrywise <;> simp
   Hint (hidden := true) "Get the two columns as facts: `have h0 := {hh} 0`, `have h1 := {hh} 1`,
   and tidy them with `simp [Fin.sum_univ_two] at h0 h1`."
   have h0 := hh 0
@@ -58,8 +61,7 @@ Statement : ∃ C : Matrix (Fin 2) (Fin 2) ℝ, ∀ h : (Fin 2 → ℝ) →ₗ[�
   simp [Fin.sum_univ_two] at h0 h1
   Hint (hidden := true) "`rw [hv, map_add, map_smul, map_smul, h0, h1]`, then compare components."
   rw [hv, map_add, map_smul, map_smul, h0, h1]
-  ext i
-  fin_cases i <;> simp
+  entrywise <;> simp
 
 end LinearAlgebraGame
 

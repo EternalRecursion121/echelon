@@ -29,10 +29,9 @@ Statement : Submodule.span ℝ {(![1, 3, 6] : Fin 3 → ℝ), ![1, 1, 3], ![-1, 
     Hint (hidden := true) "`rw [← span_insert_iff, Submodule.mem_span_pair]`"
     rw [← span_insert_iff, Submodule.mem_span_pair]
     Hint (hidden := true) "Gauss's method gives $(1,3,6) = 2\\cdot(1,1,3) + (-1,1,0)$:
-    `use 2, 1`, then `ext i`, `fin_cases i <;> simp <;> norm_num`."
+    `use 2, 1`, then `entrywise <;> simp <;> norm_num`."
     use 2, 1
-    ext i
-    fin_cases i <;> simp <;> norm_num
+    entrywise <;> simp <;> norm_num
   · rw [LinearIndependent.pair_iff]
     intro a b h
     Hint (hidden := true) "Compare the first two coordinates: `congrFun {h} 0`, `congrFun {h} 1`."

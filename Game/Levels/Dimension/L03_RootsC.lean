@@ -49,9 +49,8 @@ Statement : ∃ k : ℕ, ∃ b : Fin k → Poly 2,
       simp [Poly.evalAt_apply, Poly.eval, Fin.sum_univ_three] at h5 h3 h1
       Hint (hidden := true) "`rw [Submodule.mem_bot]`: show $p = 0$."
       rw [Submodule.mem_bot]
-      Hint (hidden := true) "Three equations, three unknowns: `ext i; fin_cases i <;> simp <;> linarith`."
-      ext i
-      fin_cases i <;> simp <;> linarith
+      Hint (hidden := true) "Three equations, three unknowns: `entrywise <;> linarith`."
+      entrywise <;> linarith
   exact ⟨hB, hB.finrank_eq⟩
 
 end LinearAlgebraGame
