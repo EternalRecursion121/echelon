@@ -22,4 +22,6 @@ Introduction "
 Hefferon One.I: Gauss's method. A linear system is a list of equations; a *row operation*
 replaces one equation by a combination of equations. In Lean every row operation is a
 `rowop` (or `linear_combination`) step — you choose the multipliers, Lean checks the algebra.
+
+**Typing:** `•` is `\\smul`, `↔` is `\\iff`, `ℚ` is `\\Q`.
 "

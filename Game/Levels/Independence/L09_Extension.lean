@@ -10,6 +10,8 @@ $S \\cup \\{\\vec v\\}$ is linearly independent if and only if $\\vec v \\notin 
 
 Prove it for $S = \\{\\vec u, \\vec w\\}$. `Submodule.mem_span_pair` says
 $\\vec x \\in [\\{\\vec u, \\vec w\\}]$ iff $\\vec x = a\\vec u + b\\vec w$ for some $a, b$.
+
+**New:** `exfalso` replaces the goal by `False` (to prove anything from a contradiction).
 "
 
 namespace LinearAlgebraGame

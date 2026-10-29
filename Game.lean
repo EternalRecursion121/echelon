@@ -32,6 +32,38 @@ for your tutorial.
 Info "
 Based on Jim Hefferon's *Linear Algebra* (4th ed.) and the MT2026 problem sheets.
 Built on lean4game and Mathlib.
+
+## Controls
+
+- **Retry** (on any step you have run): undo that step and everything after it.
+- **Start a level over:** Retry on the first step, or menu → *Clear Progress* → *Delete this Level*.
+- **Editor mode** (toggle at the top): edit the whole proof as text.
+- **Save your work:** menu → download progress (a `.json` file; progress otherwise lives only
+  in this browser). The same file feeds the hand-in export.
+
+## Typing symbols
+
+Type the code, then a space. Hover over a symbol in the editor to see its code.
+
+| Symbol | Type | Meaning |
+|---|---|---|
+| `⟨ ⟩` | `\\<` `\\>` | anonymous constructor: `⟨hx, hy⟩` |
+| `←` `→` `↔` | `\\l` `\\to` `\\iff` | rewrite backwards, implies, iff |
+| `∧` `∨` `¬` | `\\and` `\\or` `\\not` | and, or, not |
+| `∀` `∃` | `\\all` `\\ex` | for all, there exists |
+| `≠` `≤` `≥` | `\\ne` `\\le` `\\ge` | |
+| `ℝ` `ℚ` `ℤ` `ℕ` | `\\R` `\\Q` `\\Z` `\\N` | number systems |
+| `•` | `\\smul` | scalar multiplication `r • v` |
+| `⬝ᵥ` | `\\tr` then `\\_v` | dot product `u ⬝ᵥ v` |
+| `*ᵥ` | `*` then `\\_v` | matrix times vector `A *ᵥ v` |
+| `ᵀ` | `\\^T` | transpose `Aᵀ` |
+| `⁻¹` | `\\inv` | inverse `A⁻¹` |
+| `∑` | `\\sum` | sum |
+| `∈` `⊆` | `\\in` `\\sub` | element of, subset |
+| `⊓` `⊔` `⊥` `⊤` | `\\inf` `\\sup` `\\bot` `\\top` | intersection, sum, zero subspace, whole space |
+| `∘ₗ` `→ₗ` `≃ₗ` | `\\circ\\_l` `\\to\\_l` `\\equiv\\_l` | composition, linear map, linear isomorphism |
+| `×` | `\\times` | product |
+| `₀ ₁ ₂` | `\\0` `\\1` `\\2` | subscripts |
 "
 
 /-! Information to be displayed on the servers landing page. -/

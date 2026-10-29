@@ -35,16 +35,16 @@ Statement (n : ℕ) (hn : 0 < n) :
     1 / Real.sqrt n := by
   Hint "Compute the three ingredients: $\\vec d \\cdot \\vec d$, $\\vec e_1\\cdot\\vec e_1$ and
   $\\vec d\\cdot\\vec e_1$."
-  Hint (hidden := true) "`have h₁ : (fun _ => 1 : Fin n → ℝ) ⬝ᵥ (fun _ => 1) = n := by norm_num [dotProduct]`"
-  have h₁ : (fun _ => 1 : Fin n → ℝ) ⬝ᵥ (fun _ => 1) = n := by
+  Hint (hidden := true) "`have h1 : (fun _ => 1 : Fin n → ℝ) ⬝ᵥ (fun _ => 1) = n := by norm_num [dotProduct]`"
+  have h1 : (fun _ => 1 : Fin n → ℝ) ⬝ᵥ (fun _ => 1) = n := by
     norm_num [dotProduct]
   Hint (strict := true) (hidden := true) "`dotProduct_single v x i : v ⬝ᵥ Pi.single i x = v i * x`.
-  `have h₂ : (Pi.single ⟨0, hn⟩ 1 : Fin n → ℝ) ⬝ᵥ Pi.single ⟨0, hn⟩ 1 = 1 := by`
+  `have h2 : (Pi.single ⟨0, hn⟩ 1 : Fin n → ℝ) ⬝ᵥ Pi.single ⟨0, hn⟩ 1 = 1 := by`
   `rw [dotProduct_single, Pi.single_eq_same, mul_one]`"
-  have h₂ : (Pi.single ⟨0, hn⟩ 1 : Fin n → ℝ) ⬝ᵥ Pi.single ⟨0, hn⟩ 1 = 1 := by
+  have h2 : (Pi.single ⟨0, hn⟩ 1 : Fin n → ℝ) ⬝ᵥ Pi.single ⟨0, hn⟩ 1 = 1 := by
     rw [dotProduct_single, Pi.single_eq_same, mul_one]
-  Hint (strict := true) (hidden := true) "`rw [len, len, h₁, h₂, dotProduct_single, mul_one, Real.sqrt_one, mul_one]`"
-  rw [len, len, h₁, h₂, dotProduct_single, mul_one, Real.sqrt_one, mul_one]
+  Hint (strict := true) (hidden := true) "`rw [len, len, h1, h2, dotProduct_single, mul_one, Real.sqrt_one, mul_one]`"
+  rw [len, len, h1, h2, dotProduct_single, mul_one, Real.sqrt_one, mul_one]
 
 end LinearAlgebraGame
 

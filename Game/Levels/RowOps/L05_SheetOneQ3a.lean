@@ -26,15 +26,15 @@ Statement (x y : ℝ) :
     (3 * x + 6 * y = 18 ∧ x + 2 * y = 6) ↔ ∃ t : ℝ, ![x, y] = ![6, 0] + t • ![-2, 1] := by
   constructor
   · intro h
-    obtain ⟨h₁, h₂⟩ := h
+    obtain ⟨h1, h2⟩ := h
     Hint "Row 1 is three times row 2, so $y$ is free. Which $t$ gives the point $(x, y)$?"
     Hint (hidden := true) "`use y`, then compare components."
     use y
     ext i
     fin_cases i
     · norm_num
-      Hint (hidden := true) "This is row 2 rearranged: `linear_combination h₂`."
-      linear_combination h₂
+      Hint (hidden := true) "This is row 2 rearranged: `linear_combination h2`."
+      linear_combination h2
     · norm_num
   · intro h
     obtain ⟨t, ht⟩ := h

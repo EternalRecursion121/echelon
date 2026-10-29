@@ -20,27 +20,27 @@ namespace LinearAlgebraGame
 
 open Matrix in
 /-- Gram–Schmidt on three vectors gives mutually orthogonal vectors with the same span. -/
-Statement {n : ℕ} (β₁ β₂ β₃ : Fin n → ℝ) (h₁ : β₁ ≠ 0) :
+Statement {n : ℕ} (β₁ β₂ β₃ : Fin n → ℝ) (h1 : β₁ ≠ 0) :
     let κ₁ := β₁
     let κ₂ := β₂ - projLine κ₁ β₂
     let κ₃ := β₃ - projLine κ₁ β₃ - projLine κ₂ β₃
     κ₂ ≠ 0 →
     (κ₂ ⬝ᵥ κ₁ = 0 ∧ κ₃ ⬝ᵥ κ₁ = 0 ∧ κ₃ ⬝ᵥ κ₂ = 0) ∧
     Submodule.span ℝ {κ₁, κ₂, κ₃} = Submodule.span ℝ {β₁, β₂, β₃} := by
-  intro h₂
-  have o21 : κ₂ ⬝ᵥ κ₁ = 0 := projLine_orth κ₁ β₂ h₁
+  intro h2
+  have o21 : κ₂ ⬝ᵥ κ₁ = 0 := projLine_orth κ₁ β₂ h1
   refine ⟨⟨o21, ?_, ?_⟩, ?_⟩
   · Hint "$\\vec\\kappa_3\\cdot\\vec\\kappa_1 = (\\vec\\beta_3 - \\mathrm\{proj}_\{[\\vec\\kappa_1]})\\cdot\\vec\\kappa_1
     - \\mathrm\{proj}_\{[\\vec\\kappa_2]}(\\vec\\beta_3)\\cdot\\vec\\kappa_1$. The first is zero by
     `projLine_orth`, the second because $\\vec\\kappa_2 \\perp \\vec\\kappa_1$."
-    Hint (hidden := true) "`simp only [κ₃]`, then `rw [sub_dotProduct, projLine_orth κ₁ β₃ {h₁},
+    Hint (hidden := true) "`simp only [κ₃]`, then `rw [sub_dotProduct, projLine_orth κ₁ β₃ {h1},
     projLine, smul_dotProduct, o21, smul_zero, sub_zero]`."
     simp only [κ₃]
-    rw [sub_dotProduct, projLine_orth κ₁ β₃ h₁, projLine, smul_dotProduct, o21, smul_zero,
+    rw [sub_dotProduct, projLine_orth κ₁ β₃ h1, projLine, smul_dotProduct, o21, smul_zero,
       sub_zero]
   · Hint (hidden := true) "Swap the two subtractions with `sub_right_comm` first."
     simp only [κ₃]
-    rw [sub_right_comm, sub_dotProduct, projLine_orth κ₂ β₃ h₂, projLine, smul_dotProduct,
+    rw [sub_right_comm, sub_dotProduct, projLine_orth κ₂ β₃ h2, projLine, smul_dotProduct,
       dotProduct_comm κ₁ κ₂, o21, smul_zero, sub_zero]
   · Hint "As in *One Gram–Schmidt step*, two inclusions. It helps to know $\\vec\\kappa_2$ lies
     in the $\\vec\\beta$-span before dealing with $\\vec\\kappa_3$."

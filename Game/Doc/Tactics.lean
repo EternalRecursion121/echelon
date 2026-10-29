@@ -5,7 +5,8 @@ import Game.Lib
 define the same doc twice. A tactic is *unlocked* in a level with `NewTactic`; it is only
 documented here. -/
 
-/-- `exact h` closes the goal using a term `h` whose type is exactly the goal. -/
+/-- `exact h` closes the goal using a term `h` whose type is exactly the goal. It always
+needs an argument: `exact hy`, not just `exact`. -/
 TacticDoc exact
 /-- `rw [h]` rewrites the goal with the equation `h : a = b` (replacing `a` by `b`).
 `rw [← h]` rewrites right-to-left; `rw [h] at h'` rewrites a hypothesis. -/
@@ -18,7 +19,8 @@ Some worlds switch it off when it would do the interesting work for you. -/
 TacticDoc norm_num
 /-- `constructor` splits a goal `P ∧ Q` (or `P ↔ Q`) into separate goals. -/
 TacticDoc constructor
-/-- `obtain ⟨a, b⟩ := h` takes apart a hypothesis `h : P ∧ Q` or `h : ∃ x, P x`. -/
+/-- `obtain ⟨a, b⟩ := h` takes apart a hypothesis `h : P ∧ Q` or `h : ∃ x, P x`.
+Type `⟨` as `\<` and `⟩` as `\>`. -/
 TacticDoc obtain
 /-- `use a` proves `∃ x, P x` by supplying `a`, leaving `P a` to prove. -/
 TacticDoc use
@@ -29,7 +31,8 @@ TacticDoc left
 /-- See `left`. -/
 TacticDoc right
 /-- `rcases h with h1 | h2` splits `h : P ∨ Q` into cases; `rcases h with ⟨a, b⟩` takes
-apart `∧` and `∃`. -/
+apart `∧` and `∃`.
+Type `⟨` as `\<` and `⟩` as `\>`. -/
 TacticDoc rcases
 /-- `ext i` reduces an equation between vectors (or matrices: `ext i j`, functions,
 subspaces: `ext v`) to one component or element. -/
@@ -42,11 +45,14 @@ TacticDoc «have»
 step with its own justification. -/
 TacticDoc «calc»
 /-- `linear_combination e` proves an equation by adding up hypotheses: for example
-`linear_combination h₂ - 3 * h₁`. Checks that goal − e is an identity (by `ring`). -/
+`linear_combination h2 - 3 * h1`. Checks that goal − e is an identity (by `ring`). -/
 TacticDoc linear_combination
-/-- `rowop h : new_row := e` performs one Gaussian row operation: `e` combines equations as
-in `linear_combination` (e.g. `h₂ - 3 * h₁` is −3ρ₁ + ρ₂). You write the new row; Lean checks
-it, and the new row replaces `h`. -/
+/-- `rowop h2 := h2 - 3 * h1` performs one Gaussian row operation (Hefferon's −3ρ₁ + ρ₂): Lean
+works out the new row and it replaces `h2`. The combination is written as in
+`linear_combination`, e.g. `h2 + h1`, `2 * h1 - h2`, `h3 / 3`, `-h2`.
+
+`rowop h2 : -y = -2 := h2 - 3 * h1` does the same but you state the new row yourself and Lean
+checks it — handy for checking your arithmetic or picking a tidier form. -/
 TacticDoc rowop
 /-- `linarith` proves linear (in)equalities that follow from the hypotheses. -/
 TacticDoc linarith
@@ -67,7 +73,8 @@ TacticDoc «module»
 TacticDoc simp
 /-- `apply f` reduces the goal to the hypotheses of `f` (works backwards). -/
 TacticDoc apply
-/-- `refine ⟨?_, ?_⟩` builds a term with holes `?_` that become new goals. -/
+/-- `refine ⟨?_, ?_⟩` builds a term with holes `?_` that become new goals.
+Type `⟨` as `\<` and `⟩` as `\>`. -/
 TacticDoc refine
 /-- `exfalso` replaces the goal by `False` (to prove anything from a contradiction). -/
 TacticDoc exfalso
@@ -107,7 +114,8 @@ TacticDoc contradiction
 TacticDoc «exact?»
 /-- `aesop` is a general-purpose automatic prover. Never unlocked. -/
 TacticDoc aesop
-/-- `rintro ⟨a, b⟩` is `intro` followed by `rcases`: it introduces and takes apart in one step. -/
+/-- `rintro ⟨a, b⟩` is `intro` followed by `rcases`: it introduces and takes apart in one step.
+Type `⟨` as `\<` and `⟩` as `\>`. -/
 TacticDoc rintro
 /-- `choose f hf using h` turns `h : ∀ x, ∃ y, P x y` into a function `f` with `hf : ∀ x, P x (f x)`. -/
 TacticDoc choose
@@ -116,3 +124,8 @@ equations between their coefficients. -/
 TacticDoc match_scalars
 /-- `show P` restates the goal in an equivalent (definitionally equal) form `P`. -/
 TacticDoc «show»
+/-- `entrywise` proves an equation between vectors (or matrices) by checking every entry: it
+leaves one goal per position, written like `(A *ᵥ v) 0 = ![3, 7] 0`. It is shorthand for
+`ext i` followed by `fin_cases i` (and `ext i j` with two `fin_cases` for matrices), with the
+positions tidied up. -/
+TacticDoc entrywise

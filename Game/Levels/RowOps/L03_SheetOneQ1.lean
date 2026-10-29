@@ -26,18 +26,18 @@ Statement (x y z : ℝ) :
     (x - z = 0 ∧ 3 * x + y = 1 ∧ -x + y + z = 4) ↔ (x = -1 ∧ y = 4 ∧ z = -1) := by
   Hint "Split the `↔` with `constructor`."
   constructor
-  · Hint "Name the three rows: `intro h` and `obtain ⟨h₁, h₂, h₃⟩ := h`."
+  · Hint "Name the three rows: `intro h` and `obtain ⟨h1, h2, h3⟩ := h`."
     intro h
-    obtain ⟨h₁, h₂, h₃⟩ := h
-    Hint (hidden := true) "Eliminate $x$ from rows 2 and 3: `rowop h₂ : y + 3 * z = 1 := h₂ - 3 * h₁`."
-    rowop h₂ : y + 3 * z = 1 := h₂ - 3 * h₁
-    Hint (strict := true) (hidden := true) "`rowop h₃ : y = 4 := h₃ + h₁`"
-    rowop h₃ : y = 4 := h₃ + h₁
-    Hint (strict := true) (hidden := true) "Back-substitute: `rowop h₂ : z = -1 := (h₂ - h₃) / 3`."
-    rowop h₂ : z = -1 := (h₂ - h₃) / 3
-    Hint (strict := true) (hidden := true) "`rowop h₁ : x = -1 := h₁ + h₂`"
-    rowop h₁ : x = -1 := h₁ + h₂
-    exact ⟨h₁, h₃, h₂⟩
+    obtain ⟨h1, h2, h3⟩ := h
+    Hint (hidden := true) "Eliminate $x$ from rows 2 and 3: `rowop h2 : y + 3 * z = 1 := h2 - 3 * h1`."
+    rowop h2 : y + 3 * z = 1 := h2 - 3 * h1
+    Hint (strict := true) (hidden := true) "`rowop h3 : y = 4 := h3 + h1`"
+    rowop h3 : y = 4 := h3 + h1
+    Hint (strict := true) (hidden := true) "Back-substitute: `rowop h2 : z = -1 := (h2 - h3) / 3`."
+    rowop h2 : z = -1 := (h2 - h3) / 3
+    Hint (strict := true) (hidden := true) "`rowop h1 : x = -1 := h1 + h2`"
+    rowop h1 : x = -1 := h1 + h2
+    exact ⟨h1, h3, h2⟩
   · Hint "Check the triple: substitute it in."
     intro h
     obtain ⟨hx, hy, hz⟩ := h

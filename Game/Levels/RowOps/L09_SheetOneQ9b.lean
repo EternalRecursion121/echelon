@@ -27,18 +27,18 @@ Statement (x y z : ℝ) :
       ∃ t : ℝ, ![x, y, z] = ![4, -7/2, 0] + t • ![1, -1, 1] := by
   constructor
   · intro h
-    obtain ⟨h₁, h₂⟩ := h
+    obtain ⟨h1, h2⟩ := h
     Hint "Reduce: $-2\\rho_1 + \\rho_2$ and $\\frac12\\rho_2$. Which variable is free?"
-    Hint (hidden := true) "`rowop h₂ : y + z = -7/2 := (h₂ - 2 * h₁) / 2`"
-    rowop h₂ : y + z = -7/2 := (h₂ - 2 * h₁) / 2
+    Hint (hidden := true) "`rowop h2 : y + z = -7/2 := (h2 - 2 * h1) / 2`"
+    rowop h2 : y + z = -7/2 := (h2 - 2 * h1) / 2
     Hint (strict := true) (hidden := true) "$z$ is free: `use z`, then compare components."
     use z
     ext i
     fin_cases i
     · norm_num
-      linear_combination h₁
+      linear_combination h1
     · norm_num
-      linear_combination h₂
+      linear_combination h2
     · norm_num
   · intro h
     obtain ⟨t, ht⟩ := h

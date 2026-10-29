@@ -33,16 +33,16 @@ Statement {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) (b : Fin m → ℝ) :
     norm_num
     linear_combination
   Hint "So $2\\vec v - \\vec w$ is $\\vec v$ or $\\vec w$. Either way $\\vec v = \\vec w$."
-  rcases (h _).mp hu with h₃ | h₃
+  rcases (h _).mp hu with h3 | h3
   · have hvw : v = w := by
       ext i
-      have hi := congrFun h₃ i
+      have hi := congrFun h3 i
       norm_num at hi
       linear_combination hi
     exact hne hvw
   · have hvw : v = w := by
       ext i
-      have hi := congrFun h₃ i
+      have hi := congrFun h3 i
       norm_num at hi
       linear_combination hi / 2
     exact hne hvw

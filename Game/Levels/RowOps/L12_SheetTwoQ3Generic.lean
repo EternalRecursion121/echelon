@@ -27,25 +27,25 @@ Useful: `mul_left_cancel₀ (h : c ≠ 0) : c * a = c * b → a = b`, and
 namespace LinearAlgebraGame
 
 /-- For $a \ne \pm1$: $ax + y = a^2,\ x + ay = 1$ iff $x = \frac{a^2+a+1}{a+1},\ y = \frac{-a}{a+1}$. -/
-Statement (a : ℝ) (ha₁ : a ≠ 1) (ha₂ : a ≠ -1) (x y : ℝ) :
+Statement (a : ℝ) (ha1 : a ≠ 1) (ha2 : a ≠ -1) (x y : ℝ) :
     (a * x + y = a ^ 2 ∧ x + a * y = 1) ↔
       (x = (a ^ 2 + a + 1) / (a + 1) ∧ y = -a / (a + 1)) := by
   Hint "First record that $a + 1 \\ne 0$ and $a - 1 \\ne 0$."
-  Hint (hidden := true) "`have hp : a + 1 ≠ 0 := by` `intro h` `exact ha₂ (by linear_combination h)`"
+  Hint (hidden := true) "`have hp : a + 1 ≠ 0 := by` `intro h` `exact ha2 (by linear_combination h)`"
   have hp : a + 1 ≠ 0 := by
     intro h
-    exact ha₂ (by linear_combination h)
+    exact ha2 (by linear_combination h)
   have hm : a - 1 ≠ 0 := by
     intro h
-    exact ha₁ (by linear_combination h)
+    exact ha1 (by linear_combination h)
   constructor
   · intro h
-    obtain ⟨h₁, h₂⟩ := h
-    Hint "Eliminate $y$ (combine $a\\rho_1$ and $\\rho_2$), and separately eliminate $x$.
+    obtain ⟨h1, h2⟩ := h
+    Hint "Eliminate $y$ (linear_combination $a\\rho_1$ and $\\rho_2$), and separately eliminate $x$.
     Write the results with the factor $a - 1$ visible."
-    Hint (hidden := true) "`rowop hx : (a - 1) * ((a + 1) * x) = (a - 1) * (a ^ 2 + a + 1) := a * h₁ - h₂`"
-    rowop hx : (a - 1) * ((a + 1) * x) = (a - 1) * (a ^ 2 + a + 1) := a * h₁ - h₂
-    rowop hy : (a - 1) * ((a + 1) * y) = (a - 1) * (-a) := a * h₂ - h₁
+    Hint (hidden := true) "`rowop hx : (a - 1) * ((a + 1) * x) = (a - 1) * (a ^ 2 + a + 1) := a * h1 - h2`"
+    rowop hx : (a - 1) * ((a + 1) * x) = (a - 1) * (a ^ 2 + a + 1) := a * h1 - h2
+    rowop hy : (a - 1) * ((a + 1) * y) = (a - 1) * (-a) := a * h2 - h1
     Hint (hidden := true) "Cancel $a - 1$: `have hx' := mul_left_cancel₀ hm hx`."
     have hx' := mul_left_cancel₀ hm hx
     have hy' := mul_left_cancel₀ hm hy

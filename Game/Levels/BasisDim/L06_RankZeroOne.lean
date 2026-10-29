@@ -24,6 +24,10 @@ $u_i v_j$. The rank of $A$ is the dimension of its column space
 
 Inside your proof, also write your description in words as a comment starting
 `-- Explain:` — it goes into your hand-in.
+
+**New:** `omega` proves (in)equalities about natural numbers and integers.
+
+**New syntax:** `foo (h := e)` passes the argument named `h` explicitly, when a lemma has several arguments and you want to give just one of them.
 "
 
 namespace LinearAlgebraGame

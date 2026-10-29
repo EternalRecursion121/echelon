@@ -8,6 +8,8 @@ Introduction "
 Hefferon One.II.2.5: $|\\vec u + \\vec v| \\le |\\vec u| + |\\vec v|$. Square both sides:
 $|\\vec u + \\vec v|^2 = |\\vec u|^2 + 2\\,\\vec u\\cdot\\vec v + |\\vec v|^2$, and Cauchy–Schwarz
 bounds the middle term.
+
+**New:** `positivity` proves goals of the form `0 < e`, `0 ≤ e`, `e ≠ 0` from the shape of `e`.
 "
 
 namespace LinearAlgebraGame

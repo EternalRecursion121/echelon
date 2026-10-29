@@ -22,13 +22,13 @@ Statement (a : ℝ) (ha : a = 1) (x y : ℝ) :
   rw [ha]
   constructor
   · intro h
-    obtain ⟨h₁, h₂⟩ := h
+    obtain ⟨h1, h2⟩ := h
     Hint "The two rows are the same equation. Which variable is free?"
     use y
     ext i
     fin_cases i
     · norm_num
-      linear_combination h₂
+      linear_combination h2
     · norm_num
   · intro h
     obtain ⟨t, ht⟩ := h

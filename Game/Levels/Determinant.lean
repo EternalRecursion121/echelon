@@ -19,4 +19,6 @@ Introduction "
 Hefferon Four.I. The determinant is *defined* by four conditions; you derive what they
 force, check that Mathlib's determinant satisfies them, and then compute — first by hand,
 then with a power tool.
+
+**Typing:** `ℤ` is `\\Z`.
 "

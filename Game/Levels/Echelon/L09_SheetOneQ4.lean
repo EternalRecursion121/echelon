@@ -37,21 +37,21 @@ Statement : ((¬ IsNonsingular !![(1 : ℝ), 2; 1, 3]) ∨ IsNonsingular !![(1 :
   · Hint "(a): solve the homogeneous system."
     right
     intro v h
-    have h₀ := congrFun h 0
-    have h₁ := congrFun h 1
-    simp [mulVec, dotProduct, Fin.sum_univ_two] at h₀ h₁
-    Hint (hidden := true) "`rowop h₁ : v 1 = 0 := h₁ - h₀`, then `rowop h₀ : v 0 = 0 := h₀ - 2 * h₁`."
-    rowop h₁ : v 1 = 0 := h₁ - h₀
-    rowop h₀ : v 0 = 0 := h₀ - 2 * h₁
+    have h0 := congrFun h 0
+    have h1 := congrFun h 1
+    simp [mulVec, dotProduct, Fin.sum_univ_two] at h0 h1
+    Hint (hidden := true) "`rowop h1 : v 1 = 0 := h1 - h0`, then `rowop h0 : v 0 = 0 := h0 - 2 * h1`."
+    rowop h1 : v 1 = 0 := h1 - h0
+    rowop h0 : v 0 = 0 := h0 - 2 * h1
     ext i
-    fin_cases i <;> simp [h₀, h₁]
+    fin_cases i <;> simp [h0, h1]
   · Hint "(b): row 2 is a multiple of row 1. Find a nonzero solution."
     left
     intro h
-    Hint (hidden := true) "`have h₀ := h ![2, -1] (by ext i; fin_cases i <;> norm_num [mulVec, dotProduct, Fin.sum_univ_two])`"
-    have h₀ := h ![2, -1] (by ext i; fin_cases i <;> norm_num [mulVec, dotProduct, Fin.sum_univ_two])
-    have h₁ := congrFun h₀ 0
-    simp at h₁
+    Hint (hidden := true) "`have h0 := h ![2, -1] (by ext i; fin_cases i <;> norm_num [mulVec, dotProduct, Fin.sum_univ_two])`"
+    have h0 := h ![2, -1] (by ext i; fin_cases i <;> norm_num [mulVec, dotProduct, Fin.sum_univ_two])
+    have h1 := congrFun h0 0
+    simp at h1
 
 end LinearAlgebraGame
 

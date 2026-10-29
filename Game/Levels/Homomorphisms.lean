@@ -22,4 +22,6 @@ Hefferon Three.II. Drop the requirement that a structure-preserving map be a cor
 and you get a **homomorphism**. Every homomorphism has a null space and a range; their
 dimensions add up to the dimension of the domain (rank–nullity), and the boss of this world is
 Theorem 2.20, five ways of saying a homomorphism is one-to-one.
+
+**Typing:** `∘ₗ` is `\\circ` then `\\_l`.
 "

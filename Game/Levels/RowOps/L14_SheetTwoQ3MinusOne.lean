@@ -18,12 +18,12 @@ namespace LinearAlgebraGame
 /-- For $a = -1$ the system has no solution. -/
 Statement (a : ℝ) (ha : a = -1) : ¬ ∃ x y : ℝ, a * x + y = a ^ 2 ∧ x + a * y = 1 := by
   intro h
-  obtain ⟨x, y, h₁, h₂⟩ := h
-  rw [ha] at h₁ h₂
+  obtain ⟨x, y, h1, h2⟩ := h
+  rw [ha] at h1 h2
   Hint "Add the two rows."
-  Hint (hidden := true) "`rowop h₂ : (0 : ℝ) = 2 := h₁ + h₂`, then `norm_num at h₂`."
-  rowop h₂ : (0 : ℝ) = 2 := h₁ + h₂
-  norm_num at h₂
+  Hint (hidden := true) "`rowop h2 : (0 : ℝ) = 2 := h1 + h2`, then `norm_num at h2`."
+  rowop h2 : (0 : ℝ) = 2 := h1 + h2
+  norm_num at h2
 
 end LinearAlgebraGame
 

@@ -15,4 +15,6 @@ Introduction "
 Hefferon Two.I.2: subsets that are vector spaces in their own right. One test does all the
 work — nonempty and closed under linear combinations — and the span of a set is the
 smallest subspace containing it.
+
+**Typing:** `⊆` is `\\sub`, `⊓` is `\\inf`, `⊔` is `\\sup`.
 "

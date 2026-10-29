@@ -21,17 +21,17 @@ namespace LinearAlgebraGame
 
 /-- The system $x + z + w = 4,\ 2x + y - w = 2,\ 3x + y + z = 7$ has no solution. -/
 Statement : ¬ ∃ x y z w : ℝ, x + z + w = 4 ∧ 2 * x + y - w = 2 ∧ 3 * x + y + z = 7 := by
-  Hint "Assume a solution: `intro h`, then `obtain ⟨x, y, z, w, h₁, h₂, h₃⟩ := h`."
+  Hint "Assume a solution: `intro h`, then `obtain ⟨x, y, z, w, h1, h2, h3⟩ := h`."
   intro h
-  obtain ⟨x, y, z, w, h₁, h₂, h₃⟩ := h
+  obtain ⟨x, y, z, w, h1, h2, h3⟩ := h
   Hint "Eliminate $x$ from rows 2 and 3 and compare what is left."
-  Hint (hidden := true) "`rowop h₂ : y - 2 * z - 3 * w = -6 := h₂ - 2 * h₁`"
-  rowop h₂ : y - 2 * z - 3 * w = -6 := h₂ - 2 * h₁
-  Hint (strict := true) (hidden := true) "`rowop h₃ : y - 2 * z - 3 * w = -5 := h₃ - 3 * h₁`"
-  rowop h₃ : y - 2 * z - 3 * w = -5 := h₃ - 3 * h₁
-  Hint (strict := true) (hidden := true) "`rowop h₃ : (0 : ℝ) = 1 := h₃ - h₂`, then `norm_num at h₃`."
-  rowop h₃ : (0 : ℝ) = 1 := h₃ - h₂
-  norm_num at h₃
+  Hint (hidden := true) "`rowop h2 : y - 2 * z - 3 * w = -6 := h2 - 2 * h1`"
+  rowop h2 : y - 2 * z - 3 * w = -6 := h2 - 2 * h1
+  Hint (strict := true) (hidden := true) "`rowop h3 : y - 2 * z - 3 * w = -5 := h3 - 3 * h1`"
+  rowop h3 : y - 2 * z - 3 * w = -5 := h3 - 3 * h1
+  Hint (strict := true) (hidden := true) "`rowop h3 : (0 : ℝ) = 1 := h3 - h2`, then `norm_num at h3`."
+  rowop h3 : (0 : ℝ) = 1 := h3 - h2
+  norm_num at h3
 
 end LinearAlgebraGame
 

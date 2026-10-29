@@ -24,18 +24,18 @@ namespace LinearAlgebraGame
 Statement (x y : ℝ) : (x + y = 1 ∧ x - y = -1) ↔ ![x, y] = ![0, 1] := by
   constructor
   · intro h
-    obtain ⟨h₁, h₂⟩ := h
+    obtain ⟨h1, h2⟩ := h
     Hint "Eliminate $x$ from the second row."
-    Hint (hidden := true) "`rowop h₂ : y = 1 := (h₁ - h₂) / 2`"
-    rowop h₂ : y = 1 := (h₁ - h₂) / 2
-    rowop h₁ : x = 0 := h₁ - h₂
+    Hint (hidden := true) "`rowop h2 : y = 1 := (h1 - h2) / 2`"
+    rowop h2 : y = 1 := (h1 - h2) / 2
+    rowop h1 : x = 0 := h1 - h2
     Hint (hidden := true) "`ext i`, `fin_cases i`, then in each case `norm_num` and `exact`."
     ext i
     fin_cases i
     · norm_num
-      exact h₁
+      exact h1
     · norm_num
-      exact h₂
+      exact h2
   · intro h
     Hint "Read off the two components of `h` with `congrFun h 0` and `congrFun h 1`."
     have hx := congrFun h 0

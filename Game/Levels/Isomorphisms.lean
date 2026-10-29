@@ -14,4 +14,6 @@ Hefferon Three.I. When are two vector spaces \"the same\"? When there is a corre
 between them that preserves $+$ and $\\cdot$ — an **isomorphism**. In this world you show that
 isomorphism is an equivalence relation, that every $n$-dimensional space is isomorphic to
 $\\mathbb R^n$, and you settle the Sheet 6 questions on direct sums and on bases.
+
+**Typing:** `→ₗ` is `\\to` then `\\_l`, `≃ₗ` is `\\equiv` then `\\_l`.
 "

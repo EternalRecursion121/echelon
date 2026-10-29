@@ -14,4 +14,6 @@ Title "Dot Product"
 Introduction "
 Hefferon One.II: length, angle and the dot product in $\\mathbb R^n$, up to Cauchy–Schwarz
 and the triangle inequality.
+
+**Typing:** `∑` is `\\sum`, `∈` is `\\in`, `≤` is `\\le`.
 "

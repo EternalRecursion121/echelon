@@ -34,15 +34,15 @@ Statement : (¬ RowEquiv (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) !![
   left
   intro h
   obtain ⟨E, F, hFE, hE⟩ := h
-  Hint (hidden := true) "$(1, -1, 0)$: `have h₁ : (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) *ᵥ ![1, -1, 0] = 0`."
-  have h₁ : (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) *ᵥ ![1, -1, 0] = 0 := by
+  Hint (hidden := true) "$(1, -1, 0)$: `have h1 : (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) *ᵥ ![1, -1, 0] = 0`."
+  have h1 : (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) *ᵥ ![1, -1, 0] = 0 := by
     ext i
     fin_cases i <;> simp [mulVec, dotProduct, Fin.sum_univ_three]
-  Hint (hidden := true) "Transport it: `rw [← hE, ← mulVec_mulVec, h₁, mulVec_zero]`."
-  have h₂ : (!![0, 1, 2; 1, -1, 1] : Matrix (Fin 2) (Fin 3) ℝ) *ᵥ ![1, -1, 0] = 0 := by
-    rw [← hE, ← mulVec_mulVec, h₁, mulVec_zero]
-  have h₃ := congrFun h₂ 0
-  simp [mulVec, dotProduct, Fin.sum_univ_three] at h₃
+  Hint (hidden := true) "Transport it: `rw [← hE, ← mulVec_mulVec, h1, mulVec_zero]`."
+  have h2 : (!![0, 1, 2; 1, -1, 1] : Matrix (Fin 2) (Fin 3) ℝ) *ᵥ ![1, -1, 0] = 0 := by
+    rw [← hE, ← mulVec_mulVec, h1, mulVec_zero]
+  have h3 := congrFun h2 0
+  simp [mulVec, dotProduct, Fin.sum_univ_three] at h3
 
 end LinearAlgebraGame
 

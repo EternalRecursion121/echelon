@@ -19,4 +19,6 @@ Every theorem in this game will ultimately rest on the ten conditions of
 Definition Two.I.1.1. In this world you derive the first consequences by hand, reprove
 \"one solution or infinitely many\" from the axioms alone, and learn to decide whether a
 given set with given operations is a vector space.
+
+**Typing:** `⁻¹` is `\\inv`, `×` is `\\times`.
 "

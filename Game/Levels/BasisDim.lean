@@ -21,4 +21,6 @@ Hefferon Two.III. A *basis* is an independent spanning sequence; every vector ha
 coordinates in it, and all bases have the same size — the *dimension*. You will find bases,
 compare dimensions of nested subspaces, and prove when a linear system is solvable in terms
 of rank.
+
+**Typing:** `ᵀ` is `\\^T`, `⊥` is `\\bot`, `⊤` is `\\top`.
 "

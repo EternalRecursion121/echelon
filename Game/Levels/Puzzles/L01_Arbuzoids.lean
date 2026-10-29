@@ -43,9 +43,9 @@ Statement : ¬ Reachable (13, 15, 17) (0, 0, 45) := by
       `rcases hstep with ⟨r, g, b, _, _⟩ | ⟨r, g, b, _, _⟩ | ⟨r, g, b, _, _⟩`, then `simp only at ih ⊢`
       and `omega` in each case."
       rcases hstep with ⟨r, g, b, _, _⟩ | ⟨r, g, b, _, _⟩ | ⟨r, g, b, _, _⟩ <;> simp only at ih ⊢ <;> omega
-  have h₁ := key _ h
-  Hint (hidden := true) "`norm_num at h₁`"
-  norm_num at h₁
+  have h1 := key _ h
+  Hint (hidden := true) "`norm_num at h1`"
+  norm_num at h1
 
 end LinearAlgebraGame
 

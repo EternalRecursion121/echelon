@@ -26,13 +26,13 @@ namespace LinearAlgebraGame
 Statement {n m : ℕ} (h : (Fin n → ℝ) →ₗ[ℝ] (Fin m → ℝ)) (C : Set (Fin n → ℝ))
     (hC : IsConvex C) : IsConvex (h '' C) := by
   Hint "Two points of $h(C)$ are $h(\\vec c_1)$, $h(\\vec c_2)$ with $\\vec c_i \\in C$. Use part (a)."
-  Hint (hidden := true) "`rintro _ ⟨c₁, hc₁, rfl⟩ _ ⟨c₂, hc₂, rfl⟩ y hy`"
-  rintro _ ⟨c₁, hc₁, rfl⟩ _ ⟨c₂, hc₂, rfl⟩ y hy
+  Hint (hidden := true) "`rintro _ ⟨c₁, hc1, rfl⟩ _ ⟨c₂, hc2, rfl⟩ y hy`"
+  rintro _ ⟨c₁, hc1, rfl⟩ _ ⟨c₂, hc2, rfl⟩ y hy
   Hint (hidden := true) "`rw [← image_seg] at {hy}`, then `obtain ⟨x, hx, rfl⟩ := {hy}`."
   rw [← image_seg] at hy
   obtain ⟨x, hx, rfl⟩ := hy
-  Hint (hidden := true) "`exact ⟨x, hC c₁ hc₁ c₂ hc₂ hx, rfl⟩`"
-  exact ⟨x, hC c₁ hc₁ c₂ hc₂ hx, rfl⟩
+  Hint (hidden := true) "`exact ⟨x, hC c₁ hc1 c₂ hc2 hx, rfl⟩`"
+  exact ⟨x, hC c₁ hc1 c₂ hc2 hx, rfl⟩
 
 end LinearAlgebraGame
 

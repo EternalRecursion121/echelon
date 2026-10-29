@@ -32,18 +32,18 @@ Statement (v : Fin 3 → ℝ) :
     ∃ μ : ℝ, v = ![1, 2/3, 0] + μ • ![3, 4, 6] := by
   constructor
   · intro h
-    obtain ⟨⟨t, s, h₁⟩, ⟨k, m, h₂⟩⟩ := h
+    obtain ⟨⟨t, s, h1⟩, ⟨k, m, h2⟩⟩ := h
     Hint "Equate the two descriptions of $\\vec v$ and read off three equations."
-    Hint (hidden := true) "`have e := h₁.symm.trans h₂`, then `congrFun e 0` etc. and `norm_num at`."
-    have e := h₁.symm.trans h₂
+    Hint (hidden := true) "`have e := h1.symm.trans h2`, then `congrFun e 0` etc. and `norm_num at`."
+    have e := h1.symm.trans h2
     have e₀ := congrFun e 0
     have e₁ := congrFun e 1
     have e₂ := congrFun e 2
     norm_num at e₀ e₁ e₂
-    Hint (hidden := true) "Gauss's method: $m$ is free and $\\mu = 2m/3$. `use 2 * m / 3`, `rw [h₂]`,
+    Hint (hidden := true) "Gauss's method: $m$ is free and $\\mu = 2m/3$. `use 2 * m / 3`, `rw [h2]`,
     then compare components."
     use 2 * m / 3
-    rw [h₂]
+    rw [h2]
     ext i
     fin_cases i
     · norm_num

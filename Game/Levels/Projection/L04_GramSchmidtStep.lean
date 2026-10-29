@@ -21,12 +21,12 @@ namespace LinearAlgebraGame
 open Matrix in
 /-- $\vec\kappa_2 = \vec\beta_2 - \mathrm{proj}_{[\vec\beta_1]}(\vec\beta_2)$ is orthogonal to
 $\vec\beta_1$, and $[\vec\beta_1, \vec\kappa_2] = [\vec\beta_1, \vec\beta_2]$. -/
-Statement {n : ℕ} (β₁ β₂ : Fin n → ℝ) (h₁ : β₁ ≠ 0) :
+Statement {n : ℕ} (β₁ β₂ : Fin n → ℝ) (h1 : β₁ ≠ 0) :
     let κ₂ := β₂ - projLine β₁ β₂
     κ₂ ⬝ᵥ β₁ = 0 ∧ Submodule.span ℝ {β₁, κ₂} = Submodule.span ℝ {β₁, β₂} := by
   constructor
   · Hint (hidden := true) "This is your first level of this world."
-    exact projLine_orth β₁ β₂ h₁
+    exact projLine_orth β₁ β₂ h1
   · Hint "Two inclusions: `apply le_antisymm`. $\\vec\\kappa_2$ is a combination of the
     $\\vec\\beta$'s, and $\\vec\\beta_2 = \\vec\\kappa_2 + \\mathrm\{proj}$."
     apply le_antisymm

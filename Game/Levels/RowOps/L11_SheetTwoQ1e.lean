@@ -32,8 +32,8 @@ Statement :
     right
     apply infinitelyMany_of_line _ ![2, 0] ![3, 1]
     · intro h
-      have h₁ := congrFun h 1
-      norm_num at h₁
+      have h1 := congrFun h 1
+      norm_num at h1
     · intro t
       constructor
       · norm_num
@@ -43,8 +43,8 @@ Statement :
   · Hint "(f): look at the last row."
     left
     intro h
-    obtain ⟨v, h₁, h₂, h₃⟩ := h
-    norm_num at h₃
+    obtain ⟨v, h1, h2, h3⟩ := h
+    norm_num at h3
   · Hint "(g): back-substitute from the bottom."
     right
     left
@@ -52,17 +52,17 @@ Statement :
     constructor
     · norm_num
     · intro v h
-      obtain ⟨h₁, h₂, h₃, h₄⟩ := h
-      rowop h₂ : v 1 = 2 := h₂ + h₃
-      rowop h₁ : v 0 = -3 := h₁ - h₂ + 3 * h₃
+      obtain ⟨h1, h2, h3, h4⟩ := h
+      rowop h2 : v 1 = 2 := h2 + h3
+      rowop h1 : v 0 = -3 := h1 - h2 + 3 * h3
       ext i
       fin_cases i
       · norm_num
-        exact h₁
+        exact h1
       · norm_num
-        exact h₂
+        exact h2
       · norm_num
-        exact h₃
+        exact h3
 
 end LinearAlgebraGame
 

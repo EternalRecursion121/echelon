@@ -26,13 +26,13 @@ namespace LinearAlgebraGame
 Statement (x y : ℝ) : (x + y = 2 ∧ x - y = 0) ↔ (x = 1 ∧ y = 1) := by
   constructor
   · intro h
-    obtain ⟨h₁, h₂⟩ := h
+    obtain ⟨h1, h2⟩ := h
     Hint "$-\\rho_1 + \\rho_2$, then $-\\frac12\\rho_2$, then $-\\rho_2 + \\rho_1$."
-    Hint (hidden := true) "`rowop h₂ : -2 * y = -2 := h₂ - h₁`"
-    rowop h₂ : -2 * y = -2 := h₂ - h₁
-    rowop h₂ : y = 1 := h₂ / (-2)
-    rowop h₁ : x = 1 := h₁ - h₂
-    exact ⟨h₁, h₂⟩
+    Hint (hidden := true) "`rowop h2 : -2 * y = -2 := h2 - h1`"
+    rowop h2 : -2 * y = -2 := h2 - h1
+    rowop h2 : y = 1 := h2 / (-2)
+    rowop h1 : x = 1 := h1 - h2
+    exact ⟨h1, h2⟩
   · intro h
     obtain ⟨hx, hy⟩ := h
     rw [hx, hy]

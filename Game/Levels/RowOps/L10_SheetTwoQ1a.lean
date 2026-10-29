@@ -45,15 +45,15 @@ Statement :
     constructor
     · norm_num
     · intro v h
-      obtain ⟨h₁, h₂⟩ := h
-      rowop h₂ : v 1 = 0 := h₂ / (-2)
-      rowop h₁ : v 0 = 0 := (h₁ - 2 * h₂) / (-3)
+      obtain ⟨h1, h2⟩ := h
+      rowop h2 : v 1 = 0 := h2 / (-2)
+      rowop h1 : v 0 = 0 := (h1 - 2 * h2) / (-3)
       ext i
       fin_cases i
       · norm_num
-        exact h₁
+        exact h1
       · norm_num
-        exact h₂
+        exact h2
   constructor
   · Hint "(b): is there a free variable?"
     right
@@ -62,10 +62,10 @@ Statement :
     `apply infinitelyMany_of_line _ ![4, 0, 0] ![-1, 1, 1]`"
     apply infinitelyMany_of_line _ ![4, 0, 0] ![-1, 1, 1]
     · Hint (hidden := true) "A vector with a nonzero component is nonzero: `intro h`,
-      `have h₁ := congrFun h 1`, `norm_num at h₁`."
+      `have h1 := congrFun h 1`, `norm_num at h1`."
       intro h
-      have h₁ := congrFun h 1
-      norm_num at h₁
+      have h1 := congrFun h 1
+      norm_num at h1
     · intro t
       constructor
       · norm_num
@@ -74,15 +74,15 @@ Statement :
   · Hint "(c): look at the second row."
     left
     intro h
-    obtain ⟨v, h₁, h₂⟩ := h
-    norm_num at h₂
+    obtain ⟨v, h1, h2⟩ := h
+    norm_num at h2
   · Hint "(d): $z$ is determined. Is $y$?"
     right
     right
     apply infinitelyMany_of_line _ ![2/3, 0, -5/2] ![-2, 1, 0]
     · intro h
-      have h₁ := congrFun h 1
-      norm_num at h₁
+      have h1 := congrFun h 1
+      norm_num at h1
     · intro t
       constructor
       · norm_num
