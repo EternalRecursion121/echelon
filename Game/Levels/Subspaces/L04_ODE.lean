@@ -1,7 +1,7 @@
-import Game.Levels.Subspaces.L04_Homogeneous
+import Game.Levels.Subspaces.L03_OddFunctions
 
 World "Subspaces"
-Level 5
+Level 4
 Title "Solutions of a differential equation"
 
 -- @sheet 4 Q2

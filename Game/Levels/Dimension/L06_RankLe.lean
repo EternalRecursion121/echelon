@@ -10,7 +10,7 @@ Sheet 4 Q11 (next level) compares the ranks of $A$, $-A$, $kA$ and $A + B$, with
 lies in the column space of $C$, then $\\operatorname{rank} D \\le \\operatorname{rank} C$.
 
 Recall `rank_eq_finrank_span_cols`, your `finrank_le_of_le` (Mathlib's name for it,
-`Submodule.finrank_mono`, is now in your inventory too), and `Submodule.span_le`: a span is
+`Submodule.finrank_mono`, has been in your inventory since the rank-one level), and `Submodule.span_le`: a span is
 inside a subspace iff the generators are.
 "
 
@@ -40,5 +40,4 @@ Conclusion "
 "
 
 TheoremTab "Rank"
-NewTheorem Submodule.finrank_mono
 DisabledTactic simp norm_num

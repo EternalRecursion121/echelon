@@ -663,14 +663,14 @@ msgstr ""
 #: Game/Levels/DotProduct/L02_SheetTwoQ7.lean:32
 #: Game/Levels/DotProduct/L04_SheetOneQ8.lean:26
 #: Game/Levels/DotProduct/L07_CauchySchwarz.lean:26
-#: Game/Levels/DotProduct/L08_Triangle.lean:17
+#: Game/Levels/DotProduct/L08_Triangle.lean:21
 #: Game/Levels/Echelon/L01_Matrices.lean:22
 #: Game/Levels/Echelon/L04_SheetTwoQ9bc.lean:32
 #: Game/Levels/Axioms/L02_NegUnique.lean:34
 #: Game/Levels/Axioms/L03_NegOneSmul.lean:20
 #: Game/Levels/Axioms/L12_Functions.lean:16
 #: Game/Levels/BasisDim/L03_P2Standard.lean:40
-#: Game/Levels/BasisDim/L13_Augment.lean:23
+#: Game/Levels/BasisDim/L11_Augment.lean:23
 #: Game/Levels/Dimension/L12_DimFormula.lean:26
 #: Game/Levels/Isomorphisms/L05_RepIso.lean:21
 #: Game/Levels/MatrixAlgebra/L02_TransposeProduct.lean:23
@@ -705,11 +705,11 @@ msgstr ""
 #: Game/Levels/Diagonalisation/L03_DistinctEigenvalues.lean:43
 #: Game/Levels/Diagonalisation/L08_OddSize.lean:38
 #: Game/Levels/Diagonalisation/L08_OddSize.lean:43
-#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:40
+#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:49
 #: Game/Levels/Diagonalisation/L10_Factored.lean:33
 #: Game/Levels/Diagonalisation/L10_Factored.lean:36
 #: Game/Levels/Diagonalisation/L10_Factored.lean:41
-#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:76
+#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:86
 msgid "§0."
 msgstr ""
 
@@ -957,7 +957,7 @@ msgstr ""
 #: Game/Levels/LeanBasics/L03_NormNum.lean:13
 #: Game/Levels/LeanBasics/L08_Not.lean:15
 #: Game/Levels/LeanBasics/L13_Vectors.lean:24
-#: Game/Levels/BasisDim/L10_DimMono.lean:30
+#: Game/Levels/BasisDim/L13_DimMono.lean:30
 #: Game/Levels/MatrixOfMap/L13_RankCompRight.lean:22
 #: Game/Levels/MatrixOfMap/L14_RankCompLeft.lean:21
 #: Game/Levels/Projection/L04_ProjLineMem.lean:19
@@ -1452,7 +1452,7 @@ msgstr ""
 #. §1: `S`
 #: Game/Doc/Theorems.lean:394
 msgid "§0 — the span is the smallest subspace containing\n"
-"§1 (Lemma Two.I.2.15, proved in Subspaces level 6)."
+"§1 (Lemma Two.I.2.15, proved in Subspaces level 5)."
 msgstr ""
 
 #. §0: `Matrix.one_mulVec x : 1 *ᵥ x = x`
@@ -1501,7 +1501,7 @@ msgstr ""
 #: Game/Doc/Theorems.lean:424
 msgid "§0 when\n"
 "§1 — nested subspaces have a subspace as union\n"
-"(Subspaces level 9)."
+"(Subspaces level 8)."
 msgstr ""
 
 #. §0: `isolate_of_relation u v w a b c h ha : u = (-b / a) • v + (-c / a) • w`
@@ -1925,8 +1925,11 @@ msgstr ""
 msgid "The range of a function on an empty type is §0."
 msgstr ""
 
+#. §0: `hle : U ≤ W`
+#. §1: `hd : finrank ℝ U = finrank ℝ W`
+#. §2: `Submodule.eq_of_le_of_finrank_eq hle hd : U = W`
 #: Game/Doc/Theorems.lean:695
-msgid "Mathlib's Sheet 4 Q10(b). Disabled where you prove it."
+msgid "Nested subspaces of equal finite dimension are equal: for §0 and §1, §2. A textbook result (Hefferon Two.III.2); Sheet 4 Q10(b) asks you to prove it, and it is disabled there."
 msgstr ""
 
 #: Game/Doc/Theorems.lean:697
@@ -1948,10 +1951,11 @@ msgstr ""
 msgid "Disabled in Sheet 4 Q10(b)."
 msgstr ""
 
-#. §0: `U ≤ W → finrank U ≤ finrank W`
+#. §0: `U ≤ W → finrank ℝ U ≤ finrank ℝ W`
 #. §1: `finrank_le_of_le`
+#. §2: `Submodule.finrank_mono hle`
 #: Game/Doc/Theorems.lean:709
-msgid "Sheet 4 Q10(a): §0. You proved it as §1."
+msgid "§0 (finite-dimensional ambient space): a subspace is no bigger than the space containing it. Hefferon's result; Sheet 4 Q10(a) asks you to prove it (your §1). Use: §2."
 msgstr ""
 
 #. §0: $\\dim(U+W) + \\dim(U\\cap W) = \\dim U + \\dim W$
@@ -3549,9 +3553,9 @@ msgstr ""
 #: Game/Levels/RowOps/L02_SheetOneQ1.lean:42
 #: Game/Levels/RowOps/L02_SheetOneQ1.lean:46
 #: Game/Levels/RowOps/L03_SheetOneQ3b.lean:35
-#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:34
-#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:36
-#: Game/Levels/RowOps/L06_SheetOneQ2.lean:45
+#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:40
+#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:42
+#: Game/Levels/RowOps/L06_SheetOneQ2.lean:44
 #: Game/Levels/RowOps/L08_SheetOneQ9b.lean:36
 #: Game/Levels/RowOps/L09_Classify.lean:37
 #: Game/Levels/RowOps/L11_SheetTwoQ1d.lean:42
@@ -3566,7 +3570,7 @@ msgstr ""
 #: Game/Levels/DotProduct/L06_SheetOneQ5.lean:75
 #: Game/Levels/DotProduct/L07_CauchySchwarz.lean:29
 #: Game/Levels/DotProduct/L07_CauchySchwarz.lean:36
-#: Game/Levels/DotProduct/L08_Triangle.lean:29
+#: Game/Levels/DotProduct/L08_Triangle.lean:33
 #: Game/Levels/Echelon/L01_Matrices.lean:26
 #: Game/Levels/Echelon/L02_ElementaryMatrix.lean:34
 #: Game/Levels/Echelon/L03_SheetTwoQ9a.lean:32
@@ -3574,6 +3578,8 @@ msgstr ""
 #: Game/Levels/Echelon/L05_SheetOneQ10.lean:44
 #: Game/Levels/Echelon/L09_SheetOneQ4.lean:54
 #: Game/Levels/Echelon/L12_SheetTwoQ8b.lean:37
+#: Game/Levels/Echelon/L14_SheetTwoQ4.lean:50
+#: Game/Levels/Echelon/L14_SheetTwoQ4.lean:52
 #: Game/Levels/Puzzles/L01_Arbuzoids.lean:75
 #: Game/Levels/Puzzles/L03_Library.lean:78
 #: Game/Levels/Axioms/L01_ZeroSmul.lean:50
@@ -3585,14 +3591,12 @@ msgstr ""
 #: Game/Levels/Subspaces/L01_SubspaceTest.lean:42
 #: Game/Levels/Subspaces/L01_SubspaceTest.lean:58
 #: Game/Levels/Subspaces/L03_OddFunctions.lean:34
-#: Game/Levels/Subspaces/L04_Homogeneous.lean:45
-#: Game/Levels/Subspaces/L04_Homogeneous.lean:47
-#: Game/Levels/Subspaces/L05_ODE.lean:50
-#: Game/Levels/Subspaces/L05_ODE.lean:53
-#: Game/Levels/Subspaces/L05_ODE.lean:59
-#: Game/Levels/Subspaces/L05_ODE.lean:71
-#: Game/Levels/Subspaces/L10_Union.lean:37
-#: Game/Levels/Subspaces/L10_Union.lean:70
+#: Game/Levels/Subspaces/L04_ODE.lean:50
+#: Game/Levels/Subspaces/L04_ODE.lean:53
+#: Game/Levels/Subspaces/L04_ODE.lean:59
+#: Game/Levels/Subspaces/L04_ODE.lean:71
+#: Game/Levels/Subspaces/L09_Union.lean:37
+#: Game/Levels/Subspaces/L09_Union.lean:70
 #: Game/Levels/Independence/L02_ContainsZero.lean:35
 #: Game/Levels/Independence/L07_Triangular.lean:30
 #: Game/Levels/Independence/L08_SpanInsert.lean:38
@@ -3618,34 +3622,34 @@ msgstr ""
 #: Game/Levels/BasisDim/L07_ColSpace.lean:56
 #: Game/Levels/BasisDim/L08_Exchange.lean:39
 #: Game/Levels/BasisDim/L08_Exchange.lean:50
-#: Game/Levels/BasisDim/L09_RankZero.lean:34
-#: Game/Levels/BasisDim/L10_DimMono.lean:37
-#: Game/Levels/BasisDim/L11_NestedEq.lean:43
-#: Game/Levels/BasisDim/L12_RankOne.lean:55
-#: Game/Levels/BasisDim/L12_RankOne.lean:60
-#: Game/Levels/BasisDim/L13_Augment.lean:29
-#: Game/Levels/BasisDim/L14_Solvable.lean:41
-#: Game/Levels/BasisDim/L14_Solvable.lean:46
-#: Game/Levels/BasisDim/L14_Solvable.lean:51
-#: Game/Levels/BasisDim/L14_Solvable.lean:56
+#: Game/Levels/BasisDim/L09_RankZero.lean:35
+#: Game/Levels/BasisDim/L10_RankOne.lean:61
+#: Game/Levels/BasisDim/L10_RankOne.lean:66
+#: Game/Levels/BasisDim/L11_Augment.lean:29
+#: Game/Levels/BasisDim/L12_Solvable.lean:44
+#: Game/Levels/BasisDim/L12_Solvable.lean:49
+#: Game/Levels/BasisDim/L12_Solvable.lean:54
+#: Game/Levels/BasisDim/L12_Solvable.lean:59
+#: Game/Levels/BasisDim/L13_DimMono.lean:37
+#: Game/Levels/BasisDim/L14_NestedEq.lean:44
 #: Game/Levels/Dimension/L01_RootsA.lean:56
 #: Game/Levels/Dimension/L01_RootsA.lean:66
 #: Game/Levels/Dimension/L02_RootsB.lean:58
 #: Game/Levels/Dimension/L03_RootsC.lean:34
-#: Game/Levels/Dimension/L04_InfiniteDim.lean:50
-#: Game/Levels/Dimension/L04_InfiniteDim.lean:56
+#: Game/Levels/Dimension/L04_InfiniteDim.lean:53
 #: Game/Levels/Dimension/L04_InfiniteDim.lean:59
+#: Game/Levels/Dimension/L04_InfiniteDim.lean:62
 #: Game/Levels/Dimension/L07_RankOps.lean:70
 #: Game/Levels/Dimension/L08_DirectUnion.lean:39
-#: Game/Levels/Dimension/L09_SumInter.lean:36
-#: Game/Levels/Dimension/L09_SumInter.lean:57
-#: Game/Levels/Dimension/L10_Sum.lean:32
-#: Game/Levels/Dimension/L10_Sum.lean:53
-#: Game/Levels/Dimension/L10_Sum.lean:66
+#: Game/Levels/Dimension/L09_SumInter.lean:33
+#: Game/Levels/Dimension/L09_SumInter.lean:54
+#: Game/Levels/Dimension/L10_Sum.lean:29
+#: Game/Levels/Dimension/L10_Sum.lean:50
+#: Game/Levels/Dimension/L10_Sum.lean:63
 #: Game/Levels/Dimension/L11_SumBasis.lean:60
 #: Game/Levels/Dimension/L11_SumBasis.lean:82
 #: Game/Levels/Dimension/L12_DimFormula.lean:34
-#: Game/Levels/Dimension/L13_Meet.lean:43
+#: Game/Levels/Dimension/L13_Meet.lean:44
 #: Game/Levels/Dimension/L14_EightTen.lean:41
 #: Game/Levels/Dimension/L15_Conic.lean:58
 #: Game/Levels/Isomorphisms/L03_Equivalence.lean:32
@@ -3676,11 +3680,11 @@ msgstr ""
 #: Game/Levels/Homomorphisms/L16_Thm220.lean:60
 #: Game/Levels/Homomorphisms/L16_Thm220.lean:65
 #: Game/Levels/Homomorphisms/L16_Thm220.lean:68
-#: Game/Levels/MatrixOfMap/L02_RepresentH.lean:36
+#: Game/Levels/MatrixOfMap/L02_RepresentH.lean:37
 #: Game/Levels/MatrixOfMap/L03_RotateX.lean:44
-#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:49
-#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:53
-#: Game/Levels/MatrixOfMap/L08_Composition.lean:33
+#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:48
+#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:52
+#: Game/Levels/MatrixOfMap/L08_Composition.lean:32
 #: Game/Levels/MatrixOfMap/L12_RankProductEx.lean:31
 #: Game/Levels/MatrixAlgebra/L01_UpperTriangular.lean:44
 #: Game/Levels/MatrixAlgebra/L02_TransposeProduct.lean:28
@@ -4075,8 +4079,8 @@ msgstr ""
 #: Game/Levels/LeanBasics/L11_ForAll.lean:23
 #: Game/Levels/LeanBasics/L13_Vectors.lean:29
 #: Game/Levels/RowOps/L02_SheetOneQ1.lean:32
-#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:38
-#: Game/Levels/RowOps/L06_SheetOneQ2.lean:47
+#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:44
+#: Game/Levels/RowOps/L06_SheetOneQ2.lean:46
 #: Game/Levels/RowOps/L10_SheetTwoQ1a.lean:39
 #: Game/Levels/RowOps/L12_SheetTwoQ1f.lean:35
 #: Game/Levels/RowOps/L13_SheetTwoQ3Generic.lean:38
@@ -4097,13 +4101,13 @@ msgstr ""
 #: Game/Levels/Axioms/L08_RealsAxioms.lean:34
 #: Game/Levels/Subspaces/L01_SubspaceTest.lean:46
 #: Game/Levels/Subspaces/L01_SubspaceTest.lean:52
-#: Game/Levels/Subspaces/L08_Complement.lean:34
-#: Game/Levels/Subspaces/L09_UnionNested.lean:23
+#: Game/Levels/Subspaces/L07_Complement.lean:34
+#: Game/Levels/Subspaces/L08_UnionNested.lean:23
 #: Game/Levels/Independence/L12_PairDependent.lean:52
 #: Game/Levels/Independence/L12_PairDependent.lean:57
 #: Game/Levels/Independence/L14_InfiniteIndep.lean:42
-#: Game/Levels/BasisDim/L12_RankOne.lean:45
-#: Game/Levels/BasisDim/L12_RankOne.lean:76
+#: Game/Levels/BasisDim/L10_RankOne.lean:51
+#: Game/Levels/BasisDim/L10_RankOne.lean:82
 #: Game/Levels/Dimension/L06_RankLe.lean:31
 #: Game/Levels/Dimension/L07_RankOps.lean:49
 #: Game/Levels/Dimension/L07_RankOps.lean:58
@@ -4131,7 +4135,7 @@ msgstr ""
 #: Game/Levels/Homomorphisms/L16_Thm220.lean:50
 #: Game/Levels/ChangeOfBasis/L03_ArrowDiagram.lean:64
 #: Game/Levels/ChangeOfBasis/L04_RepUnique.lean:31
-#: Game/Levels/Projection/L07_FloatingAngle.lean:49
+#: Game/Levels/Projection/L07_FloatingAngle.lean:51
 #: Game/Levels/Projection/L08_GramSchmidtOrthogonal.lean:34
 #: Game/Levels/Determinant/L06_MathlibDet.lean:27
 #: Game/Levels/Eigen/L05_EigenDet.lean:23
@@ -4140,7 +4144,7 @@ msgstr ""
 #: Game/Levels/Eigen/L13_RowSums.lean:26
 #: Game/Levels/Eigen/L15_Inverse.lean:49
 #: Game/Levels/Diagonalisation/L04_ScalarMultiple.lean:34
-#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:37
+#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:46
 #: Game/Levels/FromScratch/L03_OwnSpan.lean:28
 #: Game/Levels/FromScratch/L03_OwnSpan.lean:33
 #: Game/Levels/FromScratch/L06_Bridge.lean:30
@@ -4265,7 +4269,7 @@ msgstr ""
 #: Game/Levels/Echelon/L10_SheetTwoQ8a.lean:62
 #: Game/Levels/MatrixOfMap/L03_RotateX.lean:55
 #: Game/Levels/Projection/L04_ProjLineMem.lean:23
-#: Game/Levels/Projection/L07_FloatingAngle.lean:66
+#: Game/Levels/Projection/L07_FloatingAngle.lean:68
 #: Game/Levels/Determinant/L05_Uniqueness.lean:34
 msgid "§0, then §1 and §2."
 msgstr ""
@@ -4641,7 +4645,7 @@ msgstr ""
 #. §1: `norm_num`
 #: Game/Levels/RowOps/L02_SheetOneQ1.lean:52
 #: Game/Levels/Axioms/L07_OneOrInfinite.lean:63
-#: Game/Levels/Subspaces/L06_Span.lean:29
+#: Game/Levels/Subspaces/L05_Span.lean:29
 #: Game/Levels/Independence/L10_Extension.lean:32
 #: Game/Levels/BasisDim/L01_BasisUnique.lean:57
 #: Game/Levels/Dimension/L05_RowCol.lean:24
@@ -4843,39 +4847,42 @@ msgstr ""
 #. §2: `P`
 #. §3: `left`
 #. §4: `right`
-#. §5: `rowop h3 : 0 = 1 := …`
-#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:13
+#. §5: `use`
+#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:17
 msgid "**Problem Sheet 1, Question 3(c).** Solve using matrix notation:\n"
 "§0\n"
 "\n"
 "First decide: does this system have a solution at all? The goal is §1 with §2 =\n"
 "\"there is a solution\": commit with §3 (no solution) or §4 (there is one), as in\n"
-"Lean Basics. To prove there is none, assume a solution and run Gauss's method until a row\n"
-"says something false. You can state such a row yourself, e.g. §5."
+"Lean Basics. Then prove your choice: a solution you supply with §5; \"no solution\" by\n"
+"assuming one and deriving something false."
 msgstr ""
 
 #. §0: $x + z + w = 4,\\ 2x + y - w = 2,\\ 3x + y + z = 7$
-#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:25
+#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:29
 msgid "Does §0 have a solution?"
 msgstr ""
 
-#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:28
+#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:32
 msgid "Run Gauss's method on paper first, then commit."
 msgstr ""
 
 #. §0: `intro h`
 #. §1: `obtain ⟨x, y, z, w, h1, h2, h3⟩ := h`
-#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:30
-msgid "Assume a solution: §0, then §1."
+#. §2: `rowop h3 : 0 = 1 := …`
+#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:34
+msgid "Assume a solution: §0, then §1. Then run\n"
+"Gauss's method until a row says something false — you can state such a row yourself,\n"
+"e.g. §2."
 msgstr ""
 
 #. §0: $x$
-#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:33
+#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:39
 msgid "Eliminate §0 from rows 2 and 3 and compare what is left."
 msgstr ""
 
 #. §0: $\\emptyset$
-#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:44
+#: Game/Levels/RowOps/L05_SheetOneQ3c.lean:50
 msgid "**Answer:** no solution — the solution set is §0."
 msgstr ""
 
@@ -4898,10 +4905,6 @@ msgstr ""
 #. §12: `h m n A b (by norm_num)`
 #. §13: `(by norm_num)`
 #. §14: $m < n$
-#. §15: `congrFun hx 0`
-#. §16: `hx : u = v`
-#. §17: `u 0 = v 0`
-#. §18: `norm_num [mulVec, dotProduct, Fin.sum_univ_three] at h0`
 #: Game/Levels/RowOps/L06_SheetOneQ2.lean:13
 msgid "**Problem Sheet 1, Question 2.** True or false: a system with more unknowns than equations\n"
 "has at least one solution.\n"
@@ -4909,38 +4912,44 @@ msgid "**Problem Sheet 1, Question 2.** True or false: a system with more unknow
 "A general system of §0 equations in §1 unknowns is §2 with\n"
 "§3. The goal is §4: commit with §5 (false) or\n"
 "§6 (true), then prove your choice. After §7 you prove the claim for every system\n"
-"(§8). After §9 you assume the claim as §10 and refute it: §11 is a big\n"
-"\"for all\", which you can apply to a system of your choice, as in Lean Basics level 12 —\n"
-"e.g. §12 with concrete numbers and matrices (the §13 proves\n"
-"§14).\n"
-"\n"
-"Tips: §15 turns an equation of vectors §16 into its entry 0,\n"
-"§17; then §18 writes that row out\n"
-"as an equation (the recipe from Lean Basics, with three unknowns)."
+"(§8, then produce a solution). After §9 you assume the claim as §10 and\n"
+"refute it: §11 is a big \"for all\", which you can apply to a system of your choice, as in\n"
+"Lean Basics level 12 — e.g. §12 with concrete numbers and matrices (the\n"
+"§13 proves §14)."
 msgstr ""
 
-#: Game/Levels/RowOps/L06_SheetOneQ2.lean:33
+#: Game/Levels/RowOps/L06_SheetOneQ2.lean:29
 msgid "True or false: every system with more unknowns than equations has a solution."
 msgstr ""
 
-#: Game/Levels/RowOps/L06_SheetOneQ2.lean:36
+#: Game/Levels/RowOps/L06_SheetOneQ2.lean:32
 msgid "Decide first: experiment with small systems, e.g. two equations in three unknowns."
 msgstr ""
 
 #. §0: `«{h}»`
-#: Game/Levels/RowOps/L06_SheetOneQ2.lean:39
+#: Game/Levels/RowOps/L06_SheetOneQ2.lean:35
 msgid "Pick two equations in three unknowns that contradict each other, and feed them to §0."
 msgstr ""
 
 #. §0: $x + y + z = 0,\\ x + y + z = 1$
 #. §1: `obtain ⟨x, hx⟩ := h 2 3 !![1, 1, 1; 1, 1, 1] ![0, 1] (by norm_num)`
-#: Game/Levels/RowOps/L06_SheetOneQ2.lean:40
+#: Game/Levels/RowOps/L06_SheetOneQ2.lean:36
 msgid "Try §0:\n"
 "§1."
 msgstr ""
 
+#. §0: `congrFun hx 0`
+#. §1: `hx : u = v`
+#. §2: `u 0 = v 0`
+#. §3: `norm_num [mulVec, dotProduct, Fin.sum_univ_three] at h0`
+#: Game/Levels/RowOps/L06_SheetOneQ2.lean:39
+msgid "To read off the rows: §0 turns an equation of vectors §1 into\n"
+"its entry 0, §2; then §3 writes\n"
+"that row out as an equation (the recipe from Lean Basics)."
+msgstr ""
+
 #. §0: $x+y+z = 0,\\ x+y+z = 1$
-#: Game/Levels/RowOps/L06_SheetOneQ2.lean:53
+#: Game/Levels/RowOps/L06_SheetOneQ2.lean:52
 msgid "**Answer: false.** §0 is a counterexample."
 msgstr ""
 
@@ -6022,15 +6031,15 @@ msgstr ""
 #: Game/Levels/Axioms/L07_OneOrInfinite.lean:49
 #: Game/Levels/Axioms/L09_PositiveQuadratics.lean:43
 #: Game/Levels/Axioms/L11_Rationals.lean:39
-#: Game/Levels/Subspaces/L07_Intersection.lean:41
-#: Game/Levels/Subspaces/L10_Union.lean:61
+#: Game/Levels/Subspaces/L06_Intersection.lean:41
+#: Game/Levels/Subspaces/L09_Union.lean:61
 #: Game/Levels/Independence/L02_ContainsZero.lean:37
 #: Game/Levels/Independence/L08_SpanInsert.lean:42
 #: Game/Levels/Independence/L12_PairDependent.lean:31
 #: Game/Levels/BasisDim/L07_ColSpace.lean:61
-#: Game/Levels/BasisDim/L12_RankOne.lean:50
+#: Game/Levels/BasisDim/L10_RankOne.lean:56
 #: Game/Levels/Dimension/L06_RankLe.lean:26
-#: Game/Levels/Dimension/L13_Meet.lean:39
+#: Game/Levels/Dimension/L13_Meet.lean:40
 #: Game/Levels/Isomorphisms/L07_InternalExternal.lean:68
 #: Game/Levels/Homomorphisms/L13_RankOne.lean:44
 #: Game/Levels/MatrixOfMap/L13_RankCompRight.lean:29
@@ -6040,7 +6049,7 @@ msgstr ""
 #: Game/Levels/Eigen/L12_DerivEigen.lean:54
 #: Game/Levels/Eigen/L14_ColumnSums.lean:36
 #: Game/Levels/Eigen/L16_Independent.lean:30
-#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:42
+#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:51
 #: Game/Levels/Diagonalisation/L11_DetProduct.lean:27
 msgid "§0, then\n"
 "§1."
@@ -6097,7 +6106,7 @@ msgstr ""
 #. §1: `rw [dot_expand] at h`
 #: Game/Levels/DotProduct/L07_CauchySchwarz.lean:31
 #: Game/Levels/Puzzles/L03_Library.lean:52
-#: Game/Levels/Subspaces/L06_Span.lean:35
+#: Game/Levels/Subspaces/L05_Span.lean:35
 #: Game/Levels/Dimension/L08_DirectUnion.lean:43
 #: Game/Levels/Dimension/L14_EightTen.lean:46
 #: Game/Levels/Dimension/L15_Conic.lean:54
@@ -6117,7 +6126,7 @@ msgstr ""
 #. §1: `rw [hv, dotProduct_zero, zero_dotProduct]`
 #. §2: `norm_num`
 #: Game/Levels/DotProduct/L07_CauchySchwarz.lean:38
-#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:45
+#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:46
 #: Game/Levels/Isomorphisms/L04_BasisCorrespondence.lean:88
 #: Game/Levels/Projection/L05_GramSchmidtStep.lean:50
 #: Game/Levels/Eigen/L04_Polynomial.lean:33
@@ -6154,23 +6163,34 @@ msgstr ""
 #. §4: `0 ≤ e`
 #. §5: `e ≠ 0`
 #. §6: `e`
+#. §7: `induction n with | zero => … | succ n ih => …`
+#. §8: $n$
+#. §9: $0$
+#. §10: $n + 1$
+#. §11: $n$
+#. §12: `Finset.sum_range_zero`
+#. §13: `Finset.sum_range_succ`
 #: Game/Levels/DotProduct/L08_Triangle.lean:7
 msgid "Hefferon One.II.2.5: §0. Square both sides:\n"
 "§1, and Cauchy–Schwarz\n"
 "bounds the middle term.\n"
 "\n"
-"**New:** §2 proves goals of the form §3, §4, §5 from the shape of §6."
+"**New:** §2 proves goals of the form §3, §4, §5 from the shape of §6.\n"
+"\n"
+"**Also new in your inventory** (for later): §7\n"
+"proves a statement about every natural number §8 — the case §9, then §10 from §11; and\n"
+"the sum lemmas §12, §13."
 msgstr ""
 
 #. §0: $(\\vec u+\\vec v)\\cdot(\\vec u+\\vec v)$
-#: Game/Levels/DotProduct/L08_Triangle.lean:19
+#: Game/Levels/DotProduct/L08_Triangle.lean:23
 msgid "Collect the facts: Cauchy–Schwarz, and the expansion of §0."
 msgstr ""
 
 #. §0: `have e : (u + v) ⬝ᵥ (u + v) = u ⬝ᵥ u + 2 * (u ⬝ᵥ v) + v ⬝ᵥ v := by`
 #. §1: `rw [add_dotProduct, dotProduct_add, dotProduct_add, dotProduct_comm v u]`
 #. §2: `ring`
-#: Game/Levels/DotProduct/L08_Triangle.lean:21
+#: Game/Levels/DotProduct/L08_Triangle.lean:25
 msgid "§0\n"
 "§1 then §2."
 msgstr ""
@@ -6184,14 +6204,14 @@ msgstr ""
 #. §6: $2\\,\\vec u\\cdot\\vec v$
 #. §7: $2|\\vec u\\cdot\\vec v| \\le 2|\\vec u||\\vec v|$
 #. §8: `«{h}»`
-#: Game/Levels/DotProduct/L08_Triangle.lean:26
+#: Game/Levels/DotProduct/L08_Triangle.lean:30
 msgid "Both sides are §0, so compare their squares: §1 is\n"
 "the expansion §2, and §3, §4 are dot products (§5). The middle term\n"
 "§6 is at most §7 by §8."
 msgstr ""
 
 #. §0: `len_add_le`
-#: Game/Levels/DotProduct/L08_Triangle.lean:36
+#: Game/Levels/DotProduct/L08_Triangle.lean:40
 #: Game/Levels/Homomorphisms/L10_InjRank.lean:31
 msgid "§0 is now in your inventory."
 msgstr ""
@@ -6210,59 +6230,64 @@ msgstr ""
 #. §7: `\\sum`
 #. §8: `∈`
 #. §9: `\\in`
-#. §10: `induction n with`
-#. §11: `zero`
-#. §12: `succ n ih`
-#. §13: `ih`
-#. §14: $n$
-#. §15: `∑ i, f i`
-#. §16: `Finset.univ`
-#. §17: `Finset.mem_univ i`
-#. §18: `i ∈ Finset.univ`
+#. §10: `∑ i, f i`
+#. §11: `Finset.univ`
+#. §12: `Finset.mem_univ i`
+#. §13: `i ∈ Finset.univ`
 #: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:14
 msgid "**Problem Sheet 2, Question 6.** Is §0?\n"
 "If it is true then it would generalise the Triangle Inequality.\n"
 "\n"
 "Decide with §1/§2. The vectors are §3 and\n"
-"§4 is §5 (§6 is typed §7, §8 is §9). New: §10 — prove the case\n"
-"§11, then the case §12 using the hypothesis §13 for §14.\n"
+"§4 is §5 (§6 is typed §7, §8 is §9).\n"
 "\n"
-"(A sum over *all* positions, §15, runs over §16; §17 says\n"
-"§18. Not needed here, but you will meet it.)"
+"(A sum over *all* positions, §10, runs over §11; §12 says\n"
+"§13. Not needed here, but you will meet it.)"
 msgstr ""
 
 #. §0: $\\left|\\sum_{i<n} \\vec u_i\\right| \\le \\sum_{i<n} |\\vec u_i|$
 #. §1: $n$
-#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:28
+#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:27
 msgid "Is §0 for all §1?"
 msgstr ""
 
-#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:33
+#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:32
 msgid "Decide first. What does the case of two vectors say?"
 msgstr ""
 
-#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:34
+#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:33
 msgid "It is true: argue one vector at a time (induction)."
+msgstr ""
+
+#. §0: `induction n with`
+#. §1: `zero`
+#. §2: `succ n ih`
+#. §3: `ih`
+#. §4: $n$
+#. §5: `induction`
+#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:36
+msgid "Argue one vector at a time: §0 proves the case §1, then the case\n"
+"§2 using the hypothesis §3 for §4 (Tactics tab, §5)."
 msgstr ""
 
 #. §0: `induction n with`
 #. §1: `| zero => …`
 #. §2: `| succ n ih => …`
-#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:37
+#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:38
 msgid "§0 §1 §2"
 msgstr ""
 
 #. §0: `rw [Finset.sum_range_zero, Finset.sum_range_zero, len,
 #. dotProduct_zero, Real.sqrt_zero]`
-#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:40
+#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:41
 msgid "Both sums are empty: §0."
 msgstr ""
 
-#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:44
+#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:45
 msgid "Split off the last vector and use the triangle inequality."
 msgstr ""
 
-#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:53
+#: Game/Levels/DotProduct/L09_SheetTwoQ6.lean:54
 msgid "**Answer: yes**, by induction from the triangle inequality."
 msgstr ""
 
@@ -6616,21 +6641,23 @@ msgid "Seven shapes for §0, four for §1 (with parameters §2)."
 msgstr ""
 
 #: Game/Levels/Echelon/L07_SheetOneQ12.lean:5
-msgid "An invariant of row equivalence"
+msgid "Row equivalent?"
 msgstr ""
 
 #. §0: $\\begin{pmatrix}1&1&1\\\\0&0&3\\end{pmatrix}$
 #. §1: $\\begin{pmatrix}0&1&2\\\\1&-1&1\\end{pmatrix}$
 #. §2: `left`
 #. §3: `right`
+#. §4: $E$
+#. §5: $EA = B$
 #: Game/Levels/Echelon/L07_SheetOneQ12.lean:16
 msgid "**Problem Sheet 1, Question 12.** Are the matrices\n"
 "§0 and §1\n"
 "row equivalent?\n"
 "\n"
-"Decide with §2 (no) or §3 (yes). Row operations change a matrix, but some things\n"
-"survive them (the previous levels found one: the solutions of the homogeneous system). Do\n"
-"these two matrices agree on such things?"
+"Decide with §2 (no) or §3 (yes), then prove your choice: \"yes\" by exhibiting the\n"
+"row operations (an invertible §4 with §5), \"no\" by finding something that row\n"
+"operations do not change on which the two matrices differ."
 msgstr ""
 
 #: Game/Levels/Echelon/L07_SheetOneQ12.lean:29
@@ -6638,28 +6665,33 @@ msgid "Are these two matrices row equivalent?"
 msgstr ""
 
 #: Game/Levels/Echelon/L07_SheetOneQ12.lean:32
-msgid "Compare the solutions of the two homogeneous systems."
+msgid "Decide first: bring both matrices to reduced echelon form on paper."
 msgstr ""
 
-#: Game/Levels/Echelon/L07_SheetOneQ12.lean:33
+#: Game/Levels/Echelon/L07_SheetOneQ12.lean:34
+msgid "Row operations do not change the solutions of the homogeneous system (the previous\n"
+"levels). Compare those solutions for the two matrices."
+msgstr ""
+
+#: Game/Levels/Echelon/L07_SheetOneQ12.lean:36
 msgid "Find a vector killed by the first matrix but not by the second."
 msgstr ""
 
 #. §0: $(1, -1, 0)$
 #. §1: `have h1 : (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) *ᵥ ![1, -1, 0] = 0`
-#: Game/Levels/Echelon/L07_SheetOneQ12.lean:37
+#: Game/Levels/Echelon/L07_SheetOneQ12.lean:39
 #: Game/Levels/MatrixOfMap/L12_RankProductEx.lean:47
 #: Game/Levels/Eigen/L07_CharEq.lean:36
 msgid "§0: §1."
 msgstr ""
 
 #. §0: `rw [← hE, ← mulVec_mulVec, h1, mulVec_zero]`
-#: Game/Levels/Echelon/L07_SheetOneQ12.lean:40
+#: Game/Levels/Echelon/L07_SheetOneQ12.lean:42
 msgid "Transport it: §0."
 msgstr ""
 
 #. §0: $(1,-1,0)$
-#: Game/Levels/Echelon/L07_SheetOneQ12.lean:48
+#: Game/Levels/Echelon/L07_SheetOneQ12.lean:50
 msgid "**Answer: no.** §0 is in the null space of the first matrix but not the second."
 msgstr ""
 
@@ -6673,42 +6705,47 @@ msgstr ""
 #. §3: `Submonoid.closure NoSwapOps`
 #. §4: `left`
 #. §5: `right`
-#. §6: `Submonoid.mul_mem`
-#. §7: `Submonoid.subset_closure`
-#. §8: `_`
-#. §9: `Submonoid.mul_mem _ h1 h2`
-#. §10: `∉`
-#. §11: `\\notin`
-#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:18
+#. §6: `∉`
+#. §7: `\\notin`
+#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:20
 msgid "**Problem Sheet 2, Question 2.** Are any of the operations used in Gauss's Method redundant?\n"
 "That is, can we make any of the operations from a combination of the others?\n"
 "\n"
 "The claim tested: the swap §0, i.e. the matrix\n"
 "§1, is a product of combination and rescaling matrices\n"
 "(§2). §3 is the set of all such products. Decide with\n"
-"§4 or §5.\n"
-"\n"
-"Useful: §6, §7. An underscore §8 in an argument\n"
-"list (e.g. §9) asks Lean to fill in an argument it can work out\n"
-"itself. §10 (\"not in\") is typed §11."
+"§4 (no: the swap is not such a product) or §5 (yes), then prove your choice.\n"
+"§6 (\"not in\") is typed §7."
 msgstr ""
 
-#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:35
+#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:34
 msgid "Is the swap matrix a product of combination and rescaling matrices?"
 msgstr ""
 
 #. §0: $2\\times 2$
 #. §1: $\\rho_j \\leftarrow \\rho_j + k\\rho_i$
-#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:38
+#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:37
 msgid "Decide first: experiment on paper with a §0 matrix — what can you reach using\n"
 "only §1 and rescaling?"
+msgstr ""
+
+#. §0: `scale`
+#. §1: `combo`
+#. §2: `NoSwapOps`
+#. §3: `Submonoid.mul_mem`
+#. §4: `NoSwapOps`
+#. §5: `Submonoid.subset_closure`
+#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:40
+msgid "Write the swap as a product of combination and rescaling matrices (§0, §1),\n"
+"then show each factor is in §2. A product of members of the closure is a member\n"
+"(§3), and so is every member of §4 (§5)."
 msgstr ""
 
 #. §0: `rw [show (!![0, 1; 1, 0] : Matrix (Fin 2) (Fin 2) ℝ) = scale 0 (-1) * combo 0 1 1 * combo 1 0 (-1) * combo 0 1 1 by …]`
 #. §1: `…`
 #. §2: `ext i j`
 #. §3: `fin_cases i <;> fin_cases j <;> simp [scale, combo, Matrix.mul_apply, Fin.sum_univ_two, Matrix.single, Function.update]`
-#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:41
+#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:43
 msgid "Add row 1 to row 2, subtract row 2 from row 1, add row 1 to row 2, negate row 1:\n"
 "§0\n"
 "where §1 is §2 and §3."
@@ -6719,13 +6756,13 @@ msgstr ""
 #. §2: `left`
 #. §3: `right`
 #. §4: `use …`
-#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:49
+#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:51
 msgid "§0 three times, then each factor:\n"
 "§1, choose §2 (combination) or §3 (rescaling), §4."
 msgstr ""
 
 #. §0: $-1$
-#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:73
+#: Game/Levels/Echelon/L08_SheetTwoQ2.lean:75
 msgid "**Answer: yes** — swapping is built from three combinations and one rescaling by §0."
 msgstr ""
 
@@ -6742,8 +6779,7 @@ msgstr ""
 #. §6: $\\vec v = \\vec 0$
 #. §7: `left`
 #. §8: `right`
-#. §9: `IsNonsingular !![1, 2, 1; 1, 3, 1]`
-#. §10: `-- Explain:`
+#. §9: `-- Explain:`
 #: Game/Levels/Echelon/L09_SheetOneQ4.lean:16
 msgid "**Problem Sheet 1, Question 4.** Singular or nonsingular?\n"
 "(a) §0 (b) §1\n"
@@ -6752,8 +6788,8 @@ msgid "**Problem Sheet 1, Question 4.** Singular or nonsingular?\n"
 "§3 (Hefferon One.I.2.13): §4 is square and §5 only for\n"
 "§6. Decide (a) and (b) with §7 (singular) or §8 (nonsingular).\n"
 "\n"
-"For (c): try writing §9 — Lean refuses, because the\n"
-"definition only accepts square matrices. Write your answer to (c) in a comment §10."
+"The Lean claim covers (a) and (b). For (c), read the definition (One.I.2.13) carefully and\n"
+"write your answer, with its reason, in a comment §9 inside your proof."
 msgstr ""
 
 #: Game/Levels/Echelon/L09_SheetOneQ4.lean:31
@@ -7009,14 +7045,100 @@ msgid "Class of §0: nonzero first column, second column §1 times\n"
 "the first. Together with level 10 that describes all four classes of Sheet 2 Q8."
 msgstr ""
 
-#: Game/Levels/Echelon.lean:16
+#: Game/Levels/Echelon/L14_SheetTwoQ4.lean:5
+msgid "Homogeneous solutions"
+msgstr ""
+
+#. §0: $\\vec s$
+#. §1: $\\vec t$
+#. §2: $\\vec s + \\vec t$
+#. §3: $3\\vec s$
+#. §4: $k\\vec s + m\\vec t$
+#. §5: $k, m \\in \\mathbb{R}$
+#. §6: $\\vec 0$
+#. §7: `-- Explain:`
+#. §8: $A$
+#. §9: `mulVec_add`
+#. §10: $A(\\vec s + \\vec t) = A\\vec s + A\\vec t$
+#. §11: `mulVec_smul`
+#. §12: $A(k\\vec s) = k(A\\vec s)$
+#. §13: `add_zero`
+#. §14: $\\vec v + \\vec 0 = \\vec v$
+#. §15: `smul_zero`
+#. §16: $k\\vec 0 = \\vec 0$
+#. §17: `one_mulVec`
+#. §18: $I\\vec x = \\vec x$
+#: Game/Levels/Echelon/L14_SheetTwoQ4.lean:19
+msgid "**Problem Sheet 2, Question 4.** Prove that if §0 and §1 satisfy a homogeneous\n"
+"system then so do these vectors: (a) §2, (b) §3,\n"
+"(c) §4 for §5.\n"
+"\n"
+"What's wrong with this argument: *\"These three show that if a homogeneous system has one\n"
+"solution then it has many solutions — any multiple of a solution is another solution, and\n"
+"any sum of solutions is a solution also — so there are no homogeneous systems with exactly\n"
+"one solution.\"*?\n"
+"\n"
+"The last part of the statement is the formal core of the answer: a homogeneous system whose\n"
+"**only** solution is §6. Also write your explanation of the flaw as a comment\n"
+"starting §7 inside your proof.\n"
+"\n"
+"Multiplying by §8 respects sums and scalar multiples: §9 says\n"
+"§10, §11 says §12.\n"
+"To tidy up, §13 (§14) and §15 (§16);\n"
+"and §17 says §18."
+msgstr ""
+
+#. §0: $A\\vec x = \\vec 0$
+#. §1: $\\vec 0$
+#: Game/Levels/Echelon/L14_SheetTwoQ4.lean:42
+msgid "Solutions of §0 are closed under sums, multiples and combinations; yet some\n"
+"homogeneous system has only the solution §1."
+msgstr ""
+
+#. §0: $A$
+#: Game/Levels/Echelon/L14_SheetTwoQ4.lean:48
+msgid "Multiplying by §0 respects sums and scalar multiples."
+msgstr ""
+
+#. §0: $2\\times 2$
+#: Game/Levels/Echelon/L14_SheetTwoQ4.lean:56
+msgid "Find a §0 homogeneous system with exactly one solution."
+msgstr ""
+
+#. §0: `use 1`
+#. §1: `intro x`
+#. §2: `rw [one_mulVec]`
+#: Game/Levels/Echelon/L14_SheetTwoQ4.lean:57
+msgid "The identity matrix: §0, §1, §2."
+msgstr ""
+
+#. §0: $\\vec 0$
+#. §1: $\\vec 0$
+#. §2: $\\vec 0$
+#. §3: $x = 0, y = 0$
+#: Game/Levels/Echelon/L14_SheetTwoQ4.lean:60
+msgid "Model explanation: every homogeneous system has the solution\n"
+"§0, and sums and multiples of §1 are §2. The argument only\n"
+"produces new solutions if one starts from a nonzero solution, which need not exist\n"
+"(e.g. §3)."
+msgstr ""
+
+#. §0: $\\vec 0$
+#. §1: $\\vec 0$
+#: Game/Levels/Echelon/L14_SheetTwoQ4.lean:68
+msgid "The flaw: starting from the solution §0, sums and multiples give only §1.\n"
+"So: one solution, or infinitely many — you will prove exactly this with vector spaces in Sheet 3 Q3(d)."
+msgstr ""
+
+#: Game/Levels/Echelon.lean:17
 #: Game.lean:24
 msgid "Echelon"
 msgstr ""
 
 #. §0: $A\\vec x = \\vec b$
 #. §1: $2\\times 2$
-#: Game/Levels/Echelon.lean:18
+#. §2: $A\\vec x = \\vec 0$
+#: Game/Levels/Echelon.lean:19
 msgid "Hefferon One.I.2 and One.III: matrices, row operations as matrices, reduced echelon form\n"
 "and row equivalence.\n"
 "\n"
@@ -7025,7 +7147,8 @@ msgid "Hefferon One.I.2 and One.III: matrices, row operations as matrices, reduc
 "- Levels 5–8: computing a reduced echelon form, all possible shapes, an invariant, and whether\n"
 "  the swap operation is redundant (Sheet 1 Q10–Q12, Sheet 2 Q2).\n"
 "- Level 9: singular or nonsingular (Sheet 1 Q4).\n"
-"- Levels 10–13: the row-equivalence classes of §1 matrices (Sheet 2 Q8)."
+"- Levels 10–13: the row-equivalence classes of §1 matrices (Sheet 2 Q8).\n"
+"- Level 14: solutions of a homogeneous system §2 (Sheet 2 Q4)."
 msgstr ""
 
 #: Game/Levels/Puzzles/L01_Arbuzoids.lean:6
@@ -7166,7 +7289,7 @@ msgstr ""
 #: Game/Levels/Puzzles/L02_ReadSomething.lean:30
 #: Game/Levels/Puzzles/L02_ReadSomething.lean:34
 #: Game/Levels/Puzzles/L04_Rope.lean:26
-#: Game/Levels/Subspaces/L06_Span.lean:39
+#: Game/Levels/Subspaces/L05_Span.lean:39
 #: Game/Levels/Homomorphisms/L13_RankOne.lean:37
 #: Game/Levels/Homomorphisms/L14_RightInverse.lean:61
 #: Game/Levels/Homomorphisms/L16_Thm220.lean:53
@@ -8316,76 +8439,7 @@ msgstr ""
 msgid "**Answer: yes**, the odd functions form a subspace."
 msgstr ""
 
-#: Game/Levels/Subspaces/L04_Homogeneous.lean:5
-msgid "Homogeneous solutions"
-msgstr ""
-
-#. §0: $\\vec s$
-#. §1: $\\vec t$
-#. §2: $\\vec s + \\vec t$
-#. §3: $3\\vec s$
-#. §4: $k\\vec s + m\\vec t$
-#. §5: $k, m \\in \\mathbb{R}$
-#. §6: $\\vec 0$
-#. §7: `-- Explain:`
-#: Game/Levels/Subspaces/L04_Homogeneous.lean:19
-msgid "**Problem Sheet 2, Question 4.** Prove that if §0 and §1 satisfy a homogeneous\n"
-"system then so do these vectors: (a) §2, (b) §3,\n"
-"(c) §4 for §5.\n"
-"\n"
-"What's wrong with this argument: *\"These three show that if a homogeneous system has one\n"
-"solution then it has many solutions — any multiple of a solution is another solution, and\n"
-"any sum of solutions is a solution also — so there are no homogeneous systems with exactly\n"
-"one solution.\"*?\n"
-"\n"
-"The last part of the statement is the formal core of the answer: a homogeneous system whose\n"
-"**only** solution is §6. Also write your explanation of the flaw as a comment\n"
-"starting §7 inside your proof."
-msgstr ""
-
-#. §0: $A\\vec x = \\vec 0$
-#. §1: $\\vec 0$
-#: Game/Levels/Subspaces/L04_Homogeneous.lean:37
-msgid "Solutions of §0 are closed under sums, multiples and combinations; yet some\n"
-"homogeneous system has only the solution §1."
-msgstr ""
-
-#. §0: $A$
-#: Game/Levels/Subspaces/L04_Homogeneous.lean:43
-msgid "Multiplying by §0 respects sums and scalar multiples."
-msgstr ""
-
-#. §0: $2\\times 2$
-#: Game/Levels/Subspaces/L04_Homogeneous.lean:51
-msgid "Find a §0 homogeneous system with exactly one solution."
-msgstr ""
-
-#. §0: `use 1`
-#. §1: `intro x`
-#. §2: `rw [one_mulVec]`
-#: Game/Levels/Subspaces/L04_Homogeneous.lean:52
-msgid "The identity matrix: §0, §1, §2."
-msgstr ""
-
-#. §0: $\\vec 0$
-#. §1: $\\vec 0$
-#. §2: $\\vec 0$
-#. §3: $x = 0, y = 0$
-#: Game/Levels/Subspaces/L04_Homogeneous.lean:55
-msgid "Model explanation: every homogeneous system has the solution\n"
-"§0, and sums and multiples of §1 are §2. The argument only\n"
-"produces new solutions if one starts from a nonzero solution, which need not exist\n"
-"(e.g. §3)."
-msgstr ""
-
-#. §0: $\\vec 0$
-#. §1: $\\vec 0$
-#: Game/Levels/Subspaces/L04_Homogeneous.lean:63
-msgid "The flaw: starting from the solution §0, sums and multiples give only §1.\n"
-"So: one solution, or infinitely many — exactly Sheet 3 Q3(d)."
-msgstr ""
-
-#: Game/Levels/Subspaces/L05_ODE.lean:5
+#: Game/Levels/Subspaces/L04_ODE.lean:5
 msgid "Solutions of a differential equation"
 msgstr ""
 
@@ -8402,7 +8456,7 @@ msgstr ""
 #. §10: `mul_zero`
 #. §11: `differentiable_comb`
 #. §12: `deriv_comb`
-#: Game/Levels/Subspaces/L05_ODE.lean:18
+#: Game/Levels/Subspaces/L04_ODE.lean:18
 msgid "**Problem Sheet 4, Question 2.** Briefly argue why the set of functions\n"
 "§0 is a vector space. You may\n"
 "focus on the least obvious points, but make sure you are convinced of all 10 conditions.\n"
@@ -8422,7 +8476,7 @@ msgstr ""
 
 #. §0: $f' + 2f = 0$
 #. §1: $\\mathbb{R}\\to\\mathbb{R}$
-#: Game/Levels/Subspaces/L05_ODE.lean:38
+#: Game/Levels/Subspaces/L04_ODE.lean:38
 msgid "The differentiable solutions of §0 form a subspace of the functions\n"
 "§1."
 msgstr ""
@@ -8435,7 +8489,7 @@ msgstr ""
 #. §5: $f$
 #. §6: $g$
 #. §7: $\\frac{df}{dx}$
-#: Game/Levels/Subspaces/L05_ODE.lean:42
+#: Game/Levels/Subspaces/L04_ODE.lean:42
 msgid "Why §0? Lean's §1 is a total function: where §2 is not\n"
 "differentiable it returns the *junk value* §3. The rule\n"
 "§4 is only true when §5 and §6 are differentiable, so\n"
@@ -8443,7 +8497,7 @@ msgid "Why §0? Lean's §1 is a total function: where §2 is not\n"
 "\"§7 exists\" is implicit in writing the equation; Lean makes it explicit."
 msgstr ""
 
-#: Game/Levels/Subspaces/L05_ODE.lean:62
+#: Game/Levels/Subspaces/L04_ODE.lean:62
 msgid "Differentiation is linear: split the derivative of the combination."
 msgstr ""
 
@@ -8451,13 +8505,13 @@ msgstr ""
 #. §1: `Pi.add_apply`
 #. §2: `Pi.smul_apply`
 #. §3: `smul_eq_mul`
-#: Game/Levels/Subspaces/L05_ODE.lean:63
+#: Game/Levels/Subspaces/L04_ODE.lean:63
 msgid "§0, then unfold the pointwise operations\n"
 "with §1, §2, §3."
 msgstr ""
 
 #. §0: $(c_1f + c_2g)' + 2(c_1f+c_2g) = c_1(f'+2f) + c_2(g'+2g) = 0$
-#: Game/Levels/Subspaces/L05_ODE.lean:67
+#: Game/Levels/Subspaces/L04_ODE.lean:67
 msgid "Model explanation: the set lies inside the vector space of all\n"
 "functions, so by the subspace test we only need nonemptiness (the zero function solves\n"
 "the equation) and closure under combinations, which holds because differentiation is\n"
@@ -8466,12 +8520,12 @@ msgstr ""
 
 #. §0: $A\\vec x = \\vec 0$
 #. §1: $f' + 2f = 0$
-#: Game/Levels/Subspaces/L05_ODE.lean:76
+#: Game/Levels/Subspaces/L04_ODE.lean:76
 msgid "The solution set of a *homogeneous linear* equation is always a subspace — whether the\n"
 "equation is §0 or §1."
 msgstr ""
 
-#: Game/Levels/Subspaces/L06_Span.lean:5
+#: Game/Levels/Subspaces/L05_Span.lean:5
 msgid "The span is the smallest subspace"
 msgstr ""
 
@@ -8493,7 +8547,7 @@ msgstr ""
 #. §15: `intro x hx`
 #. §16: `hx : x ∈ U`
 #. §17: `x ∈ W`
-#: Game/Levels/Subspaces/L06_Span.lean:7
+#: Game/Levels/Subspaces/L05_Span.lean:7
 msgid "The *span* §0 of §1 is the set of all linear\n"
 "combinations §2 (Definition Two.I.2.13). In Lean,\n"
 "§3, and §4 says\n"
@@ -8508,25 +8562,25 @@ msgstr ""
 
 #. §0: $\\vec v_0, \\ldots, \\vec v_{n-1}$
 #. §1: $\\vec v_i$
-#: Game/Levels/Subspaces/L06_Span.lean:22
+#: Game/Levels/Subspaces/L05_Span.lean:22
 msgid "The span of §0 contains each §1 and lies inside every\n"
 "subspace containing them all."
 msgstr ""
 
 #. §0: $\\sum_i c_i\\vec v_i$
 #. §1: `«{W}»`
-#: Game/Levels/Subspaces/L06_Span.lean:33
+#: Game/Levels/Subspaces/L05_Span.lean:33
 msgid "A member of the span is a combination §0. Each term lies in\n"
 "§1, so their sum does too."
 msgstr ""
 
 #. §0: `Submodule.span_le`
 #. §1: `span S ≤ W ↔ S ⊆ W`
-#: Game/Levels/Subspaces/L06_Span.lean:47
+#: Game/Levels/Subspaces/L05_Span.lean:47
 msgid "In Mathlib this is §0: §1. It is now in your inventory."
 msgstr ""
 
-#: Game/Levels/Subspaces/L07_Intersection.lean:5
+#: Game/Levels/Subspaces/L06_Intersection.lean:5
 msgid "Intersections"
 msgstr ""
 
@@ -8537,7 +8591,7 @@ msgstr ""
 #. §4: $A, B$
 #. §5: $V$
 #. §6: `left`
-#: Game/Levels/Subspaces/L07_Intersection.lean:14
+#: Game/Levels/Subspaces/L06_Intersection.lean:14
 msgid "**Problem Sheet 4, Question 5.** Subspaces are subsets and so we naturally consider how\n"
 "'is a subspace' interacts with the usual set operations. Let §0 be subspaces of a vector\n"
 "space §1.\n"
@@ -8550,23 +8604,23 @@ msgstr ""
 
 #. §0: $A \\cap B$
 #. §1: $A, B$
-#: Game/Levels/Subspaces/L07_Intersection.lean:27
+#: Game/Levels/Subspaces/L06_Intersection.lean:27
 msgid "Is §0 a subspace for all subspaces §1?"
 msgstr ""
 
 #. §0: $A \\cap B$
 #. §1: $\\vec 0$
-#: Game/Levels/Subspaces/L07_Intersection.lean:31
+#: Game/Levels/Subspaces/L06_Intersection.lean:31
 msgid "Decide first: test the subspace test on §0. Is §1 in it? Is a\n"
 "combination of two of its vectors in it?"
 msgstr ""
 
 #. §0: `A ⊓ B`
-#: Game/Levels/Subspaces/L07_Intersection.lean:49
+#: Game/Levels/Subspaces/L06_Intersection.lean:49
 msgid "**Answer: always.** Mathlib writes this subspace as §0 (\"meet\")."
 msgstr ""
 
-#: Game/Levels/Subspaces/L08_Complement.lean:5
+#: Game/Levels/Subspaces/L07_Complement.lean:5
 msgid "Complements"
 msgstr ""
 
@@ -8588,7 +8642,7 @@ msgstr ""
 #. §15: $A$
 #. §16: `-- Explain:`
 #. §17: $V \\setminus A$
-#: Game/Levels/Subspaces/L08_Complement.lean:12
+#: Game/Levels/Subspaces/L07_Complement.lean:12
 msgid "**Problem Sheet 4, Question 5(c).** Let §0 be a subspace of §1. When is the complement\n"
 "§2 a subspace?\n"
 "\n"
@@ -8601,12 +8655,12 @@ msgid "**Problem Sheet 4, Question 5(c).** Let §0 be a subspace of §1. When is
 msgstr ""
 
 #. §0: $A$
-#: Game/Levels/Subspaces/L08_Complement.lean:26
+#: Game/Levels/Subspaces/L07_Complement.lean:26
 msgid "Is the complement of the subspace §0 a subspace?"
 msgstr ""
 
 #. §0: $V \\setminus A$
-#: Game/Levels/Subspaces/L08_Complement.lean:30
+#: Game/Levels/Subspaces/L07_Complement.lean:30
 msgid "Decide first: run the subspace conditions on §0 one at a time."
 msgstr ""
 
@@ -8615,18 +8669,18 @@ msgstr ""
 #. §2: `0 ∈ A`
 #. §3: `False`
 #. §4: `exact «{h0}» A.zero_mem`
-#: Game/Levels/Subspaces/L08_Complement.lean:37
+#: Game/Levels/Subspaces/L07_Complement.lean:37
 msgid "§0 says §1, i.e. it is a function from\n"
 "§2 to §3: §4."
 msgstr ""
 
 #. §0: $V \\setminus A$
 #. §1: $\\vec 0$
-#: Game/Levels/Subspaces/L08_Complement.lean:43
+#: Game/Levels/Subspaces/L07_Complement.lean:43
 msgid "**Answer: never** — §0 misses §1."
 msgstr ""
 
-#: Game/Levels/Subspaces/L09_UnionNested.lean:5
+#: Game/Levels/Subspaces/L08_UnionNested.lean:5
 msgid "Nested unions"
 msgstr ""
 
@@ -8634,7 +8688,7 @@ msgstr ""
 #. §1: `(A : Set V) ⊆ B`
 #. §2: $A$
 #. §3: $B$
-#: Game/Levels/Subspaces/L09_UnionNested.lean:7
+#: Game/Levels/Subspaces/L08_UnionNested.lean:7
 msgid "Warm-up for Sheet 4 Q5(b) (the next level): if one subspace contains the other, their union\n"
 "is a subspace — because the union is just the bigger one.\n"
 "\n"
@@ -8645,28 +8699,28 @@ msgstr ""
 #. §0: $A \\subseteq B$
 #. §1: $B \\subseteq A$
 #. §2: $A \\cup B$
-#: Game/Levels/Subspaces/L09_UnionNested.lean:17
+#: Game/Levels/Subspaces/L08_UnionNested.lean:17
 msgid "If §0 or §1, then §2 is a subspace."
 msgstr ""
 
 #. §0: $A \\subseteq B$
 #. §1: $A \\cup B = B$
-#: Game/Levels/Subspaces/L09_UnionNested.lean:21
+#: Game/Levels/Subspaces/L08_UnionNested.lean:21
 msgid "If §0 then §1. Split into the two cases."
 msgstr ""
 
-#: Game/Levels/Subspaces/L09_UnionNested.lean:31
+#: Game/Levels/Subspaces/L08_UnionNested.lean:31
 msgid "That was the easy direction. Now the converse."
 msgstr ""
 
-#: Game/Levels/Subspaces/L10_Union.lean:5
+#: Game/Levels/Subspaces/L09_Union.lean:5
 msgid "Unions (boss)"
 msgstr ""
 
 #. §0: $A \\cup B$
 #. §1: $\\Leftarrow$
 #. §2: `union_subspace_of_subset`
-#: Game/Levels/Subspaces/L10_Union.lean:18
+#: Game/Levels/Subspaces/L09_Union.lean:18
 msgid "**Problem Sheet 4, Question 5(b).** When is §0 a subspace? Provide an equivalent\n"
 "condition in terms of sets and prove its equivalence.\n"
 "\n"
@@ -8677,7 +8731,7 @@ msgstr ""
 #. §0: $A \\cup B$
 #. §1: $A$
 #. §2: $B$
-#: Game/Levels/Subspaces/L10_Union.lean:28
+#: Game/Levels/Subspaces/L09_Union.lean:28
 msgid "§0 is a subspace if and only if one of §1, §2 contains the other."
 msgstr ""
 
@@ -8685,15 +8739,15 @@ msgstr ""
 #. §1: $\\vec a \\in A\\setminus B$
 #. §2: $\\vec b \\in B$
 #. §3: $\\vec a + \\vec b$
-#: Game/Levels/Subspaces/L10_Union.lean:35
+#: Game/Levels/Subspaces/L09_Union.lean:35
 msgid "If §0 you are done. Otherwise take §1 and\n"
 "any §2; where can §3 live?"
 msgstr ""
 
 #. §0: `rw [Set.not_subset] at «{hAB}»`
 #. §1: `obtain ⟨a, haA, haB⟩ := «{hAB}»`
-#: Game/Levels/Subspaces/L10_Union.lean:44
-#: Game/Levels/Independence/L06_FunctionsB.lean:50
+#: Game/Levels/Subspaces/L09_Union.lean:44
+#: Game/Levels/Independence/L06_FunctionsB.lean:51
 #: Game/Levels/Homomorphisms/L15_IndepInj.lean:36
 #: Game/Levels/Volume/L02_DetInv.lean:25
 #: Game/Levels/Eigen/L12_DerivEigen.lean:40
@@ -8707,7 +8761,7 @@ msgstr ""
 #. §1: `b ∈ W`
 #. §2: `have ha : a ∈ W := by rw [mem_iff_of_coe_eq «{hW}»]; exact Or.inl «{haA}»`
 #. §3: `have hab : a + b ∈ W := W.add_mem ha hb'`
-#: Game/Levels/Subspaces/L10_Union.lean:47
+#: Game/Levels/Subspaces/L09_Union.lean:47
 msgid "Show §0 and §1, e.g.\n"
 "§2.\n"
 "Then §3."
@@ -8715,18 +8769,18 @@ msgstr ""
 
 #. §0: $\\vec a + \\vec b \\in A$
 #. §1: $\\vec a + \\vec b \\in B$
-#: Game/Levels/Subspaces/L10_Union.lean:58
+#: Game/Levels/Subspaces/L09_Union.lean:58
 msgid "Two cases: §0 or §1. Subtract."
 msgstr ""
 
 #. §0: `A ⊔ B`
 #. §1: $A + B$
-#: Game/Levels/Subspaces/L10_Union.lean:75
+#: Game/Levels/Subspaces/L09_Union.lean:75
 msgid "**Answer: exactly when one contains the other.** This is why Mathlib's §0 is not the\n"
 "union but the *sum* §1: the smallest subspace containing both."
 msgstr ""
 
-#: Game/Levels/Subspaces.lean:13
+#: Game/Levels/Subspaces.lean:12
 msgid "Subspaces"
 msgstr ""
 
@@ -8736,7 +8790,7 @@ msgstr ""
 #. §3: `\\inf`
 #. §4: `⊔`
 #. §5: `\\sup`
-#: Game/Levels/Subspaces.lean:15
+#: Game/Levels/Subspaces.lean:14
 msgid "Hefferon Two.I.2: subsets that are vector spaces in their own right. One test does all the\n"
 "work — nonempty and closed under linear combinations — and the span of a set is the\n"
 "smallest subspace containing it.\n"
@@ -8910,7 +8964,7 @@ msgid "§0 reads off the constant coefficient\n"
 msgstr ""
 
 #: Game/Levels/Independence/L03_PolysA.lean:49
-#: Game/Levels/Independence/L05_FunctionsA.lean:51
+#: Game/Levels/Independence/L05_FunctionsA.lean:52
 msgid "**Answer: independent.**"
 msgstr ""
 
@@ -8936,43 +8990,44 @@ msgid "**Problem Sheet 3, Question 4(b).** Is\n"
 "For four vectors use the general forms of Lemma 1.5: §2 says a\n"
 "finite family §3 is independent iff §4, and\n"
 "§5 says it is dependent iff some combination with\n"
-"coefficients §6 sums to zero while some §7. If it is dependent, find the coefficients by\n"
-"Gauss's method on paper, then let Lean check them.\n"
+"coefficients §6 sums to zero while some §7. Either way the work is Gauss's method on\n"
+"paper: it produces a nontrivial relation (whose coefficients Lean then checks) or shows that\n"
+"only the trivial one exists.\n"
 "\n"
 "Decide: §8 for dependent, §9 for independent."
 msgstr ""
 
 #. §0: $\\{8 + 3x + 3x^2, x + 2x^2, 2 + 2x + 2x^2, 8 - 2x + 5x^2\\}$
-#: Game/Levels/Independence/L04_PolysB.lean:33
+#: Game/Levels/Independence/L04_PolysB.lean:34
 msgid "Is §0 linearly independent?"
 msgstr ""
 
 #. §0: $c_1p_1 + c_2p_2 + c_3p_3 + c_4p_4 = 0$
 #. §1: $c_i = 0$
-#: Game/Levels/Independence/L04_PolysB.lean:38
+#: Game/Levels/Independence/L04_PolysB.lean:39
 msgid "Decide first. Test it: write §0, compare\n"
 "coefficients, and see whether the resulting system forces all §1."
 msgstr ""
 
 #. §0: $1, x, x^2$
-#: Game/Levels/Independence/L04_PolysB.lean:40
+#: Game/Levels/Independence/L04_PolysB.lean:41
 msgid "Four vectors, but only three coefficients (§0) to match:\n"
 "the homogeneous system has more unknowns than equations."
 msgstr ""
 
 #. §0: `use ![-17, -35, 48, 5]`
-#: Game/Levels/Independence/L04_PolysB.lean:44
+#: Game/Levels/Independence/L04_PolysB.lean:45
 msgid "Gauss's method gives the relation §0."
 msgstr ""
 
 #. §0: `entrywise <;> simp [Fin.sum_univ_four] <;> norm_num`
-#: Game/Levels/Independence/L04_PolysB.lean:47
+#: Game/Levels/Independence/L04_PolysB.lean:48
 msgid "Check each coefficient:\n"
 "§0."
 msgstr ""
 
 #. §0: $-17p_1 - 35p_2 + 48p_3 + 5p_4 = 0$
-#: Game/Levels/Independence/L04_PolysB.lean:55
+#: Game/Levels/Independence/L04_PolysB.lean:56
 msgid "**Answer: dependent**, e.g. §0."
 msgstr ""
 
@@ -8994,7 +9049,9 @@ msgstr ""
 #. §11: `congrFun h ⟨1, one_pos⟩`
 #. §12: `left`
 #. §13: `right`
-#. §14: `Real.sin_sq_add_cos_sq x : sin x ^ 2 + cos x ^ 2 = 1`
+#. §14: `funext x`
+#. §15: `x`
+#. §16: `Real.sin_sq_add_cos_sq x : sin x ^ 2 + cos x ^ 2 = 1`
 #: Game/Levels/Independence/L05_FunctionsA.lean:13
 msgid "**Problem Sheet 3, Question 5.** Consider the vector space of all functions from\n"
 "§0 to §1.\n"
@@ -9007,34 +9064,35 @@ msgid "**Problem Sheet 3, Question 5.** Consider the vector space of all functio
 "\n"
 "Decide: §12 for dependent, §13 for independent.\n"
 "\n"
-"(For function questions the inventory now also holds the identity\n"
-"§14.)"
+"(For function questions the inventory now also holds the tactic §14, which proves two\n"
+"functions equal by proving they agree at every point §15, and the identity\n"
+"§16.)"
 msgstr ""
 
 #. §0: $x$
 #. §1: $1/x$
 #. §2: $\\mathbb{R}^+$
-#: Game/Levels/Independence/L05_FunctionsA.lean:31
+#: Game/Levels/Independence/L05_FunctionsA.lean:32
 msgid "Are §0 and §1 linearly independent functions on §2?"
 msgstr ""
 
 #. §0: $ax + b/x = 0$
 #. §1: $x > 0$
 #. §2: $a, b$
-#: Game/Levels/Independence/L05_FunctionsA.lean:34
+#: Game/Levels/Independence/L05_FunctionsA.lean:35
 msgid "Decide first. Test it: can §0 hold for every §1 with §2 not\n"
 "both zero?"
 msgstr ""
 
 #. §0: $x$
-#: Game/Levels/Independence/L05_FunctionsA.lean:36
+#: Game/Levels/Independence/L05_FunctionsA.lean:37
 msgid "Try two convenient values of §0 and see what they force."
 msgstr ""
 
 #. §0: `have h1 := congrFun «{h}» ⟨1, one_pos⟩`
 #. §1: `have h2 := congrFun «{h}» ⟨2, two_pos⟩`
 #. §2: `simp at h1 h2`
-#: Game/Levels/Independence/L05_FunctionsA.lean:40
+#: Game/Levels/Independence/L05_FunctionsA.lean:41
 msgid "§0 and\n"
 "§1, then §2."
 msgstr ""
@@ -9048,37 +9106,33 @@ msgstr ""
 #. §2: $h(x) = 2$
 #. §3: $i(x) = 4\\sin^2(x)$
 #. §4: $j(x) = \\cos^2(x)$
-#. §5: `funext x`
-#. §6: `x`
-#. §7: `linIndep_three_iff`
-#. §8: `LinearIndependent ℝ ![u, v, w] ↔ ∀ a b c, a • u + b • v + c • w = 0 → a = 0 ∧ b = 0 ∧ c = 0`
-#. §9: `left`
-#. §10: `right`
+#. §5: `linIndep_three_iff`
+#. §6: `LinearIndependent ℝ ![u, v, w] ↔ ∀ a b c, a • u + b • v + c • w = 0 → a = 0 ∧ b = 0 ∧ c = 0`
+#. §7: `left`
+#. §8: `right`
 #: Game/Levels/Independence/L06_FunctionsB.lean:13
 msgid "**Problem Sheet 3, Question 5(b).** (Functions §0.) Is\n"
 "§1 linearly independent, where §2, §3 and\n"
 "§4?\n"
 "\n"
-"New tactic: §5 proves two functions equal by proving they agree at every §6.\n"
+"Three vectors: §5 (now unlocked) says\n"
+"§6.\n"
 "\n"
-"Three vectors: §7 (now unlocked) says\n"
-"§8.\n"
-"\n"
-"Decide: §9 for dependent, §10 for independent."
+"Decide: §7 for dependent, §8 for independent."
 msgstr ""
 
 #. §0: $2$
 #. §1: $4\\sin^2 x$
 #. §2: $\\cos^2 x$
 #. §3: $\\mathbb{R}^+$
-#: Game/Levels/Independence/L06_FunctionsB.lean:28
+#: Game/Levels/Independence/L06_FunctionsB.lean:26
 msgid "Are §0, §1 and §2 linearly independent on §3?"
 msgstr ""
 
 #. §0: $a, b, c$
 #. §1: $2a + 4b\\sin^2 x + c\\cos^2 x = 0$
 #. §2: $x$
-#: Game/Levels/Independence/L06_FunctionsB.lean:33
+#: Game/Levels/Independence/L06_FunctionsB.lean:31
 msgid "Decide first. Test it: look for numbers §0, not all zero, with\n"
 "§1 for every §2 — or show none exist."
 msgstr ""
@@ -9086,13 +9140,21 @@ msgstr ""
 #. §0: $\\sin^2$
 #. §1: $\\cos^2$
 #. §2: `Real.sin_sq_add_cos_sq x : sin x ^ 2 + cos x ^ 2 = 1`
-#: Game/Levels/Independence/L06_FunctionsB.lean:35
+#: Game/Levels/Independence/L06_FunctionsB.lean:33
 msgid "Which famous identity links §0, §1 and a constant?\n"
 "§2."
 msgstr ""
 
+#. §0: `funext x`
+#. §1: `x`
+#: Game/Levels/Independence/L06_FunctionsB.lean:38
+msgid "Find a nontrivial relation and prove it is one: two functions are equal when they agree\n"
+"at every point — §0 (from Question 5(a)) reduces an equation of functions to one at\n"
+"a point §1."
+msgstr ""
+
 #. §0: `have hrel : (-2 : ℝ) • (fun _ : PosReal => (2 : ℝ)) + (1 : ℝ) • (fun x : PosReal => 4 * Real.sin x.1 ^ 2) + (4 : ℝ) • (fun x : PosReal => Real.cos x.1 ^ 2) = 0`
-#: Game/Levels/Independence/L06_FunctionsB.lean:40
+#: Game/Levels/Independence/L06_FunctionsB.lean:41
 msgid "State the relation:\n"
 "§0."
 msgstr ""
@@ -9100,7 +9162,7 @@ msgstr ""
 #. §0: `funext x`
 #. §1: `simp`
 #. §2: `linear_combination 4 * Real.sin_sq_add_cos_sq x.1`
-#: Game/Levels/Independence/L06_FunctionsB.lean:45
+#: Game/Levels/Independence/L06_FunctionsB.lean:46
 #: Game/Levels/Independence/L08_SpanInsert.lean:31
 #: Game/Levels/MatrixAlgebra/L02_TransposeProduct.lean:31
 msgid "§0, §1, then\n"
@@ -9108,7 +9170,7 @@ msgid "§0, §1, then\n"
 msgstr ""
 
 #. §0: $-2h + i + 4j = 0$
-#: Game/Levels/Independence/L06_FunctionsB.lean:56
+#: Game/Levels/Independence/L06_FunctionsB.lean:57
 msgid "**Answer: dependent**: §0."
 msgstr ""
 
@@ -9179,7 +9241,7 @@ msgid "**Lemma Two.II.1.2.** For any §0 and set §1:\n"
 "§7, so §8 means §9 (take it apart with §10).\n"
 "\n"
 "From now on spans are mostly of written-out sets, §11. This is the same\n"
-"subspace as Subspaces level 6's §12: §13 is just\n"
+"subspace as Subspaces level 5's §12: §13 is just\n"
 "the set of all the §14. Mathlib's §15\n"
 "(§16, which you proved as \"the span is the smallest subspace\") is now in\n"
 "your inventory, along with §17 (§18)."
@@ -10218,7 +10280,7 @@ msgstr ""
 #: Game/Levels/BasisDim/L09_RankZero.lean:13
 msgid "**Problem Sheet 3, Question 9.** Which matrices have rank zero? Rank one? No proof required.\n"
 "\n"
-"This level: rank zero; the rank-one half comes a little later. It is an *explain level*: the\n"
+"This level: rank zero; the rank-one half is the next level. It is an *explain level*: the\n"
 "sheet asks for a description, and Lean checks that your description is right. Inside your\n"
 "proof, also write your description in words as a comment starting §0 — it goes\n"
 "into your hand-in.\n"
@@ -10234,12 +10296,12 @@ msgid "A matrix has rank §0 iff it is the zero matrix."
 msgstr ""
 
 #. §0: $\\vec 0$
-#: Game/Levels/BasisDim/L09_RankZero.lean:32
+#: Game/Levels/BasisDim/L09_RankZero.lean:33
 msgid "The column space is the zero space exactly when every column is §0. Turn the rank\n"
 "into a statement about the columns."
 msgstr ""
 
-#: Game/Levels/BasisDim/L09_RankZero.lean:39
+#: Game/Levels/BasisDim/L09_RankZero.lean:40
 msgid "Every column is zero, so every entry is zero."
 msgstr ""
 
@@ -10248,7 +10310,7 @@ msgstr ""
 #. §2: $i$
 #. §3: $j$
 #. §4: `exact congrFun («{h}» j) i`
-#: Game/Levels/BasisDim/L09_RankZero.lean:41
+#: Game/Levels/BasisDim/L09_RankZero.lean:42
 msgid "§0, then entry §1 is entry §2 of column §3:\n"
 "§4."
 msgstr ""
@@ -10256,7 +10318,7 @@ msgstr ""
 #. §0: `rw [«{h}»]`
 #. §1: $j$
 #. §2: `exact rfl`
-#: Game/Levels/BasisDim/L09_RankZero.lean:46
+#: Game/Levels/BasisDim/L09_RankZero.lean:47
 msgid "§0; column §1 of the zero matrix is zero by definition:\n"
 "§2."
 msgstr ""
@@ -10273,133 +10335,7 @@ msgid "**Rank 0:** only the zero matrix. §0 is in your inventory for the rank-o
 "half."
 msgstr ""
 
-#: Game/Levels/BasisDim/L10_DimMono.lean:5
-msgid "Subspaces are no bigger"
-msgstr ""
-
-#. §0: $U$
-#. §1: $W$
-#. §2: $U \\subseteq W$
-#. §3: $\\dim(U) \\le \\dim(W)$
-#. §4: `Module.finrank ℝ U`
-#. §5: $\\dim U$
-#. §6: `finrank`
-#. §7: $0$
-#. §8: $V$
-#. §9: `LinearMap.finrank_le_finrank_of_injective`
-#. §10: $U$
-#. §11: $W$
-#: Game/Levels/BasisDim/L10_DimMono.lean:14
-msgid "**Problem Sheet 4, Question 10.** Consider how *dimension* interacts with *subset*. Assume\n"
-"§0 and §1 are both subspaces of some vector space, and that §2.\n"
-"**(a)** Prove that §3.\n"
-"\n"
-"§4 is §5. Caution: §6 is defined to be §7 for an\n"
-"infinite-dimensional space, so we assume the ambient space §8 is finite-dimensional (part (c)\n"
-"is about the infinite-dimensional case).\n"
-"\n"
-"Useful: an injective linear map sends an independent set to an independent set, so it cannot\n"
-"increase dimension (§9). Which injective linear map\n"
-"goes from §10 to §11?"
-msgstr ""
-
-#. §0: $U$
-#. §1: $W$
-#. §2: $U \\to W$
-#: Game/Levels/BasisDim/L10_DimMono.lean:33
-msgid "Every independent sequence in §0 is an independent sequence in §1. In map\n"
-"language: the inclusion §2 is injective."
-msgstr ""
-
-#. §0: $U \\hookrightarrow W$
-#. §1: `Submodule.inclusion h`
-#. §2: `Submodule.inclusion_injective h`
-#: Game/Levels/BasisDim/L10_DimMono.lean:35
-msgid "The inclusion §0 is §1, and\n"
-"§2 says it is injective."
-msgstr ""
-
-#. §0: $\\dim U \\le \\dim W$
-#. §1: `finrank_le_of_le`
-#. §2: `Submodule.finrank_mono`
-#: Game/Levels/BasisDim/L10_DimMono.lean:43
-msgid "§0: §1 is in your inventory. (Mathlib calls it\n"
-"§2; you will meet that name in later worlds.)"
-msgstr ""
-
-#: Game/Levels/BasisDim/L11_NestedEq.lean:5
-msgid "Nested subspaces of equal dimension"
-msgstr ""
-
-#. §0: $U$
-#. §1: $W$
-#. §2: $U \\subseteq W$
-#. §3: $U = W$
-#. §4: `finrank_le_of_le`
-#. §5: `Submodule.finrank_sup_span_singleton`
-#. §6: $\\vec w \\notin U$
-#. §7: $\\dim(U + [\\{\\vec w\\}]) = \\dim U + 1$
-#. §8: $[\\{\\vec w\\}]$
-#. §9: `Submodule.span ℝ {w}`
-#. §10: `ℝ ∙ w`
-#. §11: `omega`
-#: Game/Levels/BasisDim/L11_NestedEq.lean:15
-msgid "**Problem Sheet 4, Question 10(b).** Assuming that §0 and §1 are finite-dimensional\n"
-"(and §2), prove that equality of dimension holds if and only if §3.\n"
-"\n"
-"You need this result for Sheet 3 Q11, so it comes early.\n"
-"\n"
-"Your tools: part (a) §4, and the extension lemma in dimension form,\n"
-"§5: if §6 then\n"
-"§7. Lean displays the line §8,\n"
-"§9, in the short notation §10.\n"
-"\n"
-"**New:** §11 proves (in)equalities about natural numbers (and integers) that follow from the\n"
-"hypotheses by adding and comparing — handy for juggling dimensions."
-msgstr ""
-
-#. §0: $U \\subseteq W$
-#. §1: $\\dim U = \\dim W \\iff U = W$
-#: Game/Levels/BasisDim/L11_NestedEq.lean:32
-msgid "For §0 (finite-dimensional): §1."
-msgstr ""
-
-#. §0: $W \\subseteq U$
-#. §1: $\\vec w \\in W$
-#. §2: $\\vec w \\notin U$
-#. §3: $\\vec w$
-#. §4: $U$
-#. §5: $W$
-#: Game/Levels/BasisDim/L11_NestedEq.lean:38
-msgid "Show §0. Take §1 and suppose §2:\n"
-"adding §3 to §4 makes a subspace of §5 that is too big."
-msgstr ""
-
-#. §0: $U$
-#. §1: $\\vec w$
-#. §2: $W$
-#. §3: `sup_le «{h}»`
-#. §4: `(Submodule.span_singleton_le_iff_mem _ _).mpr «{hw}»`
-#: Game/Levels/BasisDim/L11_NestedEq.lean:45
-msgid "Now show that §0 plus the span of §1 lies in §2: use §3 and\n"
-"§4."
-msgstr ""
-
-#. §0: `omega`
-#: Game/Levels/BasisDim/L11_NestedEq.lean:50
-msgid "The numbers no longer add up: §0."
-msgstr ""
-
-#: Game/Levels/BasisDim/L11_NestedEq.lean:52
-msgid "The easy direction."
-msgstr ""
-
-#. §0: `Submodule.eq_of_le_of_finrank_eq`
-#: Game/Levels/BasisDim/L11_NestedEq.lean:58
-msgid "Nested subspaces of equal finite dimension are equal. (Mathlib: §0.)"
-msgstr ""
-
-#: Game/Levels/BasisDim/L12_RankOne.lean:5
+#: Game/Levels/BasisDim/L10_RankOne.lean:5
 msgid "Rank one"
 msgstr ""
 
@@ -10411,60 +10347,67 @@ msgstr ""
 #. §5: $j$
 #. §6: $v_j\\vec u$
 #. §7: `rank_eq_zero_iff`
-#. §8: `finrank_le_of_le`
-#. §9: `finrank_span_singleton_le_one`
-#. §10: $\\le 1$
-#. §11: `exists_line_of_finrank_eq_one`
-#. §12: $W$
-#. §13: $\\vec u$
-#. §14: $\\vec w \\in W$
-#. §15: $c\\,\\vec u$
-#. §16: `choose f hf using h`
-#. §17: `h : ∀ x, ∃ y, P x y`
-#. §18: `f`
-#. §19: `hf : ∀ x, P x (f x)`
-#: Game/Levels/BasisDim/L12_RankOne.lean:17
+#. §8: `Submodule.finrank_mono`
+#. §9: $W$
+#. §10: $\\le \\dim W$
+#. §11: `finrank_span_singleton_le_one`
+#. §12: $\\le 1$
+#. §13: `exists_line_of_finrank_eq_one`
+#. §14: $W$
+#. §15: $\\vec u$
+#. §16: $\\vec w \\in W$
+#. §17: $c\\,\\vec u$
+#. §18: `choose f hf using h`
+#. §19: `h : ∀ x, ∃ y, P x y`
+#. §20: `f`
+#. §21: `hf : ∀ x, P x (f x)`
+#. §22: `omega`
+#: Game/Levels/BasisDim/L10_RankOne.lean:17
 msgid "**Problem Sheet 3, Question 9** (rank one). Which matrices have rank one? No proof required.\n"
 "\n"
 "Again an *explain level*: write your description in a comment starting §0.\n"
 "Here §1 is the matrix §2 with entries §3\n"
 "(§4); its column §5 is §6.\n"
 "\n"
-"Tools: §7 (rank 0, two levels ago), §8 (Sheet 4 Q10a),\n"
-"§9 (a line has dimension §10) and\n"
-"§11: a one-dimensional subspace §12 contains a nonzero §13\n"
-"such that every §14 is a multiple §15.\n"
+"Tools: §7 (rank 0, last level), §8 (a subspace of\n"
+"§9 has dimension §10 — Hefferon's result; Sheet 4 Q10(a) asks you to prove it later),\n"
+"§11 (a line has dimension §12) and\n"
+"§13: a one-dimensional subspace §14 contains a nonzero §15\n"
+"such that every §16 is a multiple §17.\n"
 "\n"
-"**New:** §16 turns §17 into a function §18 with\n"
-"§19."
+"**New:** §18 turns §19 into a function §20 with\n"
+"§21.\n"
+"\n"
+"**New:** §22 proves (in)equalities about natural numbers (and integers) that follow from the\n"
+"hypotheses by adding and comparing — handy for juggling dimensions."
 msgstr ""
 
 #. §0: $A \\neq 0$
 #. §1: $A = \\vec u\\,\\vec v^{\\,T}$
-#: Game/Levels/BasisDim/L12_RankOne.lean:37
+#: Game/Levels/BasisDim/L10_RankOne.lean:41
 msgid "Rank 1 iff §0 and §1."
 msgstr ""
 
 #. §0: $A = 0$
-#: Game/Levels/BasisDim/L12_RankOne.lean:43
+#: Game/Levels/BasisDim/L10_RankOne.lean:49
 msgid "If §0, what is its rank?"
 msgstr ""
 
 #. §0: $u$
 #. §1: $u$
-#: Game/Levels/BasisDim/L12_RankOne.lean:48
+#: Game/Levels/BasisDim/L10_RankOne.lean:54
 msgid "A 1-dimensional column space is a line: there is a vector\n"
 "§0 such that every column is a multiple of §1."
 msgstr ""
 
 #. §0: $u$
-#: Game/Levels/BasisDim/L12_RankOne.lean:54
+#: Game/Levels/BasisDim/L10_RankOne.lean:60
 msgid "Each column is in the column space, so it is a multiple of §0."
 msgstr ""
 
 #. §0: $v$
 #. §1: `choose`
-#: Game/Levels/BasisDim/L12_RankOne.lean:59
+#: Game/Levels/BasisDim/L10_RankOne.lean:65
 msgid "Collect the multiples into one vector §0 with §1."
 msgstr ""
 
@@ -10472,7 +10415,7 @@ msgstr ""
 #. §1: `have := congrFun («{hv}» j) i`
 #. §2: `rw [Pi.smul_apply, smul_eq_mul, Matrix.col_apply] at this`
 #. §3: `rw [vecMulVec_apply, ← this, mul_comm]`
-#: Game/Levels/BasisDim/L12_RankOne.lean:63
+#: Game/Levels/BasisDim/L10_RankOne.lean:69
 msgid "§0, §1, then\n"
 "§2 and\n"
 "§3."
@@ -10481,7 +10424,7 @@ msgstr ""
 #. §0: $u v^T$
 #. §1: $u$
 #. §2: $A \\ne 0$
-#: Game/Levels/BasisDim/L12_RankOne.lean:71
+#: Game/Levels/BasisDim/L10_RankOne.lean:77
 msgid "Every column of §0 lies in the line through §1, so the rank is\n"
 "at most 1; and it is not 0 because §2."
 msgstr ""
@@ -10491,26 +10434,26 @@ msgstr ""
 #. §1: `rw [Submodule.span_le]`
 #. §2: $u$
 #. §3: `Submodule.mem_span_singleton`
-#: Game/Levels/BasisDim/L12_RankOne.lean:79
+#: Game/Levels/BasisDim/L10_RankOne.lean:85
 msgid "§0: by §1 it is enough that each column is a\n"
 "multiple of §2 (§3)."
 msgstr ""
 
 #. §0: $u v^T$
 #. §1: `omega`
-#: Game/Levels/BasisDim/L12_RankOne.lean:94
+#: Game/Levels/BasisDim/L10_RankOne.lean:98
 msgid "Model explanation: *rank 1: the nonzero matrices §0 — all\n"
 "columns are multiples of one nonzero vector, equivalently all rows are multiples of a\n"
 "single row.* Finish with §1."
 msgstr ""
 
 #. §0: $\\vec u\\vec v^{\\,T}$
-#: Game/Levels/BasisDim/L12_RankOne.lean:101
+#: Game/Levels/BasisDim/L10_RankOne.lean:105
 msgid "**Rank 0:** only the zero matrix. **Rank 1:** the nonzero matrices §0\n"
 "(all rows multiples of a single row)."
 msgstr ""
 
-#: Game/Levels/BasisDim/L13_Augment.lean:5
+#: Game/Levels/BasisDim/L11_Augment.lean:5
 msgid "The columns of [A | b]"
 msgstr ""
 
@@ -10528,7 +10471,7 @@ msgstr ""
 #. §11: `Fin.snoc A.col b`
 #. §12: $A$
 #. §13: $\\vec b$
-#: Game/Levels/BasisDim/L13_Augment.lean:7
+#: Game/Levels/BasisDim/L11_Augment.lean:7
 msgid "To talk about the *augmented matrix* §0 we need it as a matrix: §1\n"
 "is the §2 matrix whose first §3 columns are those of §4 and whose last column\n"
 "is §5.\n"
@@ -10540,26 +10483,26 @@ msgid "To talk about the *augmented matrix* §0 we need it as a matrix: §1\n"
 "of §12 with §13 appended at the end."
 msgstr ""
 
-#: Game/Levels/BasisDim/L13_Augment.lean:26
+#: Game/Levels/BasisDim/L11_Augment.lean:26
 msgid "Rewrite the rank as the dimension of a column span, then identify the columns."
 msgstr ""
 
 #. §0: `Fin.range_snoc`
 #. §1: `Fin.snoc f x`
 #. §2: `insert x (Set.range f)`
-#: Game/Levels/BasisDim/L13_Augment.lean:27
+#: Game/Levels/BasisDim/L11_Augment.lean:27
 msgid "§0 says the set of entries of §1 is\n"
 "§2."
 msgstr ""
 
 #. §0: `rank_augment`
 #. §1: $[A\\mid b]$
-#: Game/Levels/BasisDim/L13_Augment.lean:34
+#: Game/Levels/BasisDim/L11_Augment.lean:34
 msgid "Now §0 connects the rank of §1 to spans, where your dimension theory\n"
 "lives."
 msgstr ""
 
-#: Game/Levels/BasisDim/L14_Solvable.lean:5
+#: Game/Levels/BasisDim/L12_Solvable.lean:5
 msgid "Boss: when is a system solvable?"
 msgstr ""
 
@@ -10573,9 +10516,12 @@ msgstr ""
 #. §7: `b ∈ span ℝ (Set.range A.col) ↔ ∃ x, A *ᵥ x = b`
 #. §8: $\\vec b \\in [S] \\iff [S \\cup \\{\\vec b\\}] = [S]$
 #. §9: `Submodule.span_insert_eq_span`
-#. §10: $\\iff$
-#. §11: `rank_augment`
-#: Game/Levels/BasisDim/L14_Solvable.lean:17
+#. §10: `Submodule.eq_of_le_of_finrank_eq`
+#. §11: `h : U ≤ W`
+#. §12: `finrank ℝ U = finrank ℝ W`
+#. §13: `U = W`
+#. §14: `rank_augment`
+#: Game/Levels/BasisDim/L12_Solvable.lean:18
 msgid "**Problem Sheet 3, Question 11.** Prove that a linear system has a solution if and only if\n"
 "that system's matrix of coefficients has the same rank as its augmented matrix.\n"
 "\n"
@@ -10585,43 +10531,178 @@ msgid "**Problem Sheet 3, Question 11.** Prove that a linear system has a soluti
 "   (§5). Granted in this form: §6\n"
 "   (§7);\n"
 "2. §8 (§9);\n"
-"3. nested spans are equal §10 they have equal dimension (your Sheet 4 Q10b);\n"
-"4. rank is the dimension of the column span (§11)."
+"3. nested subspaces of equal (finite) dimension are equal — the textbook result, granted as\n"
+"   §10 (§11 and §12 give\n"
+"   §13); you prove it yourself later, as Sheet 4 Q10(b);\n"
+"4. rank is the dimension of the column span (§14)."
 msgstr ""
 
 #. §0: $A\\vec x = \\vec b$
 #. §1: $\\operatorname{rank} A = \\operatorname{rank}[A\\mid b]$
-#: Game/Levels/BasisDim/L14_Solvable.lean:35
+#: Game/Levels/BasisDim/L12_Solvable.lean:38
 msgid "§0 has a solution iff §1."
 msgstr ""
 
-#: Game/Levels/BasisDim/L14_Solvable.lean:38
+#: Game/Levels/BasisDim/L12_Solvable.lean:41
 msgid "Start by turning both ranks into dimensions of column spans."
 msgstr ""
 
 #. §0: $\\vec b$
-#: Game/Levels/BasisDim/L14_Solvable.lean:40
+#: Game/Levels/BasisDim/L12_Solvable.lean:43
 msgid "Step 1: solvable means §0 is in the column span."
 msgstr ""
 
 #. §0: $\\vec b$
-#: Game/Levels/BasisDim/L14_Solvable.lean:44
+#: Game/Levels/BasisDim/L12_Solvable.lean:47
 msgid "If §0 is already in the span, adding it changes nothing."
 msgstr ""
 
 #. §0: $\\vec b$
 #. §1: $\\vec b$
 #. §2: $\\vec b$
-#: Game/Levels/BasisDim/L14_Solvable.lean:49
+#: Game/Levels/BasisDim/L12_Solvable.lean:52
 msgid "The span without §0 sits inside the span with §1, and they have the\n"
-"same dimension. So they are equal (Sheet 4 Q10b) — and §2 is in the bigger one."
+"same dimension. So they are equal — and §2 is in the bigger one."
 msgstr ""
 
 #. §0: $A\\vec x = \\vec b$
 #. §1: $\\operatorname{rank} A = \\operatorname{rank}[A \\mid b]$
-#: Game/Levels/BasisDim/L14_Solvable.lean:61
+#: Game/Levels/BasisDim/L12_Solvable.lean:64
 msgid "**Rouché–Capelli:** §0 is solvable iff\n"
 "§1."
+msgstr ""
+
+#: Game/Levels/BasisDim/L13_DimMono.lean:5
+msgid "Subspaces are no bigger"
+msgstr ""
+
+#. §0: $U$
+#. §1: $W$
+#. §2: $U \\subseteq W$
+#. §3: $\\dim(U) \\le \\dim(W)$
+#. §4: `Module.finrank ℝ U`
+#. §5: $\\dim U$
+#. §6: `finrank`
+#. §7: $0$
+#. §8: $V$
+#. §9: `LinearMap.finrank_le_finrank_of_injective`
+#. §10: $U$
+#. §11: $W$
+#: Game/Levels/BasisDim/L13_DimMono.lean:14
+msgid "**Problem Sheet 4, Question 10.** Consider how *dimension* interacts with *subset*. Assume\n"
+"§0 and §1 are both subspaces of some vector space, and that §2.\n"
+"**(a)** Prove that §3.\n"
+"\n"
+"§4 is §5. Caution: §6 is defined to be §7 for an\n"
+"infinite-dimensional space, so we assume the ambient space §8 is finite-dimensional (part (c)\n"
+"is about the infinite-dimensional case).\n"
+"\n"
+"Useful: an injective linear map sends an independent set to an independent set, so it cannot\n"
+"increase dimension (§9). Which injective linear map\n"
+"goes from §10 to §11?"
+msgstr ""
+
+#. §0: $U$
+#. §1: $W$
+#. §2: $U \\to W$
+#: Game/Levels/BasisDim/L13_DimMono.lean:33
+msgid "Every independent sequence in §0 is an independent sequence in §1. In map\n"
+"language: the inclusion §2 is injective."
+msgstr ""
+
+#. §0: $U \\hookrightarrow W$
+#. §1: `Submodule.inclusion h`
+#. §2: `Submodule.inclusion_injective h`
+#: Game/Levels/BasisDim/L13_DimMono.lean:35
+msgid "The inclusion §0 is §1, and\n"
+"§2 says it is injective."
+msgstr ""
+
+#. §0: $\\dim U \\le \\dim W$
+#. §1: `finrank_le_of_le`
+#. §2: `Submodule.finrank_mono`
+#: Game/Levels/BasisDim/L13_DimMono.lean:43
+msgid "§0: §1 is in your inventory. (Mathlib calls it\n"
+"§2 — the version you were granted in the rank-one level.)"
+msgstr ""
+
+#: Game/Levels/BasisDim/L14_NestedEq.lean:5
+msgid "Nested subspaces of equal dimension"
+msgstr ""
+
+#. §0: $U$
+#. §1: $W$
+#. §2: $U \\subseteq W$
+#. §3: $U = W$
+#. §4: $V$
+#. §5: `[FiniteDimensional ℝ V]`
+#. §6: $U$
+#. §7: $W$
+#. §8: `finrank`
+#. §9: $0$
+#. §10: `finrank_le_of_le`
+#. §11: `Submodule.finrank_sup_span_singleton`
+#. §12: $\\vec w \\notin U$
+#. §13: $\\dim(U + [\\{\\vec w\\}]) = \\dim U + 1$
+#. §14: $[\\{\\vec w\\}]$
+#. §15: `Submodule.span ℝ {w}`
+#. §16: `ℝ ∙ w`
+#. §17: `omega`
+#: Game/Levels/BasisDim/L14_NestedEq.lean:15
+msgid "**Problem Sheet 4, Question 10(b).** Assuming that §0 and §1 are finite-dimensional\n"
+"(and §2), prove that equality of dimension holds if and only if §3.\n"
+"\n"
+"As in part (a), Lean assumes the ambient space §4 is finite-dimensional\n"
+"(§5), which makes §6 and §7 finite-dimensional — slightly stronger\n"
+"than the sheet's hypothesis, and needed because §8 is §9 for infinite-dimensional spaces.\n"
+"\n"
+"Your tools: part (a) §10, and the extension lemma in dimension form,\n"
+"§11: if §12 then\n"
+"§13. Lean displays the line §14,\n"
+"§15, in the short notation §16.\n"
+"\n"
+"§17 (from the rank-one level) does the final arithmetic with dimensions."
+msgstr ""
+
+#. §0: $U \\subseteq W$
+#. §1: $\\dim U = \\dim W \\iff U = W$
+#: Game/Levels/BasisDim/L14_NestedEq.lean:33
+msgid "For §0 (finite-dimensional): §1."
+msgstr ""
+
+#. §0: $W \\subseteq U$
+#. §1: $\\vec w \\in W$
+#. §2: $\\vec w \\notin U$
+#. §3: $\\vec w$
+#. §4: $U$
+#. §5: $W$
+#: Game/Levels/BasisDim/L14_NestedEq.lean:39
+msgid "Show §0. Take §1 and suppose §2:\n"
+"adding §3 to §4 makes a subspace of §5 that is too big."
+msgstr ""
+
+#. §0: $U$
+#. §1: $\\vec w$
+#. §2: $W$
+#. §3: `sup_le «{h}»`
+#. §4: `(Submodule.span_singleton_le_iff_mem _ _).mpr «{hw}»`
+#: Game/Levels/BasisDim/L14_NestedEq.lean:46
+msgid "Now show that §0 plus the span of §1 lies in §2: use §3 and\n"
+"§4."
+msgstr ""
+
+#. §0: `omega`
+#: Game/Levels/BasisDim/L14_NestedEq.lean:51
+msgid "The numbers no longer add up: §0."
+msgstr ""
+
+#: Game/Levels/BasisDim/L14_NestedEq.lean:53
+msgid "The easy direction."
+msgstr ""
+
+#. §0: `Submodule.eq_of_le_of_finrank_eq`
+#: Game/Levels/BasisDim/L14_NestedEq.lean:59
+msgid "Nested subspaces of equal finite dimension are equal. (Mathlib: §0.)"
 msgstr ""
 
 #: Game/Levels/BasisDim/L15_FunDim.lean:5
@@ -10989,7 +11070,7 @@ msgstr ""
 #. §1: $\\mathbb R[x]$
 #. §2: $\\mathbb R[x]$
 #. §3: $1$
-#: Game/Levels/Dimension/L04_InfiniteDim.lean:42
+#: Game/Levels/Dimension/L04_InfiniteDim.lean:45
 msgid "Multiplication by §0 is injective, so its range is a copy of §1 inside\n"
 "§2. But §3 is not in the range."
 msgstr ""
@@ -10997,14 +11078,14 @@ msgstr ""
 #. §0: `rw [LinearMap.mulLeft_apply, LinearMap.mulLeft_apply] at «{h}»`
 #. §1: $x \\ne 0$
 #. §2: `exact mul_left_cancel₀ Polynomial.X_ne_zero «{h}»`
-#: Game/Levels/Dimension/L04_InfiniteDim.lean:46
+#: Game/Levels/Dimension/L04_InfiniteDim.lean:49
 msgid "§0, then\n"
 "cancel §1: §2."
 msgstr ""
 
 #. §0: $1 = x\\cdot p$
 #. §1: $p$
-#: Game/Levels/Dimension/L04_InfiniteDim.lean:55
+#: Game/Levels/Dimension/L04_InfiniteDim.lean:58
 msgid "If the range were everything, §0 for some §1."
 msgstr ""
 
@@ -11082,7 +11163,7 @@ msgid "Sheet 4 Q11 (next level) compares the ranks of §0, §1, §2 and §3, wit
 "lies in the column space of §5, then §6.\n"
 "\n"
 "Recall §7, your §8 (Mathlib's name for it,\n"
-"§9, is now in your inventory too), and §10: a span is\n"
+"§9, has been in your inventory since the rank-one level), and §10: a span is\n"
 "inside a subspace iff the generators are."
 msgstr ""
 
@@ -11300,7 +11381,7 @@ msgstr ""
 #. §14: $W_1 \\cap W_2$
 #. §15: $W_1 + W_2$
 #. §16: `IsBasisOf.finrank_eq`
-#: Game/Levels/Dimension/L09_SumInter.lean:17
+#: Game/Levels/Dimension/L09_SumInter.lean:14
 msgid "**Problem Sheet 6, Question 1(a).** For these subspaces of §0 find\n"
 "§1, §2, §3, and §4:\n"
 "§5\n"
@@ -11314,26 +11395,26 @@ msgstr ""
 #. §0: $W_1 \\cap W_2$
 #. §1: $b_1, \\dots, b_k$
 #. §2: $k$
-#: Game/Levels/Dimension/L09_SumInter.lean:31
-#: Game/Levels/Dimension/L10_Sum.lean:27
+#: Game/Levels/Dimension/L09_SumInter.lean:28
+#: Game/Levels/Dimension/L10_Sum.lean:24
 msgid "§0: a basis §1, and its dimension §2."
 msgstr ""
 
 #. §0: `have`
 #. §1: `IsBasisOf.finrank_eq`
-#: Game/Levels/Dimension/L09_SumInter.lean:34
+#: Game/Levels/Dimension/L09_SumInter.lean:31
 msgid "Which matrices lie in both? Find a basis on paper. In Lean, prove the basis claim with\n"
 "§0; the dimension then follows from §1."
 msgstr ""
 
-#: Game/Levels/Dimension/L09_SumInter.lean:50
+#: Game/Levels/Dimension/L09_SumInter.lean:47
 msgid "Take a matrix in both subspaces: what do the two membership conditions say about\n"
 "its entries? Write it as a combination of your basis."
 msgstr ""
 
 #. §0: $W_1 \\cap W_2 = \\{\\begin{pmatrix}0&0\\\\c&0\\end{pmatrix}\\}$
 #. §1: $1$
-#: Game/Levels/Dimension/L09_SumInter.lean:62
+#: Game/Levels/Dimension/L09_SumInter.lean:59
 msgid "§0, dimension §1."
 msgstr ""
 
@@ -11354,7 +11435,7 @@ msgstr ""
 #. §10: $W_1 + W_2 \\le U$
 #. §11: $W_1 \\le U$
 #. §12: $W_2 \\le U$
-#: Game/Levels/Dimension/L10_Sum.lean:17
+#: Game/Levels/Dimension/L10_Sum.lean:14
 msgid "**Problem Sheet 6, Question 1(a), continued.** For the same §0, §1 find §2\n"
 "and §3.\n"
 "\n"
@@ -11363,32 +11444,32 @@ msgid "**Problem Sheet 6, Question 1(a), continued.** For the same §0, §1 find
 msgstr ""
 
 #. §0: `have`
-#: Game/Levels/Dimension/L10_Sum.lean:30
+#: Game/Levels/Dimension/L10_Sum.lean:27
 msgid "Which matrices are sums of one from each? Find a basis on paper and prove it with\n"
 "§0, as in the last level."
 msgstr ""
 
 #. §0: $W_1$
 #. §1: $W_2$
-#: Game/Levels/Dimension/L10_Sum.lean:44
+#: Game/Levels/Dimension/L10_Sum.lean:41
 msgid "Each generator of your span lies in §0 or in §1."
 msgstr ""
 
 #. §0: $W_2$
 #. §1: $W_1$
-#: Game/Levels/Dimension/L10_Sum.lean:45
+#: Game/Levels/Dimension/L10_Sum.lean:42
 msgid "The first generator lies in §0, the other two in §1."
 msgstr ""
 
 #. §0: $W_1$
 #. §1: $W_2$
-#: Game/Levels/Dimension/L10_Sum.lean:52
+#: Game/Levels/Dimension/L10_Sum.lean:49
 msgid "It suffices that §0 and §1 are both inside the span."
 msgstr ""
 
 #. §0: $\\dim(W_1\\cap W_2) = 1$
 #. §1: $\\dim(W_1+W_2) = 3 = 2 + 2 - 1$
-#: Game/Levels/Dimension/L10_Sum.lean:71
+#: Game/Levels/Dimension/L10_Sum.lean:68
 msgid "§0, §1. Part (c) says this is no accident."
 msgstr ""
 
@@ -11573,13 +11654,13 @@ msgstr ""
 
 #. §0: $U\\cap W$
 #. §1: $\\dim(U+W) = 6$
-#: Game/Levels/Dimension/L13_Meet.lean:37
+#: Game/Levels/Dimension/L13_Meet.lean:38
 msgid "Suppose §0 is trivial; then the dimension formula says §1."
 msgstr ""
 
 #. §0: $U + W$
 #. §1: $\\mathbb R^5$
-#: Game/Levels/Dimension/L13_Meet.lean:45
+#: Game/Levels/Dimension/L13_Meet.lean:46
 msgid "But §0 lives in §1."
 msgstr ""
 
@@ -13311,7 +13392,7 @@ msgstr ""
 #. §7: $h$
 #. §8: $D$
 #. §9: `isRep_unique`
-#: Game/Levels/MatrixOfMap/L02_RepresentH.lean:15
+#: Game/Levels/MatrixOfMap/L02_RepresentH.lean:16
 msgid "**Problem Sheet 5, Question 4.** Represent the homomorphism §0\n"
 "§1\n"
 "with respect to\n"
@@ -13326,7 +13407,7 @@ msgstr ""
 #. §0: $h(x,y,z) = (x+y, x+z)$
 #. §1: $B = \\langle (1,1,1),(1,1,0),(1,0,0)\\rangle$
 #. §2: $D = \\langle (1,0),(0,2)\\rangle$
-#: Game/Levels/MatrixOfMap/L02_RepresentH.lean:29
+#: Game/Levels/MatrixOfMap/L02_RepresentH.lean:30
 msgid "There is a matrix representing §0 with respect to\n"
 "§1, §2."
 msgstr ""
@@ -13334,7 +13415,7 @@ msgstr ""
 #. §0: $h(\\vec\\beta_1), h(\\vec\\beta_2), h(\\vec\\beta_3)$
 #. §1: $\\vec\\delta_1 = (1,0)$
 #. §2: $\\vec\\delta_2 = (0,2)$
-#: Game/Levels/MatrixOfMap/L02_RepresentH.lean:34
+#: Game/Levels/MatrixOfMap/L02_RepresentH.lean:35
 msgid "Compute §0 and write each in terms of\n"
 "§1, §2. The coefficients are the columns."
 msgstr ""
@@ -13342,13 +13423,13 @@ msgstr ""
 #. §0: `intro j`
 #. §1: `rw [hh]`
 #. §2: `fin_cases j <;> entrywise <;> norm_num`
-#: Game/Levels/MatrixOfMap/L02_RepresentH.lean:38
+#: Game/Levels/MatrixOfMap/L02_RepresentH.lean:39
 msgid "As in the last level: §0, §1, then\n"
 "§2."
 msgstr ""
 
 #. §0: $$\\mathrm{Rep}_{B,D}(h) = \\begin{pmatrix} 2 & 2 & 1 \\\\ 1 & \\tfrac12 & \\tfrac12 \\end{pmatrix}.$$
-#: Game/Levels/MatrixOfMap/L02_RepresentH.lean:46
+#: Game/Levels/MatrixOfMap/L02_RepresentH.lean:47
 msgid "§0\n"
 "It is the only matrix that works: coordinates with respect to a basis are unique."
 msgstr ""
@@ -13531,7 +13612,6 @@ msgstr ""
 #. §24: `rw [hh]`
 #. §25: `simp only [hh]`
 #. §26: `hh 0 : h (B 0) = …`
-#. §27: `unfold IsRep at hh`
 #: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:17
 msgid "**Problem Sheet 7, Question 1.** What transformation of\n"
 "§0 (a vector space of functions\n"
@@ -13548,8 +13628,7 @@ msgid "**Problem Sheet 7, Question 1.** What transformation of\n"
 "linear §20 represented by the given matrix is §21.\n"
 "\n"
 "Lean note: once you §22, the hypothesis §23 is *folded* — §24\n"
-"and §25 cannot see inside it. Use it at a column, §26, or\n"
-"§27 first."
+"and §25 cannot see inside it. Use it at a column: §26."
 msgstr ""
 
 #. §0: $(a,b) \\leftrightarrow a\\cos\\theta + b\\sin\\theta$
@@ -13558,7 +13637,7 @@ msgstr ""
 #. §3: $B$
 #. §4: $D$
 #. §5: $C$
-#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:40
+#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:39
 msgid "In coordinates §0: there is a matrix §1\n"
 "such that every map represented by §2 with respect to\n"
 "§3, §4 is multiplication by §5."
@@ -13571,27 +13650,27 @@ msgstr ""
 #. §4: $\\vec\\beta_2 = (0,1)$
 #. §5: $h$
 #. §6: $(a, b)$
-#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:46
+#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:45
 msgid "Read off §0 and §1 from the columns. Then write a general\n"
 "§2 as a combination of §3 and §4 and use linearity.\n"
 "What does §5 do to §6?"
 msgstr ""
 
 #. §0: $v = v_0\\,\\vec\\beta_1 + (v_0 + v_1)\\,\\vec\\beta_2$
-#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:52
+#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:51
 msgid "Write §0."
 msgstr ""
 
 #. §0: `have h0 := «{hh}» 0`
 #. §1: `have h1 := «{hh}» 1`
 #. §2: `simp [Fin.sum_univ_two] at h0 h1`
-#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:57
+#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:56
 msgid "Get the two columns as facts: §0, §1,\n"
 "and tidy them with §2."
 msgstr ""
 
 #. §0: `rw [hv, map_add, map_smul, map_smul, h0, h1]`
-#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:62
+#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:61
 msgid "§0, then compare components."
 msgstr ""
 
@@ -13599,7 +13678,7 @@ msgstr ""
 #. §1: $h$
 #. §2: $\\cos\\theta$
 #. §3: $\\sin\\theta$
-#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:68
+#: Game/Levels/MatrixOfMap/L05_FunctionSpace.lean:67
 msgid "§0: §1 projects onto §2 along §3."
 msgstr ""
 
@@ -13752,7 +13831,6 @@ msgstr ""
 #. §16: `simp only [hG]`
 #. §17: `simp only`
 #. §18: `hG l : g (C l) = ∑ i, G i l • D i`
-#. §19: `unfold IsRep at hG`
 #: Game/Levels/MatrixOfMap/L08_Composition.lean:7
 msgid "Theorem Three.IV.2.7: if §0 represents §1 (with respect to §2, §3) and §4\n"
 "represents §5 (with respect to §6, §7), then §8 represents §9\n"
@@ -13763,14 +13841,13 @@ msgid "Theorem Three.IV.2.7: if §0 represents §1 (with respect to §2, §3) an
 "\n"
 "**Lean note.** A hypothesis like §14 is *folded*: §15 and\n"
 "§16 cannot see the equation inside, and §17 just reports the argument as\n"
-"unused. Either use it at a column, §18, or first\n"
-"§19."
+"unused. Use it at a column: §18."
 msgstr ""
 
 #. §0: $H = \\mathrm{Rep}_{B,C}(h)$
 #. §1: $G = \\mathrm{Rep}_{C,D}(g)$
 #. §2: $GH = \\mathrm{Rep}_{B,D}(g \\circ h)$
-#: Game/Levels/MatrixOfMap/L08_Composition.lean:24
+#: Game/Levels/MatrixOfMap/L08_Composition.lean:23
 msgid "If §0 and §1 then\n"
 "§2."
 msgstr ""
@@ -13779,13 +13856,13 @@ msgstr ""
 #. §1: $\\vec\\beta_j$
 #. §2: `«{hH}»`
 #. §3: $g$
-#: Game/Levels/MatrixOfMap/L08_Composition.lean:32
+#: Game/Levels/MatrixOfMap/L08_Composition.lean:31
 msgid "First apply §0 to §1 using §2, and push §3 through the sum."
 msgstr ""
 
 #. §0: $g(h_{lj}\\vec\\gamma_l)$
 #. §1: $h_{lj}\\sum_i g_{il}\\vec\\delta_i$
-#: Game/Levels/MatrixOfMap/L08_Composition.lean:35
+#: Game/Levels/MatrixOfMap/L08_Composition.lean:34
 msgid "Now in two steps: first replace each §0 by §1,\n"
 "then reorganise the double sum."
 msgstr ""
@@ -13793,7 +13870,7 @@ msgstr ""
 #. §0: `apply Finset.sum_congr rfl`
 #. §1: `intro l _`
 #. §2: `rw [map_smul, «{hG}» l]`
-#: Game/Levels/MatrixOfMap/L08_Composition.lean:38
+#: Game/Levels/MatrixOfMap/L08_Composition.lean:37
 msgid "Termwise: §0, §1,\n"
 "§2."
 msgstr ""
@@ -13803,13 +13880,13 @@ msgstr ""
 #. §1: `rw [Finset.sum_comm]`
 #. §2: `Finset.sum_congr rfl`
 #. §3: `mul_comm`
-#: Game/Levels/MatrixOfMap/L08_Composition.lean:44
+#: Game/Levels/MatrixOfMap/L08_Composition.lean:43
 msgid "§0, then swap the order of summation with §1, and\n"
 "match terms with §2 twice and §3."
 msgstr ""
 
 #. §0: `isRep_comp`
-#: Game/Levels/MatrixOfMap/L08_Composition.lean:57
+#: Game/Levels/MatrixOfMap/L08_Composition.lean:56
 msgid "Composition of maps is multiplication of their matrices. §0 is now in your\n"
 "inventory — it is the arrow diagram of Three.IV.2."
 msgstr ""
@@ -13914,6 +13991,7 @@ msgstr ""
 #. §11: `e : (V →ₗ[ℝ] W) ≃ₗ[ℝ] Matrix (Fin m) (Fin n) ℝ`
 #. §12: `e h`
 #. §13: `h`
+#. §14: `-- Explain:`
 #: Game/Levels/MatrixOfMap/L10_LIso.lean:16
 msgid "**Problem Sheet 8, Question 1(a).** Let §0 and §1 be vector spaces of dimensions §2 and §3.\n"
 "The space §4 of linear maps from §5 to §6 is isomorphic to §7.\n"
@@ -13921,30 +13999,48 @@ msgid "**Problem Sheet 8, Question 1(a).** Let §0 and §1 be vector spaces of d
 "\n"
 "\"Dimension §8\" is given as a basis §9 indexed by §10. You must exhibit an\n"
 "isomorphism §11 — and, so that it is *the*\n"
-"natural one, show that §12 represents §13."
+"natural one, show that §12 represents §13.\n"
+"\n"
+"This is also an **explain level**: Lean checks your choice of isomorphism, but the reasons are\n"
+"the mathematics. Inside your proof write a comment block starting §14 saying why your\n"
+"map is linear, one-to-one and onto (the export puts it in your hand-in)."
 msgstr ""
 
 #. §0: $\\mathcal L(V,W) \\cong \\mathcal M_{m\\times n}$
 #. §1: $h$
-#: Game/Levels/MatrixOfMap/L10_LIso.lean:28
+#: Game/Levels/MatrixOfMap/L10_LIso.lean:32
 msgid "There is an isomorphism §0 sending each §1 to a\n"
 "matrix representing it."
 msgstr ""
 
-#: Game/Levels/MatrixOfMap/L10_LIso.lean:33
+#: Game/Levels/MatrixOfMap/L10_LIso.lean:40
 msgid "Which map from maps to matrices have you met in this world? Mathlib already knows it\n"
 "is a linear isomorphism."
 msgstr ""
 
 #. §0: `use LinearMap.toMatrix B D`
 #. §1: `isRep_toMatrix`
-#: Game/Levels/MatrixOfMap/L10_LIso.lean:35
+#: Game/Levels/MatrixOfMap/L10_LIso.lean:42
 msgid "§0, then the bridge level §1."
 msgstr ""
 
 #. §0: $h \\mapsto \\mathrm{Rep}_{B,D}(h)$
+#. §1: $j$
+#. §2: $\\mathrm{Rep}_D(h(\\vec\\beta_j))$
+#. §3: $\\mathrm{Rep}_D$
+#. §4: $H$
+#. §5: $\\vec\\beta_j$
+#. §6: $\\sum_i h_{ij}\\vec\\delta_i$
+#: Game/Levels/MatrixOfMap/L10_LIso.lean:45
+msgid "Model explanation: *§0 is linear because\n"
+"column §1 is §2 and §3 is linear; one-to-one because\n"
+"a linear map is determined by the images of a basis; onto because any matrix §4 represents\n"
+"the map sending §5 to §6, extended linearly.*"
+msgstr ""
+
+#. §0: $h \\mapsto \\mathrm{Rep}_{B,D}(h)$
 #. §1: $\\dim \\mathcal L(V, W) = mn$
-#: Game/Levels/MatrixOfMap/L10_LIso.lean:42
+#: Game/Levels/MatrixOfMap/L10_LIso.lean:53
 msgid "§0 is the isomorphism; in particular\n"
 "§1."
 msgstr ""
@@ -14356,7 +14452,7 @@ msgstr ""
 #. §4: $T$
 #. §5: `hT : IsUnit T.det`
 #. §6: `T⁻¹`
-#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:14
+#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:17
 msgid "**Problem Sheet 7, Question 5.** Let §0 be a nonsingular matrix. Is §1?\n"
 "\n"
 "Decide (§2: no, §3: yes), then prove.\n"
@@ -14368,34 +14464,34 @@ msgstr ""
 #. §0: $T$
 #. §1: $(T^k)^{-1} = (T^{-1})^k$
 #. §2: $k$
-#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:25
+#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:28
 msgid "For nonsingular §0, is §1 for every §2?"
 msgstr ""
 
 #. §0: $k = 2$
 #. §1: $(T^{-1})^2$
 #. §2: $T^2$
-#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:28
+#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:31
 msgid "Decide first: test small cases, e.g. §0. Multiply §1 by §2 and see\n"
 "what you get."
 msgstr ""
 
 #. §0: $(T^{-1})^2 T^2 = T^{-1}(T^{-1}T)T$
-#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:30
+#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:33
 msgid "§0. The middle cancels."
 msgstr ""
 
 #. §0: `Matrix.inv_eq_left_inv : B * A = 1 → A⁻¹ = B`
 #. §1: $I$
 #. §2: `Matrix.nonsing_inv_mul T hT : T⁻¹ * T = 1`
-#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:32
+#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:35
 msgid "Tools: §0 turns the claim into a product\n"
 "equal to §1, and §2 cancels."
 msgstr ""
 
 #. §0: `apply Matrix.inv_eq_left_inv`
 #. §1: `induction k with`
-#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:35
+#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:38
 msgid "§0, then §1 …"
 msgstr ""
 
@@ -14403,14 +14499,14 @@ msgstr ""
 #. §1: `pow_succ`
 #. §2: `pow_succ'`
 #. §3: `Matrix.mul_assoc`
-#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:40
+#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:43
 msgid "Regroup as §0 with §1, §2\n"
 "and §3, then cancel the middle."
 msgstr ""
 
 #. §0: $(T^k)^{-1} = (T^{-1})^k$
 #. §1: $T^{-k}$
-#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:48
+#: Game/Levels/MatrixAlgebra/L06_InversePower.lean:51
 msgid "**Yes**: §0, so §1 is unambiguous."
 msgstr ""
 
@@ -14877,16 +14973,15 @@ msgstr ""
 #. §4: `hH : IsRep B D h H`
 #. §5: `hH j`
 #. §6: $j$
-#. §7: `unfold IsRep at hH`
-#. §8: `rw [hH]`
+#. §7: `rw [hH]`
 #: Game/Levels/ChangeOfBasis/L04_RepUnique.lean:7
 msgid "If §0 is linearly independent, a map has only one representation with respect to §1:\n"
 "two candidate matrices §2 give\n"
 "§3, so all the\n"
 "coefficients vanish. This is what makes \"*the* matrix of a map\" meaningful.\n"
 "\n"
-"Reminder: §4 is folded; §5 is the equation for column §6 (or\n"
-"§7) — §8 on its own will not work."
+"Reminder: §4 is folded; §5 is the equation for column §6 —\n"
+"§7 on its own will not work."
 msgstr ""
 
 #. §0: $D$
@@ -15127,15 +15222,14 @@ msgid "First record that §0 is orthogonal to §1 (not just to §2)."
 msgstr ""
 
 #. §0: `rw [projLine]`
-#. §1: `unfold projLine`
-#. §2: `projLine s v`
-#. §3: `v - projLine s v`
-#. §4: `projLine_orth`
-#. §5: `nth_rw 2 [projLine]`
+#. §1: `projLine s v`
+#. §2: `v - projLine s v`
+#. §3: `projLine_orth`
+#. §4: `nth_rw 2 [projLine]`
 #: Game/Levels/Projection/L02_ProjShorter.lean:31
-msgid "Careful when you unfold: §0 (or §1) unfolds *every* copy of\n"
-"§2, including the one inside §3, and then §4 no\n"
-"longer matches. §5 unfolds only the second copy."
+msgid "Careful when you unfold: §0 unfolds *every* copy of\n"
+"§1, including the one inside §2, and then §3 no\n"
+"longer matches. §4 unfolds only the second copy."
 msgstr ""
 
 #. §0: $\\vec v\\cdot\\vec v$
@@ -15425,14 +15519,14 @@ msgid "**Problem Sheet 8, Question 6, continued.** Floating-point Gram–Schmidt
 "starting §17 inside your proof."
 msgstr ""
 
-#. §0: $c \\ge 1/4$
+#. §0: $c > 0$
 #. §1: $\\cos^2$
 #. §2: $\\vec\\kappa_2, \\vec\\kappa_3$
 #. §3: $\\varepsilon > 0$
 #. §4: $\\vec\\kappa_2$
 #. §5: $k > 0$
 #: Game/Levels/Projection/L07_FloatingAngle.lean:39
-msgid "There is one number §0 that is §1 of the angle between the computed\n"
+msgid "There is one number §0 (so: not orthogonal) that is §1 of the angle between the computed\n"
 "§2 for every §3, and stays the same when §4\n"
 "is scaled by any §5."
 msgstr ""
@@ -15442,14 +15536,14 @@ msgstr ""
 #. §2: $\\vec\\kappa_3\\cdot\\vec\\kappa_3$
 #. §3: $\\cos^2\\theta$
 #. §4: $\\varepsilon$
-#: Game/Levels/Projection/L07_FloatingAngle.lean:47
+#: Game/Levels/Projection/L07_FloatingAngle.lean:49
 msgid "Compute §0, §1 and\n"
 "§2 on paper. What is §3? Does §4 survive?"
 msgstr ""
 
 #. §0: `have d23 : κ₂ ⬝ᵥ κ₃ = ε ^ 2 := by
 #. simp [κ₂, κ₃, dotProduct, Fin.sum_univ_four]; ring`
-#: Game/Levels/Projection/L07_FloatingAngle.lean:54
+#: Game/Levels/Projection/L07_FloatingAngle.lean:56
 msgid "Record the three dot products, e.g. §0."
 msgstr ""
 
@@ -15457,7 +15551,7 @@ msgstr ""
 #. §1: `smul_dotProduct`
 #. §2: `dotProduct_smul`
 #. §3: `smul_eq_mul`
-#: Game/Levels/Projection/L07_FloatingAngle.lean:71
+#: Game/Levels/Projection/L07_FloatingAngle.lean:73
 msgid "Pull §0 out with §1, §2 and\n"
 "§3, then as before."
 msgstr ""
@@ -15472,7 +15566,7 @@ msgstr ""
 #. §7: $\\kappa_3$
 #. §8: $\\kappa_1\\cdot\\kappa_1$
 #. §9: $\\varepsilon^2$
-#: Game/Levels/Projection/L07_FloatingAngle.lean:73
+#: Game/Levels/Projection/L07_FloatingAngle.lean:75
 msgid "Model explanation: only §0 is\n"
 "rounded. The computed §1 and §2\n"
 "have §3, i.e. they meet at §4: far from orthogonal. Scaling §5 by\n"
@@ -15487,7 +15581,7 @@ msgstr ""
 #. §4: $1+\\varepsilon^2$
 #. §5: $1$
 #. §6: $\\varepsilon^2$
-#: Game/Levels/Projection/L07_FloatingAngle.lean:86
+#: Game/Levels/Projection/L07_FloatingAngle.lean:87
 msgid "§0, so §1 (the dot product is positive): the computed vectors\n"
 "meet at §2, not §3, and rescaling cannot fix an angle. Rounding §4\n"
 "to §5 is an error of size §6 — exactly the size of the quantities that were\n"
@@ -18301,33 +18395,38 @@ msgstr ""
 #. §6: $n$
 #. §7: `Matrix.charpoly_monic`
 #. §8: `Matrix.charpoly_natDegree_eq_dim`
-#. §9: $(-1)^n$
-#. §10: `charpolyH_eq`
-#. §11: $c(n)$
-#. §12: $n$
-#. §13: $\\operatorname{coeff}_{x^n}|A - xI| = c(n)$
-#. §14: $n \\times n$
-#. §15: $A$
-#. §16: `h : p.natDegree = n`
-#. §17: `rw [← h]`
-#. §18: `n`
-#. §19: `A`
-#. §20: `rw [h] at …`
+#. §9: `charpolyH_eq`
+#. §10: $|A - xI|$
+#. §11: `-- Explain:`
+#. §12: $c(n)$
+#. §13: $n$
+#. §14: $\\operatorname{coeff}_{x^n}|A - xI| = c(n)$
+#. §15: $n \\times n$
+#. §16: $A$
+#. §17: `h : p.natDegree = n`
+#. §18: `rw [← h]`
+#. §19: `n`
+#. §20: `A`
+#. §21: `rw [h] at …`
 #: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:14
 msgid "**Problem Sheet 10, Question 8(a).** Let §0 be an §1 matrix. Use the permutation\n"
 "expansion to find the coefficient of §2 in the characteristic polynomial §3.\n"
 "\n"
 "*Formulation.* Mathlib has already done the permutation-expansion bookkeeping for its\n"
 "characteristic polynomial §4 (§5): it is *monic* of degree §6\n"
-"(§7, §8). Hefferon's version differs by\n"
-"the sign §9 (§10). Explain the permutation-expansion argument in your write-up.\n"
+"(§7, §8); §9 relates\n"
+"Hefferon's §10 to it.\n"
 "\n"
-"**Find** the coefficient: a formula §11, depending only on §12, with\n"
-"§13 for every §14 matrix §15.\n"
+"So Lean checks your formula, but the permutation-expansion argument is yours: this is an\n"
+"**explain level**. Inside your proof write that argument as a comment\n"
+"block starting §11 (the export puts it in your hand-in).\n"
 "\n"
-"*A Lean trap:* if §16 and you try §17, Lean may complain that the\n"
-"\"motive is not type correct\" — §18 also occurs in the *type* of §19, which cannot be\n"
-"rewritten. Rewrite the other way, in a hypothesis instead (§20)."
+"**Find** the coefficient: a formula §12, depending only on §13, with\n"
+"§14 for every §15 matrix §16.\n"
+"\n"
+"*A Lean trap:* if §17 and you try §18, Lean may complain that the\n"
+"\"motive is not type correct\" — §19 also occurs in the *type* of §20, which cannot be\n"
+"rewritten. Rewrite the other way, in a hypothesis instead (§21)."
 msgstr ""
 
 #. §0: $c(n)$
@@ -18335,20 +18434,43 @@ msgstr ""
 #. §2: $|A - xI|$
 #. §3: $n\\times n$
 #. §4: $A$
-#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:34
+#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:38
 msgid "There is a formula §0 for the coefficient of §1 in §2, the same for every §3 matrix §4."
+msgstr ""
+
+#. §0: $|A - xI|$
+#. §1: $n$
+#. §2: $x^n$
+#. §3: $\\det(xI - A)$
+#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:43
+msgid "Which permutation in the expansion of §0 can reach degree §1, and what is\n"
+"its coefficient of §2? In Lean, compare with Mathlib's monic §3."
 msgstr ""
 
 #. §0: $|A - xI| = (-1)^n \\det(xI - A)$
 #. §1: $\\det(xI - A)$
 #. §2: $n$
-#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:36
+#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:45
 msgid "§0, and §1 is monic of degree §2."
+msgstr ""
+
+#. §0: $n$
+#. §1: $x$
+#. §2: $(a_{11} - x)\\cdots(a_{nn} - x)$
+#. §3: $n$
+#. §4: $n - 2$
+#. §5: $x^n$
+#. §6: $(-1)^n$
+#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:55
+msgid "Model explanation: *each term of the permutation expansion is a product\n"
+"of §0 entries, one from each row and column; only diagonal entries contain §1, so only the\n"
+"identity permutation, §2, has degree §3 (any other has at most\n"
+"§4 diagonal factors). Its coefficient of §5 is §6.*"
 msgstr ""
 
 #. §0: $(-1)^n$
 #. §1: $n$
-#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:50
+#: Game/Levels/Diagonalisation/L09_LeadingCoeff.lean:63
 msgid "The coefficient is §0: only the identity permutation reaches degree §1."
 msgstr ""
 
@@ -18446,6 +18568,11 @@ msgstr ""
 #. §29: $k \\le n$
 #. §30: `charpolyH_similar`
 #. §31: `Polynomial.le_rootMultiplicity_iff`
+#. §32: `-- Explain:`
+#. §33: $Q$
+#. §34: $(x - \\lambda)^k$
+#. §35: $|B - xI|$
+#. §36: $k$
 #: Game/Levels/Diagonalisation/L12_GeoAlg.lean:17
 msgid "**Problem Sheet 10, Question 7.** Let §0 be an eigenvalue of §1. Prove that the\n"
 "geometric multiplicity of §2 is at most the algebraic multiplicity.\n"
@@ -18457,6 +18584,7 @@ msgid "**Problem Sheet 10, Question 7.** Let §0 be an eigenvalue of §1. Prove 
 "\n"
 "In Lean, §9 (§10), and §11 is §12; column §13 of a\n"
 "matrix §14 is §15. Two pieces of bookkeeping are **granted** as hypotheses:\n"
+"\n"
 "* §16 — basis extension: there is a nonsingular §17 whose first §18 columns §19\n"
 "  are eigenvectors (Chapter Two's \"extend to a basis\");\n"
 "* §20 — Laplace expansion: if §21 and the first §22 columns of §23 are\n"
@@ -18464,11 +18592,16 @@ msgid "**Problem Sheet 10, Question 7.** Let §0 be an eigenvalue of §1. Prove 
 "\n"
 "The rest is yours: compute the first §27 columns of §28, check §29, use Q3\n"
 "(§30), and convert divisibility into multiplicity with\n"
-"§31."
+"§31.\n"
+"\n"
+"Your hand-in should also justify the two granted steps in words: inside your proof write a\n"
+"comment block starting §32 saying why such a §33 exists (extend a basis of the\n"
+"eigenspace) and why §34 divides §35 (expand the determinant along the first\n"
+"§36 columns)."
 msgstr ""
 
 #. §0: $\\lambda$
-#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:41
+#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:47
 msgid "The geometric multiplicity of §0 is at most its algebraic multiplicity."
 msgstr ""
 
@@ -18479,14 +18612,14 @@ msgstr ""
 #. §4: $B$
 #. §5: $\\lambda\\vec e_j$
 #. §6: $j < k$
-#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:50
+#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:60
 msgid "Take §0 from §1 and set §2. Show column §3 of §4 is §5 for §6."
 msgstr ""
 
 #. §0: `have hB : ∀ j : Fin n, (j : ℕ) < k → (Q⁻¹ * A * Q) *ᵥ Pi.single j 1 = μ • Pi.single j 1`
 #. §1: `intro j hj`
 #. §2: `rw [← mulVec_mulVec, ← mulVec_mulVec, hcols j hj, mulVec_smul, mulVec_mulVec, inv_mul_of_isUnit hQ, one_mulVec]`
-#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:52
+#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:62
 msgid "§0.\n"
 "For it: §1, then\n"
 "§2."
@@ -18499,7 +18632,7 @@ msgstr ""
 #. §4: `have h := Submodule.finrank_le (End.eigenspace (toLin' A) μ)`
 #. §5: `rw [Module.finrank_fin_fun] at h`
 #. §6: `exact h`
-#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:59
+#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:69
 msgid "The dimension of a subspace of §0 is at most §1:\n"
 "§2, by §3, §4,\n"
 "§5 and §6."
@@ -18510,14 +18643,14 @@ msgstr ""
 #. §2: `charpolyH A`
 #. §3: `charpolyH_similar`
 #. §4: `P := Q⁻¹`
-#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:67
+#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:77
 msgid "§0, then replace §1 by\n"
 "§2 using §3 (similar via §4)."
 msgstr ""
 
 #. §0: $\\le$
 #. §1: $A$
-#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:81
+#: Game/Levels/Diagonalisation/L12_GeoAlg.lean:91
 msgid "Geometric §0 algebraic. Equality for every eigenvalue (with all eigenvalues real) is\n"
 "exactly the condition for §1 to be diagonalisable."
 msgstr ""
@@ -18874,7 +19007,10 @@ msgid "**Echelon** is Oxford's first-year Linear Algebra course (MT2026, after H
 "for your tutorial.\n"
 "\n"
 "New to Lean? Start with **Lean Basics** (about an hour). Doing a particular sheet? *Game Info*\n"
-"(in the menu) has a sheet → level index, and explains how to hand in.\n"
+"(in the menu) has a sheet → level index, and explains how to hand in. Levels normally open\n"
+"in order; to jump straight to this week's sheet, set the **Rules** slider on the world map to\n"
+"*relaxed* (every level opens; tactics you haven't unlocked yet give a warning instead of an\n"
+"error).\n"
 "\n"
 "**Hand-in in brief:** your progress lives in this browser — download it regularly (menu →\n"
 "download progress). The export turns it into your answers, and records how many *hidden* hints\n"
@@ -18887,91 +19023,92 @@ msgstr ""
 #. §3: `python3 scripts/export_sheet.py N --hand-in --progress <your-file>.json --pdf --name \"Your Name\"`
 #. §4: `exports/sheetN-hand-in.pdf`
 #. §5: `-- Explain:`
-#. §6: `-- Explain:`
-#. §7: `--`
+#. §6: `$…$`
+#. §7: `-- Explain:`
 #. §8: `--`
-#. §9: `⟨ ⟩`
-#. §10: `\\<`
-#. §11: `\\>`
-#. §12: `⟨hx, hy⟩`
-#. §13: `·`
-#. §14: `\\.`
-#. §15: `←`
-#. §16: `→`
-#. §17: `↔`
-#. §18: `\\l`
-#. §19: `\\to`
-#. §20: `\\iff`
-#. §21: `∧`
-#. §22: `∨`
-#. §23: `¬`
-#. §24: `\\and`
-#. §25: `\\or`
-#. §26: `\\not`
-#. §27: `∀`
-#. §28: `∃`
-#. §29: `\\all`
-#. §30: `\\ex`
-#. §31: `≠`
-#. §32: `≤`
-#. §33: `≥`
-#. §34: `\\ne`
-#. §35: `\\le`
-#. §36: `\\ge`
-#. §37: `ℝ`
-#. §38: `ℚ`
-#. §39: `ℤ`
-#. §40: `ℕ`
-#. §41: `\\R`
-#. §42: `\\Q`
-#. §43: `\\Z`
-#. §44: `\\N`
-#. §45: `•`
-#. §46: `\\smul`
-#. §47: `r • v`
-#. §48: `⬝ᵥ`
-#. §49: `\\tr`
-#. §50: `\\_v`
-#. §51: `u ⬝ᵥ v`
-#. §52: `*ᵥ`
-#. §53: `*`
-#. §54: `\\_v`
-#. §55: `A *ᵥ v`
-#. §56: `ᵀ`
-#. §57: `\\^T`
-#. §58: `Aᵀ`
-#. §59: `⁻¹`
-#. §60: `\\inv`
-#. §61: `A⁻¹`
-#. §62: `∑`
-#. §63: `\\sum`
-#. §64: `∈`
-#. §65: `∉`
-#. §66: `⊆`
-#. §67: `\\in`
-#. §68: `\\notin`
-#. §69: `\\sub`
-#. §70: `⊓`
-#. §71: `⊔`
-#. §72: `⊥`
-#. §73: `⊤`
-#. §74: `\\inf`
-#. §75: `\\sup`
-#. §76: `\\bot`
-#. §77: `\\top`
-#. §78: `∘ₗ`
-#. §79: `→ₗ`
-#. §80: `≃ₗ`
-#. §81: `\\circ\\_l`
-#. §82: `\\to\\_l`
-#. §83: `\\equiv\\_l`
-#. §84: `×`
-#. §85: `\\times`
-#. §86: `₀ ₁ ₂`
-#. §87: `\\0`
-#. §88: `\\1`
-#. §89: `\\2`
-#: Game.lean:39
+#. §9: `--`
+#. §10: `⟨ ⟩`
+#. §11: `\\<`
+#. §12: `\\>`
+#. §13: `⟨hx, hy⟩`
+#. §14: `·`
+#. §15: `\\.`
+#. §16: `←`
+#. §17: `→`
+#. §18: `↔`
+#. §19: `\\l`
+#. §20: `\\to`
+#. §21: `\\iff`
+#. §22: `∧`
+#. §23: `∨`
+#. §24: `¬`
+#. §25: `\\and`
+#. §26: `\\or`
+#. §27: `\\not`
+#. §28: `∀`
+#. §29: `∃`
+#. §30: `\\all`
+#. §31: `\\ex`
+#. §32: `≠`
+#. §33: `≤`
+#. §34: `≥`
+#. §35: `\\ne`
+#. §36: `\\le`
+#. §37: `\\ge`
+#. §38: `ℝ`
+#. §39: `ℚ`
+#. §40: `ℤ`
+#. §41: `ℕ`
+#. §42: `\\R`
+#. §43: `\\Q`
+#. §44: `\\Z`
+#. §45: `\\N`
+#. §46: `•`
+#. §47: `\\smul`
+#. §48: `r • v`
+#. §49: `⬝ᵥ`
+#. §50: `\\tr`
+#. §51: `\\_v`
+#. §52: `u ⬝ᵥ v`
+#. §53: `*ᵥ`
+#. §54: `*`
+#. §55: `\\_v`
+#. §56: `A *ᵥ v`
+#. §57: `ᵀ`
+#. §58: `\\^T`
+#. §59: `Aᵀ`
+#. §60: `⁻¹`
+#. §61: `\\inv`
+#. §62: `A⁻¹`
+#. §63: `∑`
+#. §64: `\\sum`
+#. §65: `∈`
+#. §66: `∉`
+#. §67: `⊆`
+#. §68: `\\in`
+#. §69: `\\notin`
+#. §70: `\\sub`
+#. §71: `⊓`
+#. §72: `⊔`
+#. §73: `⊥`
+#. §74: `⊤`
+#. §75: `\\inf`
+#. §76: `\\sup`
+#. §77: `\\bot`
+#. §78: `\\top`
+#. §79: `∘ₗ`
+#. §80: `→ₗ`
+#. §81: `≃ₗ`
+#. §82: `\\circ\\_l`
+#. §83: `\\to\\_l`
+#. §84: `\\equiv\\_l`
+#. §85: `×`
+#. §86: `\\times`
+#. §87: `₀ ₁ ₂`
+#. §88: `\\0`
+#. §89: `\\1`
+#. §90: `\\2`
+#: Game.lean:42
 msgid "Based on Jim Hefferon's *Linear Algebra* (4th ed.) and the MT2026 problem sheets.\n"
 "Built on lean4game and Mathlib.\n"
 "\n"
@@ -18987,17 +19124,22 @@ msgid "Based on Jim Hefferon's *Linear Algebra* (4th ed.) and the MT2026 problem
 "\n"
 "## Handing in\n"
 "\n"
+"**Jumping to a sheet:** the world map follows the lectures, so a sheet's questions can sit\n"
+"behind other levels. Set the **Rules** slider (left of the world map) to *relaxed* to open\n"
+"every level directly, and use the sheet → level index below to find each question.\n"
+"\n"
 "1. In the game: menu → download progress (a §1 file).\n"
 "2. Get the game's repository (https://github.com/EternalRecursion121/echelon; see its README)\n"
 "   and run, for sheet §2:\n"
 "   §3\n"
-"3. Hand in the PDF it writes (§4): for each question, your\n"
-"   §5 text, your Lean proof, and **how many hidden hints you opened** (visible hints\n"
+"3. Hand in the PDF it writes (§4): for each question, the sheet's\n"
+"   wording, your §5 text (every block, printed as plain text; §6 stays maths),\n"
+"   your Lean proof, and **how many hidden hints you opened** (visible hints\n"
 "   are not counted). Unsolved questions are marked.\n"
 "\n"
 "**Explain levels** ask for a written argument as well: in Editor mode, add comment lines\n"
-"inside your proof starting with §6 (§7 starts a comment; continue on further\n"
-"§8 lines). Row Ops level 15 walks you through it.\n"
+"inside your proof starting with §7 (§8 starts a comment; continue on further\n"
+"§9 lines). Row Ops level 15 walks you through it.\n"
 "\n"
 "## Typing symbols\n"
 "\n"
@@ -19005,24 +19147,24 @@ msgid "Based on Jim Hefferon's *Linear Algebra* (4th ed.) and the MT2026 problem
 "\n"
 "| Symbol | Type | Meaning |\n"
 "|---|---|---|\n"
-"| §9 | §10 §11 | anonymous constructor: §12 |\n"
-"| §13 | §14 | bullet: start the proof of one goal |\n"
-"| §15 §16 §17 | §18 §19 §20 | rewrite backwards, implies, iff |\n"
-"| §21 §22 §23 | §24 §25 §26 | and, or, not |\n"
-"| §27 §28 | §29 §30 | for all, there exists |\n"
-"| §31 §32 §33 | §34 §35 §36 | |\n"
-"| §37 §38 §39 §40 | §41 §42 §43 §44 | number systems |\n"
-"| §45 | §46 | scalar multiplication §47 |\n"
-"| §48 | §49 then §50 | dot product §51 |\n"
-"| §52 | §53 then §54 | matrix times vector §55 |\n"
-"| §56 | §57 | transpose §58 |\n"
-"| §59 | §60 | inverse §61 |\n"
-"| §62 | §63 | sum |\n"
-"| §64 §65 §66 | §67 §68 §69 | element of, not an element of, subset |\n"
-"| §70 §71 §72 §73 | §74 §75 §76 §77 | intersection, sum, zero subspace, whole space |\n"
-"| §78 §79 §80 | §81 §82 §83 | composition, linear map, linear isomorphism |\n"
-"| §84 | §85 | product |\n"
-"| §86 | §87 §88 §89 | subscripts |\n"
+"| §10 | §11 §12 | anonymous constructor: §13 |\n"
+"| §14 | §15 | bullet: start the proof of one goal |\n"
+"| §16 §17 §18 | §19 §20 §21 | rewrite backwards, implies, iff |\n"
+"| §22 §23 §24 | §25 §26 §27 | and, or, not |\n"
+"| §28 §29 | §30 §31 | for all, there exists |\n"
+"| §32 §33 §34 | §35 §36 §37 | |\n"
+"| §38 §39 §40 §41 | §42 §43 §44 §45 | number systems |\n"
+"| §46 | §47 | scalar multiplication §48 |\n"
+"| §49 | §50 then §51 | dot product §52 |\n"
+"| §53 | §54 then §55 | matrix times vector §56 |\n"
+"| §57 | §58 | transpose §59 |\n"
+"| §60 | §61 | inverse §62 |\n"
+"| §63 | §64 | sum |\n"
+"| §65 §66 §67 | §68 §69 §70 | element of, not an element of, subset |\n"
+"| §71 §72 §73 §74 | §75 §76 §77 §78 | intersection, sum, zero subspace, whole space |\n"
+"| §79 §80 §81 | §82 §83 §84 | composition, linear map, linear isomorphism |\n"
+"| §85 | §86 | product |\n"
+"| §87 | §88 §89 §90 | subscripts |\n"
 "\n"
 "## Sheet → level index\n"
 "\n"
@@ -19031,29 +19173,29 @@ msgid "Based on Jim Hefferon's *Linear Algebra* (4th ed.) and the MT2026 problem
 "\n"
 "**Sheet 1.** Q1: Row Ops 2 · Q2: Row Ops 6 · Q3a: Row Ops 4 · Q3b: Row Ops 3 · Q3c: Row Ops 5 · Q4: Echelon 9 · Q5: Dot Product 6 · Q6: Dot Product 5 · Q7: Dot Product 3 · Q8: Dot Product 4 · Q9a: Row Ops 7 · Q9b: Row Ops 8 · Q10: Echelon 5 · Q11: Echelon 6 · Q12: Echelon 7 · Q13: Puzzles 1\n"
 "\n"
-"**Sheet 2.** Q1a-c: Row Ops 10 · Q1d-e: Row Ops 11 · Q1f-g: Row Ops 12 · Q2: Echelon 8 · Q3: Row Ops 13 · Q3: Row Ops 14 · Q4: Subspaces 4 · Q5: Row Ops 15 · Q6: Dot Product 9 · Q7: Dot Product 2 · Q8: Echelon 10 · Q8: Echelon 12 · Q8: Echelon 13 · Q9a: Echelon 3 · Q9b-c: Echelon 4 · Q10: Dimension & Rank 15\n"
+"**Sheet 2.** Q1a-c: Row Ops 10 · Q1d-e: Row Ops 11 · Q1f-g: Row Ops 12 · Q2: Echelon 8 · Q3: Row Ops 13 · Q3: Row Ops 14 · Q4: Echelon 14 · Q5: Row Ops 15 · Q6: Dot Product 9 · Q7: Dot Product 2 · Q8: Echelon 10 · Q8: Echelon 12 · Q8: Echelon 13 · Q9a: Echelon 3 · Q9b-c: Echelon 4 · Q10: Dimension & Rank 15\n"
 "\n"
-"**Sheet 3.** Q1: The Ten Conditions 9 · Q2: The Ten Conditions 10 · Q3a: The Ten Conditions 4 · Q3b: The Ten Conditions 5 · Q3c: The Ten Conditions 6 · Q3d: The Ten Conditions 7 · Q4a: Independence 3 · Q4b: Independence 4 · Q5a: Independence 5 · Q5b: Independence 6 · Q6: Independence 7 · Q7: Basis & Dimension 3 · Q7: Basis & Dimension 4 · Q8a: Basis & Dimension 5 · Q8b: Basis & Dimension 6 · Q9: Basis & Dimension 9 · Q9: Basis & Dimension 12 · Q10: Basis & Dimension 7 · Q11: Basis & Dimension 14\n"
+"**Sheet 3.** Q1: The Ten Conditions 9 · Q2: The Ten Conditions 10 · Q3a: The Ten Conditions 4 · Q3b: The Ten Conditions 5 · Q3c: The Ten Conditions 6 · Q3d: The Ten Conditions 7 · Q4a: Independence 3 · Q4b: Independence 4 · Q5a: Independence 5 · Q5b: Independence 6 · Q6: Independence 7 · Q7: Basis & Dimension 3 · Q7: Basis & Dimension 4 · Q8a: Basis & Dimension 5 · Q8b: Basis & Dimension 6 · Q9: Basis & Dimension 9 · Q9: Basis & Dimension 10 · Q10: Basis & Dimension 7 · Q11: Basis & Dimension 12\n"
 "\n"
-"**Sheet 4.** Q1: The Ten Conditions 11 · Q2: Subspaces 5 · Q3: The Ten Conditions 2 · Q4: Subspaces 3 · Q5a: Subspaces 7 · Q5b: Subspaces 10 · Q5c: Subspaces 8 · Q6a: Dimension & Rank 1 · Q6b: Dimension & Rank 2 · Q6c: Dimension & Rank 3 · Q7: Basis & Dimension 15 · Q8: Independence 14 · Q9: Dimension & Rank 13 · Q10a: Basis & Dimension 10 · Q10b: Basis & Dimension 11 · Q10c: Dimension & Rank 4 · Q11: Dimension & Rank 7 · Q12: Puzzles 3\n"
+"**Sheet 4.** Q1: The Ten Conditions 11 · Q2: Subspaces 4 · Q3: The Ten Conditions 2 · Q4: Subspaces 3 · Q5a: Subspaces 6 · Q5b: Subspaces 9 · Q5c: Subspaces 7 · Q6a: Dimension & Rank 1 · Q6b: Dimension & Rank 2 · Q6c: Dimension & Rank 3 · Q7: Basis & Dimension 15 · Q8: Independence 14 · Q9: Dimension & Rank 13 · Q10a: Basis & Dimension 13 · Q10b: Basis & Dimension 14 · Q10c: Dimension & Rank 4 · Q11: Dimension & Rank 7 · Q12: Puzzles 3\n"
 "\n"
 "**Sheet 5.** Q1: Dimension & Rank 8 · Q2: Homomorphisms 2 · Q3a: Homomorphisms 5 · Q3b: Homomorphisms 6 · Q4: Matrix of a Map 2 · Q5a: Matrix of a Map 3 · Q5b: Matrix of a Map 4 · Q6: Puzzles 4\n"
 "\n"
-"**Sheet 6.** Q1a: Dimension & Rank 9 · Q1a: Dimension & Rank 10 · Q1b: Dimension & Rank 11 · Q1c: Dimension & Rank 12 · Q1d: Dimension & Rank 14 · Q2a: Isomorphisms 6 · Q2b: Isomorphisms 7 · Q3: Isomorphisms 4 · Q4a: Homomorphisms 11 · Q4b: Homomorphisms 12 · Q5: Homomorphisms 13\n"
+"**Sheet 6.** Q1a(i): Dimension & Rank 9 · Q1a(ii): Dimension & Rank 10 · Q1b: Dimension & Rank 11 · Q1c: Dimension & Rank 12 · Q1d: Dimension & Rank 14 · Q2a: Isomorphisms 6 · Q2b: Isomorphisms 7 · Q3: Isomorphisms 4 · Q4a: Homomorphisms 11 · Q4b: Homomorphisms 12 · Q5: Homomorphisms 13\n"
 "\n"
 "**Sheet 7.** Q1: Matrix of a Map 5 · Q2: Matrix of a Map 6 · Q3: Matrix of a Map 9 · Q4: Matrix Algebra 1 · Q5: Matrix Algebra 6 · Q6: Matrix Algebra 5 · Q7a: Matrix Algebra 2 · Q7b: Matrix Algebra 3 · Q7c: Matrix Algebra 7 · Q7d: Matrix Algebra 8 · Q8: Change of Basis 2 · Q9: Projection 2\n"
 "\n"
-"**Sheet 8.** Q1a: Matrix of a Map 10 · Q1b: Matrix of a Map 11 · Q2a: Matrix of a Map 12 · Q2b: Matrix of a Map 13 · Q2c: Matrix of a Map 14 · Q3: Homomorphisms 14 · Q4: Matrix Algebra 9 · Q5: Change of Basis 3 · Q6: Projection 6 · Q6: Projection 7 · Q7: Determinant 9\n"
+"**Sheet 8.** Q1a: Matrix of a Map 10 · Q1b: Matrix of a Map 11 · Q2a: Matrix of a Map 12 · Q2b: Matrix of a Map 13 · Q2c: Matrix of a Map 14 · Q3: Homomorphisms 14 · Q4: Matrix Algebra 9 · Q5: Change of Basis 3 · Q6a: Projection 6 · Q6b: Projection 7 · Q7: Determinant 9\n"
 "\n"
-"**Sheet 9.** Q1: Determinant 15 · Q2: Volume 3 · Q3: Determinant 14 · Q4: Determinant 13 · Q5: Eigen 2 · Q6: Eigen 4 · Q7a: Eigen 7 · Q7b: Eigen 8 · Q7c: Eigen 9 · Q8a: Eigen 12 · Q8b: Eigen 11\n"
+"**Sheet 9.** Q1: Determinant 15 · Q2: Volume 3 · Q3: Determinant 14 · Q4: Determinant 13 · Q5: Eigen 2 · Q6: Eigen 4 · Q7a: Eigen 7 · Q7b: Eigen 8 · Q7c: Eigen 9 · Q8a: Eigen 11 · Q8b: Eigen 12\n"
 "\n"
 "**Sheet 10.** Q1a: Volume 4 · Q1b: Volume 5 · Q1c: Volume 6 · Q1d: Volume 7 · Q2a: Diagonalisation 4 · Q2b: Diagonalisation 5 · Q2c: Diagonalisation 6 · Q3: Diagonalisation 7 · Q4: Eigen 15 · Q5: Diagonalisation 8 · Q6a: Eigen 13 · Q6b: Eigen 14 · Q7: Diagonalisation 12 · Q8a: Diagonalisation 9 · Q8b: Diagonalisation 10 · Q8c: Diagonalisation 11"
 msgstr ""
 
-#: Game.lean:120
+#: Game.lean:128
 msgid "Hefferon in Lean"
 msgstr ""
 
-#: Game.lean:121
+#: Game.lean:129
 msgid "The Oxford first-year Linear Algebra course, as a game: every problem-sheet question is a level."
 msgstr ""

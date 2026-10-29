@@ -100,5 +100,5 @@ $B$ and $D$ give *unique* coordinates. Mathlib calls this isomorphism `Basis.equ
 
 DisabledTactic simp norm_num
 TheoremTab "Bases"
-NewTheorem Finsupp.add_apply Finsupp.smul_apply Module.Basis.repr_sum_self LinearEquiv.injective Module.Basis.sum_repr
+NewTheorem Finsupp.add_apply Finsupp.smul_apply Module.Basis.repr_sum_self Module.Basis.sum_repr
 NewDefinition Module.Basis Module.Basis.repr

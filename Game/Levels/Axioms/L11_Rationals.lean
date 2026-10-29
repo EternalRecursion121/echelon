@@ -9,7 +9,7 @@ Title "The rationals over the reals"
 **No.** Real scalar multiplication does not stay inside $\mathbb{Q}$: $\sqrt 2 \in \mathbb{R}$
 and $1 \in \mathbb{Q}$, but $\sqrt 2 \cdot 1 = \sqrt 2 \notin \mathbb{Q}$, so the closure
 condition (6) fails. (In fact no real vector space structure on $\mathbb{Q}$ exists at all:
-by Sheet 3 Q3(c), $r \mapsto r\cdot 1$ would inject the uncountable $\mathbb{R}$ into the
+by Sheet 3 Q3(b), $r \mapsto r\cdot 1$ would inject the uncountable $\mathbb{R}$ into the
 countable $\mathbb{Q}$.)
 -/
 Introduction "

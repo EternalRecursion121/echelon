@@ -6,9 +6,10 @@ Title "Represent h with respect to B, D"
 
 -- @sheet 5 Q4
 /-! @answer
-Apply $h$ to each vector of $B$ and express the result in $D = \langle (1,0), (0,2)\rangle$:
-$h(1,1,1) = (2,2) = 2\delta_1 + 1\delta_2$, $h(1,1,0) = (2,1) = 2\delta_1 + \tfrac12\delta_2$,
-$h(1,0,0) = (1,1) = 1\delta_1 + \tfrac12\delta_2$. These coordinate vectors are the columns, so
+Apply $h$ to each vector of $B$ and express the result in
+$D = \langle \vec d_1, \vec d_2\rangle = \langle (1,0), (0,2)\rangle$:
+$h(1,1,1) = (2,2) = 2\vec d_1 + 1\vec d_2$, $h(1,1,0) = (2,1) = 2\vec d_1 + \tfrac12\vec d_2$,
+$h(1,0,0) = (1,1) = 1\vec d_1 + \tfrac12\vec d_2$. These coordinate vectors are the columns, so
 $$\mathrm{Rep}_{B,D}(h) = \begin{pmatrix} 2 & 2 & 1 \\ 1 & \tfrac12 & \tfrac12 \end{pmatrix}.$$
 (It is the only such matrix, because coordinates with respect to the basis $D$ are unique.)
 -/

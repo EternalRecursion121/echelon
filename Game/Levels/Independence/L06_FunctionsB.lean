@@ -15,8 +15,6 @@ Introduction "
 $\\{h, i, j\\}$ linearly independent, where $h(x) = 2$, $i(x) = 4\\sin^2(x)$ and
 $j(x) = \\cos^2(x)$?
 
-New tactic: `funext x` proves two functions equal by proving they agree at every `x`.
-
 Three vectors: `linIndep_three_iff` (now unlocked) says
 `LinearIndependent ℝ ![u, v, w] ↔ ∀ a b c, a • u + b • v + c • w = 0 → a = 0 ∧ b = 0 ∧ c = 0`.
 
@@ -37,6 +35,9 @@ Statement : (¬ LinearIndependent ℝ ![(fun _ : PosReal => (2 : ℝ)),
   left
   rw [linIndep_three_iff]
   intro h
+  Hint "Find a nontrivial relation and prove it is one: two functions are equal when they agree
+  at every point — `funext x` (from Question 5(a)) reduces an equation of functions to one at
+  a point `x`."
   Hint (hidden := true) "State the relation:
   `have hrel : (-2 : ℝ) • (fun _ : PosReal => (2 : ℝ)) + (1 : ℝ) • (fun x : PosReal => 4 * Real.sin x.1 ^ 2) + (4 : ℝ) • (fun x : PosReal => Real.cos x.1 ^ 2) = 0`."
   have hrel : (-2 : ℝ) • (fun _ : PosReal => (2 : ℝ)) +
@@ -57,4 +58,3 @@ Conclusion "**Answer: dependent**: $-2h + i + 4j = 0$."
 
 TheoremTab "Independence"
 NewTheorem LinearAlgebraGame.linIndep_three_iff
-NewTactic funext

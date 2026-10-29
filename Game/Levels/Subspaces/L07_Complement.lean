@@ -1,7 +1,7 @@
-import Game.Levels.Subspaces.L07_Intersection
+import Game.Levels.Subspaces.L06_Intersection
 
 World "Subspaces"
-Level 8
+Level 7
 Title "Complements"
 
 -- @sheet 4 Q5c

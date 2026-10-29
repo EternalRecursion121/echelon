@@ -1,7 +1,7 @@
-import Game.Levels.Subspaces.L05_ODE
+import Game.Levels.Subspaces.L04_ODE
 
 World "Subspaces"
-Level 6
+Level 5
 Title "The span is the smallest subspace"
 
 Introduction "

@@ -17,14 +17,10 @@ has at least one solution.
 A general system of $m$ equations in $n$ unknowns is `A *ᵥ x = b` with
 `A : Matrix (Fin m) (Fin n) ℝ`. The goal is `¬ P ∨ P`: commit with `left` (false) or
 `right` (true), then prove your choice. After `right` you prove the claim for every system
-(`intro m n A b hmn`). After `left` you assume the claim as `h` and refute it: `h` is a big
-\"for all\", which you can apply to a system of your choice, as in Lean Basics level 12 —
-e.g. `h m n A b (by norm_num)` with concrete numbers and matrices (the `(by norm_num)` proves
-$m < n$).
-
-Tips: `congrFun hx 0` turns an equation of vectors `hx : u = v` into its entry 0,
-`u 0 = v 0`; then `norm_num [mulVec, dotProduct, Fin.sum_univ_three] at h0` writes that row out
-as an equation (the recipe from Lean Basics, with three unknowns).
+(`intro m n A b hmn`, then produce a solution). After `left` you assume the claim as `h` and
+refute it: `h` is a big \"for all\", which you can apply to a system of your choice, as in
+Lean Basics level 12 — e.g. `h m n A b (by norm_num)` with concrete numbers and matrices (the
+`(by norm_num)` proves $m < n$).
 "
 
 namespace LinearAlgebraGame
@@ -40,6 +36,9 @@ Statement : (¬ ∀ (m n : ℕ) (A : Matrix (Fin m) (Fin n) ℝ) (b : Fin m → 
   Hint (hidden := true) "Try $x + y + z = 0,\\ x + y + z = 1$:
   `obtain ⟨x, hx⟩ := h 2 3 !![1, 1, 1; 1, 1, 1] ![0, 1] (by norm_num)`."
   obtain ⟨x, hx⟩ := h 2 3 !![1, 1, 1; 1, 1, 1] ![0, 1] (by norm_num)
+  Hint "To read off the rows: `congrFun hx 0` turns an equation of vectors `hx : u = v` into
+  its entry 0, `u 0 = v 0`; then `norm_num [mulVec, dotProduct, Fin.sum_univ_three] at h0` writes
+  that row out as an equation (the recipe from Lean Basics)."
   have h0 := congrFun hx 0
   have h1 := congrFun hx 1
   Hint (hidden := true) "`norm_num [mulVec, dotProduct, Fin.sum_univ_three] at h0 h1`"

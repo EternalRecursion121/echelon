@@ -1,7 +1,7 @@
-import Game.Levels.BasisDim.L10_DimMono
+import Game.Levels.BasisDim.L13_DimMono
 
 World "BasisDim"
-Level 11
+Level 14
 Title "Nested subspaces of equal dimension"
 
 -- @sheet 4 Q10b
@@ -16,15 +16,16 @@ Introduction "
 **Problem Sheet 4, Question 10(b).** Assuming that $U$ and $W$ are finite-dimensional
 (and $U \\subseteq W$), prove that equality of dimension holds if and only if $U = W$.
 
-You need this result for Sheet 3 Q11, so it comes early.
+As in part (a), Lean assumes the ambient space $V$ is finite-dimensional
+(`[FiniteDimensional ℝ V]`), which makes $U$ and $W$ finite-dimensional — slightly stronger
+than the sheet's hypothesis, and needed because `finrank` is $0$ for infinite-dimensional spaces.
 
 Your tools: part (a) `finrank_le_of_le`, and the extension lemma in dimension form,
 `Submodule.finrank_sup_span_singleton`: if $\\vec w \\notin U$ then
 $\\dim(U + [\\{\\vec w\\}]) = \\dim U + 1$. Lean displays the line $[\\{\\vec w\\}]$,
 `Submodule.span ℝ {w}`, in the short notation `ℝ ∙ w`.
 
-**New:** `omega` proves (in)equalities about natural numbers (and integers) that follow from the
-hypotheses by adding and comparing — handy for juggling dimensions.
+`omega` (from the rank-one level) does the final arithmetic with dimensions.
 "
 
 namespace LinearAlgebraGame
@@ -63,4 +64,3 @@ NewTheorem LinearAlgebraGame.finrank_le_of_le Submodule.finrank_sup_span_singlet
 DisabledTheorem Submodule.eq_of_le_of_finrank_eq Submodule.eq_of_le_of_finrank_le Submodule.finrank_lt_finrank_of_lt Submodule.finrank_mono
 DisabledTactic simp norm_num
 TheoremTab "Dimension"
-NewTactic omega

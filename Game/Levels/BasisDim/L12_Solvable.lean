@@ -1,7 +1,7 @@
-import Game.Levels.BasisDim.L13_Augment
+import Game.Levels.BasisDim.L11_Augment
 
 World "BasisDim"
-Level 14
+Level 12
 Title "Boss: when is a system solvable?"
 
 -- @sheet 3 Q11
@@ -11,7 +11,8 @@ $x_1\vec c_1 + \dots + x_n\vec c_n = \vec b$, so it has a solution iff $\vec b$ 
 column space $C = [\{\vec c_1,\dots,\vec c_n\}]$. The column space of $[A\mid b]$ is
 $C' = [\{\vec c_1,\dots,\vec c_n,\vec b\}] \supseteq C$, and $\vec b \in C$ iff $C' = C$
 (Lemma Two.II.1.2). Since $C \subseteq C'$ are finite-dimensional and nested, $C' = C$ iff
-$\dim C' = \dim C$ (Sheet 4 Q10b). The rank of a matrix is the dimension of its column space,
+$\dim C' = \dim C$ (nested finite-dimensional subspaces of equal dimension are equal — a
+textbook result, Hefferon Two.III.2; it is also Sheet 4 Q10(b)). The rank of a matrix is the dimension of its column space,
 so the system is solvable iff $\operatorname{rank} A = \operatorname{rank}[A\mid b]$.
 -/
 Introduction "
@@ -24,7 +25,9 @@ The chain of ideas:
    (`mulVec_eq_sum_col`). Granted in this form: `mem_span_cols_iff`
    (`b ∈ span ℝ (Set.range A.col) ↔ ∃ x, A *ᵥ x = b`);
 2. $\\vec b \\in [S] \\iff [S \\cup \\{\\vec b\\}] = [S]$ (`Submodule.span_insert_eq_span`);
-3. nested spans are equal $\\iff$ they have equal dimension (your Sheet 4 Q10b);
+3. nested subspaces of equal (finite) dimension are equal — the textbook result, granted as
+   `Submodule.eq_of_le_of_finrank_eq` (`h : U ≤ W` and `finrank ℝ U = finrank ℝ W` give
+   `U = W`); you prove it yourself later, as Sheet 4 Q10(b);
 4. rank is the dimension of the column span (`rank_augment`).
 "
 
@@ -47,11 +50,11 @@ Statement {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) (b : Fin m → ℝ) :
     rw [Submodule.span_insert_eq_span hb]
   · intro hr
     Hint "The span without $\\vec b$ sits inside the span with $\\vec b$, and they have the
-    same dimension. So they are equal (Sheet 4 Q10b) — and $\\vec b$ is in the bigger one."
-    Hint (hidden := true) "`have he := (eq_iff_finrank_eq_of_le _ _ (Submodule.span_mono
-    (Set.subset_insert b _))).mp {hr}`"
-    have he := (eq_iff_finrank_eq_of_le _ _
-      (Submodule.span_mono (Set.subset_insert b _))).mp hr
+    same dimension. So they are equal — and $\\vec b$ is in the bigger one."
+    Hint (hidden := true) "`have he := Submodule.eq_of_le_of_finrank_eq (Submodule.span_mono
+    (Set.subset_insert b _)) {hr}`"
+    have he := Submodule.eq_of_le_of_finrank_eq
+      (Submodule.span_mono (Set.subset_insert b _)) hr
     rw [he]
     Hint (hidden := true) "`exact Submodule.subset_span (Set.mem_insert b _)`"
     exact Submodule.subset_span (Set.mem_insert b _)
@@ -63,7 +66,6 @@ Conclusion "
 $\\operatorname{rank} A = \\operatorname{rank}[A \\mid b]$.
 "
 
-NewTheorem LinearAlgebraGame.rank_augment LinearAlgebraGame.eq_iff_finrank_eq_of_le LinearAlgebraGame.mem_span_cols_iff LinearAlgebraGame.mulVec_eq_sum_col Submodule.span_insert_eq_span
-DisabledTheorem Submodule.eq_of_le_of_finrank_eq
+NewTheorem LinearAlgebraGame.rank_augment Submodule.eq_of_le_of_finrank_eq LinearAlgebraGame.mem_span_cols_iff LinearAlgebraGame.mulVec_eq_sum_col Submodule.span_insert_eq_span
 DisabledTactic simp norm_num
 TheoremTab "Rank"

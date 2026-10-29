@@ -10,6 +10,10 @@ $|\\vec u + \\vec v|^2 = |\\vec u|^2 + 2\\,\\vec u\\cdot\\vec v + |\\vec v|^2$, 
 bounds the middle term.
 
 **New:** `positivity` proves goals of the form `0 < e`, `0 ≤ e`, `e ≠ 0` from the shape of `e`.
+
+**Also new in your inventory** (for later): `induction n with | zero => … | succ n ih => …`
+proves a statement about every natural number $n$ — the case $0$, then $n + 1$ from $n$; and
+the sum lemmas `Finset.sum_range_zero`, `Finset.sum_range_succ`.
 "
 
 namespace LinearAlgebraGame
@@ -35,5 +39,5 @@ end LinearAlgebraGame
 
 Conclusion "`len_add_le` is now in your inventory."
 
-NewTactic positivity
-NewTheorem LinearAlgebraGame.len_nonneg le_abs_self
+NewTactic positivity induction
+NewTheorem LinearAlgebraGame.len_nonneg le_abs_self Finset.sum_range_zero Finset.sum_range_succ Real.sqrt_zero

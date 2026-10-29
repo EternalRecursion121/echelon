@@ -4,7 +4,7 @@ World "Eigen"
 Level 12
 Title "Eigenvalues of d/dx"
 
--- @sheet 9 Q8a
+-- @sheet 9 Q8b
 /-! @answer
 With respect to $\langle 1, x, x^2, x^3\rangle$, $d/dx$ has the strictly upper triangular
 matrix $D$ with superdiagonal $1, 2, 3$. So $|D - xI| = (-x)^4 = x^4$, and the only

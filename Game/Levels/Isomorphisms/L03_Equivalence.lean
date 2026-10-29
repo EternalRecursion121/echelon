@@ -47,3 +47,4 @@ So it makes sense to say two spaces are *isomorphic* without saying which comes 
 NewDefinition LinearEquiv LinearEquiv.refl LinearEquiv.symm LinearEquiv.trans
 DisabledTactic simp norm_num
 TheoremTab "Isomorphisms"
+NewTheorem LinearEquiv.injective

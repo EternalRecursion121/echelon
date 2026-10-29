@@ -34,6 +34,7 @@ namespace LinearAlgebraGame
 /-- Two 3-dimensional subspaces of $\mathbb R^5$ meet non-trivially. -/
 Statement (U W : Submodule ℝ (Fin 5 → ℝ)) (hU : Module.finrank ℝ U = 3)
     (hW : Module.finrank ℝ W = 3) : U ⊓ W ≠ ⊥ := by
+  -- Explain: in general, if dim U + dim W > dim V then U ∩ W ≠ {0}.
   Hint "Suppose $U\\cap W$ is trivial; then the dimension formula says $\\dim(U+W) = 6$."
   intro h
   Hint (hidden := true) "`obtain ⟨j, k, p, β, μ, ω, hβ, hU', hW'⟩ := exists_bases_inf U W`, then
@@ -45,7 +46,6 @@ Statement (U W : Submodule ℝ (Fin 5 → ℝ)) (hU : Module.finrank ℝ U = 3)
   Hint "But $U + W$ lives in $\\mathbb R^5$."
   have h5 := Submodule.finrank_le (U ⊔ W)
   rw [Module.finrank_fin_fun] at h5
-  -- Explain: in general, if dim U + dim W > dim V then U ∩ W ≠ {0}.
   Hint (hidden := true) "Generalisation: *if $\\dim U + \\dim W > \\dim V$ then
   $U\\cap W$ is non-trivial*. Finish with `omega`."
   omega

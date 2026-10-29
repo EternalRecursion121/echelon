@@ -52,4 +52,4 @@ The quickest way to show a set is *not* a subspace is usually: it misses $\\vec 
 "
 
 TheoremTab "Subspaces"
-NewTheorem LinearAlgebraGame.subspace_test Set.mem_ofPred_eq Submodule.zero_mem LinearAlgebraGame.mem_iff_of_coe_eq
+NewTheorem LinearAlgebraGame.subspace_test Set.mem_ofPred_eq Submodule.zero_mem LinearAlgebraGame.mem_iff_of_coe_eq neg_zero

@@ -1,5 +1,13 @@
-% Monospace font for Lean code with fallbacks for symbols Menlo lacks (ℝ, ⟨⟩, ᵥ, …).
-\directlua{luaotfload.add_fallback("leanfallback", {"STIX Two Math:mode=harf;", "STIX Two Text:mode=harf;"})}
+% Fonts. Menlo (code) and STIX Two Text (prose) lack some symbols Lean and the export use:
+% ✗ (U+2717), ₗ (U+2097, as in →ₗ[ℝ]), ₚ, ₘ, ᵥ, ⟨⟩, ∘, …  DejaVu Sans (Mono) ships with TeX Live and
+% has all of them; STIX Two Math covers the remaining maths symbols (ℝ, ⬝, …).
+\directlua{luaotfload.add_fallback("leanfallback", {"DejaVu Sans Mono:mode=harf;", "STIX Two Math:mode=harf;", "DejaVu Sans:mode=harf;"})}
 \setmonofont{Menlo}[Scale=0.85, RawFeature={fallback=leanfallback}]
-\directlua{luaotfload.add_fallback("textfallback", {"STIX Two Math:mode=harf;"})}
+\directlua{luaotfload.add_fallback("textfallback", {"STIX Two Math:mode=harf;", "DejaVu Sans:mode=harf;"})}
 \setmainfont{STIX Two Text}[RawFeature={fallback=textfallback}]
+% Wrap long code lines (long `-- Explain:` comments, long statements) instead of clipping them.
+\usepackage{fvextra}
+\fvset{breaklines=true, breakanywhere=true, breaksymbolleft={\tiny\ensuremath{\hookrightarrow}}}
+\makeatletter
+\@ifundefined{Highlighting}{}{\RecustomVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}, breaklines=true, breakanywhere=true}}
+\makeatother

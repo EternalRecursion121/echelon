@@ -4,15 +4,12 @@ World "Dimension"
 Level 9
 Title "An intersection"
 
--- @sheet 6 Q1a
+-- @sheet 6 Q1a(i)
 /-! @answer
 $W_1\cap W_2$: a matrix in both has first row $0$ and diagonal $0$, so it is
 $\begin{pmatrix}0&0\\c&0\end{pmatrix}$: **$W_1\cap W_2 = \{\begin{pmatrix}0&0\\c&0\end{pmatrix}\}$,
 basis $\langle E_{21}\rangle$, dimension 1.**
-$W_1 + W_2 = \{\begin{pmatrix}0&0\\c&d\end{pmatrix} + \begin{pmatrix}0&b\\c'&0\end{pmatrix}\}
-= \{\begin{pmatrix}0&b\\c&d\end{pmatrix}\}$ (all matrices with top-left entry 0):
-**basis $\langle E_{12}, E_{21}, E_{22}\rangle$, dimension 3.**
-(Check: $3 = 2 + 2 - 1$.)
+(The sum $W_1 + W_2$ is the next level.)
 -/
 Introduction "
 **Problem Sheet 6, Question 1(a).** For these subspaces of $\\mathcal M_{2\\times 2}$ find

@@ -4,7 +4,7 @@ World "Eigen"
 Level 11
 Title "The characteristic polynomial of d/dx"
 
--- @sheet 9 Q8b
+-- @sheet 9 Q8a
 /-! @answer
 With respect to $\langle 1, x, x^2, x^3\rangle$, $d/dx$ has the strictly upper triangular
 matrix $D$ with superdiagonal $1, 2, 3$, so $|D - xI| = (-x)^4 = x^4$ (a triangular matrix:

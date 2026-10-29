@@ -35,3 +35,4 @@ From now on `hom_map_zero` is in your inventory.
 DisabledTheorem map_zero LinearMap.map_zero
 DisabledTactic simp norm_num
 TheoremTab "Maps"
+NewTheorem sub_eq_add_neg neg_one_smul

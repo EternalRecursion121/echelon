@@ -4,7 +4,7 @@ World "Projection"
 Level 6
 Title "Gram–Schmidt in floating point"
 
--- @sheet 8 Q6
+-- @sheet 8 Q6a
 /-! @answer
 With $\kappa_1 = \beta_1 = (1,\varepsilon,0,0)$ we get $\kappa_1\cdot\kappa_1 = 1 + \varepsilon^2$, which
 floating point rounds to $1$; the other dot products are computed exactly

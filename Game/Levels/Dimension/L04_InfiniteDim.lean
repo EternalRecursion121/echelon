@@ -39,6 +39,9 @@ namespace LinearAlgebraGame
 $\operatorname{rank} U = \operatorname{rank} \mathbb R[x]$. -/
 Statement : ∃ U : Submodule ℝ (Polynomial ℝ),
     U ≠ ⊤ ∧ Module.rank ℝ U = Module.rank ℝ (Polynomial ℝ) := by
+  -- Explain: in (b) a basis of U with dim W elements is independent in W, hence spans W —
+  -- that counting step needs finiteness. Here x·ℝ[x] ≅ ℝ[x] has the same (infinite)
+  -- dimension, but 1 ∉ x·ℝ[x]. (finrank would say 0 = 0 for any two infinite-dim spaces.)
   Hint "Multiplication by $x$ is injective, so its range is a copy of $\\mathbb R[x]$ inside
   $\\mathbb R[x]$. But $1$ is not in the range."
   have hinj : Function.Injective (LinearMap.mulLeft ℝ (Polynomial.X : Polynomial ℝ)) := by
@@ -59,9 +62,6 @@ Statement : ∃ U : Submodule ℝ (Polynomial ℝ),
   Hint (hidden := true) "`have hX : (Polynomial.X : Polynomial ℝ) ∣ 1 := ⟨p, by rw [{hp}]⟩`"
   have hX : (Polynomial.X : Polynomial ℝ) ∣ 1 := ⟨p, by rw [hp]⟩
   rw [Polynomial.X_dvd_iff] at hX
-  -- Explain: in (b) a basis of U with dim W elements is independent in W, hence spans W —
-  -- that counting step needs finiteness. Here x·ℝ[x] ≅ ℝ[x] has the same (infinite)
-  -- dimension, but 1 ∉ x·ℝ[x]. (finrank would say 0 = 0 for any two infinite-dim spaces.)
   Hint (hidden := true) "Model explanation: *the proof of (b) used that $\\dim W$ independent
   vectors in $W$ span $W$, a counting argument that only works for finite sets. Here
   $x\\mathbb R[x] \\cong \\mathbb R[x]$ have equal infinite dimension yet differ.* Close with

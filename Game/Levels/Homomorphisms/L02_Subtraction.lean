@@ -38,7 +38,6 @@ Conclusion "
 Mathlib's name for this is `map_sub`, now in your inventory.
 "
 
-NewTheorem sub_eq_add_neg neg_one_smul
 DisabledTheorem map_sub LinearMap.map_sub
 DisabledTactic simp norm_num
 TheoremTab "Maps"

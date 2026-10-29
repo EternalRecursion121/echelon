@@ -28,7 +28,7 @@ Statement {n : ℕ} (s v : Fin n → ℝ) (hs : s ≠ 0) :
   Hint "Pythagoras: $\\vec v = \\vec p + (\\vec v - \\vec p)$ with the two parts orthogonal."
   apply Real.sqrt_le_sqrt
   Hint "First record that $\\vec v - \\vec p$ is orthogonal to $\\vec p$ (not just to $\\vec s$)."
-  Hint "Careful when you unfold: `rw [projLine]` (or `unfold projLine`) unfolds *every* copy of
+  Hint "Careful when you unfold: `rw [projLine]` unfolds *every* copy of
   `projLine s v`, including the one inside `v - projLine s v`, and then `projLine_orth` no
   longer matches. `nth_rw 2 [projLine]` unfolds only the second copy."
   Hint (hidden := true) "`have horth : (v - projLine s v) ⬝ᵥ projLine s v = 0`, proved by

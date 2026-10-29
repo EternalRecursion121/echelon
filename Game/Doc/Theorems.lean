@@ -392,7 +392,7 @@ TheoremDoc Set.mem_range_self as "Set.mem_range_self" in "Subspaces"
 (Definition Two.I.2.13). -/
 TheoremDoc Submodule.mem_span_range_iff_exists_fun as "mem_span_range_iff_exists_fun" in "Subspaces"
 /-- `Submodule.span_le : span ℝ S ≤ W ↔ S ⊆ W` — the span is the smallest subspace containing
-`S` (Lemma Two.I.2.15, proved in Subspaces level 6). -/
+`S` (Lemma Two.I.2.15, proved in Subspaces level 5). -/
 TheoremDoc Submodule.span_le as "Submodule.span_le" in "Subspaces"
 /-- `Matrix.one_mulVec x : 1 *ᵥ x = x` — the identity matrix fixes every vector. -/
 TheoremDoc Matrix.one_mulVec as "one_mulVec" in "Subspaces"
@@ -423,7 +423,7 @@ TheoremDoc Submodule.coe_inf as "Submodule.coe_inf" in "Subspaces"
 TheoremDoc Submodule.mem_inf as "Submodule.mem_inf" in "Subspaces"
 /-- `union_subspace_of_subset A B h : ∃ W : Submodule ℝ V, (W : Set V) = A ∪ B` when
 `h : (A : Set V) ⊆ B ∨ (B : Set V) ⊆ A` — nested subspaces have a subspace as union
-(Subspaces level 9). -/
+(Subspaces level 8). -/
 TheoremDoc LinearAlgebraGame.union_subspace_of_subset as "union_subspace_of_subset" in "Subspaces"
 /-- `Set.not_subset : ¬ s ⊆ t ↔ ∃ a ∈ s, a ∉ t`. -/
 TheoremDoc Set.not_subset as "Set.not_subset" in "Subspaces"
@@ -692,7 +692,7 @@ TheoremDoc Set.range_eq_empty as "Set.range_eq_empty" in "Dimension"
 TheoremDoc SetLike.mem_coe as "SetLike.mem_coe" in "Basis"
 /-- `x ∈ U → y ∈ W → x + y ∈ U ⊔ W`. -/
 TheoremDoc Submodule.add_mem_sup as "Submodule.add_mem_sup" in "Sums"
-/-- Mathlib's Sheet 4 Q10(b). Disabled where you prove it. -/
+/-- Nested subspaces of equal finite dimension are equal: for `hle : U ≤ W` and `hd : finrank ℝ U = finrank ℝ W`, `Submodule.eq_of_le_of_finrank_eq hle hd : U = W`. A textbook result (Hefferon Two.III.2); Sheet 4 Q10(b) asks you to prove it, and it is disabled there. -/
 TheoremDoc Submodule.eq_of_le_of_finrank_eq as "eq_of_le_of_finrank_eq" in "Dimension"
 /-- Disabled where you prove Sheet 4 Q10(b). -/
 TheoremDoc Submodule.eq_of_le_of_finrank_le as "eq_of_le_of_finrank_le" in "Dimension"
@@ -706,7 +706,7 @@ TheoremDoc Submodule.finrank_le as "Submodule.finrank_le" in "Dimension"
 TheoremDoc Submodule.finrank_le_finrank_of_le as "finrank_le_finrank_of_le" in "Dimension"
 /-- Disabled in Sheet 4 Q10(b). -/
 TheoremDoc Submodule.finrank_lt_finrank_of_lt as "finrank_lt_finrank_of_lt" in "Dimension"
-/-- Sheet 4 Q10(a): `U ≤ W → finrank U ≤ finrank W`. You proved it as `finrank_le_of_le`. -/
+/-- `U ≤ W → finrank ℝ U ≤ finrank ℝ W` (finite-dimensional ambient space): a subspace is no bigger than the space containing it. Hefferon's result; Sheet 4 Q10(a) asks you to prove it (your `finrank_le_of_le`). Use: `Submodule.finrank_mono hle`. -/
 TheoremDoc Submodule.finrank_mono as "Submodule.finrank_mono" in "Dimension"
 /-- The dimension formula: $\dim(U+W) + \dim(U\cap W) = \dim U + \dim W$ (proved by you in Sheet 6 Q1). -/
 TheoremDoc Submodule.finrank_sup_add_finrank_inf_eq as "finrank_sup_add_finrank_inf_eq" in "Sums"

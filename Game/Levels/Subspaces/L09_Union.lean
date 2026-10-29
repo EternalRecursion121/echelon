@@ -1,7 +1,7 @@
-import Game.Levels.Subspaces.L09_UnionNested
+import Game.Levels.Subspaces.L08_UnionNested
 
 World "Subspaces"
-Level 10
+Level 9
 Title "Unions (boss)"
 
 -- @sheet 4 Q5b

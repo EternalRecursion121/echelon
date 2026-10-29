@@ -64,4 +64,4 @@ your inventory.
 DisabledTactic norm_num simp
 DisabledTheorem zero_smul
 TheoremTab "Vector spaces"
-NewTheorem add_left_cancel add_smul add_zero
+NewTheorem add_left_cancel add_smul

@@ -1,13 +1,12 @@
 import Game.Levels.Subspaces.L01_SubspaceTest
 import Game.Levels.Subspaces.L02_Planes
 import Game.Levels.Subspaces.L03_OddFunctions
-import Game.Levels.Subspaces.L04_Homogeneous
-import Game.Levels.Subspaces.L05_ODE
-import Game.Levels.Subspaces.L06_Span
-import Game.Levels.Subspaces.L07_Intersection
-import Game.Levels.Subspaces.L08_Complement
-import Game.Levels.Subspaces.L09_UnionNested
-import Game.Levels.Subspaces.L10_Union
+import Game.Levels.Subspaces.L04_ODE
+import Game.Levels.Subspaces.L05_Span
+import Game.Levels.Subspaces.L06_Intersection
+import Game.Levels.Subspaces.L07_Complement
+import Game.Levels.Subspaces.L08_UnionNested
+import Game.Levels.Subspaces.L09_Union
 
 World "Subspaces"
 Title "Subspaces"

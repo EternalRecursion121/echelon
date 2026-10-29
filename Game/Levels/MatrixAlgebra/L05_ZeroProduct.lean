@@ -40,3 +40,4 @@ Invertible matrices can be cancelled; that is exactly what fails for singular on
 "
 
 TheoremTab "Matrices"
+NewTheorem Matrix.inv_eq_left_inv pow_succ' pow_succ pow_zero Matrix.nonsing_inv_mul Matrix.mul_nonsing_inv

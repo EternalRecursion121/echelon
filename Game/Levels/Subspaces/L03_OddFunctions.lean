@@ -48,4 +48,3 @@ Conclusion "**Answer: yes**, the odd functions form a subspace."
 
 DisabledTactic simp norm_num
 TheoremTab "Subspaces"
-NewTheorem neg_zero

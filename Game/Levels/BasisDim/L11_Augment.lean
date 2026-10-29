@@ -1,7 +1,7 @@
-import Game.Levels.BasisDim.L12_RankOne
+import Game.Levels.BasisDim.L10_RankOne
 
 World "BasisDim"
-Level 13
+Level 11
 Title "The columns of [A | b]"
 
 Introduction "

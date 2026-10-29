@@ -22,8 +22,9 @@ linearly dependent or independent?
 For four vectors use the general forms of Lemma 1.5: `Fintype.linearIndependent_iff` says a
 finite family `v` is independent iff `∀ g, ∑ i, g i • v i = 0 → ∀ i, g i = 0`, and
 `Fintype.not_linearIndependent_iff` says it is dependent iff some combination with
-coefficients `g` sums to zero while some `g i ≠ 0`. If it is dependent, find the coefficients by
-Gauss's method on paper, then let Lean check them.
+coefficients `g` sums to zero while some `g i ≠ 0`. Either way the work is Gauss's method on
+paper: it produces a nontrivial relation (whose coefficients Lean then checks) or shows that
+only the trivial one exists.
 
 Decide: `left` for dependent, `right` for independent.
 "

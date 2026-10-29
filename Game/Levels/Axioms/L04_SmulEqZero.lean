@@ -60,4 +60,4 @@ DisabledTheorem smul_eq_zero smul_eq_zero_iff_left smul_eq_zero_iff_right smul_n
 DisabledTactic norm_num simp
 TheoremTab "Vector spaces"
 NewTactic by_contra
-NewTheorem inv_mul_cancel₀ smul_zero smul_smul
+NewTheorem inv_mul_cancel₀ smul_smul

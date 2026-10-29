@@ -25,6 +25,7 @@ columns of $B = Q^{-1}AQ$?
 
 In Lean, $k = \\dim V_\\lambda$ (`hk`), and $\\vec e_j$ is `Pi.single j 1`; column $j$ of a
 matrix $M$ is $M\\vec e_j$. Two pieces of bookkeeping are **granted** as hypotheses:
+
 * `hext` — basis extension: there is a nonsingular $Q$ whose first $k$ columns $Q\\vec e_j$
   are eigenvectors (Chapter Two's \"extend to a basis\");
 * `hblock` — Laplace expansion: if $k \\le n$ and the first $k$ columns of $B$ are
@@ -33,6 +34,11 @@ matrix $M$ is $M\\vec e_j$. Two pieces of bookkeeping are **granted** as hypothe
 The rest is yours: compute the first $k$ columns of $B = Q^{-1}AQ$, check $k \\le n$, use Q3
 (`charpolyH_similar`), and convert divisibility into multiplicity with
 `Polynomial.le_rootMultiplicity_iff`.
+
+Your hand-in should also justify the two granted steps in words: inside your proof write a
+comment block starting `-- Explain:` saying why such a $Q$ exists (extend a basis of the
+eigenspace) and why $(x - \\lambda)^k$ divides $|B - xI|$ (expand the determinant along the first
+$k$ columns).
 "
 
 namespace LinearAlgebraGame
@@ -47,6 +53,10 @@ Statement {n : ℕ} (A : Matrix (Fin n) (Fin n) ℝ) (μ : ℝ) (k : ℕ)
       (∀ j : Fin n, (j : ℕ) < k → B *ᵥ Pi.single j 1 = μ • Pi.single j 1) →
         (X - C μ) ^ k ∣ charpolyH B) :
     k ≤ rootMultiplicity μ (charpolyH A) := by
+  -- Explain: (hext) extend a basis v₁,…,v_k of the eigenspace to a basis v₁,…,v_n of ℝⁿ; the
+  -- matrix Q with these columns is nonsingular and Q e_j = v_j is an eigenvector for j ≤ k.
+  -- (hblock) if column j of B is λ e_j for j ≤ k, the first k columns of B - xI are (λ - x) e_j;
+  -- expanding the determinant along them gives |B - xI| = (λ - x)^k q(x).
   Hint "Take $Q$ from `hext` and set $B = Q⁻¹AQ$. Show column $j$ of $B$ is $\\lambda\\vec e_j$ for $j < k$."
   obtain ⟨Q, hQ, hcols⟩ := hext
   Hint (hidden := true) "`have hB : ∀ j : Fin n, (j : ℕ) < k → (Q⁻¹ * A * Q) *ᵥ Pi.single j 1 = μ • Pi.single j 1`.

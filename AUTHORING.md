@@ -90,6 +90,11 @@ TheoremTab "<Tab>"
 - ≤ 16 levels per world.
 - Use `Branch` for alternative proof routes with their own hints; use `(strict := true)` on a
   hint placed right after a `have`.
+- In `Hint` strings `{h}` interpolates a hypothesis name, so a literal brace (e.g. LaTeX
+  `a_{11}`) must be written `a_\{11}` (a LaTeX set brace `\{` is `\\\{`).
+- Explain levels: put the sample `-- Explain:` comment at the top of the proof (the export
+  copies it), and keep path-specific tips of decide levels out of the Introduction and the
+  level's `NewTheorem`/`NewTactic` lines (unlock them a level earlier).
 
 ## Level kinds
 

@@ -15,8 +15,7 @@ $$g(h(\\vec\\beta_j)) = g\\Big(\\sum_l h_{lj}\\vec\\gamma_l\\Big) = \\sum_l h_{l
 
 **Lean note.** A hypothesis like `hG : IsRep C D g G` is *folded*: `rw [hG]` and
 `simp only [hG]` cannot see the equation inside, and `simp only` just reports the argument as
-unused. Either use it at a column, `hG l : g (C l) = ∑ i, G i l • D i`, or first
-`unfold IsRep at hG`.
+unused. Use it at a column: `hG l : g (C l) = ∑ i, G i l • D i`.
 "
 
 namespace LinearAlgebraGame

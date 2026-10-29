@@ -1,7 +1,7 @@
-import Game.Levels.BasisDim.L11_NestedEq
+import Game.Levels.BasisDim.L09_RankZero
 
 World "BasisDim"
-Level 12
+Level 10
 Title "Rank one"
 
 -- @sheet 3 Q9
@@ -21,13 +21,17 @@ Again an *explain level*: write your description in a comment starting `-- Expla
 Here `vecMulVec u v` is the matrix $\\vec u\\,\\vec v^{\\,T}$ with entries $u_i v_j$
 (`vecMulVec_apply`); its column $j$ is $v_j\\vec u$.
 
-Tools: `rank_eq_zero_iff` (rank 0, two levels ago), `finrank_le_of_le` (Sheet 4 Q10a),
+Tools: `rank_eq_zero_iff` (rank 0, last level), `Submodule.finrank_mono` (a subspace of
+$W$ has dimension $\\le \\dim W$ — Hefferon's result; Sheet 4 Q10(a) asks you to prove it later),
 `finrank_span_singleton_le_one` (a line has dimension $\\le 1$) and
 `exists_line_of_finrank_eq_one`: a one-dimensional subspace $W$ contains a nonzero $\\vec u$
 such that every $\\vec w \\in W$ is a multiple $c\\,\\vec u$.
 
 **New:** `choose f hf using h` turns `h : ∀ x, ∃ y, P x y` into a function `f` with
 `hf : ∀ x, P x (f x)`.
+
+**New:** `omega` proves (in)equalities about natural numbers (and integers) that follow from the
+hypotheses by adding and comparing — handy for juggling dimensions.
 "
 
 namespace LinearAlgebraGame
@@ -37,6 +41,8 @@ open Matrix
 /-- Rank 1 iff $A \neq 0$ and $A = \vec u\,\vec v^{\,T}$. -/
 Statement {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) :
     A.rank = 1 ↔ A ≠ 0 ∧ ∃ u : Fin m → ℝ, ∃ v : Fin n → ℝ, A = vecMulVec u v := by
+  -- Explain: rank 1 means the column space is a line [u], so every column is a multiple
+  -- of u: A = u vᵀ with u, v nonzero (equivalently all rows are multiples of one row).
   constructor
   · intro h
     refine ⟨?_, ?_⟩
@@ -86,11 +92,9 @@ Statement {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) :
       use v j
       ext i
       rw [Pi.smul_apply, smul_eq_mul, Matrix.col_apply, vecMulVec_apply, mul_comm]
-    have h1 := finrank_le_of_le _ _ hle
+    have h1 := Submodule.finrank_mono hle
     have h2 := finrank_span_singleton_le_one u
     rw [rank_eq_finrank_span_cols] at h3 ⊢
-    -- Explain: rank 1 means the column space is a line [u], so every column is a multiple
-    -- of u: A = u vᵀ with u, v nonzero (equivalently all rows are multiples of one row).
     Hint (hidden := true) "Model explanation: *rank 1: the nonzero matrices $u v^T$ — all
     columns are multiples of one nonzero vector, equivalently all rows are multiples of a
     single row.* Finish with `omega`."
@@ -105,6 +109,6 @@ Conclusion "
 
 TheoremTab "Rank"
 
-NewTactic choose
-NewTheorem LinearAlgebraGame.rank_eq_zero_iff LinearAlgebraGame.exists_line_of_finrank_eq_one LinearAlgebraGame.finrank_span_singleton_le_one Matrix.vecMulVec_apply Matrix.col_apply Matrix.rank_zero
+NewTactic choose omega
+NewTheorem Submodule.finrank_mono LinearAlgebraGame.rank_eq_zero_iff LinearAlgebraGame.exists_line_of_finrank_eq_one LinearAlgebraGame.finrank_span_singleton_le_one Matrix.vecMulVec_apply Matrix.col_apply Matrix.rank_zero
 NewDefinition Matrix.vecMulVec

@@ -7,11 +7,11 @@ import Game.Levels.BasisDim.L06_Sym3
 import Game.Levels.BasisDim.L07_ColSpace
 import Game.Levels.BasisDim.L08_Exchange
 import Game.Levels.BasisDim.L09_RankZero
-import Game.Levels.BasisDim.L10_DimMono
-import Game.Levels.BasisDim.L11_NestedEq
-import Game.Levels.BasisDim.L12_RankOne
-import Game.Levels.BasisDim.L13_Augment
-import Game.Levels.BasisDim.L14_Solvable
+import Game.Levels.BasisDim.L10_RankOne
+import Game.Levels.BasisDim.L11_Augment
+import Game.Levels.BasisDim.L12_Solvable
+import Game.Levels.BasisDim.L13_DimMono
+import Game.Levels.BasisDim.L14_NestedEq
 import Game.Levels.BasisDim.L15_FunDim
 
 World "BasisDim"

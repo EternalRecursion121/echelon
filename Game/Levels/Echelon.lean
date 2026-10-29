@@ -11,6 +11,7 @@ import Game.Levels.Echelon.L10_SheetTwoQ8a
 import Game.Levels.Echelon.L11_FirstColumn
 import Game.Levels.Echelon.L12_SheetTwoQ8b
 import Game.Levels.Echelon.L13_SheetTwoQ8c
+import Game.Levels.Echelon.L14_SheetTwoQ4
 
 World "Echelon"
 Title "Echelon"
@@ -25,4 +26,5 @@ and row equivalence.
   the swap operation is redundant (Sheet 1 Q10–Q12, Sheet 2 Q2).
 - Level 9: singular or nonsingular (Sheet 1 Q4).
 - Levels 10–13: the row-equivalence classes of $2\\times 2$ matrices (Sheet 2 Q8).
+- Level 14: solutions of a homogeneous system $A\\vec x = \\vec 0$ (Sheet 2 Q4).
 "

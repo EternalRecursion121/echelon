@@ -4,7 +4,7 @@ World "Projection"
 Level 7
 Title "How orthogonal is the computed basis?"
 
--- @sheet 8 Q6
+-- @sheet 8 Q6b
 /-! @answer
 The computed vectors are $\kappa_2 = (0,-\varepsilon,\varepsilon,0)$ and
 $\kappa_3 = (0,-\varepsilon,0,\varepsilon)$. Now $\kappa_2\cdot\kappa_3 = \varepsilon^2$ and
@@ -36,14 +36,16 @@ starting `-- Explain:` inside your proof.
 namespace LinearAlgebraGame
 
 open Matrix in
-/-- There is one number $c \ge 1/4$ that is $\cos^2$ of the angle between the computed
+/-- There is one number $c > 0$ (so: not orthogonal) that is $\cos^2$ of the angle between the computed
 $\vec\kappa_2, \vec\kappa_3$ for every $\varepsilon > 0$, and stays the same when $\vec\kappa_2$
 is scaled by any $k > 0$. -/
-Statement : ∃ c : ℝ, 1 / 4 ≤ c ∧ ∀ ε : ℝ, 0 < ε →
+Statement : ∃ c : ℝ, 0 < c ∧ ∀ ε : ℝ, 0 < ε →
     let κ₂ : Fin 4 → ℝ := ![0, -ε, ε, 0]
     let κ₃ : Fin 4 → ℝ := ![0, -ε, 0, ε]
     (κ₂ ⬝ᵥ κ₃) ^ 2 / ((κ₂ ⬝ᵥ κ₂) * (κ₃ ⬝ᵥ κ₃)) = c ∧
     ∀ k : ℝ, 0 < k → ((k • κ₂) ⬝ᵥ κ₃) ^ 2 / (((k • κ₂) ⬝ᵥ (k • κ₂)) * (κ₃ ⬝ᵥ κ₃)) = c := by
+  -- Explain: cos²θ = 1/4 for every ε, so κ₂ and κ₃ meet at 60°: far from orthogonal.
+  -- Scaling κ₂ does not change κ₃ or the angle, so it does not help.
   Hint "Compute $\\vec\\kappa_2\\cdot\\vec\\kappa_3$, $\\vec\\kappa_2\\cdot\\vec\\kappa_2$ and
   $\\vec\\kappa_3\\cdot\\vec\\kappa_3$ on paper. What is $\\cos^2\\theta$? Does $\\varepsilon$ survive?"
   Hint (hidden := true) "`use 1 / 4`, then `constructor`."
@@ -75,7 +77,6 @@ Statement : ∃ c : ℝ, 1 / 4 ≤ c ∧ ∀ ε : ℝ, 0 < ε →
     have $\\cos^2\\theta = 1/4$, i.e. they meet at $60^\\circ$: far from orthogonal. Scaling $\\kappa_2$ by
     $k > 0$ changes neither $\\kappa_3$ nor any angle, so it does not help: the rounding error in
     $\\kappa_1\\cdot\\kappa_1$ is as large as the $\\varepsilon^2$-sized quantities that should cancel."
-    -- Explain: …
     rw [smul_dotProduct, smul_dotProduct, dotProduct_smul, d23, d22, d33, smul_eq_mul,
       smul_eq_mul, smul_eq_mul]
     field_simp

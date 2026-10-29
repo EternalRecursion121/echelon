@@ -4,15 +4,12 @@ World "Dimension"
 Level 10
 Title "A sum"
 
--- @sheet 6 Q1a
+-- @sheet 6 Q1a(ii)
 /-! @answer
-$W_1\cap W_2$: a matrix in both has first row $0$ and diagonal $0$, so it is
-$\begin{pmatrix}0&0\\c&0\end{pmatrix}$: **$W_1\cap W_2 = \{\begin{pmatrix}0&0\\c&0\end{pmatrix}\}$,
-basis $\langle E_{21}\rangle$, dimension 1.**
 $W_1 + W_2 = \{\begin{pmatrix}0&0\\c&d\end{pmatrix} + \begin{pmatrix}0&b\\c'&0\end{pmatrix}\}
 = \{\begin{pmatrix}0&b\\c&d\end{pmatrix}\}$ (all matrices with top-left entry 0):
 **basis $\langle E_{12}, E_{21}, E_{22}\rangle$, dimension 3.**
-(Check: $3 = 2 + 2 - 1$.)
+(Check with part (i), $\dim(W_1\cap W_2) = 1$: $3 = 2 + 2 - 1$.)
 -/
 Introduction "
 **Problem Sheet 6, Question 1(a), continued.** For the same $W_1$, $W_2$ find $W_1 + W_2$

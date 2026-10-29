@@ -1,7 +1,7 @@
-import Game.Levels.BasisDim.L09_RankZero
+import Game.Levels.BasisDim.L12_Solvable
 
 World "BasisDim"
-Level 10
+Level 13
 Title "Subspaces are no bigger"
 
 -- @sheet 4 Q10a
@@ -42,7 +42,7 @@ end LinearAlgebraGame
 
 Conclusion "
 $\\dim U \\le \\dim W$: `finrank_le_of_le` is in your inventory. (Mathlib calls it
-`Submodule.finrank_mono`; you will meet that name in later worlds.)
+`Submodule.finrank_mono` — the version you were granted in the rank-one level.)
 "
 
 NewTheorem LinearMap.finrank_le_finrank_of_injective Submodule.inclusion_injective
@@ -50,4 +50,3 @@ NewTheorem LinearMap.finrank_le_finrank_of_injective Submodule.inclusion_injecti
 DisabledTheorem Submodule.finrank_mono Submodule.finrank_le_finrank_of_le
 DisabledTactic simp norm_num
 TheoremTab "Dimension"
-NewDefinition Module.finrank

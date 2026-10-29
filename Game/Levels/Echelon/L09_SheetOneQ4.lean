@@ -21,8 +21,8 @@ Introduction "
 `IsNonsingular A` (Hefferon One.I.2.13): $A$ is square and $A\\vec v = \\vec 0$ only for
 $\\vec v = \\vec 0$. Decide (a) and (b) with `left` (singular) or `right` (nonsingular).
 
-For (c): try writing `IsNonsingular !![1, 2, 1; 1, 3, 1]` — Lean refuses, because the
-definition only accepts square matrices. Write your answer to (c) in a comment `-- Explain:`.
+The Lean claim covers (a) and (b). For (c), read the definition (One.I.2.13) carefully and
+write your answer, with its reason, in a comment `-- Explain:` inside your proof.
 "
 
 namespace LinearAlgebraGame

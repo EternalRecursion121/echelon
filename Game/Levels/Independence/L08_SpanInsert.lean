@@ -12,7 +12,7 @@ In Lean, $S \\cup \\{\\vec v\\}$ is `insert v S`; a set written out as `{u, w}` 
 `insert u {w}`, so `x ∈ insert v S` means `x = v ∨ x ∈ S` (take it apart with `rcases`).
 
 From now on spans are mostly of written-out sets, `Submodule.span ℝ {u, w}`. This is the same
-subspace as Subspaces level 6's `Submodule.span ℝ (Set.range ![u, w])`: `Set.range v` is just
+subspace as Subspaces level 5's `Submodule.span ℝ (Set.range ![u, w])`: `Set.range v` is just
 the set of all the `v i`. Mathlib's `Submodule.span_le`
 (`span S ≤ W ↔ S ⊆ W`, which you proved as \"the span is the smallest subspace\") is now in
 your inventory, along with `Submodule.span_mono` (`S ⊆ T → span S ≤ span T`).

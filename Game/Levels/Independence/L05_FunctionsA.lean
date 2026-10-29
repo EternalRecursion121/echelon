@@ -22,7 +22,8 @@ so you may evaluate it: `congrFun h ⟨1, one_pos⟩`.
 
 Decide: `left` for dependent, `right` for independent.
 
-(For function questions the inventory now also holds the identity
+(For function questions the inventory now also holds the tactic `funext x`, which proves two
+functions equal by proving they agree at every point `x`, and the identity
 `Real.sin_sq_add_cos_sq x : sin x ^ 2 + cos x ^ 2 = 1`.)
 "
 
@@ -52,4 +53,5 @@ Conclusion "**Answer: independent.**"
 
 NewDefinition LinearAlgebraGame.PosReal
 NewTheorem one_pos two_pos Real.sin_sq_add_cos_sq
+NewTactic funext
 TheoremTab "Independence"

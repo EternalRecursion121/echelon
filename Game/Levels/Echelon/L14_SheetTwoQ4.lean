@@ -1,7 +1,7 @@
-import Game.Levels.Subspaces.L03_OddFunctions
+import Game.Levels.Echelon.L13_SheetTwoQ8c
 
-World "Subspaces"
-Level 4
+World "Echelon"
+Level 14
 Title "Homogeneous solutions"
 
 -- @sheet 2 Q4
@@ -29,6 +29,11 @@ one solution.\"*?
 The last part of the statement is the formal core of the answer: a homogeneous system whose
 **only** solution is $\\vec 0$. Also write your explanation of the flaw as a comment
 starting `-- Explain:` inside your proof.
+
+Multiplying by $A$ respects sums and scalar multiples: `mulVec_add` says
+$A(\\vec s + \\vec t) = A\\vec s + A\\vec t$, `mulVec_smul` says $A(k\\vec s) = k(A\\vec s)$.
+To tidy up, `add_zero` ($\\vec v + \\vec 0 = \\vec v$) and `smul_zero` ($k\\vec 0 = \\vec 0$);
+and `one_mulVec` says $I\\vec x = \\vec x$.
 "
 
 namespace LinearAlgebraGame
@@ -62,9 +67,9 @@ end LinearAlgebraGame
 
 Conclusion "
 The flaw: starting from the solution $\\vec 0$, sums and multiples give only $\\vec 0$.
-So: one solution, or infinitely many — exactly Sheet 3 Q3(d).
+So: one solution, or infinitely many — you will prove exactly this with vector spaces in Sheet 3 Q3(d).
 "
 
 DisabledTactic simp norm_num
-TheoremTab "Subspaces"
-NewTheorem Matrix.mulVec_add Matrix.one_mulVec
+TheoremTab "Matrices"
+NewTheorem Matrix.mulVec_add Matrix.one_mulVec add_zero smul_zero

@@ -2,7 +2,7 @@ import Game.Levels.Echelon.L06_SheetOneQ11
 
 World "Echelon"
 Level 7
-Title "An invariant of row equivalence"
+Title "Row equivalent?"
 
 -- @sheet 1 Q12
 /-! @answer
@@ -18,9 +18,9 @@ Introduction "
 $\\begin{pmatrix}1&1&1\\\\0&0&3\\end{pmatrix}$ and $\\begin{pmatrix}0&1&2\\\\1&-1&1\\end{pmatrix}$
 row equivalent?
 
-Decide with `left` (no) or `right` (yes). Row operations change a matrix, but some things
-survive them (the previous levels found one: the solutions of the homogeneous system). Do
-these two matrices agree on such things?
+Decide with `left` (no) or `right` (yes), then prove your choice: \"yes\" by exhibiting the
+row operations (an invertible $E$ with $EA = B$), \"no\" by finding something that row
+operations do not change on which the two matrices differ.
 "
 
 namespace LinearAlgebraGame
@@ -29,9 +29,11 @@ open Matrix in
 /-- Are these two matrices row equivalent? -/
 Statement : (¬ RowEquiv (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) !![0, 1, 2; 1, -1, 1]) ∨
     RowEquiv (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) !![0, 1, 2; 1, -1, 1] := by
-  Hint "Compare the solutions of the two homogeneous systems."
-  Hint (hidden := true) "Find a vector killed by the first matrix but not by the second."
+  Hint "Decide first: bring both matrices to reduced echelon form on paper."
   left
+  Hint "Row operations do not change the solutions of the homogeneous system (the previous
+  levels). Compare those solutions for the two matrices."
+  Hint (hidden := true) "Find a vector killed by the first matrix but not by the second."
   intro h
   obtain ⟨E, F, hFE, hE⟩ := h
   Hint (hidden := true) "$(1, -1, 0)$: `have h1 : (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) *ᵥ ![1, -1, 0] = 0`."
@@ -46,3 +48,5 @@ Statement : (¬ RowEquiv (!![1, 1, 1; 0, 0, 3] : Matrix (Fin 2) (Fin 3) ℝ) !![
 end LinearAlgebraGame
 
 Conclusion "**Answer: no.** $(1,-1,0)$ is in the null space of the first matrix but not the second."
+
+NewTheorem Submonoid.mul_mem Submonoid.subset_closure

@@ -1,7 +1,7 @@
-import Game.Levels.Subspaces.L08_Complement
+import Game.Levels.Subspaces.L07_Complement
 
 World "Subspaces"
-Level 9
+Level 8
 Title "Nested unions"
 
 Introduction "

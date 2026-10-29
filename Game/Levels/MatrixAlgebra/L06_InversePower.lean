@@ -10,6 +10,9 @@ Title "Inverse of a power"
 two-sided) inverse of $T^k$. By induction on $k$: for $k = 0$ both are $I$. For $k+1$,
 $(T^{-1})^{k+1}T^{k+1} = (T^{-1})^k(T^{-1}T)T^k = (T^{-1})^kT^k = I$ by the induction hypothesis.
 Hence $(T^k)^{-1} = (T^{-1})^k$.
+(Lean remark: the proof uses `hT`, but Mathlib defines $T^{-1} = 0$ for a singular $T$, so the
+Lean identity would hold even without it; the sheet's hypothesis is what makes $T^{-1}$ a
+genuine inverse.)
 -/
 Introduction "
 **Problem Sheet 7, Question 5.** Let $T$ be a nonsingular matrix. Is $(T^k)^{-1} = (T^{-1})^k$?
@@ -52,5 +55,4 @@ Conclusion "
 DisabledTheorem Matrix.inv_pow' inv_pow Matrix.inv_zpow
 DisabledTactic simp norm_num
 TheoremTab "Matrices"
-NewTheorem Matrix.inv_eq_left_inv pow_succ' pow_succ pow_zero Matrix.nonsing_inv_mul Matrix.mul_nonsing_inv
 NewDefinition IsUnit

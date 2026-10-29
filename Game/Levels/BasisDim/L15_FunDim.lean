@@ -1,4 +1,4 @@
-import Game.Levels.BasisDim.L14_Solvable
+import Game.Levels.BasisDim.L14_NestedEq
 
 World "BasisDim"
 Level 15
@@ -62,4 +62,4 @@ NewDefinition Pi.basisFun
 DisabledTheorem Module.finrank_fintype_fun_eq_card Module.finrank_pi Module.finrank_fin_fun
 DisabledTactic simp norm_num
 TheoremTab "Dimension"
-NewTheorem Fintype.card_coe Finset.card_singleton Finset.card_pair Nat.card_Icc Finset.card_empty Module.finrank_eq_card_basis
+NewTheorem LinearAlgebraGame.eq_iff_finrank_eq_of_le Fintype.card_coe Finset.card_singleton Finset.card_pair Nat.card_Icc Finset.card_empty Module.finrank_eq_card_basis

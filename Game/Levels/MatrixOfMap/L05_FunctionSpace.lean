@@ -30,8 +30,7 @@ Your answer is a matrix $C$ describing $h$ in the coordinates $(a, b)$: show tha
 linear $h$ represented by the given matrix is $v \\mapsto C v$.
 
 Lean note: once you `intro h hh`, the hypothesis `hh : IsRep B D h …` is *folded* — `rw [hh]`
-and `simp only [hh]` cannot see inside it. Use it at a column, `hh 0 : h (B 0) = …`, or
-`unfold IsRep at hh` first.
+and `simp only [hh]` cannot see inside it. Use it at a column: `hh 0 : h (B 0) = …`.
 "
 
 namespace LinearAlgebraGame

@@ -1,7 +1,7 @@
-import Game.Levels.Subspaces.L06_Span
+import Game.Levels.Subspaces.L05_Span
 
 World "Subspaces"
-Level 7
+Level 6
 Title "Intersections"
 
 -- @sheet 4 Q5a
