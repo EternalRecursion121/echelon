@@ -36,7 +36,9 @@ Statement not_diagonalizable_of_sq_eq_zero {n : ℕ} (N : Matrix (Fin n) (Fin n)
           rw [inv_mul_of_isUnit hP, Matrix.mul_one, Matrix.mul_assoc P, h2, Matrix.mul_zero,
             Matrix.zero_mul]
   Hint (hidden := true) "`have hd : diagonal d = 0`. Use `diagonal_mul_diagonal`,
-  `← diagonal_zero` and `diagonal_eq_diagonal_iff` to reduce to `d i * d i = 0`, then `mul_self_eq_zero`."
+  `← diagonal_zero` and `diagonal_eq_diagonal_iff` to reduce to `d i * d i = 0`, then `mul_self_eq_zero`.
+  (Careful: `diagonal_zero` is stated for `diagonal (fun _ => 0)`, so use it right-to-left,
+  `← diagonal_zero`, to turn the zero matrix into a diagonal one.)"
   have hd : diagonal d = 0 := by
     rw [diagonal_mul_diagonal, ← diagonal_zero, diagonal_eq_diagonal_iff] at hDD
     rw [← diagonal_zero, diagonal_eq_diagonal_iff]
@@ -57,5 +59,5 @@ $N$ has no basis of eigenvectors: its only eigenvalue is $0$ and its eigenspace 
 "
 
 NewDefinition LinearAlgebraGame.Diagonalizable
-NewTheorem Matrix.diagonal_zero Matrix.diagonal_eq_diagonal_iff mul_self_eq_zero Polynomial.coeff_natDegree
+NewTheorem Matrix.diagonal_zero Matrix.diagonal_eq_diagonal_iff mul_self_eq_zero
 TheoremTab "Eigen"

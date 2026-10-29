@@ -21,6 +21,9 @@ In Lean $\\mathbb{R}^+$ is `PosReal`; a point is `⟨x, hx⟩` with `hx : 0 < x`
 so you may evaluate it: `congrFun h ⟨1, one_pos⟩`.
 
 Decide: `left` for dependent, `right` for independent.
+
+(For function questions the inventory now also holds the identity
+`Real.sin_sq_add_cos_sq x : sin x ^ 2 + cos x ^ 2 = 1`.)
 "
 
 namespace LinearAlgebraGame
@@ -48,5 +51,5 @@ end LinearAlgebraGame
 Conclusion "**Answer: independent.**"
 
 NewDefinition LinearAlgebraGame.PosReal
-NewTheorem one_pos two_pos
+NewTheorem one_pos two_pos Real.sin_sq_add_cos_sq
 TheoremTab "Independence"

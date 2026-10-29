@@ -16,9 +16,10 @@ Introduction "
 **Problem Sheet 10, Question 1(d).** Use this to write the equation for a line through $B$
 and $C$ in terms of a determinant.
 
-**Answer to prove:** if $B \\ne C$, a point $(x, y)$ is on the line through $B$ and $C$
-(that is, $(x,y) = B + t(C - B)$ for some $t$) if and only if
-$\\begin{vmatrix} 1&1&1\\\\ x&x_2&x_3\\\\ y&y_2&y_3\\end{vmatrix} = 0$.
+Part (c) suggests the answer: $P = (x, y)$ is on the line $BC$ exactly when the triangle
+$PBC$ is flat, i.e. has area $0$. Lean checks this: if $B \\ne C$, then $(x, y)$ is on the
+line through $B$ and $C$ (that is, $(x,y) = B + t(C - B)$ for some $t$) if and only if the
+determinant from (c) with $A = P$ vanishes.
 "
 
 namespace LinearAlgebraGame

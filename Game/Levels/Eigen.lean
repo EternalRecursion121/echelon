@@ -3,16 +3,17 @@ import Game.Levels.Eigen.L02_Equivalence
 import Game.Levels.Eigen.L03_ConjPow
 import Game.Levels.Eigen.L04_Polynomial
 import Game.Levels.Eigen.L05_EigenDet
-import Game.Levels.Eigen.L06_CharEq
-import Game.Levels.Eigen.L07_Eigenspaces
-import Game.Levels.Eigen.L08_Multiplicities
-import Game.Levels.Eigen.L09_DerivMatrix
-import Game.Levels.Eigen.L10_DerivEigen
-import Game.Levels.Eigen.L11_DerivMult
-import Game.Levels.Eigen.L12_RowSums
-import Game.Levels.Eigen.L13_ColumnSums
-import Game.Levels.Eigen.L14_Inverse
-import Game.Levels.Eigen.L15_Independent
+import Game.Levels.Eigen.L06_TwoByTwoCharpoly
+import Game.Levels.Eigen.L07_CharEq
+import Game.Levels.Eigen.L08_Eigenspaces
+import Game.Levels.Eigen.L09_Multiplicities
+import Game.Levels.Eigen.L10_DerivMatrix
+import Game.Levels.Eigen.L11_DerivCharpoly
+import Game.Levels.Eigen.L12_DerivEigen
+import Game.Levels.Eigen.L13_RowSums
+import Game.Levels.Eigen.L14_ColumnSums
+import Game.Levels.Eigen.L15_Inverse
+import Game.Levels.Eigen.L16_Independent
 
 World "Eigen"
 Title "Eigen"

@@ -16,17 +16,22 @@ Introduction "
 **Problem Sheet 10, Question 1(c).** Express $\\triangle ABC$ in terms of a $3\\times3$
 determinant.
 
-**Answer to prove:** $\\triangle ABC = \\tfrac12\\begin{vmatrix} 1&1&1\\\\ x_1&x_2&x_3\\\\ y_1&y_2&y_3\\end{vmatrix}$ (signed area).
+The natural candidate is the determinant with a row of ones on top of the coordinates,
+$\\begin{vmatrix} 1&1&1\\\\ x_1&x_2&x_3\\\\ y_1&y_2&y_3\\end{vmatrix}$. **Find the constant** $c$ with
+$\\triangle ABC = c\\cdot$ (that determinant) for all triangles (signed area).
 "
 
 namespace LinearAlgebraGame
 
-/-- $\triangle ABC = \frac12 \begin{vmatrix} 1&1&1\\ x_1&x_2&x_3\\ y_1&y_2&y_3\end{vmatrix}$. -/
-Statement triArea_eq_det (x₁ y₁ x₂ y₂ x₃ y₃ : ℝ) :
+/-- There is a constant $c$ with $\triangle ABC = c \begin{vmatrix} 1&1&1\\ x_1&x_2&x_3\\ y_1&y_2&y_3\end{vmatrix}$ for all $A, B, C$. -/
+Statement : ∃ c : ℝ, ∀ x₁ y₁ x₂ y₂ x₃ y₃ : ℝ,
     triArea ![x₁, y₁] ![x₂, y₂] ![x₃, y₃]
-      = (1 / 2) * (!![1, 1, 1; x₁, x₂, x₃; y₁, y₂, y₃] : Matrix (Fin 3) (Fin 3) ℝ).det := by
-  Hint "Expand both determinants and compare."
-  Hint (hidden := true) "`unfold triArea`, `rw [Matrix.det_fin_two_of, Matrix.det_fin_three]`, `simp`, `ring`."
+      = c * (!![1, 1, 1; x₁, x₂, x₃; y₁, y₂, y₃] : Matrix (Fin 3) (Fin 3) ℝ).det := by
+  Hint "Expand both determinants and compare: which constant makes them agree?"
+  Hint (hidden := true) "`use 1 / 2`, `intro x₁ y₁ x₂ y₂ x₃ y₃`, then `unfold triArea`,
+  `rw [Matrix.det_fin_two_of, Matrix.det_fin_three]`, `simp`, `ring`."
+  use 1 / 2
+  intro x₁ y₁ x₂ y₂ x₃ y₃
   unfold triArea
   rw [Matrix.det_fin_two_of, Matrix.det_fin_three]
   simp
@@ -34,6 +39,6 @@ Statement triArea_eq_det (x₁ y₁ x₂ y₂ x₃ y₃ : ℝ) :
 
 end LinearAlgebraGame
 
-Conclusion "Expanding along the first row of the $3\\times3$ determinant gives back the three $2\\times2$ determinants of part (b)."
+Conclusion "$c = \\tfrac12$. Expanding along the first row of the $3\\times3$ determinant gives back the three $2\\times2$ determinants of part (b)."
 
 TheoremTab "Det"

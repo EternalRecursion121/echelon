@@ -26,6 +26,18 @@ the state $(0, 0, 45)$. Use linear algebra: find a quantity that no meeting chan
 `x % 3` is the remainder of the integer `x` on division by 3. New:
 `Int.add_mul_emod_self_left a b c : (a + b * c) % b = a % b` — adding a multiple of 3 does not
 change the remainder.
+
+**Induction along a sequence of meetings.** To prove that every reachable state `s` has some
+property, use `induction hs with` on `hs : Reachable (13, 15, 17) s`; there are two cases,
+written like this:
+```
+induction hs with
+| refl => …              -- s is the starting state itself
+| tail _ hstep ih => …   -- s is reached by one more meeting `hstep`; `ih` holds before it
+```
+In the second case, `rcases hstep with … | … | …` splits the meeting into its three kinds.
+States are triples, so the goal contains projections like `(r - 1, g - 1, b + 2).2.1`;
+`simp only at ih ⊢` evaluates them to `g - 1` before you compute.
 "
 
 namespace LinearAlgebraGame

@@ -43,6 +43,30 @@ theorem det_swapRows {n : ℕ} (M : Matrix (Fin n) (Fin n) ℝ) {i j : Fin n} (h
   rw [swapRows, det_permute, Equiv.Perm.sign_swap h]
   simp
 
+/-- Condition (3) aimed at a target matrix: if scaling row `i` of `M` by `k` gives `N`,
+then `d N = k * d M`. -/
+theorem DetAxioms.scale_eq {n : ℕ} {d : Matrix (Fin n) (Fin n) ℝ → ℝ} (hd : DetAxioms d)
+    (M N : Matrix (Fin n) (Fin n) ℝ) (i : Fin n) (k : ℝ) (h : M.updateRow i (k • M i) = N) :
+    d N = k * d M := by
+  rw [← h]
+  exact hd.scale M i k
+
+/-- Condition (2) aimed at a target matrix: if adding `k` times row `i` to row `j ≠ i` of `M`
+gives `N`, then `d N = d M`. -/
+theorem DetAxioms.combo_eq {n : ℕ} {d : Matrix (Fin n) (Fin n) ℝ → ℝ} (hd : DetAxioms d)
+    (M N : Matrix (Fin n) (Fin n) ℝ) (i j : Fin n) (k : ℝ) (hij : i ≠ j)
+    (h : M.updateRow j (M j + k • M i) = N) : d N = d M := by
+  rw [← h]
+  exact hd.combo M i j k hij
+
+/-- Condition (1) aimed at a target matrix: if swapping rows `i ≠ j` of `M` gives `N`, then
+`d N = - d M`. -/
+theorem DetAxioms.swap_eq {n : ℕ} {d : Matrix (Fin n) (Fin n) ℝ → ℝ} (hd : DetAxioms d)
+    (M N : Matrix (Fin n) (Fin n) ℝ) (i j : Fin n) (hij : i ≠ j) (h : swapRows M i j = N) :
+    d N = - d M := by
+  rw [← h]
+  exact hd.swap M i j hij
+
 /-- The number of inversions of a permutation: pairs `i < j` with `σ j < σ i`. -/
 def inversions {n : ℕ} (σ : Equiv.Perm (Fin n)) : ℕ :=
   (Finset.univ.filter fun p : Fin n × Fin n => p.1 < p.2 ∧ σ p.2 < σ p.1).card
@@ -92,8 +116,8 @@ theorem inv_inv_of_isUnit {n : ℕ} {P : Matrix (Fin n) (Fin n) ℝ} (hP : IsUni
   Matrix.nonsing_inv_nonsing_inv P ((Matrix.isUnit_iff_isUnit_det P).1 hP)
 
 /-- To show similarity it is enough to exhibit `P` together with a left inverse `Q`. -/
-theorem matSimilar_of_mul_eq_one {n : ℕ} {T S P Q : Matrix (Fin n) (Fin n) ℝ}
-    (hQP : Q * P = 1) (h : S = P * T * Q) : MatSimilar T S := by
+theorem matSimilar_of_mul_eq_one {n : ℕ} {T S : Matrix (Fin n) (Fin n) ℝ}
+    (P Q : Matrix (Fin n) (Fin n) ℝ) (hQP : Q * P = 1) (h : S = P * T * Q) : MatSimilar T S := by
   refine ⟨P, ?_, ?_⟩
   · exact (Matrix.isUnit_iff_isUnit_det P).2 (Matrix.isUnit_det_of_left_inverse hQP)
   · rw [Matrix.inv_eq_left_inv hQP, h]
@@ -105,6 +129,17 @@ theorem charpolyH_eval {n : ℕ} (T : Matrix (Fin n) (Fin n) ℝ) (μ : ℝ) :
   congr 1
   ext i j
   by_cases h : i = j <;> simp [h]
+
+/-- Multiplying out two linear factors (Vieta): $(x-a)(x-b) = x^2 - (a+b)x + ab$. -/
+theorem X_sub_C_mul_X_sub_C (a b : ℝ) :
+    (X - C a) * (X - C b) = X ^ 2 - C (a + b) * X + C (a * b) := by
+  rw [C_add, C_mul]
+  ring
+
+/-- Membership in the eigenspace of a matrix: $\vec v \in V_\mu \iff T\vec v = \mu\vec v$. -/
+theorem mem_eigenspace_toLin' {n : ℕ} (T : Matrix (Fin n) (Fin n) ℝ) (μ : ℝ) (v : Fin n → ℝ) :
+    v ∈ Module.End.eigenspace (Matrix.toLin' T) μ ↔ T *ᵥ v = μ • v := by
+  rw [Module.End.mem_eigenspace_iff, Matrix.toLin'_apply]
 
 theorem charpolyH_natDegree {n : ℕ} (T : Matrix (Fin n) (Fin n) ℝ) :
     (charpolyH T).natDegree = n := by
@@ -215,7 +250,7 @@ DefinitionDoc LinearAlgebraGame.inversions as "inversions"
 /-- If $P$ is nonsingular, so is $P^{-1}$. -/
 TheoremDoc LinearAlgebraGame.isUnit_inv_of_isUnit as "isUnit_inv_of_isUnit" in "Eigen"
 
-/-- If $QP = I$ and $S = PTQ$ then `MatSimilar T S` (so $Q = P^{-1}$ need not be computed). -/
+/-- `matSimilar_of_mul_eq_one P Q hQP h`: if $QP = I$ and $S = PTQ$ then `MatSimilar T S` (so $Q = P^{-1}$ need not be computed). $P$ and $Q$ are given explicitly. -/
 TheoremDoc LinearAlgebraGame.matSimilar_of_mul_eq_one as "matSimilar_of_mul_eq_one" in "Eigen"
 
 /-- For nonsingular $P$: $PP^{-1} = I$. -/
@@ -332,7 +367,9 @@ TheoremDoc Matrix.diagonal_smul as "diagonal_smul" in "Eigen"
 /-- Replacing row $i$ of `diagonal d` by $c\,\vec e_i$ gives `diagonal (Function.update d i c)`. -/
 TheoremDoc Matrix.diagonal_updateRow_single as "diagonal_updateRow_single" in "Det"
 
-/-- `diagonal (fun _ => 0) = 0`. -/
+/-- `diagonal (fun _ => 0) = 0`. Note the left side is written `diagonal (fun _ => 0)`, so
+`rw [diagonal_zero]` does not fire on `diagonal 0`; use `exact diagonal_zero` to close
+`diagonal 0 = 0`, or `rw [← diagonal_zero]` to turn a `0` matrix into a diagonal one. -/
 TheoremDoc Matrix.diagonal_zero as "diagonal_zero" in "Eigen"
 
 /-- $M\vec v = \vec 0$ has a nonzero solution iff $\det M = 0$ (Chapter Three / Lemma Four.I.2.4). -/
@@ -515,9 +552,6 @@ TheoremDoc eq_div_iff as "eq_div_iff" in "Det"
 /-- The span of one nonzero vector has dimension $1$. -/
 TheoremDoc finrank_span_singleton as "finrank_span_singleton" in "Eigen"
 
-/-- If $c$ is false, `if c then a else b = b`. -/
-TheoremDoc if_neg as "if_neg" in "Eigen"
-
 /-- For $a \ne 0$: $a^{-1}a = 1$. -/
 TheoremDoc inv_mul_cancel₀ as "inv_mul_cancel₀" in "Eigen"
 
@@ -613,6 +647,44 @@ TheoremDoc Submodule.finrank_le as "finrank_le" in "Eigen"
 /-- $\dim \mathbb R^n = n$: `finrank ℝ (Fin n → ℝ) = n`. -/
 TheoremDoc Module.finrank_fin_fun as "finrank_fin_fun" in "Eigen"
 /-- `Ne.symm h : b ≠ a` from `h : a ≠ b`. -/
-TheoremDoc Ne.symm as "Ne.symm" in "Determinants"
+TheoremDoc Ne.symm as "Ne.symm" in "Det"
 /-- `Polynomial.coeff_natDegree : p.coeff p.natDegree = p.leadingCoeff` — the top coefficient is the leading coefficient. -/
 TheoremDoc Polynomial.coeff_natDegree as "coeff_natDegree" in "Eigen"
+
+/-- `hd.scale_eq M N i k h`: if `h : M.updateRow i (k • M i) = N` (scale row `i` of `M` by `k`
+to get `N`), then `d N = k * d M`. Prove `h` with `entrywise <;> simp`. -/
+TheoremDoc LinearAlgebraGame.DetAxioms.scale_eq as "DetAxioms.scale_eq" in "Det"
+
+/-- `hd.combo_eq M N i j k hij h`: if `h : M.updateRow j (M j + k • M i) = N` (add `k` times row
+`i` to row `j`), then `d N = d M`. Prove `h` with `entrywise <;> simp`. -/
+TheoremDoc LinearAlgebraGame.DetAxioms.combo_eq as "DetAxioms.combo_eq" in "Det"
+
+/-- `hd.swap_eq M N i j hij h`: if `h : swapRows M i j = N`, then `d N = - d M`. Prove `h`
+with `entrywise <;> simp [swapRows]`. -/
+TheoremDoc LinearAlgebraGame.DetAxioms.swap_eq as "DetAxioms.swap_eq" in "Det"
+
+/-- $(x - a)(x - b) = x^2 - (a+b)x + ab$, with constants written `C a`. -/
+TheoremDoc LinearAlgebraGame.X_sub_C_mul_X_sub_C as "X_sub_C_mul_X_sub_C" in "Eigen"
+
+/-- `v ∈ eigenspace (toLin' T) μ ↔ T *ᵥ v = μ • v`. -/
+TheoremDoc LinearAlgebraGame.mem_eigenspace_toLin' as "mem_eigenspace_toLin'" in "Eigen"
+
+/-- `Pi.single_eq_of_ne' (h : i ≠ j) x : Pi.single i x j = 0` — the vector $x\vec e_i$ is zero
+away from position $i$. (Compare `Pi.single_apply`, which gives the general `if … then … else …`.) -/
+TheoremDoc Pi.single_eq_of_ne' as "single_eq_of_ne'" in "Det"
+
+/-- $p(x)q(x)$ evaluated at $a$ is $p(a)q(a)$. -/
+TheoremDoc Polynomial.eval_mul as "eval_mul" in "Eigen"
+
+/-- $p(x)^n$ evaluated at $a$ is $p(a)^n$. -/
+TheoremDoc Polynomial.eval_pow as "eval_pow" in "Eigen"
+
+/-- The columns of a square matrix $Q$ are linearly independent iff $Q$ is nonsingular:
+`LinearIndependent K (fun i => Qᵀ i) ↔ IsUnit Q`. -/
+TheoremDoc Matrix.linearIndependent_col_iff_isUnit as "linearIndependent_col_iff_isUnit" in "Eigen"
+
+/-- `C (a - b) = C a - C b`. -/
+TheoremDoc Polynomial.C_sub as "C_sub" in "Eigen"
+
+/-- `C (a * b) = C a * C b`. -/
+TheoremDoc Polynomial.C_mul as "C_mul" in "Eigen"

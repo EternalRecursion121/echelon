@@ -21,6 +21,9 @@ r\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} rx \\\\ ry \\end{pm
 
 Vectors of $\\mathbb{R}^2$ are pairs `(x, y) : ℝ × ℝ`; `v.1` and `v.2` are the components.
 Decide: `left` for \"not a vector space\", `right` for \"vector space\".
+
+(The inventory also gains two facts about irrational numbers for later: `irrational_sqrt_two`
+and `Irrational.ne_rat`.)
 "
 
 namespace LinearAlgebraGame
@@ -48,4 +51,5 @@ Conclusion "
 **Answer: not a vector space** — no additive identity, since every sum is $(0,0)$.
 "
 
+NewTheorem irrational_sqrt_two Irrational.ne_rat
 TheoremTab "Vector spaces"

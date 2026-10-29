@@ -14,9 +14,7 @@ Hence $(T^k)^{-1} = (T^{-1})^k$.
 Introduction "
 **Problem Sheet 7, Question 5.** Let $T$ be a nonsingular matrix. Is $(T^k)^{-1} = (T^{-1})^k$?
 
-Decide (`left`: no, `right`: yes), then prove. `Matrix.inv_eq_left_inv : B * A = 1 → A⁻¹ = B`
-turns the question into a product equal to $I$, and `Matrix.nonsing_inv_mul T hT : T⁻¹ * T = 1`
-cancels.
+Decide (`left`: no, `right`: yes), then prove.
 
 \"$T$ nonsingular\" is `hT : IsUnit T.det` here (see the world introduction):
 it is what Mathlib needs before `T⁻¹` really is an inverse.
@@ -31,6 +29,8 @@ Statement {n : ℕ} (T : Matrix (Fin n) (Fin n) ℝ) (hT : IsUnit T.det) :
   what you get."
   Hint (hidden := true) "$(T^\{-1})^2 T^2 = T^\{-1}(T^\{-1}T)T$. The middle cancels."
   right
+  Hint "Tools: `Matrix.inv_eq_left_inv : B * A = 1 → A⁻¹ = B` turns the claim into a product
+  equal to $I$, and `Matrix.nonsing_inv_mul T hT : T⁻¹ * T = 1` cancels."
   intro k
   Hint (hidden := true) "`apply Matrix.inv_eq_left_inv`, then `induction k with` …"
   apply Matrix.inv_eq_left_inv

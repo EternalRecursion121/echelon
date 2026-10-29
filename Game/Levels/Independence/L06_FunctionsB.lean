@@ -56,5 +56,5 @@ end LinearAlgebraGame
 Conclusion "**Answer: dependent**: $-2h + i + 4j = 0$."
 
 TheoremTab "Independence"
-NewTheorem Real.sin_sq_add_cos_sq LinearAlgebraGame.linIndep_three_iff
+NewTheorem LinearAlgebraGame.linIndep_three_iff
 NewTactic funext

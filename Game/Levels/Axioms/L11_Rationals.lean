@@ -51,5 +51,5 @@ Conclusion "
 multiplication fails.
 "
 
-NewTheorem Rat.cast_one irrational_sqrt_two Irrational.ne_rat
+NewTheorem Rat.cast_one
 TheoremTab "Vector spaces"

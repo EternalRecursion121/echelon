@@ -2,6 +2,7 @@ import Game.Levels.LeanBasics
 import Game.Levels.RowOps
 import Game.Levels.DotProduct
 import Game.Levels.Echelon
+import Game.Levels.Puzzles
 import Game.Levels.Axioms
 import Game.Levels.Subspaces
 import Game.Levels.Independence
@@ -17,7 +18,6 @@ import Game.Levels.Determinant
 import Game.Levels.Volume
 import Game.Levels.Eigen
 import Game.Levels.Diagonalisation
-import Game.Levels.Puzzles
 import Game.Levels.FromScratch
 
 -- Here's what we'll put on the title screen
