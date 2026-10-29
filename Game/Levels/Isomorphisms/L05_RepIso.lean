@@ -5,9 +5,9 @@ Level 5
 Title "Every n-dimensional space is ℝⁿ"
 
 Introduction "
-Apply the previous level with $W = \\mathbb R^n$ and $D$ the standard basis: $\\hat f$ sends
-$\\vec v$ to its coordinate vector. That map is $\\mathrm{Rep}_B$, and Lean has it as
-`B.equivFun : V ≃ₗ[ℝ] (Fin n → ℝ)`.
+Take the previous level's construction with $W = \\mathbb R^n$ and $D$ the standard basis:
+$\\hat f$ sends $\\vec v$ to its coordinate vector. That map is $\\mathrm{Rep}_B$, and Lean
+packages it, already proved to be an isomorphism, as `B.equivFun : V ≃ₗ[ℝ] (Fin n → ℝ)`.
 
 Prove Hefferon Theorem Three.I.2.3 in the form: a finite-dimensional $V$ has dimension $n$
 if and only if $V \\cong \\mathbb R^n$.

@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L03_Meet
+import Game.Levels.Dimension.L04_InfiniteDim
 
 World "Dimension"
-Level 4
+Level 5
 Title "Row rank equals column rank"
 
 Introduction "
@@ -9,8 +9,9 @@ Introduction "
 by row reduction; here it is granted as `Matrix.rank_transpose`: $\\operatorname{rank} A^T =
 \\operatorname{rank} A$ (the rows of $A$ are the columns of $A^T$).
 
-Use it: an $m\\times n$ matrix has rank at most $m$. You already know rank $\\le n$
-(`Matrix.rank_le_width`: at most $n$ columns). Apply that to $A^T$.
+Use it: an $m\\times n$ matrix has rank at most $m$. The column count gives the other bound
+for free: `Matrix.rank_le_width` (new in your inventory) says rank $\\le n$, because there are
+only $n$ columns.
 "
 
 namespace LinearAlgebraGame

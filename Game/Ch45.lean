@@ -563,8 +563,6 @@ TheoremDoc mul_one as "mul_one" in "Eigen"
 /-- $a \cdot a = 0 \iff a = 0$. -/
 TheoremDoc mul_self_eq_zero as "mul_self_eq_zero" in "Eigen"
 
-/-- $-(-a) = a$. -/
-TheoremDoc neg_neg as "neg_neg" in "Eigen"
 
 /-- $(-r)\cdot v = -(r \cdot v)$. -/
 TheoremDoc neg_smul as "neg_smul" in "Eigen"

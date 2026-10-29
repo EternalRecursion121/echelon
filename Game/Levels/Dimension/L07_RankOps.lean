@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L04_RowCol
+import Game.Levels.Dimension.L06_RankLe
 
 World "Dimension"
-Level 5
+Level 7
 Title "Rank of −A, kA, A + B"
 
 -- @sheet 4 Q11
@@ -24,9 +24,10 @@ $\\operatorname{rank}(-A)$? Between $\\operatorname{rank}(A)$ and $\\operatornam
 if any, is the relationship between $\\operatorname{rank}(A)$, $\\operatorname{rank}(B)$, and
 $\\operatorname{rank}(A + B)$? *Hint: Use Question 10.*
 
-The statement records the answers. A good first step is a general lemma as a `have`: if every
-column of $D$ is in the column space of $C$, then $\\operatorname{rank} D \\le \\operatorname{rank} C$
-(Question 10(a) for column spaces).
+Work out the relationships on paper first; the claim below is what you should find. Your tool
+is `rank_le_of_cols_mem` from the last level, together with the column rules `col_neg`,
+`col_smul`, `col_add` (e.g. `(k • A).col j = k • A.col j`). A column of $C$ is in its own column
+space: `Submodule.subset_span ⟨j, rfl⟩`.
 "
 
 namespace LinearAlgebraGame
@@ -39,47 +40,39 @@ $\operatorname{rank}A$ otherwise; $\operatorname{rank}(A+B) \le \operatorname{ra
 Statement {m n : ℕ} (A B : Matrix (Fin m) (Fin n) ℝ) (k : ℝ) :
     (-A).rank = A.rank ∧ (k = 0 → (k • A).rank = 0) ∧ (k ≠ 0 → (k • A).rank = A.rank) ∧
     (A + B).rank ≤ A.rank + B.rank := by
-  Hint "First the general lemma: columns of $D$ inside the column space of $C$ ⇒
-  $rank D \\le rank C$."
-  have key : ∀ C D : Matrix (Fin m) (Fin n) ℝ,
-      (∀ j, D.col j ∈ Submodule.span ℝ (Set.range C.col)) → D.rank ≤ C.rank := by
-    intro C D hD
-    rw [rank_eq_finrank_span_cols, rank_eq_finrank_span_cols]
-    apply Submodule.finrank_mono
-    rw [Submodule.span_le]
-    rintro _ ⟨j, rfl⟩
-    exact hD j
-  have mem : ∀ (C : Matrix (Fin m) (Fin n) ℝ) j, C.col j ∈ Submodule.span ℝ (Set.range C.col) :=
-    fun C j => Submodule.subset_span ⟨j, rfl⟩
+  Hint "Four claims: `refine ⟨?_, ?_, ?_, ?_⟩`."
   refine ⟨?_, ?_, ?_, ?_⟩
   · Hint "Two inequalities: each column of one is minus a column of the other."
     apply le_antisymm
-    · apply key
+    · apply rank_le_of_cols_mem
       intro j
-      have : (-A).col j = -(A.col j) := rfl
-      rw [this]
-      exact Submodule.neg_mem _ (mem A j)
-    · apply key
+      Hint (hidden := true) "`rw [col_neg]`, then `exact Submodule.neg_mem _ (Submodule.subset_span ⟨j, rfl⟩)`."
+      rw [col_neg]
+      exact Submodule.neg_mem _ (Submodule.subset_span ⟨j, rfl⟩)
+    · apply rank_le_of_cols_mem
       intro j
-      have : A.col j = -((-A).col j) := by ext i; simp
-      rw [this]
-      exact Submodule.neg_mem _ (mem _ j)
+      Hint (hidden := true) "Column $j$ of $A$ is $-(-A).col\\ j$: `rw [← neg_neg (A.col j), ← col_neg]`."
+      rw [← neg_neg (A.col j), ← col_neg]
+      exact Submodule.neg_mem _ (Submodule.subset_span ⟨j, rfl⟩)
   · intro hk
+    Hint (hidden := true) "`rw [{hk}, zero_smul]`, then `exact rank_zero`."
     rw [hk, zero_smul]
     exact rank_zero
   · Hint "For $k \\ne 0$: columns of $kA$ are $k$ times columns of $A$, and back by dividing by $k$."
     intro hk
     apply le_antisymm
-    · apply key
+    · apply rank_le_of_cols_mem
       intro j
-      have : (k • A).col j = k • A.col j := rfl
-      rw [this]
-      exact Submodule.smul_mem _ _ (mem A j)
-    · apply key
+      rw [col_smul]
+      exact Submodule.smul_mem _ _ (Submodule.subset_span ⟨j, rfl⟩)
+    · apply rank_le_of_cols_mem
       intro j
-      have : A.col j = k⁻¹ • (k • A).col j := by ext i; simp [hk]
-      rw [this]
-      exact Submodule.smul_mem _ _ (mem _ j)
+      Hint (hidden := true) "`have h : A.col j = k⁻¹ • (k • A).col j := by
+      rw [col_smul, smul_smul, inv_mul_cancel₀ {hk}, one_smul]`"
+      have h : A.col j = k⁻¹ • (k • A).col j := by
+        rw [col_smul, smul_smul, inv_mul_cancel₀ hk, one_smul]
+      rw [h]
+      exact Submodule.smul_mem _ _ (Submodule.subset_span ⟨j, rfl⟩)
   · Hint "colspace$(A+B) \\subseteq$ colspace$A$ + colspace$B$, then Question 10(a) and
     $\\dim(U + W) \\le \\dim U + \\dim W$."
     Hint (hidden := true) "`Submodule.finrank_add_le_finrank_add_finrank` is the last inequality."
@@ -88,15 +81,20 @@ Statement {m n : ℕ} (A B : Matrix (Fin m) (Fin n) ℝ) (k : ℝ) :
         Submodule.span ℝ (Set.range A.col) ⊔ Submodule.span ℝ (Set.range B.col) := by
       rw [Submodule.span_le]
       rintro _ ⟨j, rfl⟩
-      exact Submodule.add_mem_sup (mem A j) (mem B j)
-    exact (Submodule.finrank_mono hle).trans (Submodule.finrank_add_le_finrank_add_finrank _ _)
+      rw [col_add]
+      exact Submodule.add_mem_sup (Submodule.subset_span ⟨j, rfl⟩) (Submodule.subset_span ⟨j, rfl⟩)
+    have h1 := finrank_le_of_le _ _ hle
+    have h2 := Submodule.finrank_add_le_finrank_add_finrank
+      (Submodule.span ℝ (Set.range A.col)) (Submodule.span ℝ (Set.range B.col))
+    omega
 
 end LinearAlgebraGame
 
 Conclusion "
 $\\operatorname{rank}(-A) = \\operatorname{rank}A$; $\\operatorname{rank}(kA) = \\operatorname{rank}A$
-for $k\\neq0$ (and $0$ for $k=0$); $\\operatorname{rank}(A+B)\\le\\operatorname{rank}A+\\operatorname{rank}B$.
+for $k\\neq0$ (and $0$ for $k=0$); $\\operatorname{rank}(A+B)\\le\\operatorname{rank}A+\\operatorname{rank}B$
+(equality can fail: take $B = -A$).
 "
 
 TheoremTab "Rank"
-NewTheorem Submodule.add_mem_sup Submodule.finrank_add_le_finrank_add_finrank Submodule.neg_mem
+NewTheorem LinearAlgebraGame.rank_le_of_cols_mem LinearAlgebraGame.col_neg LinearAlgebraGame.col_smul LinearAlgebraGame.col_add Submodule.add_mem_sup Submodule.finrank_add_le_finrank_add_finrank Submodule.neg_mem neg_neg

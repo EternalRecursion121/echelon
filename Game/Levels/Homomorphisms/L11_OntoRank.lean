@@ -1,4 +1,5 @@
 import Game.Levels.Homomorphisms.L10_InjRank
+import Game.Levels.BasisDim
 
 World "Homomorphisms"
 Level 11
@@ -17,8 +18,10 @@ Introduction "
 Section Three.II to prove that $h$ is onto if and only if its rank equals the dimension of $W$.
 
 Lemma 2.1 gives that the range is a subspace `LinearMap.range h` of $W$;
-`LinearMap.range_eq_top` says onto ⇔ range $= W$ (written `⊤`). Sheet 4 Q10(b) is in your
-inventory as `Submodule.eq_top_of_finrank_eq`. ($W$ is assumed finite-dimensional, as the sheet's
+`LinearMap.range_eq_top` says onto ⇔ range $= W$ (written `⊤`). Sheet 4 Q10(b) is your
+`eq_iff_finrank_eq_of_le` (Basis & Dimension world): for `h : U ≤ W`,
+`finrank U = finrank W ↔ U = W`. Apply it with $W = $ `⊤`; `le_top : U ≤ ⊤` holds for every
+subspace. ($W$ is assumed finite-dimensional, as the sheet's
 use of $\\dim W$ requires.)
 "
 
@@ -37,8 +40,10 @@ Statement onto_iff_rank {V W : Type*} [AddCommGroup V] [Module ℝ V] [AddCommGr
     rw [h1, finrank_top]
   · intro h2
     Hint "A subspace of full dimension is the whole space."
-    Hint (hidden := true) "`exact Submodule.eq_top_of_finrank_eq {h2}`"
-    exact Submodule.eq_top_of_finrank_eq h2
+    Hint (hidden := true) "`rw [← eq_iff_finrank_eq_of_le (LinearMap.range h) ⊤ le_top,
+    finrank_top]`, then `exact {h2}`."
+    rw [← eq_iff_finrank_eq_of_le (LinearMap.range h) ⊤ le_top, finrank_top]
+    exact h2
 
 end LinearAlgebraGame
 
@@ -47,6 +52,7 @@ Conclusion "
 step because $\\mathscr R(h)$ is a subspace of $W$.
 "
 
-NewTheorem finrank_top Submodule.eq_top_of_finrank_eq
+NewTheorem finrank_top le_top
+DisabledTheorem Submodule.eq_top_of_finrank_eq Submodule.eq_of_le_of_finrank_eq Submodule.eq_of_le_of_finrank_le
 DisabledTactic simp norm_num
 TheoremTab "Dimension"

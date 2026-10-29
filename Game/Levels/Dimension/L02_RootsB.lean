@@ -1,7 +1,7 @@
-import Game.Levels.BasisDim.L12_RootsA
+import Game.Levels.Dimension.L01_RootsA
 
-World "BasisDim"
-Level 13
+World "Dimension"
+Level 2
 Title "Quadratics vanishing at 5 and 3"
 
 -- @sheet 4 Q6b
@@ -17,21 +17,24 @@ Introduction "
 $p(3) = 0$. *Hint: How do factorisations of such $p(x)$ look like?*
 
 The subspace is the intersection `⊓` of two kernels. Membership of `U ⊓ W` is a pair of
-memberships.
+memberships. As before, you supply a basis and prove it.
 "
 
 namespace LinearAlgebraGame
 
-/-- $\langle x^2 - 8x + 15\rangle$ is a basis of $\{p \in\mathcal P_2 \mid p(5) = p(3) = 0\}$,
-which has dimension 1. -/
-Statement : IsBasisOf ![![15, -8, 1]]
-      (LinearMap.ker (Poly.evalAt (n := 2) 5) ⊓ LinearMap.ker (Poly.evalAt 3)) ∧
-    Module.finrank ℝ ↥(LinearMap.ker (Poly.evalAt (n := 2) 5) ⊓ LinearMap.ker (Poly.evalAt 3)) = 1 := by
-  Hint "The polynomial is $(x-5)(x-3)$. Prove the basis claim first."
+/-- $\{p \in\mathcal P_2 \mid p(5) = p(3) = 0\}$ has a basis $b_1, \dots, b_k$, and
+dimension $k$. -/
+Statement : ∃ k : ℕ, ∃ b : Fin k → Poly 2,
+    IsBasisOf b (LinearMap.ker (Poly.evalAt (n := 2) 5) ⊓ LinearMap.ker (Poly.evalAt 3)) ∧
+    Module.finrank ℝ ↥(LinearMap.ker (Poly.evalAt (n := 2) 5) ⊓ LinearMap.ker (Poly.evalAt 3)) = k := by
+  Hint "Follow the sheet's hint: what do the factorisations of such $p$ look like? Find a basis
+  on paper and prove the basis claim with `have`."
+  Hint (hidden := true) "`have hB : IsBasisOf ![![15, -8, 1]] (LinearMap.ker (Poly.evalAt (n := 2) 5) ⊓
+  LinearMap.ker (Poly.evalAt 3)) := by` — that is $\\langle (x-5)(x-3)\\rangle$."
   have hB : IsBasisOf ![![15, -8, 1]]
       (LinearMap.ker (Poly.evalAt (n := 2) 5) ⊓ LinearMap.ker (Poly.evalAt 3)) := by
     constructor
-    · Hint "One nonzero vector is independent: look at the $x^2$ coefficient."
+    · Hint "One nonzero vector is independent: look at a nonzero coefficient."
       rw [Fintype.linearIndependent_iff]
       intro g hg i
       have h2 := congrFun hg 2
@@ -43,7 +46,8 @@ Statement : IsBasisOf ![![15, -8, 1]]
         rintro _ ⟨i, rfl⟩
         fin_cases i
         constructor <;> simp [Poly.evalAt_apply, Poly.eval, Fin.sum_univ_three] <;> norm_num
-      · Hint "Two linear equations on $(a_0, a_1, a_2)$: solve them in terms of $a_2$."
+      · Hint "Two linear equations on $(a_0, a_1, a_2)$: solve them, and write $p$ as a combination
+        of your basis."
         intro p hp
         obtain ⟨h5, h3⟩ := hp
         simp [Poly.evalAt_apply, Poly.eval, Fin.sum_univ_three] at h5 h3
@@ -52,7 +56,8 @@ Statement : IsBasisOf ![![15, -8, 1]]
         refine ⟨![p 2], ?_⟩
         ext i
         fin_cases i <;> simp <;> linarith
-  exact ⟨hB, hB.finrank_eq⟩
+  Hint (hidden := true) "`exact ⟨1, _, hB, hB.finrank_eq⟩`"
+  exact ⟨1, _, hB, hB.finrank_eq⟩
 
 end LinearAlgebraGame
 

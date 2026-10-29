@@ -1,7 +1,7 @@
-import Game.Levels.BasisDim.L09_Augment
+import Game.Levels.BasisDim.L13_Augment
 
 World "BasisDim"
-Level 10
+Level 14
 Title "Boss: when is a system solvable?"
 
 -- @sheet 3 Q11
@@ -19,9 +19,10 @@ Introduction "
 that system's matrix of coefficients has the same rank as its augmented matrix.
 
 The chain of ideas:
-1. $A\\vec x = \\vec b$ is solvable $\\iff$ $\\vec b$ is in the column space of $A$
-   (`A *ᵥ x` is a combination of the columns; `Matrix.range_mulVecLin` says the range of
-   $\\vec x \\mapsto A\\vec x$ is the column span);
+1. $A\\vec x = \\vec b$ is solvable $\\iff$ $\\vec b$ is in the column space of $A$, because
+   $A\\vec x = x_1\\vec c_1 + \\dots + x_n\\vec c_n$ is a combination of the columns
+   (`mulVec_eq_sum_col`). Granted in this form: `mem_span_cols_iff`
+   (`b ∈ span ℝ (Set.range A.col) ↔ ∃ x, A *ᵥ x = b`);
 2. $\\vec b \\in [S] \\iff [S \\cup \\{\\vec b\\}] = [S]$ (`Submodule.span_insert_eq_span`);
 3. nested spans are equal $\\iff$ they have equal dimension (your Sheet 4 Q10b);
 4. rank is the dimension of the column span (`rank_augment`).
@@ -36,13 +37,9 @@ Statement {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) (b : Fin m → ℝ) :
     (∃ x, A *ᵥ x = b) ↔ A.rank = (augment A b).rank := by
   Hint "Start by turning both ranks into dimensions of column spans."
   rw [rank_augment, rank_eq_finrank_span_cols]
-  Hint "Step 1: solvable means $\\vec b$ is in the column span. Record it as a separate fact."
-  have step1 : (∃ x, A *ᵥ x = b) ↔ b ∈ Submodule.span ℝ (Set.range A.col) := by
-    Hint (hidden := true) "`rw [← Matrix.range_mulVecLin]` and the two sides agree by
-    definition: `exact Iff.rfl`."
-    rw [← Matrix.range_mulVecLin]
-    exact Iff.rfl
-  rw [step1]
+  Hint "Step 1: solvable means $\\vec b$ is in the column span."
+  Hint (hidden := true) "`rw [← mem_span_cols_iff]`"
+  rw [← mem_span_cols_iff]
   constructor
   · Hint "If $\\vec b$ is already in the span, adding it changes nothing."
     intro hb
@@ -66,7 +63,7 @@ Conclusion "
 $\\operatorname{rank} A = \\operatorname{rank}[A \\mid b]$.
 "
 
-NewTheorem LinearAlgebraGame.rank_augment LinearAlgebraGame.eq_iff_finrank_eq_of_le Matrix.range_mulVecLin Submodule.span_insert_eq_span
+NewTheorem LinearAlgebraGame.rank_augment LinearAlgebraGame.eq_iff_finrank_eq_of_le LinearAlgebraGame.mem_span_cols_iff LinearAlgebraGame.mulVec_eq_sum_col Submodule.span_insert_eq_span
 DisabledTheorem Submodule.eq_of_le_of_finrank_eq
 DisabledTactic simp norm_num
 TheoremTab "Rank"

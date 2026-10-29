@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L07_SumInter
+import Game.Levels.Dimension.L09_SumInter
 
 World "Dimension"
-Level 8
+Level 10
 Title "A sum"
 
 -- @sheet 6 Q1a
@@ -41,7 +41,8 @@ Statement : ∃ k : ℕ, ∃ b : Fin k → Matrix (Fin 2) (Fin 2) ℝ,
       simp [Fin.sum_univ_three] at h01 h10 h11
       fin_cases i <;> simp [h01, h10, h11]
     · apply le_antisymm
-      · Hint "The first generator lies in $W_2$, the other two in $W_1$."
+      · Hint "Each generator of your span lies in $W_1$ or in $W_2$."
+        Hint (hidden := true) "The first generator lies in $W_2$, the other two in $W_1$."
         rw [Submodule.span_le]
         rintro _ ⟨i, rfl⟩
         fin_cases i

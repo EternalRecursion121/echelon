@@ -33,11 +33,11 @@ Statement inj_iff_kernel {V W : Type*} [AddCommGroup V] [Module ℝ V] [AddCommG
 end LinearAlgebraGame
 
 Conclusion "
-In Mathlib's language: `LinearMap.ker_eq_bot : ker h = ⊥ ↔ Function.Injective h`, now in your
-inventory ($\\bot$ is the trivial subspace).
+In Mathlib's language: `LinearMap.ker_eq_bot : ker h = ⊥ ↔ Function.Injective h`
+($\\bot$ is the trivial subspace). It joins your inventory in two levels.
 "
 
-DisabledTheorem injective_iff_map_eq_zero injective_iff_map_eq_zero' LinearMap.ker_eq_bot'
+DisabledTheorem injective_iff_map_eq_zero injective_iff_map_eq_zero' LinearMap.ker_eq_bot' LinearMap.ker_eq_bot
 DisabledTactic simp norm_num
 TheoremTab "Maps"
-NewTheorem LinearMap.ker_eq_bot sub_eq_zero
+NewTheorem sub_eq_zero

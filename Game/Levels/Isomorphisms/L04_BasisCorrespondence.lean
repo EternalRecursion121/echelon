@@ -25,8 +25,15 @@ correspondence such that $D = \\langle f(\\vec\\beta_1), \\dots, f(\\vec\\beta_n
 basis for $W$. Must $\\hat f : V \\to W$ sending $\\vec v = c_1\\vec\\beta_1 + \\dots + c_n\\vec\\beta_n$
 to $\\hat f(\\vec v) = c_1 f(\\vec\\beta_1) + \\dots + c_n f(\\vec\\beta_n)$ be an isomorphism?
 
-In Lean: `D i` is $f(\\vec\\beta_i)$, `B.repr v i` is the coordinate $c_i$, and `hfhat` is the
-definition of $\\hat f$. \"Isomorphism\" is written out as: preserves $+$, preserves $\\cdot$,
+From now on bases of a whole space come in Lean's own packaging:
+`B : Module.Basis (Fin n) ℝ V` is a basis $\\langle B_0, \\dots, B_{n-1}\\rangle$ of all of $V$ —
+the same thing as the game's `IsBasisOf B ⊤` — bundled with its coordinate map: `B.repr v i` is
+the coordinate $c_i$ of $\\vec v$ (`Module.Basis.sum_repr`: $\\sum_i c_i B_i = \\vec v$; and
+`Module.Basis.repr_sum_self`: the coordinates of $\\sum_i c_i B_i$ are the $c_i$). `B.repr v` is
+a *finitely supported function*, and `Finsupp.add_apply` / `Finsupp.smul_apply` evaluate sums
+and multiples of those.
+
+In Lean: `D i` is $f(\\vec\\beta_i)$ and `hfhat` is the definition of $\\hat f$. \"Isomorphism\" is written out as: preserves $+$, preserves $\\cdot$,
 one-to-one, onto.
 
 This is a *decide* level: the goal is `¬ P ∨ P`. Commit with `left` (no, it need not be)
@@ -43,22 +50,26 @@ Statement {V W : Type*} [AddCommGroup V] [Module ℝ V] [AddCommGroup W] [Module
       (∀ u v, fhat u = fhat v → u = v) ∧ (∀ w, ∃ v, fhat v = w))) ∨
     ((∀ u v, fhat (u + v) = fhat u + fhat v) ∧ (∀ (r : ℝ) v, fhat (r • v) = r • fhat v) ∧
       (∀ u v, fhat u = fhat v → u = v) ∧ (∀ w, ∃ v, fhat v = w)) := by
-  Hint "Decide first. Coordinates with respect to a basis are unique — what does that say
-  about $\\hat f$?"
+  Hint "Decide first: check the four properties one at a time on paper, writing vectors in
+  coordinates."
   right
   Hint (hidden := true) "Four properties: split with `refine ⟨?_, ?_, ?_, ?_⟩`."
   refine ⟨?_, ?_, ?_, ?_⟩
   · intro u v
     Hint "Coordinates of a sum are sums of coordinates; then distribute."
     Hint (hidden := true) "`rw [hfhat, hfhat, hfhat, map_add, ← Finset.sum_add_distrib]`, then
-    `simp only [Finsupp.add_apply, add_smul]`. (Or `simp [hfhat, add_smul, Finset.sum_add_distrib]`.)"
+    compare the sums term by term: `congr 1`, `funext i`, `rw [Finsupp.add_apply, add_smul]`."
     rw [hfhat, hfhat, hfhat, map_add, ← Finset.sum_add_distrib]
-    simp only [Finsupp.add_apply, add_smul]
+    congr 1
+    funext i
+    rw [Finsupp.add_apply, add_smul]
   · intro r v
-    Hint (hidden := true) "`rw [hfhat, hfhat, map_smul, Finset.smul_sum]`, then
-    `simp only [Finsupp.smul_apply, smul_eq_mul, mul_smul]`."
+    Hint (hidden := true) "`rw [hfhat, hfhat, map_smul, Finset.smul_sum]`, then term by term:
+    `congr 1`, `funext i`, `rw [Finsupp.smul_apply, smul_eq_mul, smul_smul]`."
     rw [hfhat, hfhat, map_smul, Finset.smul_sum]
-    simp only [Finsupp.smul_apply, smul_eq_mul, mul_smul]
+    congr 1
+    funext i
+    rw [Finsupp.smul_apply, smul_eq_mul, smul_smul]
   · intro u v h
     Hint "Key fact: the $D$-coordinates of $\\hat f(\\vec x)$ are the $B$-coordinates of $\\vec x$.
     State it as a separate fact first."
@@ -74,11 +85,10 @@ Statement {V W : Type*} [AddCommGroup V] [Module ℝ V] [AddCommGroup W] [Module
     rw [← key, ← key, h]
   · intro w
     Hint "$D$ spans $W$: use the $D$-coordinates of $\\vec w$ as $B$-coordinates."
-    Hint (hidden := true) "`use ∑ i, D.repr {w} i • B i`, then `rw [hfhat]`,
-    `simp only [Module.Basis.repr_sum_self]`, `exact D.sum_repr {w}`."
+    Hint (hidden := true) "`use ∑ i, D.repr {w} i • B i`, then
+    `rw [hfhat, Module.Basis.repr_sum_self]` and `exact D.sum_repr {w}`."
     use ∑ i, D.repr w i • B i
-    rw [hfhat]
-    simp only [Module.Basis.repr_sum_self]
+    rw [hfhat, Module.Basis.repr_sum_self]
     exact D.sum_repr w
 
 end LinearAlgebraGame
@@ -88,6 +98,7 @@ Conclusion "
 $B$ and $D$ give *unique* coordinates. Mathlib calls this isomorphism `Basis.equiv`.
 "
 
-DisabledTactic norm_num
+DisabledTactic simp norm_num
 TheoremTab "Bases"
-NewTheorem Finsupp.add_apply Finsupp.smul_apply SemigroupAction.mul_smul Module.Basis.repr_sum_self LinearEquiv.injective Module.Basis.sum_repr
+NewTheorem Finsupp.add_apply Finsupp.smul_apply Module.Basis.repr_sum_self LinearEquiv.injective Module.Basis.sum_repr
+NewDefinition Module.Basis Module.Basis.repr

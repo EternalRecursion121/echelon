@@ -12,7 +12,8 @@ import Game.Levels.Homomorphisms.L11_OntoRank
 import Game.Levels.Homomorphisms.L12_InjOnto
 import Game.Levels.Homomorphisms.L13_RankOne
 import Game.Levels.Homomorphisms.L14_RightInverse
-import Game.Levels.Homomorphisms.L15_Thm220
+import Game.Levels.Homomorphisms.L15_IndepInj
+import Game.Levels.Homomorphisms.L16_Thm220
 
 World "Homomorphisms"
 Title "Homomorphisms"

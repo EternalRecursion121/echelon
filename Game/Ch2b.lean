@@ -142,6 +142,87 @@ theorem coordSpan_sup {n : ℕ} (S T : Finset (Fin n)) :
     coordSpan S ⊔ coordSpan T = coordSpan (S ∪ T) := by
   rw [coordSpan, coordSpan, coordSpan, ← Submodule.span_union, Finset.coe_union, Set.image_union]
 
+
+/-- A one-dimensional subspace is a line: it contains a nonzero `u` of which every member is a
+multiple. (Vector form of `finrank_eq_one_iff'`, without subtypes.) -/
+theorem exists_line_of_finrank_eq_one {V : Type*} [AddCommGroup V] [Module ℝ V]
+    {W : Submodule ℝ V} (h : Module.finrank ℝ W = 1) :
+    ∃ u, u ∈ W ∧ u ≠ 0 ∧ ∀ w ∈ W, ∃ c : ℝ, c • u = w := by
+  obtain ⟨u, hu0, hu⟩ := finrank_eq_one_iff'.mp h
+  refine ⟨u, u.2, fun h0 => hu0 (Subtype.ext h0), fun w hw => ?_⟩
+  obtain ⟨c, hc⟩ := hu ⟨w, hw⟩
+  exact ⟨c, congrArg Subtype.val hc⟩
+
+/-- A line through `u` has dimension at most 1. -/
+theorem finrank_span_singleton_le_one {V : Type*} [AddCommGroup V] [Module ℝ V] (u : V) :
+    Module.finrank ℝ (Submodule.span ℝ {u}) ≤ 1 := by
+  have := finrank_span_le_card (R := ℝ) ({u} : Set V)
+  simpa using this
+
+/-- $A\vec x$ is the combination of the columns of $A$ with coefficients $x_j$. -/
+theorem mulVec_eq_sum_col {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) (x : Fin n → ℝ) :
+    A *ᵥ x = ∑ j, x j • A.col j := by
+  ext i
+  simp [mulVec, dotProduct, Finset.sum_apply, mul_comm]
+
+/-- $\vec b$ is in the column space of $A$ iff $A\vec x = \vec b$ has a solution. -/
+theorem mem_span_cols_iff {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) (b : Fin m → ℝ) :
+    b ∈ Submodule.span ℝ (Set.range A.col) ↔ ∃ x, A *ᵥ x = b := by
+  rw [Submodule.mem_span_range_iff_exists_fun]
+  simp only [mulVec_eq_sum_col]
+
+theorem col_neg {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) (j : Fin n) :
+    (-A).col j = -A.col j := rfl
+theorem col_smul {m n : ℕ} (k : ℝ) (A : Matrix (Fin m) (Fin n) ℝ) (j : Fin n) :
+    (k • A).col j = k • A.col j := rfl
+theorem col_add {m n : ℕ} (A B : Matrix (Fin m) (Fin n) ℝ) (j : Fin n) :
+    (A + B).col j = A.col j + B.col j := rfl
+
+/-- Every subspace of a finite-dimensional space has a basis indexed by `Fin (finrank S)`. -/
+theorem exists_isBasisOf_fin {V : Type*} [AddCommGroup V] [Module ℝ V] [FiniteDimensional ℝ V]
+    (S : Submodule ℝ V) : ∃ b : Fin (Module.finrank ℝ S) → V, IsBasisOf b S := by
+  let B := Module.finBasis ℝ S
+  refine ⟨fun i => (B i : V), ?_, ?_⟩
+  · exact B.linearIndependent.map' S.subtype (Submodule.ker_subtype S)
+  · have : Set.range (fun i => (B i : V)) = S.subtype '' Set.range B := by
+      rw [← Set.range_comp]; rfl
+    rw [this, Submodule.span_image, B.span_eq, Submodule.map_subtype_top]
+
+theorem exists_compl_in {V : Type*} [AddCommGroup V] [Module ℝ V]
+    (I U : Submodule ℝ V) (h : I ≤ U) : ∃ C : Submodule ℝ V, C ⊓ I = ⊥ ∧ C ⊔ I = U := by
+  obtain ⟨C, hC⟩ := exists_isCompl (⟨I, h⟩ : Set.Iic U)
+  refine ⟨C.1, ?_, ?_⟩
+  · have := congrArg Subtype.val hC.symm.inf_eq_bot
+    simpa using this
+  · have := congrArg Subtype.val hC.symm.sup_eq_top
+    simpa using this
+
+/-- Corollary Two.III.2.12, as used on Sheet 6 Q1: a basis $\beta$ of $U\cap W$ extends to a
+basis $\langle\mu,\beta\rangle$ of $U$ and to a basis $\langle\beta,\omega\rangle$ of $W$. -/
+theorem exists_bases_inf {V : Type*} [AddCommGroup V] [Module ℝ V] [FiniteDimensional ℝ V]
+    (U W : Submodule ℝ V) :
+    ∃ (j k p : ℕ) (β : Fin k → V) (μ : Fin j → V) (ω : Fin p → V),
+      IsBasisOf β (U ⊓ W) ∧ IsBasisOf (Sum.elim μ β) U ∧ IsBasisOf (Sum.elim β ω) W := by
+  obtain ⟨β, hβ⟩ := exists_isBasisOf_fin (U ⊓ W)
+  obtain ⟨C, hC1, hC2⟩ := exists_compl_in (U ⊓ W) U inf_le_left
+  obtain ⟨D, hD1, hD2⟩ := exists_compl_in (U ⊓ W) W inf_le_right
+  obtain ⟨μ, hμ⟩ := exists_isBasisOf_fin C
+  obtain ⟨ω, hω⟩ := exists_isBasisOf_fin D
+  refine ⟨_, _, _, β, μ, ω, hβ, ⟨?_, ?_⟩, ⟨?_, ?_⟩⟩
+  · apply hμ.1.sum_type hβ.1
+    rw [hμ.2, hβ.2, disjoint_iff, hC1]
+  · rw [span_range_sum_elim, hμ.2, hβ.2, hC2]
+  · apply hβ.1.sum_type hω.1
+    rw [hω.2, hβ.2, disjoint_iff, inf_comm, hD1]
+  · rw [span_range_sum_elim, hω.2, hβ.2, sup_comm, hD2]
+
+universe u in
+/-- An injective linear map is an isomorphism onto its range, so the range has the same rank. -/
+theorem rank_range_of_injective {V W : Type u} [AddCommGroup V] [Module ℝ V] [AddCommGroup W]
+    [Module ℝ W] (f : V →ₗ[ℝ] W) (hf : Function.Injective f) :
+    Module.rank ℝ (LinearMap.range f) = Module.rank ℝ V :=
+  (LinearEquiv.ofInjective f hf).rank_eq.symm
+
 end LinearAlgebraGame
 
 /-! ## Documentation -/
@@ -188,7 +269,7 @@ DefinitionDoc Module.rank as "Module.rank"
 DefinitionDoc Pi.basisFun as "Pi.basisFun"
 /-- `Polynomial ℝ` is $\mathbb R[x]$, all real polynomials. -/
 DefinitionDoc Polynomial as "Polynomial"
-/-- Theorem 1.12: `IsBasisOf v ⊤ ↔ ∀ x, ∃! c, ∑ i, c i • v i = x` — a basis is exactly a sequence giving every vector unique coordinates. (You proved this.) -/
+/-- Theorem 1.12: `IsBasisOf v ⊤ ↔ ∀ x, ∃ c, ∑ i, c i • v i = x ∧ ∀ d, ∑ i, d i • v i = x → d = c` — a basis is exactly a sequence giving every vector unique coordinates. (You proved this.) -/
 TheoremDoc LinearAlgebraGame.isBasisOf_top_iff as "isBasisOf_top_iff" in "Basis"
 /-- If `h : IsBasisOf v W` then `Module.finrank ℝ W = Fintype.card ι`: the dimension is the number of basis vectors (for `v : Fin k → V` this is `k`). -/
 TheoremDoc LinearAlgebraGame.IsBasisOf.finrank_eq as "IsBasisOf.finrank_eq" in "Dimension"
@@ -433,3 +514,50 @@ TheoremDoc sup_le as "sup_le" in "Dimension"
 TheoremDoc sup_le_iff as "sup_le_iff" in "Sums"
 /-- `0 • v = 0`. -/
 TheoremDoc zero_smul as "zero_smul" in "Basis"
+
+/-- Theorem 1.12, ⇒: if `IsBasisOf v ⊤` then every `x` has coefficients `c` with `∑ i, c i • v i = x`, and any other such `d` equals `c`. (You proved this.) -/
+TheoremDoc LinearAlgebraGame.rep_unique_of_isBasisOf as "rep_unique_of_isBasisOf" in "Basis"
+/-- Sheet 3 Q9: `A.rank = 0 ↔ A = 0`. (You proved this.) -/
+TheoremDoc LinearAlgebraGame.rank_eq_zero_iff as "rank_eq_zero_iff" in "Rank"
+/-- If `finrank ℝ W = 1` then `∃ u, u ∈ W ∧ u ≠ 0 ∧ ∀ w ∈ W, ∃ c : ℝ, c • u = w`: a one-dimensional subspace is the line through a nonzero `u`. (Granted.) -/
+TheoremDoc LinearAlgebraGame.exists_line_of_finrank_eq_one as "exists_line_of_finrank_eq_one" in "Dimension"
+/-- `finrank ℝ (span ℝ {u}) ≤ 1`: a line has dimension at most 1. -/
+TheoremDoc LinearAlgebraGame.finrank_span_singleton_le_one as "finrank_span_singleton_le_one" in "Dimension"
+/-- `A *ᵥ x = ∑ j, x j • A.col j`: $A\vec x$ is the combination of the columns with coefficients $x_j$. -/
+TheoremDoc LinearAlgebraGame.mulVec_eq_sum_col as "mulVec_eq_sum_col" in "Rank"
+/-- `b ∈ span ℝ (Set.range A.col) ↔ ∃ x, A *ᵥ x = b`: $\vec b$ is in the column space iff $A\vec x = \vec b$ is solvable. -/
+TheoremDoc LinearAlgebraGame.mem_span_cols_iff as "mem_span_cols_iff" in "Rank"
+/-- `(-A).col j = -A.col j`. -/
+TheoremDoc LinearAlgebraGame.col_neg as "col_neg" in "Rank"
+/-- `(k • A).col j = k • A.col j`. -/
+TheoremDoc LinearAlgebraGame.col_smul as "col_smul" in "Rank"
+/-- `(A + B).col j = A.col j + B.col j`. -/
+TheoremDoc LinearAlgebraGame.col_add as "col_add" in "Rank"
+/-- Sheet 4 Q11: if every column of `D` is in the column space of `C`, then `D.rank ≤ C.rank`. (You proved this.) -/
+TheoremDoc LinearAlgebraGame.rank_le_of_cols_mem as "rank_le_of_cols_mem" in "Rank"
+/-- Corollary 2.12 (granted): in a finite-dimensional space, there are bases `β` of `U ⊓ W`, `Sum.elim μ β` of `U` and `Sum.elim β ω` of `W` — a basis of the intersection extended to bases of both. -/
+TheoremDoc LinearAlgebraGame.exists_bases_inf as "exists_bases_inf" in "Sums"
+/-- Sheet 6 Q1(c), the dimension formula: given bases `β` of `U ⊓ W`, `Sum.elim μ β` of `U`, `Sum.elim β ω` of `W`, `finrank (U ⊔ W) = finrank U + finrank W - finrank (U ⊓ W)`. Use with `exists_bases_inf`. (You proved this.) -/
+TheoremDoc LinearAlgebraGame.dim_formula as "dim_formula" in "Sums"
+/-- `¬ (a ∨ b) ↔ ¬ a ∧ ¬ b`. -/
+TheoremDoc not_or as "not_or" in "Sums"
+/-- `bot_le : ⊥ ≤ W`: the trivial subspace is inside every subspace. -/
+TheoremDoc bot_le as "bot_le" in "Dimension"
+/-- `inf_le_left : U ⊓ W ≤ U`. -/
+TheoremDoc inf_le_left as "inf_le_left" in "Sums"
+/-- `inf_le_right : U ⊓ W ≤ W`. -/
+TheoremDoc inf_le_right as "inf_le_right" in "Sums"
+/-- Membership of a `Finset` literal: `a ∈ insert b s ↔ a = b ∨ a ∈ s`. -/
+TheoremDoc Finset.mem_insert as "Finset.mem_insert" in "Sums"
+/-- `a ∈ {b} ↔ a = b` for a `Finset`. -/
+TheoremDoc Finset.mem_singleton as "Finset.mem_singleton" in "Sums"
+/-- `LinearMap.mulLeft ℝ a p = a * p`. -/
+TheoremDoc LinearMap.mulLeft_apply as "LinearMap.mulLeft_apply" in "Dimension"
+/-- An injective linear map `f : V →ₗ W` has `Module.rank (range f) = Module.rank V`. -/
+TheoremDoc LinearAlgebraGame.rank_range_of_injective as "rank_range_of_injective" in "Dimension"
+/-- `LinearMap.range f`: the range space $\{f(v) \mid v \in V\}$, a subspace of the codomain. -/
+DefinitionDoc LinearMap.range as "LinearMap.range"
+/-- $-(-a) = a$. -/
+TheoremDoc neg_neg as "neg_neg" in "Rank"
+/-- `trivial : True`. Membership of `Set.univ` (or of `⊤` viewed as a set) is `True` by definition, so `trivial` proves it. -/
+TheoremDoc trivial as "trivial" in "Sums"

@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L05_RankOps
+import Game.Levels.Dimension.L07_RankOps
 
 World "Dimension"
-Level 6
+Level 8
 Title "Direct sum and union"
 
 -- @sheet 5 Q1
@@ -20,8 +20,11 @@ $\\mathbb R^2$ shows that $W_1 \\oplus W_2 = V$ does not imply that $W_1 \\cup W
 $W_1 \\oplus W_2 = V$ and $W_1 \\cup W_2 = V$ happen? If so, when?
 
 `IsCompl W₁ W₂` says $V = W_1 \\oplus W_2$: `h.inf_eq_bot` is $W_1 \\cap W_2 = \\{\\vec 0\\}$ and
-`h.sup_eq_top` is $W_1 + W_2 = V$. The statement records the answer: *exactly when one of
-them is trivial and the other is everything*.
+`h.sup_eq_top` is $W_1 + W_2 = V$. Find the answer on paper first; the claim below states a
+precise condition, and you prove it is the right one.
+
+Useful: `IsConcreteLE.not_le_iff_exists` (in the inventory as `not_le_iff_exists`):
+`¬ U ≤ W ↔ ∃ x ∈ U, x ∉ W`. Membership of `Set.univ` (everything) is proved by `trivial`.
 "
 
 namespace LinearAlgebraGame
@@ -47,7 +50,8 @@ Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (W₁ W₂ : Submodule ℝ
         by rw [← h.inf_eq_bot, inf_eq_right.mpr h21]⟩
     Hint "Neither contains the other: pick $a \\in W_1 \\setminus W_2$ and $b \\in W_2 \\setminus W_1$
     and ask where $a + b$ lives."
-    Hint (hidden := true) "`IsConcreteLE.not_le_iff_exists` produces such elements."
+    Hint (hidden := true) "`obtain ⟨a, haW1, haW2⟩ := IsConcreteLE.not_le_iff_exists.mp h12`
+    produces such an element."
     exfalso
     obtain ⟨a, haW1, haW2⟩ := IsConcreteLE.not_le_iff_exists.mp h12
     obtain ⟨b, hbW2, hbW1⟩ := IsConcreteLE.not_le_iff_exists.mp h21
@@ -76,5 +80,5 @@ Conclusion "
 "
 
 NewDefinition IsCompl
-NewTheorem IsCompl.inf_eq_bot IsCompl.sup_eq_top inf_eq_left inf_eq_right sup_eq_left sup_eq_right IsConcreteLE.not_le_iff_exists
+NewTheorem IsCompl.inf_eq_bot IsCompl.sup_eq_top inf_eq_left inf_eq_right sup_eq_left sup_eq_right IsConcreteLE.not_le_iff_exists trivial
 TheoremTab "Sums"

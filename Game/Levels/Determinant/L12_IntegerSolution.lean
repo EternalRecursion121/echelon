@@ -46,5 +46,5 @@ end LinearAlgebraGame
 
 Conclusion "This is Cramer's rule in disguise: each $x_i$ is a ratio of integer determinants with denominator $\\pm1$."
 
-NewTheorem Matrix.mulVec_neg Matrix.mul_adjugate neg_smul Matrix.neg_mulVec neg_neg
+NewTheorem Matrix.mulVec_neg Matrix.mul_adjugate neg_smul Matrix.neg_mulVec
 TheoremTab "Det"

@@ -16,11 +16,11 @@ has at least one solution.
 
 A general system of $m$ equations in $n$ unknowns is `A *ᵥ x = b` with
 `A : Matrix (Fin m) (Fin n) ℝ`. The goal is `¬ P ∨ P`: commit with `left` (false) or
-`right` (true), then prove your choice. To say false you produce a counterexample.
-
-If you assume the claim as `h`, it is a big \"for all\": feed it *your* counterexample, as
-in Lean Basics level 12 — `h 2 3 A b (by norm_num)` for a system of 2 equations in 3
-unknowns (the `(by norm_num)` proves $2 < 3$).
+`right` (true), then prove your choice. After `right` you prove the claim for every system
+(`intro m n A b hmn`). After `left` you assume the claim as `h` and refute it: `h` is a big
+\"for all\", which you can apply to a system of your choice, as in Lean Basics level 12 —
+e.g. `h m n A b (by norm_num)` with concrete numbers and matrices (the `(by norm_num)` proves
+$m < n$).
 
 Tips: `congrFun hx 0` turns an equation of vectors `hx : u = v` into its entry 0,
 `u 0 = v 0`; then `norm_num [mulVec, dotProduct, Fin.sum_univ_three] at h0` writes that row out
@@ -33,7 +33,7 @@ open Matrix in
 /-- True or false: every system with more unknowns than equations has a solution. -/
 Statement : (¬ ∀ (m n : ℕ) (A : Matrix (Fin m) (Fin n) ℝ) (b : Fin m → ℝ), m < n → ∃ x, A *ᵥ x = b) ∨
     (∀ (m n : ℕ) (A : Matrix (Fin m) (Fin n) ℝ) (b : Fin m → ℝ), m < n → ∃ x, A *ᵥ x = b) := by
-  Hint "Decide first: could two equations in three unknowns have no common solution?"
+  Hint "Decide first: experiment with small systems, e.g. two equations in three unknowns."
   left
   intro h
   Hint "Pick two equations in three unknowns that contradict each other, and feed them to `{h}`."

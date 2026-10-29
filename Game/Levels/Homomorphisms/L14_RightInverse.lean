@@ -22,8 +22,9 @@ right inverses $f$; `IsLinearMap ℝ f` says $f$ preserves $+$ and $\\cdot$ (wit
 `hf.map_add` and `hf.map_smul`).
 
 This is a *decide* level: commit with `left` (no) or `right` (yes), then prove your choice.
-To use a hypothesis `H : ∀ (V W : Type) …`, apply it to concrete spaces, e.g.
-`H (Fin 2 → ℝ) ℝ g f hsurj hinv`; `LinearMap.proj 0 : (Fin 2 → ℝ) →ₗ[ℝ] ℝ` is $(x,y) \\mapsto x$.
+After `right` you prove the claim for arbitrary spaces and maps (`intro V W _ _ _ _ g f hg hf`).
+After `left` you assume the claim as `H` and refute it: `H` can be applied to spaces, maps and
+proofs of your choice.
 "
 
 namespace LinearAlgebraGame
@@ -35,14 +36,19 @@ Statement : (¬ ∀ (V W : Type) [AddCommGroup V] [Module ℝ V] [AddCommGroup W
     (∀ (V W : Type) [AddCommGroup V] [Module ℝ V] [AddCommGroup W] [Module ℝ W]
       (g : V →ₗ[ℝ] W) (f : W → V), Function.Surjective g → (∀ w, g (f w) = w) →
       IsLinearMap ℝ f) := by
-  Hint "Decide first. Test the claim on a simple surjective linear map, say $g(x, y) = x$:
-  which maps $f$ satisfy $g(f(w)) = w$? Must they all be linear?"
+  Hint "Decide first. Test the claim on a simple surjective linear map of your choice: which
+  maps $f$ satisfy $g(f(\\vec w)) = \\vec w$? Must they all be linear?"
   Hint (hidden := true) "$g$ forgets information; a right inverse only has to put *something*
   back in the forgotten slot."
   left
   intro H
-  Hint "Take $g(x, y) = x$ and $f(x) = (x, x^2)$."
-  Hint (hidden := true) "`have hsurj : Function.Surjective (LinearMap.proj 0 : (Fin 2 → ℝ) →ₗ[ℝ] ℝ) := by`
+  Hint "`H` is a claim about *all* spaces and maps. Apply it to an example of your choice:
+  `have hf := H X Y g f ?_ ?_` — the two `?_` leave \"$g$ is onto\" and \"$f$ is a right
+  inverse\" as goals to prove afterwards."
+  Hint (hidden := true) "Take $g(x, y) = x$ on $\\mathbb R^2$ — in Lean
+  `(LinearMap.proj 0 : (Fin 2 → ℝ) →ₗ[ℝ] ℝ)` (the type annotation is needed) — and
+  $f(x) = (x, x^2)$, i.e. `fun x => ![x, x ^ 2]`."
+  Hint (hidden := true) "First `have hsurj : Function.Surjective (LinearMap.proj 0 : (Fin 2 → ℝ) →ₗ[ℝ] ℝ) := by`
   `intro x; use ![x, 0]; exact rfl`"
   have hsurj : Function.Surjective (LinearMap.proj 0 : (Fin 2 → ℝ) →ₗ[ℝ] ℝ) := by
     intro x
@@ -50,7 +56,8 @@ Statement : (¬ ∀ (V W : Type) [AddCommGroup V] [Module ℝ V] [AddCommGroup W
     exact rfl
   Hint (strict := true) (hidden := true) "`have hf := H (Fin 2 → ℝ) ℝ (LinearMap.proj 0) (fun x => ![x, x ^ 2]) hsurj (fun x => rfl)`"
   have hf := H (Fin 2 → ℝ) ℝ (LinearMap.proj 0) (fun x => ![x, x ^ 2]) hsurj (fun x => rfl)
-  Hint (strict := true) "Compare $f(2 \\cdot 1)$ with $2\\cdot f(1)$ in the second coordinate."
+  Hint (strict := true) "Now `{hf}` says your $f$ is linear. Find two inputs where that fails."
+  Hint (hidden := true) "Compare $f(2 \\cdot 1)$ with $2\\cdot f(1)$ in the second coordinate."
   Hint (hidden := true) "`have h2 := {hf}.map_smul 2 1`, `have h3 := congrFun h2 1`, `norm_num at h3`."
   have h2 := hf.map_smul 2 1
   have h3 := congrFun h2 1
@@ -63,5 +70,5 @@ Conclusion "
 $g \\circ f = \\mathrm{id}$, but $f(2) = (2,4) \\neq (2,2) = 2 f(1)$.
 "
 
-NewDefinition LinearMap.proj IsLinearMap
+NewDefinition IsLinearMap
 TheoremTab "Maps"

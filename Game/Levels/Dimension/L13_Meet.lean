@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L02_InfiniteDim
+import Game.Levels.Dimension.L12_DimFormula
 
 World "Dimension"
-Level 3
+Level 13
 Title "Two 3-dimensional subspaces of ℝ⁵"
 
 -- @sheet 4 Q9
@@ -20,10 +20,9 @@ Introduction "
 subspaces of $\\mathbb R^5$ then $U \\cap W$ is non-trivial. Generalise the claim (no new proof
 is required as it would be similar).
 
-In Lean $U\\cap W$ is `U ⊓ W`, $U + W$ is `U ⊔ W` and the trivial subspace is `⊥`. From
-lectures (Two.III.4) you may use the dimension formula
-`Submodule.finrank_sup_add_finrank_inf_eq`:
-$\\dim(U+W) + \\dim(U\\cap W) = \\dim U + \\dim W$ — you will prove it yourself on Sheet 6.
+In Lean $U\\cap W$ is `U ⊓ W`, $U + W$ is `U ⊔ W` and the trivial subspace is `⊥`. Use your
+dimension formula `dim_formula`; the bases it needs come from `exists_bases_inf U W`
+(granted: a basis of $U\\cap W$ extends to bases of $U$ and of $W$).
 `Submodule.finrank_le` bounds the dimension of a subspace by that of the whole space, and
 `Module.finrank_fin_fun` says $\\dim \\mathbb R^n = n$.
 
@@ -37,7 +36,10 @@ Statement (U W : Submodule ℝ (Fin 5 → ℝ)) (hU : Module.finrank ℝ U = 3)
     (hW : Module.finrank ℝ W = 3) : U ⊓ W ≠ ⊥ := by
   Hint "Suppose $U\\cap W$ is trivial; then the dimension formula says $\\dim(U+W) = 6$."
   intro h
-  have key := Submodule.finrank_sup_add_finrank_inf_eq U W
+  Hint (hidden := true) "`obtain ⟨j, k, p, β, μ, ω, hβ, hU', hW'⟩ := exists_bases_inf U W`, then
+  `have key := dim_formula U W β μ ω hβ hU' hW'`."
+  obtain ⟨j, k, p, β, μ, ω, hβ, hU', hW'⟩ := exists_bases_inf U W
+  have key := dim_formula U W β μ ω hβ hU' hW'
   Hint (hidden := true) "`rw [{h}, finrank_bot, {hU}, {hW}] at {key}`"
   rw [h, finrank_bot, hU, hW] at key
   Hint "But $U + W$ lives in $\\mathbb R^5$."
@@ -56,4 +58,4 @@ In general: $\\dim U + \\dim W > \\dim V \\implies U \\cap W \\ne \\{\\vec 0\\}$
 
 DisabledTactic simp norm_num
 TheoremTab "Dimension"
-NewTheorem finrank_bot Submodule.finrank_le Submodule.finrank_sup_add_finrank_inf_eq Module.finrank_fin_fun trivial
+NewTheorem LinearAlgebraGame.dim_formula LinearAlgebraGame.exists_bases_inf finrank_bot Submodule.finrank_le Module.finrank_fin_fun

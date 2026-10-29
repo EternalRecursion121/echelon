@@ -1,7 +1,7 @@
-import Game.Levels.BasisDim.L07_DimMono
+import Game.Levels.BasisDim.L10_DimMono
 
 World "BasisDim"
-Level 8
+Level 11
 Title "Nested subspaces of equal dimension"
 
 -- @sheet 4 Q10b
@@ -20,7 +20,11 @@ You need this result for Sheet 3 Q11, so it comes early.
 
 Your tools: part (a) `finrank_le_of_le`, and the extension lemma in dimension form,
 `Submodule.finrank_sup_span_singleton`: if $\\vec w \\notin U$ then
-$\\dim(U + [\\{\\vec w\\}]) = \\dim U + 1$.
+$\\dim(U + [\\{\\vec w\\}]) = \\dim U + 1$. Lean displays the line $[\\{\\vec w\\}]$,
+`Submodule.span ℝ {w}`, in the short notation `ℝ ∙ w`.
+
+**New:** `omega` proves (in)equalities about natural numbers (and integers) that follow from the
+hypotheses by adding and comparing — handy for juggling dimensions.
 "
 
 namespace LinearAlgebraGame
@@ -59,3 +63,4 @@ NewTheorem LinearAlgebraGame.finrank_le_of_le Submodule.finrank_sup_span_singlet
 DisabledTheorem Submodule.eq_of_le_of_finrank_eq Submodule.eq_of_le_of_finrank_le Submodule.finrank_lt_finrank_of_lt Submodule.finrank_mono
 DisabledTactic simp norm_num
 TheoremTab "Dimension"
+NewTactic omega

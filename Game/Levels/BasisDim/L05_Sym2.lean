@@ -1,7 +1,7 @@
-import Game.Levels.BasisDim.L02_P2Basis
+import Game.Levels.BasisDim.L04_P2Basis
 
 World "BasisDim"
-Level 3
+Level 5
 Title "Symmetric 2×2 matrices"
 
 -- @sheet 3 Q8a

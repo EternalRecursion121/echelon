@@ -1,7 +1,7 @@
-import Game.Levels.BasisDim.L03_Sym2
+import Game.Levels.BasisDim.L05_Sym2
 
 World "BasisDim"
-Level 4
+Level 6
 Title "Symmetric 3×3 matrices"
 
 -- @sheet 3 Q8b
@@ -17,19 +17,23 @@ Introduction "
 **Problem Sheet 3, Question 8(b).** Find a basis for the space of symmetric
 $3 \\times 3$ matrices.
 
-The same strategy as in (a), with six matrices. (`Fin.sum_univ_six` expands a sum over six
-indices.)
+As in (a), you supply the basis. (`Fin.sum_univ_six` expands a sum over six indices.)
 "
 
 namespace LinearAlgebraGame
 
 open Matrix
 
-/-- $\langle E_{11}, E_{22}, E_{33}, E_{12}+E_{21}, E_{13}+E_{31}, E_{23}+E_{32}\rangle$ is a
-basis of the symmetric $3\times3$ matrices. -/
-Statement : IsBasisOf ![!![(1 : ℝ), 0, 0; 0, 0, 0; 0, 0, 0], !![0, 0, 0; 0, 1, 0; 0, 0, 0],
+/-- The symmetric $3\times 3$ matrices have a basis $b_1, \dots, b_k$. -/
+Statement : ∃ k : ℕ, ∃ b : Fin k → Matrix (Fin 3) (Fin 3) ℝ, IsBasisOf b (symMat 3) := by
+  Hint "How many free entries does a symmetric $3\\times 3$ matrix have? Supply a basis with
+  `use`, as in (a)."
+  Hint (hidden := true) "`use 6, ![!![1, 0, 0; 0, 0, 0; 0, 0, 0], !![0, 0, 0; 0, 1, 0; 0, 0, 0],
+  !![0, 0, 0; 0, 0, 0; 0, 0, 1], !![0, 1, 0; 1, 0, 0; 0, 0, 0], !![0, 0, 1; 0, 0, 0; 1, 0, 0],
+  !![0, 0, 0; 0, 0, 1; 0, 1, 0]]`"
+  use 6, ![!![1, 0, 0; 0, 0, 0; 0, 0, 0], !![0, 0, 0; 0, 1, 0; 0, 0, 0],
     !![0, 0, 0; 0, 0, 0; 0, 0, 1], !![0, 1, 0; 1, 0, 0; 0, 0, 0],
-    !![0, 0, 1; 0, 0, 0; 1, 0, 0], !![0, 0, 0; 0, 0, 1; 0, 1, 0]] (symMat 3) := by
+    !![0, 0, 1; 0, 0, 0; 1, 0, 0], !![0, 0, 0; 0, 0, 1; 0, 1, 0]]
   Hint "Same plan as (a): independence by reading off six entries, then two inclusions."
   constructor
   · rw [Fintype.linearIndependent_iff]
@@ -49,8 +53,8 @@ Statement : IsBasisOf ![!![(1 : ℝ), 0, 0; 0, 0, 0; 0, 0, 0], !![0, 0, 0; 0, 1,
       rintro _ ⟨i, rfl⟩
       fin_cases i <;> (ext j k; fin_cases j <;> fin_cases k <;> simp)
     · intro A hA
-      Hint "The coefficients are the three diagonal entries and the three entries above the
-      diagonal. Symmetry tells you the entries below."
+      Hint "Write $A$ as a combination of your basis. Symmetry tells you the entries below the
+      diagonal."
       have h10 : A 1 0 = A 0 1 := congrFun (congrFun hA 0) 1
       have h20 : A 2 0 = A 0 2 := congrFun (congrFun hA 0) 2
       have h21 : A 2 1 = A 1 2 := congrFun (congrFun hA 1) 2

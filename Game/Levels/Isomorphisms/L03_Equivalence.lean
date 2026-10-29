@@ -13,6 +13,10 @@ Write $V \\cong W$ for \"there is an isomorphism $V \\to W$\"; in Lean that is
 * `e.trans f` (the composite: first `e`, then `f`).
 
 Assemble them into Hefferon Lemma Three.I.2.1: $\\cong$ is reflexive, symmetric and transitive.
+
+`Nonempty X` means \"there is some element of `X`\". To prove it, give one in angle brackets:
+`exact ⟨e⟩`. To use a hypothesis `Nonempty X`, take its element out: `rintro ⟨e⟩` (or
+`obtain ⟨e⟩ := h`).
 "
 
 namespace LinearAlgebraGame
@@ -40,6 +44,6 @@ Conclusion "
 So it makes sense to say two spaces are *isomorphic* without saying which comes first.
 "
 
-NewDefinition LinearEquiv.refl LinearEquiv.symm LinearEquiv.trans
+NewDefinition LinearEquiv LinearEquiv.refl LinearEquiv.symm LinearEquiv.trans
 DisabledTactic simp norm_num
 TheoremTab "Isomorphisms"

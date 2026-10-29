@@ -39,7 +39,7 @@ Lean builds these subspaces for you: `LinearMap.ker h` and `LinearMap.range h`, 
 The **rank** of $h$ is `finrank ℝ (LinearMap.range h)`, the **nullity** `finrank ℝ (LinearMap.ker h)`.
 "
 
-NewTheorem LinearMap.mem_range
+
 
 DisabledTactic simp norm_num
 TheoremTab "Maps"

@@ -1,8 +1,7 @@
-import Game.Metadata
-import Game.Ch2b
+import Game.Levels.BasisDim.L07_ColSpace
 
-World "Dimension"
-Level 1
+World "BasisDim"
+Level 8
 Title "Boss: the exchange lemma"
 
 Introduction "
@@ -10,7 +9,10 @@ Introduction "
 be a basis and $\\vec v = c_1\\vec\\beta_1 + \\dots + c_n\\vec\\beta_n$ with $c_i \\neq 0$. Then
 exchanging $\\vec\\beta_i$ for $\\vec v$ gives another basis.
 
-This is the engine behind *all bases have the same size*. We prove it for three vectors
+This is the engine behind *all bases have the same size* (Theorem 2.4): exchange the vectors
+of one basis into the other, one at a time. Lean's dimension `Module.finrank` comes with that
+theorem already proved (granted from Mathlib); this level shows the key step. We prove it for
+three vectors
 (exchanging $\\vec\\beta_1$), which has every idea of the general proof but none of the
 index bookkeeping. Independence and spanning are written out explicitly:
 - independent: the only relation $a\\vec\\beta_1 + b\\vec\\beta_2 + c\\vec\\beta_3 = \\vec 0$ is trivial;
@@ -56,10 +58,11 @@ end LinearAlgebraGame
 
 Conclusion "
 Repeating exchanges (Theorem 2.4) shows any two bases have the same number of elements, so
-*dimension* is well defined. From now on Mathlib's `Module.finrank` is the dimension.
+*dimension* is well defined. From now on Mathlib's `Module.finrank` is the dimension: the
+number of vectors in any basis.
 "
 
 NewTactic field_simp match_scalars
 
 TheoremTab "Dimension"
-NewTheorem mul_eq_zero trans
+NewTheorem mul_eq_zero

@@ -27,7 +27,10 @@ Statement :
         (∀ j, ∑ i, A i j = c) → IsEigenvalue A c) ∨
       (∀ (n : ℕ) (A : Matrix (Fin (n + 1)) (Fin (n + 1)) ℝ) (c : ℝ),
         (∀ j, ∑ i, A i j = c) → IsEigenvalue A c) := by
-  Hint "Columns of $A$ are rows of the transpose. Do $A$ and its transpose have the same eigenvalues?"
+  Hint "Decide first: try a small $2\\times 2$ example whose columns sum to $c$, and compare with
+  the row-sum case."
+  Hint (hidden := true) "Columns of $A$ are rows of the transpose. Do $A$ and its transpose have
+  the same eigenvalues?"
   right
   intro n A c h
   Hint (hidden := true) "`rw [isEigenvalue_iff_det, ← det_transpose]`, then

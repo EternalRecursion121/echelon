@@ -1,24 +1,26 @@
 import Game.Levels.BasisDim.L01_BasisUnique
-import Game.Levels.BasisDim.L02_P2Basis
-import Game.Levels.BasisDim.L03_Sym2
-import Game.Levels.BasisDim.L04_Sym3
-import Game.Levels.BasisDim.L05_ColSpace
-import Game.Levels.BasisDim.L06_RankZeroOne
-import Game.Levels.BasisDim.L07_DimMono
-import Game.Levels.BasisDim.L08_NestedEq
-import Game.Levels.BasisDim.L09_Augment
-import Game.Levels.BasisDim.L10_Solvable
-import Game.Levels.BasisDim.L11_FunDim
-import Game.Levels.BasisDim.L12_RootsA
-import Game.Levels.BasisDim.L13_RootsB
-import Game.Levels.BasisDim.L14_RootsC
+import Game.Levels.BasisDim.L02_BasisIff
+import Game.Levels.BasisDim.L03_P2Standard
+import Game.Levels.BasisDim.L04_P2Basis
+import Game.Levels.BasisDim.L05_Sym2
+import Game.Levels.BasisDim.L06_Sym3
+import Game.Levels.BasisDim.L07_ColSpace
+import Game.Levels.BasisDim.L08_Exchange
+import Game.Levels.BasisDim.L09_RankZero
+import Game.Levels.BasisDim.L10_DimMono
+import Game.Levels.BasisDim.L11_NestedEq
+import Game.Levels.BasisDim.L12_RankOne
+import Game.Levels.BasisDim.L13_Augment
+import Game.Levels.BasisDim.L14_Solvable
+import Game.Levels.BasisDim.L15_FunDim
 
 World "BasisDim"
 Title "Basis & Dimension"
 
 Introduction "
 Hefferon Two.III. A *basis* is an independent spanning sequence; every vector has unique
-coordinates in it, and all bases have the same size — the *dimension*. You will find bases,
+coordinates in it, and all bases have the same size — the *dimension* (the exchange lemma
+is why). You will find bases,
 compare dimensions of nested subspaces, and prove when a linear system is solvable in terms
 of rank.
 

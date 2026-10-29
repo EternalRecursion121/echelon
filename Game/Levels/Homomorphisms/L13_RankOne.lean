@@ -18,8 +18,9 @@ one, the map given by composing the operator with itself $t \\circ t : V \\to V$
 $t \\circ t = r \\cdot t$ for some real number $r$.
 
 In Lean, rank one is `finrank ℝ (LinearMap.range t) = 1` and the composite is `t ∘ₗ t`.
-`finrank_eq_one_iff'` turns a one-dimensional space into \"spanned by one nonzero vector\".
-Elements of the range are pairs `⟨x, proof⟩`; `(w : V)` is the underlying vector.
+`exists_line_of_finrank_eq_one` (from Basis & Dimension) turns a one-dimensional subspace into
+a line: a nonzero $\\vec w$ in it such that every member is a multiple $c\\,\\vec w$.
+`LinearMap.mem_range_self t v : t v ∈ range t`.
 "
 
 namespace LinearAlgebraGame
@@ -29,27 +30,21 @@ Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (t : V →ₗ[ℝ] V)
     (ht : Module.finrank ℝ (LinearMap.range t) = 1) :
     ∃ r : ℝ, t ∘ₗ t = r • t := by
   Hint "The range is the line through one vector $\\vec w$. Get $\\vec w$ first."
-  Hint (hidden := true) "`obtain ⟨w, hw0, hw⟩ := finrank_eq_one_iff'.mp ht`"
-  obtain ⟨w, hw0, hw⟩ := finrank_eq_one_iff'.mp ht
-  Hint (strict := true) "Now show every $t(\\vec v)$ is a multiple of $\\vec w$."
-  Hint (hidden := true) "`have key : ∀ v, ∃ a : ℝ, t v = a • (w : V) := by …`; inside,
-  `intro v`, `obtain ⟨a, ha⟩ := hw ⟨t v, LinearMap.mem_range_self t v⟩`, `use a`,
-  `rw [← Submodule.coe_smul, ha]`."
-  have key : ∀ v, ∃ a : ℝ, t v = a • (w : V) := by
-    intro v
-    obtain ⟨a, ha⟩ := hw ⟨t v, LinearMap.mem_range_self t v⟩
-    use a
-    rw [← Submodule.coe_smul, ha]
-  Hint (strict := true) "$\\vec w$ is in the range too, so $t(\\vec w) = r\\vec w$ for some $r$. That $r$ works."
-  Hint (hidden := true) "`obtain ⟨r, hr⟩ := key w`, `use r`, `ext v`."
-  obtain ⟨r, hr⟩ := key w
+  Hint (hidden := true) "`obtain ⟨w, -, -, hw⟩ := exists_line_of_finrank_eq_one ht`"
+  obtain ⟨w, -, -, hw⟩ := exists_line_of_finrank_eq_one ht
+  Hint (strict := true) "$t(\\vec w)$ is in the range too, so $t(\\vec w) = r\\vec w$ for some $r$.
+  That $r$ works."
+  Hint (hidden := true) "`obtain ⟨r, hr⟩ := hw (t w) (LinearMap.mem_range_self t w)`, `use r`, `ext v`."
+  obtain ⟨r, hr⟩ := hw (t w) (LinearMap.mem_range_self t w)
   use r
   ext v
-  Hint (hidden := true) "`rw [LinearMap.comp_apply, LinearMap.smul_apply]`, then
-  `obtain ⟨a, ha⟩ := key {v}` and `rw [ha, map_smul, hr, smul_comm]`."
+  Hint (hidden := true) "`rw [LinearMap.comp_apply, LinearMap.smul_apply]`"
   rw [LinearMap.comp_apply, LinearMap.smul_apply]
-  obtain ⟨a, ha⟩ := key v
-  rw [ha, map_smul, hr, smul_comm]
+  Hint "$t(\\vec v)$ is in the range as well: a multiple $a\\vec w$."
+  Hint (hidden := true) "`obtain ⟨a, ha⟩ := hw (t v) (LinearMap.mem_range_self t v)`, then
+  `rw [← ha, map_smul, ← hr, smul_smul, smul_smul, mul_comm]`."
+  obtain ⟨a, ha⟩ := hw (t v) (LinearMap.mem_range_self t v)
+  rw [← ha, map_smul, ← hr, smul_smul, smul_smul, mul_comm]
 
 end LinearAlgebraGame
 
@@ -60,4 +55,4 @@ $t(t(\\vec v)) = a\\,t(\\vec w) = r\\,(a\\vec w) = r\\,t(\\vec v)$.
 
 DisabledTactic simp norm_num
 TheoremTab "Dimension"
-NewTheorem LinearMap.mem_range_self Submodule.coe_smul LinearMap.smul_apply SMulCommClass.smul_comm LinearMap.comp_apply
+NewTheorem LinearMap.mem_range_self LinearMap.smul_apply LinearMap.comp_apply

@@ -8,8 +8,9 @@ Introduction "
 Theorem Three.II.2.20, (1) ⇔ (4): for $h : V \\to W$ with $V$ finite-dimensional, $h$ is one-to-one
 if and only if $\\operatorname{rank}(h) = \\dim V$.
 
-Useful: `LinearMap.ker_eq_bot`, `Submodule.finrank_eq_zero : finrank U = 0 ↔ U = ⊥`, and
-rank–nullity.
+Useful: `LinearMap.ker_eq_bot : ker h = ⊥ ↔ Function.Injective h` (Mathlib's form of your
+`inj_iff_kernel`, new in your inventory), `Submodule.finrank_eq_zero : finrank U = 0 ↔ U = ⊥`,
+and rank–nullity.
 "
 
 namespace LinearAlgebraGame
@@ -31,6 +32,7 @@ Conclusion "
 `inj_iff_rank` is now in your inventory.
 "
 
+NewTheorem LinearMap.ker_eq_bot
 DisabledTheorem LinearMap.finrank_range_of_inj
 DisabledTactic simp norm_num
 TheoremTab "Dimension"

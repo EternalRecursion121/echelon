@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L08_Sum
+import Game.Levels.Dimension.L10_Sum
 
 World "Dimension"
-Level 9
+Level 11
 Title "Boss: a basis for U + W"
 
 -- @sheet 6 Q1b
@@ -66,9 +66,12 @@ Statement sum_basis {V : Type*} [AddCommGroup V] [Module ℝ V] (U W : Submodule
     rw [← hβs, Submodule.mem_span_range_iff_exists_fun] at hx
     obtain ⟨d, hd⟩ := hx
     Hint "Then $\\sum d_i\\beta_i + \\sum (-c_l)\\omega_l = 0$ is a relation in the basis of $W$."
+    Hint (hidden := true) "`obtain ⟨-, hc⟩ := hWi d (-c) (by simp [{hd}])`: `simp` knows
+    `neg_smul` and `Finset.sum_neg_distrib`, and `{hd}` cancels the two sums."
     obtain ⟨-, hc⟩ := hWi d (-c) (by simp [hd])
     have hc0 : c = 0 := neg_eq_zero.mp hc
     Hint "With $c = 0$ the original relation is a relation in the basis of $U$."
+    Hint (hidden := true) "`rw [{hc0}] at {h}` and `simp at {h}` remove the zero terms."
     rw [hc0] at h
     simp at h
     obtain ⟨ha, hb⟩ := hUi a b h

@@ -1,7 +1,7 @@
-import Game.Levels.Homomorphisms.L14_RightInverse
+import Game.Levels.Homomorphisms.L15_IndepInj
 
 World "Homomorphisms"
-Level 15
+Level 16
 Title "Theorem 2.20"
 
 Introduction "
@@ -18,9 +18,12 @@ We prove each of (2)–(5) equivalent to (1). For (2), `h.rangeRestrict` is $h$ 
 into its range. For (5), the images always span $\\mathscr R(h)$, so being a basis means being
 linearly independent — that is how (5) is stated.
 
-You already have (1) ⇔ (3) (`LinearMap.ker_eq_bot`) and (1) ⇔ (4) (`inj_iff_rank`). New tools:
-`LinearEquiv.ofInjective h hi : V ≃ₗ[ℝ] range h`, `B.linearIndependent`,
-`LinearIndependent.map'`, `Fintype.linearIndependent_iff`.
+You already have (1) ⇔ (3) (`LinearMap.ker_eq_bot`), (1) ⇔ (4) (`inj_iff_rank`) and
+(5) ⇒ (1) (`inj_of_indep_images`). New tools: `LinearEquiv.ofInjective h hi : V ≃ₗ[ℝ] range h`
+(an isomorphism onto the range); for an isomorphism `e`, `e.toLinearMap` is the same map viewed
+as an ordinary linear map `→ₗ`, and `e.symm_apply_apply v : e.symm (e v) = v`;
+`B.linearIndependent` (a basis is independent) and `LinearIndependent.map'` (a one-to-one map
+keeps a sequence independent).
 "
 
 namespace LinearAlgebraGame
@@ -51,8 +54,8 @@ Statement {V W : Type*} [AddCommGroup V] [Module ℝ V] [AddCommGroup W] [Module
       congr 1
       ext
       exact huv
-  · Hint (hidden := true) "`exact LinearMap.ker_eq_bot.symm`"
-    exact LinearMap.ker_eq_bot.symm
+  · Hint (hidden := true) "`rw [LinearMap.ker_eq_bot]`"
+    rw [LinearMap.ker_eq_bot]
   · Hint "(1) ⇔ (4): you proved it with $\\dim V$ in place of $n$; the basis has $n$ vectors."
     Hint (hidden := true) "`rw [inj_iff_rank, Module.finrank_eq_card_basis B, Fintype.card_fin]`"
     rw [inj_iff_rank, Module.finrank_eq_card_basis B, Fintype.card_fin]
@@ -61,20 +64,9 @@ Statement {V W : Type*} [AddCommGroup V] [Module ℝ V] [AddCommGroup W] [Module
       Hint "A one-to-one map sends independent sets to independent sets."
       Hint (hidden := true) "`exact B.linearIndependent.map' h (LinearMap.ker_eq_bot.mpr {hi})`"
       exact B.linearIndependent.map' h (LinearMap.ker_eq_bot.mpr hi)
-    · intro hli
-      Hint "Show the null space is trivial: if $h(c_1\\vec\\beta_1+\\dots+c_n\\vec\\beta_n) = \\vec 0$ then
-      $c_1 h(\\vec\\beta_1)+\\dots+c_n h(\\vec\\beta_n) = \\vec 0$, so all $c_i = 0$."
-      Hint (hidden := true) "`rw [inj_iff_kernel]`, `intro v hv`, `rw [← B.sum_repr v, map_sum] at hv`,
-      `simp only [map_smul] at hv`."
-      rw [inj_iff_kernel]
-      intro v hv
-      rw [← B.sum_repr v, map_sum] at hv
-      simp only [map_smul] at hv
-      Hint (hidden := true) "`have hc := Fintype.linearIndependent_iff.mp {hli} _ {hv}`, then
-      `rw [← B.sum_repr v]` and `simp only [hc, zero_smul, Finset.sum_const_zero]`."
-      have hc := Fintype.linearIndependent_iff.mp hli _ hv
-      rw [← B.sum_repr v]
-      simp only [hc, zero_smul, Finset.sum_const_zero]
+    · Hint "This is the previous level."
+      Hint (hidden := true) "`exact inj_of_indep_images B h`"
+      exact inj_of_indep_images B h
 
 end LinearAlgebraGame
 
@@ -83,8 +75,8 @@ Theorem 2.20 is yours. In particular a one-to-one map from an $n$-dimensional sp
 isomorphism onto its range, which is $n$-dimensional.
 "
 
-NewTheorem LinearAlgebraGame.inj_iff_kernel LinearEquiv.symm_apply_apply Module.Basis.linearIndependent LinearIndependent.map' Finset.sum_const_zero
-NewDefinition LinearMap.rangeRestrict
+NewTheorem LinearAlgebraGame.inj_of_indep_images LinearEquiv.symm_apply_apply Module.Basis.linearIndependent LinearIndependent.map'
+NewDefinition LinearMap.rangeRestrict LinearEquiv.ofInjective
 
 DisabledTactic norm_num
 TheoremTab "Dimension"

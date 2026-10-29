@@ -26,7 +26,8 @@ In Lean, $V = U \\oplus W$ is Hefferon's definition: `U ⊔ W = ⊤` ($U + W = V
 built as a linear map, so linearity is automatic; you prove one-to-one and onto.
 
 Granted: `injective_iff_map_eq_zero` — a linear map is one-to-one iff only $\\vec 0$ maps to
-$\\vec 0$ (you prove this yourself in the Homomorphisms world).
+$\\vec 0$ (you prove this yourself in the Homomorphisms world). An element of $U \\times W$ is a
+pair `(u, w)` with `u : U`, `w : W`; `(u : V)` is the underlying vector of `u`.
 "
 
 namespace LinearAlgebraGame
@@ -57,10 +58,11 @@ Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (U W : Submodule ℝ V)
     have hw : (w : V) = 0 := by
       rw [hu, zero_add] at h
       exact h
-    Hint (strict := true) (hidden := true) "`ext`, then `exact hu` and `exact hw`."
-    ext
-    · exact hu
-    · exact hw
+    Hint (strict := true) "`pair_eq_zero_iff` says a pair `(u, w)` of subspace elements is zero
+    iff both underlying vectors are."
+    Hint (hidden := true) "`rw [pair_eq_zero_iff]`, then `exact ⟨hu, hw⟩`."
+    rw [pair_eq_zero_iff]
+    exact ⟨hu, hw⟩
   · intro v
     Hint "$V = U + W$, so $\\vec v$ is a sum $\\vec y + \\vec z$ with $\\vec y\\in U$, $\\vec z\\in W$."
     Hint (hidden := true) "`have hv : v ∈ U ⊔ W := by rw [hsum]; exact Submodule.mem_top`, then
@@ -69,6 +71,8 @@ Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (U W : Submodule ℝ V)
       rw [hsum]
       exact Submodule.mem_top
     obtain ⟨y, hy, z, hz, hyz⟩ := Submodule.mem_sup.mp hv
+    Hint "Your preimage is a pair of subspace elements. An element of a subspace `U` is written
+    `⟨y, hy⟩`: the vector `y` together with a proof `hy : y ∈ U`."
     Hint (hidden := true) "`use (⟨y, hy⟩, ⟨z, hz⟩)`, then `exact hyz`."
     use (⟨y, hy⟩, ⟨z, hz⟩)
     exact hyz
@@ -81,6 +85,6 @@ $\\{(\\vec u, -\\vec u) : \\vec u \\in U \\cap W\\} = \\{\\vec 0\\}$) and onto (
 so $U \\times W \\cong U \\oplus W$.
 "
 
-NewTheorem injective_iff_map_eq_zero LinearMap.coprod_apply Submodule.subtype_apply eq_neg_of_add_eq_zero_left Submodule.mem_sup
+NewTheorem LinearAlgebraGame.pair_eq_zero_iff injective_iff_map_eq_zero LinearMap.coprod_apply Submodule.subtype_apply eq_neg_of_add_eq_zero_left Submodule.mem_sup
 DisabledTactic simp norm_num
 TheoremTab "Subspaces"

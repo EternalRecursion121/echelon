@@ -27,7 +27,7 @@ namespace LinearAlgebraGame
 Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (A : Submodule ℝ V) :
     (¬ ∃ W : Submodule ℝ V, (W : Set V) = (A : Set V)ᶜ) ∨
       (∃ W : Submodule ℝ V, (W : Set V) = (A : Set V)ᶜ) := by
-  Hint "Decide first. Where is $\\vec 0$?"
+  Hint "Decide first: run the subspace conditions on $V \\setminus A$ one at a time."
   left
   intro h
   obtain ⟨W, hW⟩ := h

@@ -24,14 +24,22 @@ As the sheet allows, the fact that your sequence is a basis is granted: for base
 and `D` of $W$, Lean's `B.prod D` is the basis
 $\\langle(\\vec\\beta_1,\\vec 0),\\dots,(\\vec 0,\\vec\\delta_1),\\dots\\rangle$, indexed by
 `Fin n ⊕ Fin m`. `Module.finBasis ℝ U` is a basis of $U$ with $\\dim U$ vectors.
+
+You supply the relationship as a function `f` of the two dimensions (with `use`), then prove
+that $\\dim(U \\times W)$ is always `f (dim U) (dim W)`.
 "
 
 namespace LinearAlgebraGame
 
-/-- $\dim(U\times W) = \dim U + \dim W$. -/
-Statement {U W : Type*} [AddCommGroup U] [Module ℝ U] [AddCommGroup W] [Module ℝ W]
-    [FiniteDimensional ℝ U] [FiniteDimensional ℝ W] :
-    Module.finrank ℝ (U × W) = Module.finrank ℝ U + Module.finrank ℝ W := by
+/-- $\dim(U\times W)$ is a fixed function $f$ of $\dim U$ and $\dim W$. -/
+Statement : ∃ f : ℕ → ℕ → ℕ, ∀ (U W : Type) [AddCommGroup U] [Module ℝ U] [AddCommGroup W]
+    [Module ℝ W] [FiniteDimensional ℝ U] [FiniteDimensional ℝ W],
+    Module.finrank ℝ (U × W) = f (Module.finrank ℝ U) (Module.finrank ℝ W) := by
+  Hint "What is the relationship? Supply it as a function of the two dimensions with `use`,
+  as `use fun a b => …` with your formula in place of `…`."
+  Hint (hidden := true) "`use fun a b => a + b`, then `intro U W _ _ _ _ _ _`."
+  use fun a b => a + b
+  intro U W _ _ _ _ _ _
   Hint "The dimension is the number of vectors in any basis. Which basis of $U \\times W$
   do you know?"
   Hint (hidden := true) "`rw [Module.finrank_eq_card_basis ((Module.finBasis ℝ U).prod (Module.finBasis ℝ W))]`

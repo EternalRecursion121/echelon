@@ -17,6 +17,12 @@ def seg {V : Type*} [AddCommGroup V] [Module ℝ V] (u v : V) : Set V :=
 def IsConvex {V : Type*} [AddCommGroup V] [Module ℝ V] (C : Set V) : Prop :=
   ∀ u ∈ C, ∀ v ∈ C, seg u v ⊆ C
 
+/-- A pair of subspace elements is zero iff both underlying vectors are zero. -/
+theorem pair_eq_zero_iff {V : Type*} [AddCommGroup V] [Module ℝ V] {U W : Submodule ℝ V}
+    (u : U) (w : W) : (u, w) = 0 ↔ (u : V) = 0 ∧ (w : V) = 0 := by
+  rw [Prod.ext_iff]
+  simp
+
 end LinearAlgebraGame
 
 /-! ## Definitions -/
@@ -302,3 +308,13 @@ TheoremDoc one_smul as "one_smul" in "Axioms"
 /-- `congrFun h a : f a = g a` for `h : f = g` — equal functions agree at every input
 (for vectors: equal vectors have equal coordinates). -/
 TheoremDoc congrFun as "congrFun" in "Maps"
+/-- `(u, w) = 0 ↔ (u : V) = 0 ∧ (w : V) = 0` for `u : U`, `w : W` (subspaces of `V`). -/
+TheoremDoc LinearAlgebraGame.pair_eq_zero_iff as "pair_eq_zero_iff" in "Subspaces"
+/-- `Module.Basis ι ℝ V`: a basis of the whole space `V` indexed by `ι` — the game's `IsBasisOf B ⊤` — bundled with its coordinate map `B.repr`. `B i` is the `i`-th basis vector. -/
+DefinitionDoc Module.Basis as "Module.Basis"
+/-- `B.repr v`: the coordinates of `v` in the basis `B`; `B.repr v i` is the `i`-th coordinate, and `∑ i, B.repr v i • B i = v` (`Module.Basis.sum_repr`). -/
+DefinitionDoc Module.Basis.repr as "Basis.repr"
+/-- `le_top : U ≤ ⊤`: every subspace is inside the whole space. -/
+TheoremDoc le_top as "le_top" in "Dimension"
+/-- Theorem 2.20 (5) ⇒ (1): if `h` sends a basis `B` to an independent sequence `fun i => h (B i)`, then `h` is one-to-one. (You proved this.) -/
+TheoremDoc LinearAlgebraGame.inj_of_indep_images as "inj_of_indep_images" in "Dimension"

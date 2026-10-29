@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L11_EightTen
+import Game.Levels.Dimension.L14_EightTen
 
 World "Dimension"
-Level 12
+Level 15
 Title "Five points on a conic"
 
 -- @sheet 2 Q10
@@ -27,7 +27,8 @@ through point $i$.
 
 The six columns of $M$ live in $\\mathbb R^5$. `LinearIndependent.fintype_card_le_finrank`
 bounds the size of an independent family by the dimension;
-`Fintype.not_linearIndependent_iff` turns dependence into a nontrivial relation.
+`Fintype.not_linearIndependent_iff` turns dependence into a nontrivial relation, and
+`mulVec_eq_sum_col` says $M\\vec v = \\sum_j v_j\\,(\\text{column } j)$.
 "
 
 namespace LinearAlgebraGame
@@ -41,22 +42,31 @@ Statement (x y : Fin 5 → ℝ) :
     ∃ v : Fin 6 → ℝ, v ≠ 0 ∧ M *ᵥ v = 0 := by
   Hint "Six columns in a 5-dimensional space cannot be independent."
   have hdep : ¬ LinearIndependent ℝ M.col := by
+    Hint (hidden := true) "Assume independence: `intro h`."
     intro h
+    Hint (hidden := true) "`have := {h}.fintype_card_le_finrank` bounds the number of columns
+    by the dimension."
     have := h.fintype_card_le_finrank
+    Hint (hidden := true) "`rw [Fintype.card_fin, Module.finrank_fin_fun] at this`, then `omega`."
     rw [Fintype.card_fin, Module.finrank_fin_fun] at this
     omega
   Hint "A dependence among the columns is a nonzero $\\vec v$ with $M\\vec v = 0$."
+  Hint (hidden := true) "`rw [Fintype.not_linearIndependent_iff] at {hdep}` and
+  `obtain ⟨g, hg, i, hi⟩ := {hdep}`."
   rw [Fintype.not_linearIndependent_iff] at hdep
   obtain ⟨g, hg, i, hi⟩ := hdep
+  Hint (hidden := true) "`refine ⟨g, ?_, ?_⟩`"
   refine ⟨g, ?_, ?_⟩
-  · intro h0
+  · Hint "If $g = 0$ then every $g_i = 0$."
+    Hint (hidden := true) "`intro h0`, `apply {hi}`, `rw [h0]`, `exact rfl`."
+    intro h0
     apply hi
     rw [h0]
     exact rfl
-  · Hint "$M g$ is the sum of $g_j$ times column $j$: compare coordinates."
-    rw [← hg]
-    ext r
-    simp [mulVec, dotProduct, Finset.sum_apply, mul_comm]
+  · Hint "$M g$ is the sum of $g_j$ times column $j$."
+    Hint (hidden := true) "`rw [mulVec_eq_sum_col]`, then `exact {hg}`."
+    rw [mulVec_eq_sum_col]
+    exact hg
 
 end LinearAlgebraGame
 

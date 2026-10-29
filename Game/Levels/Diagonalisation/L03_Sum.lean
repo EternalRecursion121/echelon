@@ -16,7 +16,8 @@ Introduction "
 $t + s$?
 
 *Decide level.* Tools: `matSimilar_of_mul_eq_one (hQP : Q * P = 1) (h : S = P * T * Q) : MatSimilar T S`
-saves you from computing inverses, and you proved `not_diagonalizable_of_sq_eq_zero`.
+saves you from computing inverses, and your earlier results about diagonalisability are in the
+inventory.
 Concrete $2\\times2$ products can be checked entry by entry:
 `ext i j; fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two]`.
 "
@@ -34,6 +35,8 @@ Statement :
   Hint "Can you prove it in general, or is there a small counterexample? Decide, then commit."
   left
   intro h
+  Hint "Refute it with a pair of diagonalisable matrices whose sum is not diagonalisable. Your
+  `not_diagonalizable_of_sq_eq_zero` recognises some non-diagonalisable matrices."
   Hint (hidden := true) "Try T = !![1, 1; 0, 0] (diagonalised by P = !![1, 1; 0, -1], which is
   its own inverse) and S = !![-1, 0; 0, 0]."
   have hT : Diagonalizable (!![1, 1; 0, 0] : Matrix (Fin 2) (Fin 2) ℝ) := by

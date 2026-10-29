@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L06_DirectUnion
+import Game.Levels.Dimension.L08_DirectUnion
 
 World "Dimension"
-Level 7
+Level 9
 Title "An intersection"
 
 -- @sheet 6 Q1a
@@ -24,8 +24,6 @@ In Lean `S6W₁` is described as *entries $(0,0)$ and $(0,1)$ are zero* and `S6W
 *entries $(0,0)$ and $(1,1)$ are zero* (`mem_S6W₁`, `mem_S6W₂`); entries are numbered from 0.
 This level: $W_1 \\cap W_2$; the next level: $W_1 + W_2$.
 You describe each answer by a basis, then read off the dimension with `IsBasisOf.finrank_eq`.
-`Submodule.mem_sup_left` / `Submodule.mem_sup_right` put an element of $W_1$ / $W_2$ into
-$W_1 + W_2$.
 "
 
 namespace LinearAlgebraGame
@@ -49,7 +47,8 @@ Statement : ∃ k : ℕ, ∃ b : Fin k → Matrix (Fin 2) (Fin 2) ℝ,
         rintro _ ⟨i, rfl⟩
         fin_cases i
         exact ⟨⟨by simp, by simp⟩, ⟨by simp, by simp⟩⟩
-      · Hint "A matrix in both subspaces has three zero entries."
+      · Hint "Take a matrix in both subspaces: what do the two membership conditions say about
+        its entries? Write it as a combination of your basis."
         intro A hA
         obtain ⟨⟨h00, h01⟩, ⟨-, h11⟩⟩ := hA
         rw [Submodule.mem_span_range_iff_exists_fun]

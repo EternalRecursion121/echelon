@@ -1,7 +1,7 @@
-import Game.Levels.BasisDim.L10_Solvable
+import Game.Levels.BasisDim.L14_Solvable
 
 World "BasisDim"
-Level 11
+Level 15
 Title "Functions on a finite set"
 
 -- @sheet 4 Q7
@@ -19,10 +19,10 @@ a vector space under the natural operations. What is the dimension of the space 
 for each domain? (a) $S = \\{1\\}$ (b) $S = \\{1, 2\\}$ (c) $S = \\{1, \\dots, n\\}$
 (d) $S = \\emptyset$.
 
-The key is a basis: the *indicator functions* $\\delta_s$ (1 at $s$, 0 elsewhere).
-Mathlib packages it as `Pi.basisFun ℝ S`, and `Module.finrank_eq_card_basis` says the
-dimension is the number of basis vectors. For a finite set `S : Finset ℕ`,
-`Fintype.card_coe` says the number of elements of `S` (as a type) is `S.card`.
+The claim states the four dimensions — a number cannot be \"supplied\" more honestly than by
+proving it. The work is the reason: find a basis of $S \\to \\mathbb R$ and count it.
+Mathlib packages the basis you want as `Pi.basisFun ℝ S` (see Definitions), and
+`Module.finrank_eq_card_basis` says the dimension is the number of basis vectors.
 Prove the general fact first as a `have`, then the four cases.
 "
 
@@ -37,7 +37,8 @@ Statement :
   Hint "First prove the general fact: for every finite set $S$, the dimension is $|S|$."
   have key : ∀ S : Finset ℕ, Module.finrank ℝ (S → ℝ) = S.card := by
     intro S
-    Hint (hidden := true) "`rw [Module.finrank_eq_card_basis (Pi.basisFun ℝ S), Fintype.card_coe]`"
+    Hint (hidden := true) "`Fintype.card_coe` says the number of elements of `S` (as a type)
+    is `S.card`: `rw [Module.finrank_eq_card_basis (Pi.basisFun ℝ S), Fintype.card_coe]`."
     rw [Module.finrank_eq_card_basis (Pi.basisFun ℝ S), Fintype.card_coe]
   Hint "Now count the four sets."
   Hint (hidden := true) "`Finset.card_singleton`, `Finset.card_pair`, `Nat.card_Icc` and

@@ -1,7 +1,9 @@
-import Game.Levels.BasisDim.L11_FunDim
+import Game.Metadata
+import Game.Ch2b
+import Game.Levels.BasisDim
 
-World "BasisDim"
-Level 12
+World "Dimension"
+Level 1
 Title "Quadratics vanishing at 5"
 
 -- @sheet 4 Q6a
@@ -22,16 +24,22 @@ In `Poly 2`, $a_0 + a_1x + a_2x^2$ is `![a₀, a₁, a₂]`. `Poly.evalAt 5` is 
 $p \\mapsto p(5)$, so the subspace is its kernel. `Poly.evalAt_apply` and `Poly.eval` unfold
 an evaluation into $\\sum_i a_i 5^i$.
 
-`IsBasisOf.finrank_eq` turns a basis into the dimension.
+In `Poly.evalAt (n := 2) 5` the syntax `(n := 2)` passes the argument named `n` explicitly
+(we evaluate polynomials of $\\mathcal P_2$). Lean may display `LinearMap.ker f` as `f.ker`. You supply a basis — its size $k$ and the
+sequence `b : Fin k → Poly 2` — and prove it is a basis; `IsBasisOf.finrank_eq` then turns the
+basis into the dimension.
 "
 
 namespace LinearAlgebraGame
 
-/-- $\langle x - 5, x^2 - 5x\rangle$ is a basis of $\{p \in \mathcal P_2 \mid p(5) = 0\}$,
-which has dimension 2. -/
-Statement : IsBasisOf ![![-5, 1, 0], ![0, -5, 1]] (LinearMap.ker (Poly.evalAt (n := 2) 5)) ∧
-    Module.finrank ℝ (LinearMap.ker (Poly.evalAt (n := 2) 5)) = 2 := by
-  Hint "Prove the basis claim first; the dimension then follows."
+/-- $\{p \in \mathcal P_2 \mid p(5) = 0\}$ has a basis $b_1, \dots, b_k$, and dimension $k$. -/
+Statement : ∃ k : ℕ, ∃ b : Fin k → Poly 2,
+    IsBasisOf b (LinearMap.ker (Poly.evalAt (n := 2) 5)) ∧
+    Module.finrank ℝ (LinearMap.ker (Poly.evalAt (n := 2) 5)) = k := by
+  Hint "Which polynomials vanish at 5? Factor them. Find a basis on paper, then prove the basis
+  claim as a separate fact with `have`; the dimension then follows."
+  Hint (hidden := true) "`have hB : IsBasisOf ![![-5, 1, 0], ![0, -5, 1]]
+  (LinearMap.ker (Poly.evalAt (n := 2) 5)) := by` — that is $\\langle x - 5, x^2 - 5x\\rangle$."
   have hB : IsBasisOf ![![-5, 1, 0], ![0, -5, 1]] (LinearMap.ker (Poly.evalAt (n := 2) 5)) := by
     constructor
     · Hint "Independence: compare constant and $x^2$ coefficients."
@@ -47,7 +55,8 @@ Statement : IsBasisOf ![![-5, 1, 0], ![0, -5, 1]] (LinearMap.ker (Poly.evalAt (n
         rintro _ ⟨i, rfl⟩
         Hint (hidden := true) "`fin_cases i <;> simp [Poly.evalAt_apply, Poly.eval, Fin.sum_univ_three] <;> norm_num`"
         fin_cases i <;> simp [Poly.evalAt_apply, Poly.eval, Fin.sum_univ_three] <;> norm_num
-      · Hint "Given $p$ with $p(5) = 0$, the coefficients are $a_1 + 5a_2$ and $a_2$."
+      · Hint "Given $p$ with $p(5) = 0$, write it as a combination of your basis."
+        Hint (hidden := true) "The coefficients are $a_1 + 5a_2$ and $a_2$."
         intro p hp
         simp [Poly.evalAt_apply, Poly.eval, Fin.sum_univ_three] at hp
         rw [Submodule.mem_span_range_iff_exists_fun]
@@ -55,7 +64,8 @@ Statement : IsBasisOf ![![-5, 1, 0], ![0, -5, 1]] (LinearMap.ker (Poly.evalAt (n
         refine ⟨![p 1 + 5 * p 2, p 2], ?_⟩
         ext i
         fin_cases i <;> simp <;> linarith
-  exact ⟨hB, hB.finrank_eq⟩
+  Hint (hidden := true) "`exact ⟨2, _, hB, hB.finrank_eq⟩`"
+  exact ⟨2, _, hB, hB.finrank_eq⟩
 
 end LinearAlgebraGame
 

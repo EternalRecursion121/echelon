@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L01_Exchange
+import Game.Levels.Dimension.L03_RootsC
 
 World "Dimension"
-Level 2
+Level 4
 Title "Infinite dimension breaks it"
 
 -- @sheet 4 Q10c
@@ -24,9 +24,11 @@ An *explain level*. We use $W = \\mathbb R[x]$ (`Polynomial ℝ`) and
 $U = $ the range of $p \\mapsto x\\cdot p$. Warning: `Module.finrank` is $0$ for every
 infinite-dimensional space, so we measure with `Module.rank`, the cardinal-valued dimension.
 
-Useful: `LinearMap.mulLeft ℝ Polynomial.X` is $p \\mapsto x p$; an injective linear map is
-an isomorphism onto its range (`LinearEquiv.ofInjective`), and isomorphic spaces have equal
-rank (`LinearEquiv.rank_eq`). `Polynomial.X_dvd_iff` says $x \\mid p$ iff $p(0) = 0$.
+Useful: `LinearMap.mulLeft ℝ Polynomial.X` is the linear map $p \\mapsto x p$
+(`LinearMap.mulLeft_apply` unfolds it to `X * p`). An injective linear map is an isomorphism
+onto its range, so the range has the same rank as the domain
+(`rank_range_of_injective`). `Polynomial.X_dvd_iff` says $x \\mid p$ iff the
+constant coefficient of $p$ is $0$.
 
 Also write, as a comment starting `-- Explain:`, why the argument of (b) fails here.
 "
@@ -41,15 +43,21 @@ Statement : ∃ U : Submodule ℝ (Polynomial ℝ),
   $\\mathbb R[x]$. But $1$ is not in the range."
   have hinj : Function.Injective (LinearMap.mulLeft ℝ (Polynomial.X : Polynomial ℝ)) := by
     intro p q h
+    Hint (hidden := true) "`rw [LinearMap.mulLeft_apply, LinearMap.mulLeft_apply] at {h}`, then
+    cancel $x \\ne 0$: `exact mul_left_cancel₀ Polynomial.X_ne_zero {h}`."
+    rw [LinearMap.mulLeft_apply, LinearMap.mulLeft_apply] at h
     exact mul_left_cancel₀ Polynomial.X_ne_zero h
   Hint (hidden := true) "`refine ⟨LinearMap.range (LinearMap.mulLeft ℝ Polynomial.X), ?_,
-  (LinearEquiv.ofInjective _ {hinj}).rank_eq.symm⟩`"
+  rank_range_of_injective _ {hinj}⟩`"
   refine ⟨LinearMap.range (LinearMap.mulLeft ℝ Polynomial.X), ?_,
-    (LinearEquiv.ofInjective _ hinj).rank_eq.symm⟩
+    rank_range_of_injective _ hinj⟩
   intro htop
   Hint "If the range were everything, $1 = x\\cdot p$ for some $p$."
+  Hint (hidden := true) "`obtain ⟨p, hp⟩ := (LinearMap.range_eq_top.mp {htop}) 1`"
   obtain ⟨p, hp⟩ := (LinearMap.range_eq_top.mp htop) 1
-  have hX : (Polynomial.X : Polynomial ℝ) ∣ 1 := ⟨p, hp.symm⟩
+  rw [LinearMap.mulLeft_apply] at hp
+  Hint (hidden := true) "`have hX : (Polynomial.X : Polynomial ℝ) ∣ 1 := ⟨p, by rw [{hp}]⟩`"
+  have hX : (Polynomial.X : Polynomial ℝ) ∣ 1 := ⟨p, by rw [hp]⟩
   rw [Polynomial.X_dvd_iff] at hX
   -- Explain: in (b) a basis of U with dim W elements is independent in W, hence spans W —
   -- that counting step needs finiteness. Here x·ℝ[x] ≅ ℝ[x] has the same (infinite)
@@ -68,5 +76,5 @@ dimension.
 "
 
 TheoremTab "Dimension"
-NewTheorem Polynomial.X_ne_zero LinearEquiv.ofInjective LinearEquiv.rank_eq Polynomial.X_dvd_iff LinearMap.range_eq_top
-NewDefinition Polynomial LinearMap.mulLeft Module.rank LinearEquiv LinearEquiv.ofInjective LinearMap.range
+NewTheorem Polynomial.X_ne_zero LinearAlgebraGame.rank_range_of_injective LinearMap.mulLeft_apply Polynomial.X_dvd_iff LinearMap.range_eq_top
+NewDefinition Polynomial LinearMap.mulLeft Module.rank LinearMap.range

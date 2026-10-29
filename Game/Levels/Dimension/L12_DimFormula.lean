@@ -1,7 +1,7 @@
-import Game.Levels.Dimension.L09_SumBasis
+import Game.Levels.Dimension.L11_SumBasis
 
 World "Dimension"
-Level 10
+Level 12
 Title "The dimension formula"
 
 -- @sheet 6 Q1c
@@ -24,7 +24,7 @@ the number of indices of `Fin j ⊕ Fin k` is `j + k` (`Fintype.card_sum`, `Fint
 namespace LinearAlgebraGame
 
 /-- $\dim(U+W) = \dim U + \dim W - \dim(U\cap W)$. -/
-Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (U W : Submodule ℝ V)
+Statement dim_formula {V : Type*} [AddCommGroup V] [Module ℝ V] (U W : Submodule ℝ V)
     {j k p : ℕ} (β : Fin k → V) (μ : Fin j → V) (ω : Fin p → V)
     (hβ : IsBasisOf β (U ⊓ W)) (hU : IsBasisOf (Sum.elim μ β) U)
     (hW : IsBasisOf (Sum.elim β ω) W) :
@@ -41,8 +41,9 @@ Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (U W : Submodule ℝ V)
 end LinearAlgebraGame
 
 Conclusion "
-**The dimension formula**: $\\dim(U+W) = \\dim U + \\dim W - \\dim(U\\cap W)$. Mathlib's
-`Submodule.finrank_sup_add_finrank_inf_eq` is now fully earned.
+**The dimension formula**: $\\dim(U+W) = \\dim U + \\dim W - \\dim(U\\cap W)$, in your
+inventory as `dim_formula`. To use it in a finite-dimensional space you need the three bases;
+`exists_bases_inf U W` (Corollary 2.12, granted) provides them. The next two levels use it.
 "
 
 DisabledTheorem Submodule.finrank_sup_add_finrank_inf_eq
