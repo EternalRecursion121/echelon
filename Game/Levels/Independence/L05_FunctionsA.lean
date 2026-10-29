@@ -28,7 +28,9 @@ namespace LinearAlgebraGame
 /-- Are $x$ and $1/x$ linearly independent functions on $\mathbb{R}^+$? -/
 Statement : (¬ LinearIndependent ℝ ![(fun x : PosReal => x.1), (fun x : PosReal => 1 / x.1)]) ∨
     LinearIndependent ℝ ![(fun x : PosReal => x.1), (fun x : PosReal => 1 / x.1)] := by
-  Hint "If $ax + b/x = 0$ for every $x > 0$, try two convenient values of $x$."
+  Hint "Decide first. Test it: can $ax + b/x = 0$ hold for every $x > 0$ with $a, b$ not
+  both zero?"
+  Hint (hidden := true) "Try two convenient values of $x$ and see what they force."
   right
   rw [LinearIndependent.pair_iff]
   intro a b h

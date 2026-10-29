@@ -1,7 +1,7 @@
-import Game.Levels.Subspaces.L08_Complement
+import Game.Levels.Subspaces.L09_UnionNested
 
 World "Subspaces"
-Level 9
+Level 10
 Title "Unions (boss)"
 
 -- @sheet 4 Q5b
@@ -19,7 +19,8 @@ Introduction "
 **Problem Sheet 4, Question 5(b).** When is $A \\cup B$ a subspace? Provide an equivalent
 condition in terms of sets and prove its equivalence.
 
-The statement gives the condition; you prove the equivalence.
+The statement gives the condition; you prove the equivalence. The direction $\\Leftarrow$ is
+the previous level, `union_subspace_of_subset`.
 "
 
 namespace LinearAlgebraGame
@@ -43,16 +44,17 @@ Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (A B : Submodule ℝ V) :
       Hint (hidden := true) "`rw [Set.not_subset] at {hAB}` and `obtain ⟨a, haA, haB⟩ := {hAB}`."
       rw [Set.not_subset] at hAB
       obtain ⟨a, haA, haB⟩ := hAB
-      Hint (hidden := true) "Show `a ∈ (W : Set V)` and `b ∈ (W : Set V)` (rewrite with
-      `{hW}`), then `have hab : a + b ∈ (W : Set V) := W.add_mem ha hb'`."
-      have ha : a ∈ (W : Set V) := by
-        rw [hW]
+      Hint (hidden := true) "Show `a ∈ W` and `b ∈ W`, e.g.
+      `have ha : a ∈ W := by rw [mem_iff_of_coe_eq {hW}]; exact Or.inl {haA}`.
+      Then `have hab : a + b ∈ W := W.add_mem ha hb'`."
+      have ha : a ∈ W := by
+        rw [mem_iff_of_coe_eq hW]
         exact Or.inl haA
-      have hb' : b ∈ (W : Set V) := by
-        rw [hW]
+      have hb' : b ∈ W := by
+        rw [mem_iff_of_coe_eq hW]
         exact Or.inr hb
-      have hab : a + b ∈ (W : Set V) := W.add_mem ha hb'
-      rw [hW] at hab
+      have hab : a + b ∈ W := W.add_mem ha hb'
+      rw [mem_iff_of_coe_eq hW] at hab
       Hint "Two cases: $\\vec a + \\vec b \\in A$ or $\\vec a + \\vec b \\in B$. Subtract."
       rcases hab with hab | hab
       · apply hbA
@@ -65,14 +67,8 @@ Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (A B : Submodule ℝ V) :
         have := B.sub_mem hab hb
         rw [add_sub_cancel_right] at this
         exact this
-  · intro h
-    Hint "If $A \\subseteq B$ then $A \\cup B = B$."
-    rcases h with h | h
-    · use B
-      Hint (hidden := true) "`rw [Set.union_eq_self_of_subset_left {h}]`"
-      rw [Set.union_eq_self_of_subset_left h]
-    · use A
-      rw [Set.union_eq_self_of_subset_right h]
+  · Hint (hidden := true) "`exact union_subspace_of_subset A B`"
+    exact union_subspace_of_subset A B
 
 end LinearAlgebraGame
 
@@ -82,4 +78,4 @@ union but the *sum* $A + B$: the smallest subspace containing both.
 "
 
 TheoremTab "Subspaces"
-NewTheorem Set.not_subset Set.union_eq_self_of_subset_left Set.union_eq_self_of_subset_right Submodule.sub_mem add_sub_cancel_left add_sub_cancel_right
+NewTheorem Set.not_subset Submodule.sub_mem add_sub_cancel_left add_sub_cancel_right

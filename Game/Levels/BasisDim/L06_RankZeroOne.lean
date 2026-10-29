@@ -29,6 +29,10 @@ Inside your proof, also write your description in words as a comment starting
 
 **New syntax:** `foo (h := e)` passes the argument named `h` explicitly, when a lemma has several arguments and you want to give just one of them.
 
+An element of a subspace `W` is a pair `⟨x, hx⟩` of a vector `x` and a proof `hx : x ∈ W`;
+`Subtype.val` (displayed `↑`) extracts the vector. So from an equation `h : a = b` between
+elements of `W`, `congrArg Subtype.val h : ↑a = ↑b` is the equation between the vectors.
+
 New: `choose f hf using h` turns `h : ∀ x, ∃ y, P x y` into a function `f` with `hf : ∀ x, P x (f x)`.
 "
 

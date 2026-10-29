@@ -13,33 +13,33 @@ Closure, conditions (1) and (6), is automatic: `add` and `smul` are functions *i
 As a warm-up, check the checklist for the simplest real vector space of all: $\\mathbb{R}$
 itself, with the usual $+$ and with scalar multiplication $r \\cdot x = rx$.
 
-The zero condition says some $z$ satisfies $v + z = v$ for all $v$. The inverse condition
-says: for each $v$ there is a $w$ with $v + w$ equal to *any* $z$ that behaves like a zero.
+Conditions (4) and (5) are one field, `has_zero_neg`, worded as Hefferon does: there is a
+zero vector $z$ (with $v + z = v$ for all $v$), **and** every $v$ has an inverse $w$ with
+$v + w = z$. The Definitions tab lists all seven fields with their condition numbers.
 "
 
 namespace LinearAlgebraGame
 
 /-- $\mathbb{R}$ with its usual addition and multiplication satisfies the ten conditions. -/
 Statement : VectorSpaceAxioms ℝ (· + ·) (· * ·) := by
-  Hint "`constructor` splits the checklist into its eight remaining conditions."
+  Hint "`constructor` splits the checklist into its seven fields."
   constructor
   · Hint "Each of these is an identity of real numbers. `intro` the variables, then `ring`."
     intro u v
     ring
   · intro u v w
     ring
-  · Hint "Which real number $z$ has $v + z = v$ for every $v$?"
+  · Hint "First name the zero vector: which real number $z$ has $v + z = v$ for every $v$?
+    Then split the two parts with `constructor`."
+    Hint (hidden := true) "`use 0`, then `constructor`."
     use 0
-    intro v
-    ring
-  · intro v
-    Hint (hidden := true) "Take $w = -v$ with `use -{v}`."
-    use -v
-    intro z hz
-    Hint "`{hz}` says $z$ acts like a zero. Apply it to $x = 0$ to learn that $z = 0$."
-    Hint (hidden := true) "`have h0 := {hz} 0` then `linarith`."
-    have h0 := hz 0
-    linarith
+    constructor
+    · intro v
+      ring
+    · intro v
+      Hint (hidden := true) "Take $w = -v$ with `use -{v}`."
+      use -v
+      ring
   · intro r s v
     ring
   · intro r u v
@@ -54,7 +54,13 @@ end LinearAlgebraGame
 Conclusion "
 Every condition was an identity of real numbers. The interesting levels are the ones where
 a condition *fails*.
+
+The same checklist holds for every `[Module ℝ V]` (the game calls this theorem
+`axioms_of_module`), and it is why levels 1–7 could write `[Module ℝ V]` for
+\"$V$ is a vector space\". You prove it yourself in level 1 of the optional *From Scratch*
+world.
 "
 
 NewDefinition LinearAlgebraGame.VectorSpaceAxioms
+NewTheorem add_comm add_neg_cancel smul_add
 TheoremTab "Vector spaces"

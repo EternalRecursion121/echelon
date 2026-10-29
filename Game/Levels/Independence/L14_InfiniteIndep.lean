@@ -1,7 +1,7 @@
-import Game.Levels.Independence.L12_EarlierOnes
+import Game.Levels.Independence.L13_EarlierOnes
 
 World "Independence"
-Level 13
+Level 14
 Title "Infinitely many independent functions"
 
 -- @sheet 4 Q8
@@ -19,6 +19,9 @@ Introduction "
 We ask for a family $f_0, f_1, f_2, \\ldots$ indexed by $\\mathbb{N}$. An independent family
 has no repeats (two equal members give the relation $f_m - f_n = 0$), so its members form an
 infinite set.
+
+Lean defines a function by cases with `if … then … else`: `fun x => if x = 0 then 1 else 0`
+is $1$ at $0$ and $0$ everywhere else.
 
 For infinite families, independence is `linearIndependent_iff'`: for every finite set `s` of
 indices and coefficients `g`, if $\\sum_{i \\in s} g_i f_i = 0$ then each $g_i = 0$ for $i \\in s$.
@@ -48,4 +51,4 @@ So the space of all functions is not finite-dimensional — no finite set can sp
 "
 
 TheoremTab "Independence"
-NewTheorem linearIndependent_iff' Finset.sum_apply
+NewTheorem linearIndependent_iff' Finset.sum_apply Finset.smul_sum

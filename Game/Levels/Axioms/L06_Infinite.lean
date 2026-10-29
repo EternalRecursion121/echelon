@@ -17,6 +17,11 @@ Introduction "
 the type $V$ is infinite.
 
 Lean writes a function as `fun x => …`: e.g. `fun r : ℝ => r • v` is the map $r \\mapsto r\\vec v$.
+
+`Infinite.of_injective f hf` concludes `Infinite V` from a one-to-one `f : ℝ → V`. Lean cannot
+guess `f`, so give it explicitly: `apply Infinite.of_injective (fun … => …)`.
+`Function.Injective f` *means* `∀ a b, f a = f b → a = b`, so a goal `Function.Injective f`
+starts with `intro a b h`.
 "
 
 namespace LinearAlgebraGame

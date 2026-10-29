@@ -7,13 +7,13 @@ Title "Your own subspaces"
 Introduction "
 The game's `IsSubsp S` (see Definitions) says: $\\vec 0 \\in S$, and $S$ is closed under $+$
 and under scalar multiplication. Prove Hefferon's subspace test (Lemma Two.I.2.9) for it, in
-both directions.
+both directions. It is named `scratch_subspace_test`; level 5 reuses it.
 "
 
 namespace LinearAlgebraGame
 
 /-- `IsSubsp S` iff $S$ is nonempty and closed under pairwise linear combinations. -/
-Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (S : Set V) :
+Statement scratch_subspace_test {V : Type*} [AddCommGroup V] [Module ℝ V] (S : Set V) :
     IsSubsp S ↔
       S.Nonempty ∧ ∀ (c₁ c₂ : ℝ) (s₁ s₂ : V), s₁ ∈ S → s₂ ∈ S → c₁ • s₁ + c₂ • s₂ ∈ S := by
   constructor
@@ -42,7 +42,8 @@ Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (S : Set V) :
 
 end LinearAlgebraGame
 
-Conclusion "Hefferon's two-condition test and the three-condition definition agree."
+Conclusion "Hefferon's two-condition test and the three-condition definition agree.
+From now on this is `scratch_subspace_test`."
 
 NewDefinition LinearAlgebraGame.IsSubsp
 

@@ -24,6 +24,13 @@ Since this set sits inside the vector space of all functions, it is enough to sh
 subspace (the remaining conditions are inherited). In Lean the set must say that $f$ is
 **differentiable** — the next hint explains why. Also write your brief argument as a
 comment starting `-- Explain:` inside your proof.
+
+`Differentiable ℝ f` means `∀ x, DifferentiableAt ℝ f x` ($f$ is differentiable at every
+point). Your inventory gains the calculus you need, all in the Subspaces tab:
+- for the zero function: `differentiable_const`, `deriv_const`, and `Pi.zero_def` (the zero
+  function is the constant function `fun _ => 0`), `mul_zero`;
+- for combinations (granted, since calculus is not the point here): `differentiable_comb` and
+  `deriv_comb` — differentiation is linear.
 "
 
 namespace LinearAlgebraGame
@@ -34,7 +41,7 @@ Statement : ∃ W : Submodule ℝ (ℝ → ℝ),
     (W : Set (ℝ → ℝ)) = {f | Differentiable ℝ f ∧ ∀ x, deriv f x + 2 * f x = 0} := by
   Hint "Why `Differentiable`? Lean's `deriv f x` is a total function: where $f$ is not
   differentiable it returns the *junk value* $0$. The rule
-  $(f + g)' = f' + g'$ (`deriv_add`) is only true when $f$ and $g$ are differentiable, so
+  $(f + g)' = f' + g'$ is only true when $f$ and $g$ are differentiable, so
   without that condition in the set we could not prove closure under addition. On paper,
   \"$\\frac\{df}\{dx}$ exists\" is implicit in writing the equation; Lean makes it explicit."
   apply subspace_test
@@ -49,22 +56,19 @@ Statement : ∃ W : Submodule ℝ (ℝ → ℝ),
     obtain ⟨hfd, hf⟩ := hf
     obtain ⟨hgd, hg⟩ := hg
     constructor
-    · Hint (hidden := true) "`exact ({hfd}.const_smul c₁).add ({hgd}.const_smul c₂)`"
-      exact (hfd.const_smul c₁).add (hgd.const_smul c₂)
+    · Hint (hidden := true) "`exact differentiable_comb {hfd} {hgd} c₁ c₂`"
+      exact differentiable_comb hfd hgd c₁ c₂
     · intro x
       Hint "Differentiation is linear: split the derivative of the combination."
-      Hint (hidden := true) "`rw [deriv_add (({hfd}.const_smul c₁) x) (({hgd}.const_smul c₂) x),
-      deriv_const_smul c₁ ({hfd} x), deriv_const_smul c₂ ({hgd} x)]`"
-      rw [deriv_add ((hfd.const_smul c₁) x) ((hgd.const_smul c₂) x),
-        deriv_const_smul c₁ (hfd x), deriv_const_smul c₂ (hgd x)]
-      Hint (hidden := true) "Unfold the pointwise operations with `Pi.add_apply`,
-      `Pi.smul_apply`, `smul_eq_mul`, then `linear_combination c₁ * {hf} x + c₂ * {hg} x`."
-      rw [Pi.add_apply, Pi.smul_apply, Pi.smul_apply, smul_eq_mul, smul_eq_mul, smul_eq_mul,
+      Hint (hidden := true) "`rw [deriv_comb {hfd} {hgd}]`, then unfold the pointwise operations
+      with `Pi.add_apply`, `Pi.smul_apply`, `smul_eq_mul`."
+      rw [deriv_comb hfd hgd, Pi.add_apply, Pi.smul_apply, Pi.smul_apply, smul_eq_mul,
         smul_eq_mul]
       Hint (hidden := true) "Model explanation: the set lies inside the vector space of all
       functions, so by the subspace test we only need nonemptiness (the zero function solves
       the equation) and closure under combinations, which holds because differentiation is
       linear: $(c_1f + c_2g)' + 2(c_1f+c_2g) = c_1(f'+2f) + c_2(g'+2g) = 0$."
+      Hint (hidden := true) "`linear_combination c₁ * {hf} x + c₂ * {hg} x`"
       linear_combination c₁ * hf x + c₂ * hg x
 
 end LinearAlgebraGame
@@ -76,4 +80,4 @@ equation is $A\\vec x = \\vec 0$ or $f' + 2f = 0$.
 
 DisabledTactic simp
 TheoremTab "Subspaces"
-NewTheorem differentiable_const Differentiable.add Differentiable.const_smul deriv_add deriv_const_smul deriv_const Pi.zero_def MulZeroClass.mul_zero
+NewTheorem differentiable_const LinearAlgebraGame.differentiable_comb LinearAlgebraGame.deriv_comb deriv_const Pi.zero_def MulZeroClass.mul_zero

@@ -16,7 +16,9 @@ $\\{h, i, j\\}$ linearly independent, where $h(x) = 2$, $i(x) = 4\\sin^2(x)$ and
 $j(x) = \\cos^2(x)$?
 
 New tactic: `funext x` proves two functions equal by proving they agree at every `x`.
-`Real.sin_sq_add_cos_sq x : sin x ^ 2 + cos x ^ 2 = 1`.
+
+Three vectors: `linIndep_three_iff` (now unlocked) says
+`LinearIndependent ℝ ![u, v, w] ↔ ∀ a b c, a • u + b • v + c • w = 0 → a = 0 ∧ b = 0 ∧ c = 0`.
 
 Decide: `left` for dependent, `right` for independent.
 "
@@ -28,7 +30,10 @@ Statement : (¬ LinearIndependent ℝ ![(fun _ : PosReal => (2 : ℝ)),
       (fun x : PosReal => 4 * Real.sin x.1 ^ 2), (fun x : PosReal => Real.cos x.1 ^ 2)]) ∨
     LinearIndependent ℝ ![(fun _ : PosReal => (2 : ℝ)),
       (fun x : PosReal => 4 * Real.sin x.1 ^ 2), (fun x : PosReal => Real.cos x.1 ^ 2)] := by
-  Hint "Which famous identity links $\\sin^2$, $\\cos^2$ and a constant?"
+  Hint "Decide first. Test it: look for numbers $a, b, c$, not all zero, with
+  $2a + 4b\\sin^2 x + c\\cos^2 x = 0$ for every $x$ — or show none exist."
+  Hint (hidden := true) "Which famous identity links $\\sin^2$, $\\cos^2$ and a constant?
+  `Real.sin_sq_add_cos_sq x : sin x ^ 2 + cos x ^ 2 = 1`."
   left
   rw [linIndep_three_iff]
   intro h
@@ -51,5 +56,5 @@ end LinearAlgebraGame
 Conclusion "**Answer: dependent**: $-2h + i + 4j = 0$."
 
 TheoremTab "Independence"
-NewTheorem Real.sin_sq_add_cos_sq
+NewTheorem Real.sin_sq_add_cos_sq LinearAlgebraGame.linIndep_three_iff
 NewTactic funext

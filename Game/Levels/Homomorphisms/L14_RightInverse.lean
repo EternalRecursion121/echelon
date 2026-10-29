@@ -35,8 +35,10 @@ Statement : (¬ ∀ (V W : Type) [AddCommGroup V] [Module ℝ V] [AddCommGroup W
     (∀ (V W : Type) [AddCommGroup V] [Module ℝ V] [AddCommGroup W] [Module ℝ W]
       (g : V →ₗ[ℝ] W) (f : W → V), Function.Surjective g → (∀ w, g (f w) = w) →
       IsLinearMap ℝ f) := by
-  Hint "Decide first. $g$ forgets information; a right inverse only has to put *something*
-  back. Try $g(x,y) = x$."
+  Hint "Decide first. Test the claim on a simple surjective linear map, say $g(x, y) = x$:
+  which maps $f$ satisfy $g(f(w)) = w$? Must they all be linear?"
+  Hint (hidden := true) "$g$ forgets information; a right inverse only has to put *something*
+  back in the forgotten slot."
   left
   intro H
   Hint "Take $g(x, y) = x$ and $f(x) = (x, x^2)$."

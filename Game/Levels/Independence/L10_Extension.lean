@@ -1,7 +1,7 @@
-import Game.Levels.Independence.L08_SpanInsert
+import Game.Levels.Independence.L09_SubsetIndep
 
 World "Independence"
-Level 9
+Level 10
 Title "The extension lemma"
 
 Introduction "
@@ -34,7 +34,7 @@ Statement extension_lemma {V : Type*} [AddCommGroup V] [Module ℝ V] (u w x : V
     norm_num at h1
   · intro hx a b c hrel
     Hint "Is $c = 0$? If so, the relation is one between $\\vec u$ and $\\vec w$ alone. If
-    not, you can solve for $\\vec x$."
+    not, you can solve for $\\vec x$ — you proved how in level 1 (`isolate_of_relation`)."
     Hint (hidden := true) "`by_cases hc : c = 0`"
     by_cases hc : c = 0
     · rw [hc, zero_smul, add_zero] at hrel
@@ -43,14 +43,11 @@ Statement extension_lemma {V : Type*} [AddCommGroup V] [Module ℝ V] (u w x : V
     · exfalso
       apply hx
       rw [Submodule.mem_span_pair]
-      Hint (hidden := true) "`use -a / c, -b / c`, then a `calc`:
-      `(-a / c) • u + (-b / c) • w = c⁻¹ • (-(a • u + b • w + c • x)) + c⁻¹ • (c • x) := by module`,
-      `_ = x := by rw [{hrel}, neg_zero, smul_zero, zero_add, smul_smul, inv_mul_cancel₀ {hc}, one_smul]`."
+      Hint (hidden := true) "`use -a / c, -b / c`. Then level 1 with $\\vec x$ in front:
+      `have h1 := isolate_of_relation x u w c a b (by rw [← {hrel}]; module) {hc}`, `rw [h1]`."
       use -a / c, -b / c
-      calc (-a / c) • u + (-b / c) • w = c⁻¹ • (-(a • u + b • w + c • x)) + c⁻¹ • (c • x) := by
-            module
-        _ = x := by
-            rw [hrel, neg_zero, smul_zero, zero_add, smul_smul, inv_mul_cancel₀ hc, one_smul]
+      have h1 := isolate_of_relation x u w c a b (by rw [← hrel]; module) hc
+      rw [h1]
 
 end LinearAlgebraGame
 

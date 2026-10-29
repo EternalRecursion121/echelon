@@ -35,8 +35,9 @@ Statement : (¬ ∃ smul : ℝ → PosQuad → PosQuad, VectorSpaceAxioms PosQua
   left
   intro h
   obtain ⟨smul, hV⟩ := h
-  Hint (hidden := true) "`obtain ⟨z, hz⟩ := {hV}.has_zero` gives the would-be zero vector."
-  obtain ⟨z, hz⟩ := hV.has_zero
+  Hint (hidden := true) "`obtain ⟨z, hz, hneg⟩ := {hV}.has_zero_neg` gives the would-be zero
+  vector `z`."
+  obtain ⟨z, hz, hneg⟩ := hV.has_zero_neg
   Hint "What does `{hz}` say about $z + z$? Compare constant coefficients."
   Hint (hidden := true) "Feed `{z}` to `{hz}` itself: $z + z = z$. Now look at the constant coefficient."
   Hint (hidden := true) "`have h1 := congrArg PosQuad.a₀ ({hz} {z})`, then

@@ -23,7 +23,8 @@ namespace LinearAlgebraGame
 /-- For nonsingular $T$, is $(T^k)^{-1} = (T^{-1})^k$ for every $k$? -/
 Statement {n : ℕ} (T : Matrix (Fin n) (Fin n) ℝ) (hT : IsUnit T.det) :
     (¬ ∀ k : ℕ, (T ^ k)⁻¹ = (T⁻¹) ^ k) ∨ (∀ k : ℕ, (T ^ k)⁻¹ = (T⁻¹) ^ k) := by
-  Hint "Try $k = 2$: $(T^\{-1})^2 T^2 = T^\{-1}(T^\{-1}T)T$. The middle cancels."
+  Hint "Decide first: test small cases, e.g. $k = 2$. Is $(T^\{-1})^2$ an inverse of $T^2$?"
+  Hint (hidden := true) "$(T^\{-1})^2 T^2 = T^\{-1}(T^\{-1}T)T$. The middle cancels."
   right
   intro k
   Hint (hidden := true) "`apply Matrix.inv_eq_left_inv`, then `induction k with` …"

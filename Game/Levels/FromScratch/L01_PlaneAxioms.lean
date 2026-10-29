@@ -3,38 +3,41 @@ import Game.Ch2a
 
 World "FromScratch"
 Level 1
-Title "The plane satisfies the ten conditions"
+Title "Every vector space satisfies the ten conditions"
 
 Introduction "
 This optional world rebuilds Two.I–II on the game's own definitions and then proves they agree
-with Mathlib's. We start where Hefferon does: $\\mathbb{R}^2$ (here `ℝ × ℝ`) with the usual
-operations satisfies the ten conditions, i.e. `VectorSpaceAxioms`.
+with Mathlib's. We start with the bridge the Ten Conditions world took on trust: a Mathlib
+vector space `[AddCommGroup V] [Module ℝ V]` satisfies the game's checklist
+`VectorSpaceAxioms` (with the usual `+` and `•`).
 
-Each condition is an existing algebraic law: `add_comm`, `add_assoc`, `add_zero`,
-`add_smul`, `smul_add`, `smul_smul`, `one_smul`.
+Each condition is one of the laws in the table of Ten Conditions level 1: `add_comm`,
+`add_assoc`, `add_zero`, `add_neg_cancel`, `add_smul`, `smul_add`, `smul_smul` (condition (9)
+read backwards) and `one_smul ℝ v`.
 "
 
 namespace LinearAlgebraGame
 
-/-- $\mathbb{R}^2$ with the usual operations satisfies Hefferon's conditions. -/
-Statement : VectorSpaceAxioms (ℝ × ℝ) (· + ·) (· • ·) := by
+/-- Every real vector space (in Mathlib's sense) satisfies Hefferon's ten conditions. -/
+Statement axioms_of_module (V : Type*) [AddCommGroup V] [Module ℝ V] :
+    VectorSpaceAxioms V (· + ·) (· • ·) := by
+  Hint "`constructor` gives one goal per condition."
   constructor
   · intro u v
     exact add_comm u v
   · intro u v w
     exact add_assoc u v w
-  · use 0
-    intro v
-    exact add_zero v
-  · Hint "Take $\\vec w = -\\vec v$. A would-be zero $\\vec z$ satisfies $\\vec 0 + \\vec z = \\vec 0$,
-    so $\\vec z = \\vec 0$."
-    intro v
-    use -v
-    intro z hz
-    Hint (hidden := true) "`have h0 := {hz} 0`, `rw [zero_add] at h0`, `rw [h0, add_neg_cancel]`."
-    have h0 := hz 0
-    rw [zero_add] at h0
-    rw [h0, add_neg_cancel]
+  · Hint "Name the zero vector, then prove both parts: it is a zero, and every $\\vec v$ has an
+    inverse."
+    Hint (hidden := true) "`use 0`, `constructor`; for the inverse of `v` take `-v`."
+    use 0
+    constructor
+    · intro v
+      exact add_zero v
+    · intro v
+      use -v
+      Hint (hidden := true) "`exact add_neg_cancel {v}`"
+      exact add_neg_cancel v
   · intro r s v
     exact add_smul r s v
   · intro r u v
@@ -48,11 +51,9 @@ Statement : VectorSpaceAxioms (ℝ × ℝ) (· + ·) (· • ·) := by
 end LinearAlgebraGame
 
 Conclusion "
-The same proof works for any Mathlib vector space: that is the library's
-`VectorSpaceAxioms.of_module`.
+So every theorem of Chapter Two stated for `[Module ℝ V]` is a theorem about Hefferon's vector
+spaces. `axioms_of_module V` is now in your inventory.
 "
 
-NewTheorem add_comm add_neg_cancel smul_add
-DisabledTheorem LinearAlgebraGame.VectorSpaceAxioms.of_module
 DisabledTactic simp
 TheoremTab "From Scratch"

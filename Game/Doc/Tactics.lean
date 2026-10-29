@@ -93,6 +93,11 @@ TacticDoc unfold
 TacticDoc omega
 /-- `decide` proves a statement by evaluating it, when it is a finite check. -/
 TacticDoc decide
+/-- `rfl` closes a goal `a = b` (or `P ↔ P`) when both sides are equal *by definition* — the
+same thing once every definition is unfolded, e.g. `↑{ carrier := S, … } = S` (the set of a
+subspace you just built from the carrier `S` is `S`). It does no algebra: `2 + x = x + 2` is
+not definitional, use `ring` for that. -/
+TacticDoc rfl
 /-- `trivial` closes simple goals such as `True`. -/
 TacticDoc trivial
 /-- `symm` turns a goal `a = b` into `b = a`. -/

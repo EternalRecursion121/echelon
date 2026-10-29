@@ -28,7 +28,10 @@ namespace LinearAlgebraGame
 /-- Is $\{-x^2, 1 + 4x^2\}$ linearly independent in $\mathcal P_3$? -/
 Statement : (¬ LinearIndependent ℝ ![(![0, 0, -1, 0] : Poly 3), ![1, 0, 4, 0]]) ∨
     LinearIndependent ℝ ![(![0, 0, -1, 0] : Poly 3), ![1, 0, 4, 0]] := by
-  Hint "Suppose $a(-x^2) + b(1 + 4x^2) = 0$. Look at the constant term, then the $x^2$ term."
+  Hint "Decide first. Test it: suppose $a(-x^2) + b(1 + 4x^2) = 0$ and try to find a
+  nontrivial relation (not both $a, b$ zero). Found one: `left`. Every relation forced to be
+  trivial: `right`."
+  Hint (hidden := true) "Look at the constant term, then the $x^2$ term."
   right
   rw [LinearIndependent.pair_iff]
   intro a b h

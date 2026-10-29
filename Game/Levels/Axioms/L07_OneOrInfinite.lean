@@ -19,11 +19,17 @@ either one element or infinitely many.
 Here the system is $A\\vec x = \\vec 0$ for an $m\\times n$ matrix $A$. Since $\\vec 0$ is
 always a solution, \"one element\" means the solution set is $\\{\\vec 0\\}$.
 
-**The fact you may use.** The solution set, as a vector space, is
-`LinearMap.ker A.mulVecLin` (the *null space* of $A$). Its elements are pairs
-`⟨x, hx⟩` with `hx : A *ᵥ x = 0`, and Lean knows that
-`Infinite (LinearMap.ker A.mulVecLin)` means the same as `Infinite` of the set below
-(`Set.infinite_coe_iff`).
+**The fact you may use.** The solution set, viewed as a vector space, is
+`LinearMap.ker A.mulVecLin` (the *null space* of $A$). Two granted lemmas connect it to the set
+in the statement:
+- `solutionSet_infinite_iff A`: the solution set is infinite iff `Infinite (LinearMap.ker A.mulVecLin)`;
+- `solution_ne_zero A hx hx0`: a solution $\\vec x$ (`hx : A *ᵥ x = 0`) with `hx0 : x ≠ 0` is a
+  nonzero vector of that vector space.
+
+So the work left is the case split, and part (c).
+
+An underscore `_` in an argument list means \"Lean, fill this in yourself\": use it for an
+argument Lean can work out from the others (e.g. the vector in `infinite_of_ne_zero _ h`).
 
 New: `by_cases h : P` splits the proof into two cases, one with `h : P` and one with `h : ¬P`.
 "
@@ -39,19 +45,11 @@ Statement {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) :
   by_cases h : ∃ x, A *ᵥ x = 0 ∧ x ≠ 0
   · right
     obtain ⟨x, hx, hx0⟩ := h
-    Hint "The null space contains the nonzero vector `⟨{x}, {hx}⟩`, so part (c) applies to it."
-    Hint (hidden := true) "First show that pair is not zero:
-    `have hne : (⟨{x}, {hx}⟩ : LinearMap.ker A.mulVecLin) ≠ 0`."
-    have hne : (⟨x, hx⟩ : LinearMap.ker A.mulVecLin) ≠ 0 := by
-      Hint (hidden := true) "`intro h0` then `apply {hx0}`: the pair is zero exactly when its
-      first component is, `exact congrArg Subtype.val h0`."
-      intro h0
-      apply hx0
-      exact congrArg Subtype.val h0
-    Hint (hidden := true) "`have hinf := infinite_of_ne_zero _ {hne}`"
-    have hinf := infinite_of_ne_zero _ hne
-    Hint (hidden := true) "`exact Set.infinite_coe_iff.mp {hinf}`"
-    exact Set.infinite_coe_iff.mp hinf
+    Hint "The null space contains a nonzero vector, so part (c) applies to it."
+    Hint (hidden := true) "`rw [solutionSet_infinite_iff]`, then
+    `exact infinite_of_ne_zero _ (solution_ne_zero A {hx} {hx0})`."
+    rw [solutionSet_infinite_iff]
+    exact infinite_of_ne_zero _ (solution_ne_zero A hx hx0)
   · left
     Hint "Two sets are equal when they have the same elements: `ext x`."
     ext x
@@ -73,7 +71,7 @@ This is Hefferon's second proof of the \"one or infinitely many\" theorem — no
 row reduction at all, only the vector space axioms.
 "
 
-NewTheorem LinearAlgebraGame.infinite_of_ne_zero Set.infinite_coe_iff
+NewTheorem LinearAlgebraGame.infinite_of_ne_zero LinearAlgebraGame.solutionSet_infinite_iff LinearAlgebraGame.solution_ne_zero
 DisabledTactic norm_num simp
 TheoremTab "Vector spaces"
 NewDefinition LinearMap.ker

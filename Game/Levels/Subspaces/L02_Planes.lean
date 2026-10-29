@@ -10,6 +10,12 @@ parallel plane $x + y + z = 1$ is not. Vectors of $\\mathbb{R}^3$ are `v : Fin 3
 components `v 0`, `v 1`, `v 2`.
 
 Membership `v ∈ {v | P v}` unfolds to `P v` with `rw [Set.mem_ofPred_eq]`.
+
+**Subspace vs. its set.** In `(W : Set (Fin 3 → ℝ)) = {v | …}` the left side is the *set of
+vectors* of the subspace `W`; Lean displays it as `↑W`. The subspace `W` and the set `↑W` look
+alike but are different objects, so from `hW : ↑W = S` a plain `rw [hW]` will not touch
+`0 ∈ W`. The granted lemma `mem_iff_of_coe_eq hW : x ∈ W ↔ x ∈ S` bridges them:
+`rw [mem_iff_of_coe_eq hW] at h`.
 "
 
 namespace LinearAlgebraGame
@@ -33,10 +39,10 @@ Statement : (∃ W : Submodule ℝ (Fin 3 → ℝ),
   · Hint "Every subspace contains $\\vec 0$. Does this plane?"
     intro h
     obtain ⟨W, hW⟩ := h
-    Hint (hidden := true) "`have h0 : (0 : Fin 3 → ℝ) ∈ (W : Set (Fin 3 → ℝ)) := W.zero_mem`,
-    then `rw [{hW}] at h0` and `norm_num at h0`."
-    have h0 : (0 : Fin 3 → ℝ) ∈ (W : Set (Fin 3 → ℝ)) := W.zero_mem
-    rw [hW] at h0
+    Hint (hidden := true) "`have h0 := W.zero_mem`, then `rw [mem_iff_of_coe_eq {hW}] at h0`
+    and `norm_num at h0`."
+    have h0 := W.zero_mem
+    rw [mem_iff_of_coe_eq hW] at h0
     norm_num at h0
 
 end LinearAlgebraGame
@@ -46,4 +52,4 @@ The quickest way to show a set is *not* a subspace is usually: it misses $\\vec 
 "
 
 TheoremTab "Subspaces"
-NewTheorem LinearAlgebraGame.subspace_test Set.mem_ofPred_eq Submodule.zero_mem
+NewTheorem LinearAlgebraGame.subspace_test Set.mem_ofPred_eq Submodule.zero_mem LinearAlgebraGame.mem_iff_of_coe_eq

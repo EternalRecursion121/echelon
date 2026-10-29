@@ -12,6 +12,9 @@ exactly that its members are the combinations $\\sum_i c_i\\vec v_i$.
 
 **Lemma Two.I.2.15.** $[S]$ is a subspace containing $S$, and it is the *smallest* one: it is
 inside every subspace $W$ that contains $S$.
+
+For subspaces, `U ≤ W` means $U \\subseteq W$: every vector of `U` is in `W`. So a goal
+`U ≤ W` starts with `intro x hx` (`hx : x ∈ U`, goal `x ∈ W`).
 "
 
 namespace LinearAlgebraGame

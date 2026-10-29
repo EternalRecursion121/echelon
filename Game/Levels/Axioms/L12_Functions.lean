@@ -26,5 +26,5 @@ Every function-space identity reduces, point by point, to an identity of real nu
 "
 
 NewTheorem Pi.zero_apply Pi.neg_apply mul_add
-DisabledTactic simp
+DisabledTactic simp norm_num
 TheoremTab "Vector spaces"

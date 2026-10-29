@@ -19,9 +19,11 @@ Introduction "
 $\\{8 + 3x + 3x^2,\\ x + 2x^2,\\ 2 + 2x + 2x^2,\\ 8 - 2x + 5x^2\\}$ (in $\\mathcal{P}_3$)
 linearly dependent or independent?
 
-`Fintype.not_linearIndependent_iff` says a family is dependent iff some combination with
-coefficients `g` sums to zero while some `g i ≠ 0`. Find the coefficients by Gauss's method
-on paper (three equations, four unknowns), then let Lean check them.
+For four vectors use the general forms of Lemma 1.5: `Fintype.linearIndependent_iff` says a
+finite family `v` is independent iff `∀ g, ∑ i, g i • v i = 0 → ∀ i, g i = 0`, and
+`Fintype.not_linearIndependent_iff` says it is dependent iff some combination with
+coefficients `g` sums to zero while some `g i ≠ 0`. If it is dependent, find the coefficients by
+Gauss's method on paper, then let Lean check them.
 
 Decide: `left` for dependent, `right` for independent.
 "
@@ -33,7 +35,10 @@ Statement : (¬ LinearIndependent ℝ
       ![(![8, 3, 3, 0] : Poly 3), ![0, 1, 2, 0], ![2, 2, 2, 0], ![8, -2, 5, 0]]) ∨
     LinearIndependent ℝ
       ![(![8, 3, 3, 0] : Poly 3), ![0, 1, 2, 0], ![2, 2, 2, 0], ![8, -2, 5, 0]] := by
-  Hint "Four vectors, but only three coefficients ($1, x, x^2$) to match."
+  Hint "Decide first. Test it: write $c_1p_1 + c_2p_2 + c_3p_3 + c_4p_4 = 0$, compare
+  coefficients, and see whether the resulting system forces all $c_i = 0$."
+  Hint (hidden := true) "Four vectors, but only three coefficients ($1, x, x^2$) to match:
+  the homogeneous system has more unknowns than equations."
   left
   rw [Fintype.not_linearIndependent_iff]
   Hint (hidden := true) "Gauss's method gives the relation `use ![-17, -35, 48, 5]`."
@@ -51,4 +56,4 @@ end LinearAlgebraGame
 Conclusion "**Answer: dependent**, e.g. $-17p_1 - 35p_2 + 48p_3 + 5p_4 = 0$."
 
 TheoremTab "Independence"
-NewTheorem Fin.sum_univ_four Fintype.not_linearIndependent_iff
+NewTheorem Fin.sum_univ_four Fintype.not_linearIndependent_iff Fintype.linearIndependent_iff

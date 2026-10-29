@@ -18,15 +18,20 @@ space $V$.
 
 **(a)** When is $A \\cap B$ a subspace? Always? Sometimes? Never?
 
-The statement below claims your answer for *every* pair $A, B$.
+Decide: `right` claims \"always\" (for every pair $A, B$ of subspaces of $V$, the
+intersection is a subspace); `left` claims \"not always\" (sometimes or never).
 "
 
 namespace LinearAlgebraGame
 
-/-- For all subspaces $A, B$, the intersection $A \cap B$ is a subspace. -/
-Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (A B : Submodule ℝ V) :
-    ∃ W : Submodule ℝ V, (W : Set V) = (A : Set V) ∩ B := by
-  Hint "Subspace test: is $\\vec 0$ in both? Is a combination of vectors in both, in both?"
+/-- Is $A \cap B$ a subspace for all subspaces $A, B$? -/
+Statement {V : Type*} [AddCommGroup V] [Module ℝ V] :
+    (¬ ∀ A B : Submodule ℝ V, ∃ W : Submodule ℝ V, (W : Set V) = (A : Set V) ∩ B) ∨
+      ∀ A B : Submodule ℝ V, ∃ W : Submodule ℝ V, (W : Set V) = (A : Set V) ∩ B := by
+  Hint "Decide first: test the subspace test on $A \\cap B$. Is $\\vec 0$ in it? Is a
+  combination of two of its vectors in it?"
+  right
+  intro A B
   apply subspace_test
   · use 0
     exact ⟨A.zero_mem, B.zero_mem⟩

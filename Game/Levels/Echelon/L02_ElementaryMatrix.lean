@@ -41,4 +41,4 @@ matrix $E = E_r\\cdots E_1$, and since each step can be undone, $E$ has an inver
 "
 
 NewDefinition LinearAlgebraGame.combo LinearAlgebraGame.scale LinearAlgebraGame.RowEquiv
-NewTheorem Matrix.add_mul Matrix.single_apply Matrix.mul_apply
+NewTheorem Matrix.add_mul Matrix.single_apply Matrix.mul_apply mul_apply

@@ -63,6 +63,38 @@ theorem mem_spanOf {V : Type*} [AddCommGroup V] [Module ℝ V] {n : ℕ} (v : Fi
 def LinIndep {V : Type*} [AddCommGroup V] [Module ℝ V] {n : ℕ} (v : Fin n → V) : Prop :=
   ∀ c : Fin n → ℝ, ∑ i, c i • v i = 0 → ∀ i, c i = 0
 
+/-! ### Granted helpers -/
+
+/-- A subspace and its set of vectors: if `(W : Set V) = S` then membership in `W` is
+membership in `S`. -/
+theorem mem_iff_of_coe_eq {V : Type*} [AddCommGroup V] [Module ℝ V] {W : Submodule ℝ V}
+    {S : Set V} (hW : (W : Set V) = S) {x : V} : x ∈ W ↔ x ∈ S := by
+  rw [← hW]; rfl
+
+open Matrix in
+/-- Sheet 3 Q3(d)'s "fact", part 1: the solution set of `A x = 0` is infinite exactly when the
+null space `LinearMap.ker A.mulVecLin` (the same set, viewed as a vector space) is. -/
+theorem solutionSet_infinite_iff {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) :
+    Set.Infinite {x : Fin n → ℝ | A *ᵥ x = 0} ↔ Infinite (LinearMap.ker A.mulVecLin) := by
+  rw [← Set.infinite_coe_iff]; rfl
+
+open Matrix in
+/-- Sheet 3 Q3(d)'s "fact", part 2: a nonzero solution is a nonzero vector of the null space. -/
+theorem solution_ne_zero {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) {x : Fin n → ℝ}
+    (hx : A *ᵥ x = 0) (hx0 : x ≠ 0) : (⟨x, hx⟩ : LinearMap.ker A.mulVecLin) ≠ 0 := by
+  intro h; exact hx0 (congrArg Subtype.val h)
+
+/-- Linear combinations of differentiable functions are differentiable. -/
+theorem differentiable_comb {f g : ℝ → ℝ} (hf : Differentiable ℝ f) (hg : Differentiable ℝ g)
+    (c₁ c₂ : ℝ) : Differentiable ℝ (c₁ • f + c₂ • g) :=
+  (hf.const_smul c₁).add (hg.const_smul c₂)
+
+/-- Differentiation is linear. -/
+theorem deriv_comb {f g : ℝ → ℝ} (hf : Differentiable ℝ f) (hg : Differentiable ℝ g)
+    (c₁ c₂ x : ℝ) : deriv (c₁ • f + c₂ • g) x = c₁ * deriv f x + c₂ * deriv g x := by
+  rw [deriv_add ((hf.const_smul c₁) x) ((hg.const_smul c₂) x), deriv_const_smul c₁ (hf x),
+    deriv_const_smul c₂ (hg x), smul_eq_mul, smul_eq_mul]
+
 end LinearAlgebraGame
 
 /-! ## Definitions -/
@@ -72,13 +104,19 @@ end LinearAlgebraGame
 and 6) is automatic, because `add : V → V → V` and `smul : ℝ → V → V` land in `V`. The
 other conditions are the fields
 
-* `add_comm : ∀ u v, add u v = add v u`
-* `add_assoc : ∀ u v w, add (add u v) w = add u (add v w)`
-* `has_zero : ∃ z, ∀ v, add v z = v`
-* `has_neg : ∀ v, ∃ w, ∀ z, (∀ x, add x z = x) → add v w = z`
-* `add_smul`, `smul_add`, `mul_smul`, `one_smul` (conditions 7–10).
+* `add_comm : ∀ u v, add u v = add v u` — condition (2)
+* `add_assoc : ∀ u v w, add (add u v) w = add u (add v w)` — condition (3)
+* `has_zero_neg : ∃ z, (∀ v, add v z = v) ∧ ∀ v, ∃ w, add v w = z` — conditions (4) and (5):
+  there is a zero vector `z`, and every `v` has an inverse `w` with `v + w = z`
+* `add_smul : ∀ r s v, smul (r + s) v = add (smul r v) (smul s v)` — condition (7)
+* `smul_add : ∀ r u v, smul r (add u v) = add (smul r u) (smul r v)` — condition (8)
+* `mul_smul : ∀ r s v, smul (r * s) v = smul r (smul s v)` — condition (9)
+* `one_smul : ∀ v, smul 1 v = v` — condition (10)
 
-If `h : VectorSpaceAxioms V add smul` then `h.has_zero` is the zero condition, and so on. -/
+If `h : VectorSpaceAxioms V add smul` then `h.has_zero_neg` is the zero-and-inverse condition,
+and so on: `obtain ⟨z, hz, hneg⟩ := h.has_zero_neg` names the zero `z`, `hz : ∀ v, add v z = v`
+and `hneg : ∀ v, ∃ w, add v w = z`. To *prove* `VectorSpaceAxioms …`, use `constructor`
+(seven goals). -/
 DefinitionDoc LinearAlgebraGame.VectorSpaceAxioms as "VectorSpaceAxioms"
 
 /-- `PosQuad` is the set $P$ of Sheet 3 Q1: a record of three reals `a₀ a₁ a₂` with proofs
@@ -117,9 +155,6 @@ TheoremDoc neg_one_smul as "neg_one_smul" in "Vector spaces"
 
 /-- `zero_smul_eq_zero v : (0:ℝ) • v = 0` — Lemma Two.I.1.16 (1), proved in Axioms level 1. -/
 TheoremDoc LinearAlgebraGame.zero_smul_eq_zero as "zero_smul_eq_zero" in "Vector spaces"
-/-- `neg_unique v w w' (hw : w + v = 0) (hw' : v + w' = 0) : w = w'` — additive inverses are
-unique (Sheet 4 Q3). -/
-TheoremDoc LinearAlgebraGame.neg_unique as "neg_unique" in "Vector spaces"
 /-- `neg_one_smul_add v : (-1 : ℝ) • v + v = 0` — Lemma Two.I.1.16 (2). -/
 TheoremDoc LinearAlgebraGame.neg_one_smul_add as "neg_one_smul_add" in "Vector spaces"
 
@@ -166,6 +201,14 @@ TheoremDoc Infinite.of_injective as "Infinite.of_injective" in "Vector spaces"
 /-- `Set.infinite_coe_iff : Infinite S ↔ S.Infinite` — "the set `S`, viewed as a type, is
 infinite" and "`S` is an infinite set" say the same thing. -/
 TheoremDoc Set.infinite_coe_iff as "Set.infinite_coe_iff" in "Vector spaces"
+/-- `solutionSet_infinite_iff A : Set.Infinite {x | A *ᵥ x = 0} ↔ Infinite (LinearMap.ker A.mulVecLin)`
+— the solution set is infinite iff the null space (the same set, as a vector space) is.
+Granted (Sheet 3 Q3(d)'s "fact"). -/
+TheoremDoc LinearAlgebraGame.solutionSet_infinite_iff as "solutionSet_infinite_iff" in "Vector spaces"
+/-- `solution_ne_zero A hx hx0 : (⟨x, hx⟩ : LinearMap.ker A.mulVecLin) ≠ 0` for a solution
+`hx : A *ᵥ x = 0` with `hx0 : x ≠ 0` — a nonzero solution is a nonzero vector of the null space.
+Granted. -/
+TheoremDoc LinearAlgebraGame.solution_ne_zero as "solution_ne_zero" in "Vector spaces"
 /-- `Matrix.mulVec_zero A : A *ᵥ 0 = 0`. -/
 TheoremDoc Matrix.mulVec_zero as "mulVec_zero" in "Vector spaces"
 
@@ -201,6 +244,19 @@ TheoremDoc LinearAlgebraGame.subspace_test as "subspace_test" in "Subspaces"
 /-- `span_smallest v`: the span of the vectors `v i` contains each of them, and is contained
 in every subspace that contains them all (Lemma Two.I.2.15). -/
 TheoremDoc LinearAlgebraGame.span_smallest as "span_smallest" in "Subspaces"
+/-- `mem_iff_of_coe_eq hW : x ∈ W ↔ x ∈ S` when `hW : (W : Set V) = S`.
+
+A subspace `W` and its *set of vectors* `(W : Set V)` (displayed `↑W`) look alike but are
+different objects, so `rw [hW]` cannot rewrite `x ∈ W`. This lemma moves membership across:
+`rw [mem_iff_of_coe_eq hW] at h` turns `h : x ∈ W` into `h : x ∈ S`, and
+`rw [mem_iff_of_coe_eq hW]` does the same to the goal. -/
+TheoremDoc LinearAlgebraGame.mem_iff_of_coe_eq as "mem_iff_of_coe_eq" in "Subspaces"
+/-- `differentiable_comb hf hg c₁ c₂ : Differentiable ℝ (c₁ • f + c₂ • g)` for differentiable
+`f`, `g`. -/
+TheoremDoc LinearAlgebraGame.differentiable_comb as "differentiable_comb" in "Subspaces"
+/-- `deriv_comb hf hg c₁ c₂ x : deriv (c₁ • f + c₂ • g) x = c₁ * deriv f x + c₂ * deriv g x`
+for differentiable `f`, `g` — differentiation is linear. -/
+TheoremDoc LinearAlgebraGame.deriv_comb as "deriv_comb" in "Subspaces"
 /-- `Set.mem_ofPred_eq : (a ∈ {x | p x}) = p a` — unfold membership in a set-builder set. -/
 TheoremDoc Set.mem_ofPred_eq as "Set.mem_ofPred_eq" in "Subspaces"
 /-- `W.zero_mem : 0 ∈ W` — every subspace contains the zero vector. -/
@@ -255,6 +311,10 @@ TheoremDoc deriv_const as "deriv_const" in "Subspaces"
 TheoremDoc Submodule.coe_inf as "Submodule.coe_inf" in "Subspaces"
 /-- disabled -/
 TheoremDoc Submodule.mem_inf as "Submodule.mem_inf" in "Subspaces"
+/-- `union_subspace_of_subset A B h : ∃ W : Submodule ℝ V, (W : Set V) = A ∪ B` when
+`h : (A : Set V) ⊆ B ∨ (B : Set V) ⊆ A` — nested subspaces have a subspace as union
+(Subspaces level 9). -/
+TheoremDoc LinearAlgebraGame.union_subspace_of_subset as "union_subspace_of_subset" in "Subspaces"
 /-- `Set.not_subset : ¬ s ⊆ t ↔ ∃ a ∈ s, a ∉ t`. -/
 TheoremDoc Set.not_subset as "Set.not_subset" in "Subspaces"
 /-- `add_sub_cancel_left a b : a + b - a = b`. -/
@@ -299,6 +359,14 @@ TheoremDoc LinearAlgebraGame.span_insert_iff as "span_insert_iff" in "Independen
 /-- `extension_lemma u w x hli` — for independent `u, w`: `u, w, x` independent iff
 `x ∉ span {u, w}` (Lemma Two.II.1.15). -/
 TheoremDoc LinearAlgebraGame.extension_lemma as "extension_lemma" in "Independence"
+/-- `indep_pair_of_indep_three u v w h : LinearIndependent ℝ ![u, v]` from
+`h : LinearIndependent ℝ ![u, v, w]` — a subset of an independent set is independent
+(Lemma Two.II.1.20, Independence level 9). -/
+TheoremDoc LinearAlgebraGame.indep_pair_of_indep_three as "indep_pair_of_indep_three" in "Independence"
+/-- `pair_dependent_iff u v : ¬ LinearIndependent ℝ ![u, v] ↔ u = 0 ∨ v ∈ span ℝ {u}` — two
+vectors are dependent iff the first is zero or the second is a multiple of the first
+(Independence level 12). -/
+TheoremDoc LinearAlgebraGame.pair_dependent_iff as "pair_dependent_iff" in "Independence"
 /-- `le_antisymm : a ≤ b → b ≤ a → a = b` — for subspaces: mutual inclusion gives equality. -/
 TheoremDoc le_antisymm as "le_antisymm" in "Independence"
 /-- `Submodule.span_mono : S ⊆ T → span ℝ S ≤ span ℝ T`. -/
@@ -322,6 +390,9 @@ TheoremDoc Set.insert_comm as "Set.insert_comm" in "Independence"
 /-- `smul_eq_zero : r • v = 0 ↔ r = 0 ∨ v = 0` (you proved the key case in the Ten Conditions
 world, Sheet 3 Q3(a)). -/
 TheoremDoc smul_eq_zero as "smul_eq_zero" in "Independence"
+/-- `Finset.smul_sum : r • ∑ i ∈ s, f i = ∑ i ∈ s, r • f i` — a scalar times a sum is the sum
+of the scaled terms. -/
+TheoremDoc Finset.smul_sum as "Finset.smul_sum" in "Independence"
 /-- `Finset.sum_apply x s f : (∑ i ∈ s, f i) x = ∑ i ∈ s, f i x` — sums of functions are
 evaluated pointwise. -/
 TheoremDoc Finset.sum_apply as "Finset.sum_apply" in "Independence"
@@ -342,22 +413,22 @@ DefinitionDoc LinearAlgebraGame.LinIndep as "LinIndep"
 /-- `mem_spanOf v x : x ∈ spanOf v ↔ ∃ c, ∑ i, c i • v i = x`. -/
 TheoremDoc LinearAlgebraGame.mem_spanOf as "mem_spanOf" in "From Scratch"
 /-- `add_comm a b : a + b = b + a` — Hefferon's condition (2). -/
-TheoremDoc add_comm as "add_comm" in "From Scratch"
+TheoremDoc add_comm as "add_comm" in "Vector spaces"
 /-- `smul_add r u v : r • (u + v) = r • u + r • v` — Hefferon's condition (8). -/
-TheoremDoc smul_add as "smul_add" in "From Scratch"
+TheoremDoc smul_add as "smul_add" in "Vector spaces"
 /-- `add_neg_cancel a : a + -a = 0`. -/
-TheoremDoc add_neg_cancel as "add_neg_cancel" in "From Scratch"
+TheoremDoc add_neg_cancel as "add_neg_cancel" in "Vector spaces"
 /-- `Finset.sum_add_distrib : ∑ i ∈ s, (f i + g i) = ∑ i ∈ s, f i + ∑ i ∈ s, g i`. -/
 TheoremDoc Finset.sum_add_distrib as "Finset.sum_add_distrib" in "From Scratch"
-/-- `Finset.smul_sum : r • ∑ i ∈ s, f i = ∑ i ∈ s, r • f i`. -/
-TheoremDoc Finset.smul_sum as "Finset.smul_sum" in "From Scratch"
-/-- `SetLike.mem_coe : x ∈ (W : Set V) ↔ x ∈ W`. -/
-TheoremDoc SetLike.mem_coe as "SetLike.mem_coe" in "From Scratch"
 /-- `Fin.sum_univ_two f : ∑ i : Fin 2, f i = f 0 + f 1`. -/
 TheoremDoc Fin.sum_univ_two as "Fin.sum_univ_two" in "From Scratch"
-/-- `VectorSpaceAxioms.of_module V`: every Mathlib real vector space satisfies the ten
-conditions. Disabled while you prove an instance of it by hand. -/
-TheoremDoc LinearAlgebraGame.VectorSpaceAxioms.of_module as "VectorSpaceAxioms.of_module" in "From Scratch"
+/-- `axioms_of_module V : VectorSpaceAxioms V (· + ·) (· • ·)` — every Mathlib real
+vector space satisfies the ten conditions (From Scratch level 1). -/
+TheoremDoc LinearAlgebraGame.axioms_of_module as "axioms_of_module" in "From Scratch"
+/-- `scratch_subspace_test S : IsSubsp S ↔ S.Nonempty ∧ ∀ c₁ c₂ s₁ s₂, s₁ ∈ S → s₂ ∈ S →
+c₁ • s₁ + c₂ • s₂ ∈ S` — Hefferon's subspace test for the game's own `IsSubsp`
+(From Scratch level 2). -/
+TheoremDoc LinearAlgebraGame.scratch_subspace_test as "scratch_subspace_test" in "From Scratch"
 /-- `scratch_subspace_iff S : IsSubsp S ↔ ∃ W : Submodule ℝ V, (W : Set V) = S` — the game's
 subspaces are exactly Mathlib's `Submodule`s. -/
 TheoremDoc LinearAlgebraGame.scratch_subspace_iff as "scratch_subspace_iff" in "From Scratch"

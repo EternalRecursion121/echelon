@@ -6,11 +6,12 @@ import Game.Levels.Independence.L05_FunctionsA
 import Game.Levels.Independence.L06_FunctionsB
 import Game.Levels.Independence.L07_Triangular
 import Game.Levels.Independence.L08_SpanInsert
-import Game.Levels.Independence.L09_Extension
-import Game.Levels.Independence.L10_GaussSubset
-import Game.Levels.Independence.L11_SubsetIndep
-import Game.Levels.Independence.L12_EarlierOnes
-import Game.Levels.Independence.L13_InfiniteIndep
+import Game.Levels.Independence.L09_SubsetIndep
+import Game.Levels.Independence.L10_Extension
+import Game.Levels.Independence.L11_GaussSubset
+import Game.Levels.Independence.L12_PairDependent
+import Game.Levels.Independence.L13_EarlierOnes
+import Game.Levels.Independence.L14_InfiniteIndep
 
 World "Independence"
 Title "Independence"

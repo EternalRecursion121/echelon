@@ -15,15 +15,20 @@ Introduction "
 **Problem Sheet 4, Question 3.** In a vector space every element has an additive
 inverse. Can some elements have two or more?
 
-Decide what you believe before reading on. Then the statement takes two inverses $w$ and
-$w'$ of the same $v$; your job is to compare them.
+This is a *decide* level: `right` claims \"no — any two inverses of the same $v$ are equal\",
+`left` claims \"yes — some $v$ has two different inverses\". Commit, then prove your claim.
 "
 
 namespace LinearAlgebraGame
 
-/-- If $w$ and $w'$ are both additive inverses of $v$, then $w = w'$. -/
-Statement neg_unique {V : Type*} [AddCommGroup V] [Module ℝ V] (v w w' : V)
-    (hw : w + v = 0) (hw' : v + w' = 0) : w = w' := by
+/-- Must two additive inverses of the same vector be equal? -/
+Statement {V : Type*} [AddCommGroup V] [Module ℝ V] :
+    (¬ ∀ v w w' : V, w + v = 0 → v + w' = 0 → w = w') ∨
+      ∀ v w w' : V, w + v = 0 → v + w' = 0 → w = w' := by
+  Hint "Decide first. Take two inverses $w$, $w'$ of the same $v$ and try to compare them —
+  or look for an example where they differ."
+  right
+  intro v w w' hw hw'
   Hint "Start from $w = w + \\vec 0$ and replace $\\vec 0$ by something involving $w'$.
   A `calc` block lets you write a chain of equalities."
   Hint (hidden := true) "$w = w + 0 = w + (v + w') = (w + v) + w' = 0 + w' = w'$."

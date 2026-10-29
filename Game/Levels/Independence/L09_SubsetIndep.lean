@@ -1,7 +1,7 @@
-import Game.Levels.Independence.L10_GaussSubset
+import Game.Levels.Independence.L08_SpanInsert
 
 World "Independence"
-Level 11
+Level 9
 Title "Subsets of independent sets"
 
 Introduction "
@@ -13,7 +13,7 @@ $\\vec u, \\vec v$ independent.
 namespace LinearAlgebraGame
 
 /-- If $\vec u, \vec v, \vec w$ are independent then so are $\vec u, \vec v$. -/
-Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (u v w : V)
+Statement indep_pair_of_indep_three {V : Type*} [AddCommGroup V] [Module ℝ V] (u v w : V)
     (h : LinearIndependent ℝ ![u, v, w]) : LinearIndependent ℝ ![u, v] := by
   Hint "A relation between $\\vec u$ and $\\vec v$ is a relation among all three with
   coefficient $0$ on $\\vec w$."
@@ -28,7 +28,8 @@ end LinearAlgebraGame
 
 Conclusion "
 The other two cells of Hefferon's table are \"may be either\": a superset of an independent
-set, or a subset of a dependent one.
+set, or a subset of a dependent one. From now on this level is `indep_pair_of_indep_three`;
+read backwards it says: if $\\vec u, \\vec v$ are dependent, so are $\\vec u, \\vec v, \\vec w$.
 "
 
 TheoremTab "Independence"

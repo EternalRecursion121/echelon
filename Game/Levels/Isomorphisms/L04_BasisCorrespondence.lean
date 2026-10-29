@@ -90,4 +90,4 @@ $B$ and $D$ give *unique* coordinates. Mathlib calls this isomorphism `Basis.equ
 
 DisabledTactic norm_num
 TheoremTab "Bases"
-NewTheorem Finsupp.add_apply Finsupp.smul_apply SemigroupAction.mul_smul Module.Basis.repr_sum_self LinearEquiv.injective Finset.smul_sum Module.Basis.sum_repr
+NewTheorem Finsupp.add_apply Finsupp.smul_apply SemigroupAction.mul_smul Module.Basis.repr_sum_self LinearEquiv.injective Module.Basis.sum_repr

@@ -39,16 +39,10 @@ end LinearAlgebraGame
 
 Conclusion "
 So \"some nontrivial relation\" and \"some vector is a combination of the others\" are the
-same thing. In Lean, independence of a family `v` is `LinearIndependent ℝ v`, and Lemma 1.5
-is in your inventory in three forms: `Fintype.linearIndependent_iff` (any finite family),
-`LinearIndependent.pair_iff` (two vectors) and `linIndep_three_iff` (three vectors).
-Lean uses *families* `![v₀, v₁, …]` rather than sets, which takes care of Hefferon's
-\"distinct\" condition: the family `![v, v]` is dependent even though the set $\\{v, v\\}$ is
-just $\\{v\\}$.
+same thing. Next level: how Lean states independence.
 "
 
 DisabledTactic field_simp
 TheoremTab "Independence"
 
 NewTactic «module»
-NewTheorem LinearAlgebraGame.linIndep_three_iff Fintype.linearIndependent_iff LinearIndependent.pair_iff

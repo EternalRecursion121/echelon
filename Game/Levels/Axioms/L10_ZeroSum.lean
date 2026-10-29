@@ -28,11 +28,13 @@ namespace LinearAlgebraGame
 /-- Is $\mathbb{R}^2$ with $\vec v + \vec w = \vec 0$ and the usual scaling a vector space? -/
 Statement : (¬ VectorSpaceAxioms (ℝ × ℝ) (fun _ _ => (0, 0)) (fun r v => (r * v.1, r * v.2))) ∨
     VectorSpaceAxioms (ℝ × ℝ) (fun _ _ => (0, 0)) (fun r v => (r * v.1, r * v.2)) := by
-  Hint "Run through the conditions. Is there a vector $\\vec z$ with $\\vec v + \\vec z = \\vec v$?"
+  Hint "Decide first: run through the conditions one by one with this strange addition. Do
+  they all hold?"
+  Hint (hidden := true) "Is there a vector $\\vec z$ with $\\vec v + \\vec z = \\vec v$ for every $\\vec v$?"
   left
   intro h
-  Hint (hidden := true) "`obtain ⟨z, hz⟩ := {h}.has_zero`"
-  obtain ⟨z, hz⟩ := h.has_zero
+  Hint (hidden := true) "`obtain ⟨z, hz, hneg⟩ := {h}.has_zero_neg`"
+  obtain ⟨z, hz, hneg⟩ := h.has_zero_neg
   Hint "Test `{hz}` on a vector that is not $\\vec 0$, say $(1, 0)$."
   Hint (hidden := true) "`have h1 := {hz} (1, 0)`, then compare first components:
   `have h2 := congrArg Prod.fst h1` and `norm_num at h2`."

@@ -16,7 +16,16 @@ under scalar multiplication. \"The set $S$ is a subspace\" is therefore
 under linear combinations of pairs: $c_1\\vec s_1 + c_2\\vec s_2 \\in S$ for all scalars and
 all $\\vec s_1, \\vec s_2 \\in S$.
 
-Lean builds the subspace from its carrier `S` and three closure proofs; the hints show how.
+**Building a subspace.** A `Submodule` is a structure with four fields: the carrier set and
+three closure proofs. Write it out field by field, with `?_` for each proof you still owe:
+
+`refine ⟨{ carrier := S, add_mem' := ?_, zero_mem' := ?_, smul_mem' := ?_ }, ?_⟩`
+
+This leaves four goals in order: closure under $+$, $\\vec 0 \\in S$, closure under scaling,
+and finally `↑{ carrier := S, … } = S` — \"the set of the subspace you built is `S`\", true by
+definition.
+
+New tactic: `rfl` closes a goal `a = b` whose two sides are equal *by definition*.
 "
 
 namespace LinearAlgebraGame
@@ -29,9 +38,9 @@ Statement subspace_test {V : Type*} [AddCommGroup V] [Module ℝ V] (S : Set V)
     ∃ W : Submodule ℝ V, (W : Set V) = S := by
   Hint "First get hold of an element of `S`: `obtain ⟨s, hs⟩ := {hne}`."
   obtain ⟨s, hs⟩ := hne
-  Hint (hidden := true) "Now build the subspace, leaving the three closure proofs as goals:
-  `refine ⟨\{ carrier := S, add_mem' := ?_, zero_mem' := ?_, smul_mem' := ?_ }, rfl⟩`"
-  refine ⟨{ carrier := S, add_mem' := ?_, zero_mem' := ?_, smul_mem' := ?_ }, rfl⟩
+  Hint "Now build the subspace with carrier `S`, as in the introduction."
+  Hint (hidden := true) "`refine ⟨\{ carrier := S, add_mem' := ?_, zero_mem' := ?_, smul_mem' := ?_ }, ?_⟩`"
+  refine ⟨{ carrier := S, add_mem' := ?_, zero_mem' := ?_, smul_mem' := ?_ }, ?_⟩
   · Hint "Closure under $+$: a sum is the combination with $c_1 = c_2 = 1$."
     intro a b ha hb
     Hint (hidden := true) "`have h1 := {h} 1 1 {a} {b} {ha} {hb}`, then `rw [one_smul, one_smul] at h1`."
@@ -50,6 +59,8 @@ Statement subspace_test {V : Type*} [AddCommGroup V] [Module ℝ V] (S : Set V)
     have h1 := h c 0 a a ha ha
     rw [zero_smul, add_zero] at h1
     exact h1
+  · Hint "The set of the subspace you built is `S` by definition."
+    rfl
 
 end LinearAlgebraGame
 
@@ -60,3 +71,4 @@ subspace_test` and check two things — it is nonempty, and closed under combina
 
 TheoremTab "Subspaces"
 NewTheorem zero_smul
+NewTactic rfl

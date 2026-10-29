@@ -129,7 +129,7 @@ lemmas whose statement *is* the level (e.g. `smul_eq_zero` for "r•v = 0 ↔ r 
   rational solutions, S9 Q3 integer solutions).
 - Vectors `Fin n → ℝ` with `![…]`; matrices `Matrix (Fin m) (Fin n) ℝ` with `!![…]`; dot
   product `⬝ᵥ`; `EuclideanSpace` only when norms/inner products are essential.
-- Library you may use: `Game/Lib/` — `LinearAlgebraGame.VectorSpaceAxioms` (+ `.of_module`),
+- Library you may use: `Game/Lib/` — `LinearAlgebraGame.VectorSpaceAxioms` (its bridge `axioms_of_module` is From Scratch level 1),
   `LinearAlgebraGame.Poly n` (𝒫ₙ as `Fin (n+1) → ℝ`, `Poly.eval`, `Poly.evalAt`, `Poly.deriv`),
   `LinearAlgebraGame.charpolyH` (+ `charpolyH_eq`), the `rowop` tactic.
 - Cross-chapter results: don't import other chapters' worlds (they are built in parallel).

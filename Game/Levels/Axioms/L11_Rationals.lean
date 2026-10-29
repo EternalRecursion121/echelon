@@ -31,7 +31,9 @@ namespace LinearAlgebraGame
 Statement : (¬ ∃ smul : ℝ → ℚ → ℚ, (∀ r q, (smul r q : ℝ) = r * q) ∧
       VectorSpaceAxioms ℚ (· + ·) smul) ∨
     (∃ smul : ℝ → ℚ → ℚ, (∀ r q, (smul r q : ℝ) = r * q) ∧ VectorSpaceAxioms ℚ (· + ·) smul) := by
-  Hint "Is $\\mathbb\{Q}$ closed under multiplication by *real* scalars? Try $\\sqrt 2 \\cdot 1$."
+  Hint "Decide first: check the conditions one at a time, starting with closure — must
+  `smul r q` (a real times a rational) be rational?"
+  Hint (hidden := true) "Try $r = \\sqrt 2$ and $q = 1$."
   left
   intro h
   obtain ⟨smul, hs, hV⟩ := h

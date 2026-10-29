@@ -386,6 +386,11 @@ TheoremDoc eq_bot_iff as "eq_bot_iff" in "Dimension"
 TheoremDoc eq_neg_of_add_eq_zero_right as "eq_neg_of_add_eq_zero_right" in "Sums"
 /-- `U = ⊤ ↔ ⊤ ≤ U`. -/
 TheoremDoc eq_top_iff as "eq_top_iff" in "Basis"
+/-- `Iff.rfl : P ↔ P` — a statement is equivalent to itself (also when the two sides agree
+after unfolding definitions). The tactic `rfl` does the same. -/
+TheoremDoc Iff.rfl as "Iff.rfl" in "Basis"
+/-- `symm h : b = a` from `h : a = b` (works for any symmetric relation). -/
+TheoremDoc symm as "symm" in "Basis"
 /-- `finrank ℝ (⊥ : Submodule ℝ V) = 0`. -/
 TheoremDoc finrank_bot as "finrank_bot" in "Dimension"
 /-- `finrank ℝ V = 1 ↔ ∃ v ≠ 0, ∀ w, ∃ c, c • v = w`: dimension 1 means a line. -/

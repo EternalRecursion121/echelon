@@ -6,7 +6,8 @@ import Game.Levels.Subspaces.L05_ODE
 import Game.Levels.Subspaces.L06_Span
 import Game.Levels.Subspaces.L07_Intersection
 import Game.Levels.Subspaces.L08_Complement
-import Game.Levels.Subspaces.L09_Union
+import Game.Levels.Subspaces.L09_UnionNested
+import Game.Levels.Subspaces.L10_Union
 
 World "Subspaces"
 Title "Subspaces"
