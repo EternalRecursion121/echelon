@@ -2,7 +2,7 @@ import Game.Levels.DotProduct.L08_Triangle
 
 World "DotProduct"
 Level 9
-Title "The triangle inequality for n vectors"
+Title "Many vectors at once?"
 
 -- @sheet 2 Q6
 /-! @answer

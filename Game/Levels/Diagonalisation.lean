@@ -17,7 +17,8 @@ Title "Diagonalisation"
 Introduction "
 Hefferon Five.II.2–3. Which matrices are similar to diagonal ones? Exactly those with a
 basis of eigenvectors (Lemma 2.4) — for instance every matrix with distinct eigenvalues
-(Corollary 3.19, which you prove for $2\\times2$). Then the characteristic polynomial of a
+(Corollary 3.19, which you prove for $2\\times2$). Which constructions keep a map
+diagonalisable: scalar multiples, sums, composites (Sheet 10 Q2)? Then the characteristic polynomial of a
 *transformation*: it is well defined, every odd-size real matrix has a real eigenvalue, the
 leading coefficient, the polynomial factored over its eigenvalues, the determinant as the
 product of the eigenvalues, and the boss: geometric multiplicity $\\le$ algebraic

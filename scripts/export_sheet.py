@@ -6,7 +6,7 @@ Usage: python3 scripts/export_sheet.py N [--out exports/] [--progress my-progres
 
 With --progress (the JSON from the game's "Download progress" button, which works on the
 public server), each question shows YOUR proof from the game instead of the sample proof,
-marks unsolved questions, and notes how many hidden hints you opened.
+marks unsolved questions, and notes on how many proof rows you opened hidden hints.
 
 --hand-in (needs --progress) produces what you submit: each question (the sheet's wording
 only, not the game's instructions), your explanation (every `-- Explain:` comment block in
@@ -216,17 +216,31 @@ def explanation_md(blocks, math=True):
     return md + [""]
 
 
-def headings(entries):
-    """'Question 3a' etc.; a tag shared by several levels gets '(part i of n)'."""
+# Questions the sheet does NOT split into lettered parts, although the game tags them Q7a, Q7b, …
+# (one level per step; the letters keep coverage checks working). Printed as "(part i of n)".
+# Keep in sync with scripts/sheet_index.py.
+UNLETTERED = {8: {"6"}, 9: {"7", "8"}, 10: {"2", "6"}}
+
+
+def heading_key(sheet, q):
+    """The printed question for a tag: '7a' -> '7' when the sheet's Question 7 has no parts."""
+    m = re.match(r"(\d+)", q)
+    return m.group(1) if m and m.group(1) in UNLETTERED.get(sheet, ()) else q
+
+
+def headings(entries, sheet=0):
+    """'Question 3a' etc.; a tag shared by several levels (or several game parts of an
+    unlettered sheet question) gets '(part i of n)'."""
+    keys = [heading_key(sheet, e[0]) for e in entries]
     counts = {}
-    for e in entries:
-        counts[e[0]] = counts.get(e[0], 0) + 1
+    for k in keys:
+        counts[k] = counts.get(k, 0) + 1
     seen, out = {}, []
-    for e in entries:
-        q = e[0].replace("-", "–")
-        if counts[e[0]] > 1:
-            seen[e[0]] = seen.get(e[0], 0) + 1
-            out.append(f"Question {q} (part {seen[e[0]]} of {counts[e[0]]})")
+    for k in keys:
+        q = k.replace("-", "–")
+        if counts[k] > 1:
+            seen[k] = seen.get(k, 0) + 1
+            out.append(f"Question {q} (part {seen[k]} of {counts[k]})")
         else:
             out.append(f"Question {q}")
     return out
@@ -258,10 +272,12 @@ def collect(sheet, progress):
                 mine = player_proof(progress, *world_level(src))
                 if mine and mine[0]:
                     code, done, hints = mine
-                    header = proof.split(":= by")[0] + ":= by"
+                    # the hand-in shows `Statement : …`, not the game's internal statement name
+                    header = re.sub(r"^Statement\s+[\w.]+(?=[\s:({\[])", "Statement",
+                                    proof.split(":= by")[0]) + ":= by"
                     proof = header + "\n" + "\n".join("  " + l for l in code.splitlines())
                     note = ("✓ solved in the game" if done else "✗ not yet solved in the game") + \
-                           (f" · {hints} hidden hint(s) opened" if hints else " · no hidden hints")
+                           (f" · hidden hints opened on {hints} proof row(s)" if hints else " · no hidden hints opened")
                 else:
                     proof, note = "-- not attempted yet", "✗ not attempted in the game"
             entries.append((m.group(2), f.relative_to(ROOT), fix_lists(string_block(src, "Introduction")),
@@ -272,7 +288,7 @@ def collect(sheet, progress):
 
 def render(sheet, entries, hand_in, progress, name, math_ok):
     """Markdown lines. math_ok: set of indices whose explanation may keep $…$ math."""
-    heads = headings(entries)
+    heads = headings(entries, sheet)
     if hand_in:
         md = [f"# Linear Algebra MT2026 — Problem Sheet {sheet}" + (f" — {plain(name)}" if name else ""), "",
               "Proofs written and checked in Lean 4 (Mathlib) in the *Echelon* game.", ""]
@@ -327,7 +343,7 @@ def main():
                 bad.append(k)
         (out / f".{stem}-check.pdf").unlink(missing_ok=True)
         if bad:
-            heads = headings(entries)
+            heads = headings(entries, sheet)
             for k in bad:
                 print(f"warning: the $…$ maths in your explanation for {heads[k]} does not compile "
                       f"in LaTeX; it is printed as plain text instead.", file=sys.stderr)

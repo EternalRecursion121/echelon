@@ -24,6 +24,7 @@ macro "entrywise" : tactic =>
     | (ext i j
        fin_cases i <;> fin_cases j <;> entrywise_clean)
     | (ext i
-       fin_cases i <;> entrywise_clean))
+       fin_cases i <;> entrywise_clean)
+    | fail "entrywise needs vectors or matrices of a concrete size like Fin 3 (here the size is a letter): use ext i instead")
 
 end LinearAlgebraGame

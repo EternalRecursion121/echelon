@@ -65,8 +65,17 @@ every level directly, and use the sheet → level index below to find each quest
    `python3 scripts/export_sheet.py N --hand-in --progress <your-file>.json --pdf --name \"Your Name\"`
 3. Hand in the PDF it writes (`exports/sheetN-hand-in.pdf`): for each question, the sheet's
    wording, your `-- Explain:` text (every block, printed as plain text; `$…$` stays maths),
-   your Lean proof, and **how many hidden hints you opened** (visible hints
-   are not counted). Unsolved questions are marked.
+   your Lean proof, and **on how many proof rows you opened hidden hints** (visible hints
+   are not counted). Unsolved questions are marked. Questions the sheet does not split into
+   lettered parts but the game does are shown as \"(part 1 of 3)\" and so on.
+
+   `--pdf` needs **pandoc** and a TeX installation with **lualatex** (the PDF also uses the
+   DejaVu and STIX Two fonts, which come with TeX Live, and macOS's Menlo). On macOS:
+   `brew install pandoc` and MacTeX (`brew install --cask mactex`); with the smaller BasicTeX,
+   add packages as the error messages name them (`sudo tlmgr install fvextra stix2-otf dejavu`
+   is a start). Without these, leave out `--pdf`: the Markdown file
+   `exports/sheetN-hand-in.md` is always written and can be handed in or printed from any
+   Markdown viewer.
 
 **Explain levels** ask for a written argument as well: in Editor mode, add comment lines
 inside your proof starting with `-- Explain:` (`--` starts a comment; continue on further
@@ -116,11 +125,11 @@ question are warm-ups and lecture results.
 
 **Sheet 7.** Q1: Matrix of a Map 5 · Q2: Matrix of a Map 6 · Q3: Matrix of a Map 9 · Q4: Matrix Algebra 1 · Q5: Matrix Algebra 6 · Q6: Matrix Algebra 5 · Q7a: Matrix Algebra 2 · Q7b: Matrix Algebra 3 · Q7c: Matrix Algebra 7 · Q7d: Matrix Algebra 8 · Q8: Change of Basis 2 · Q9: Projection 2
 
-**Sheet 8.** Q1a: Matrix of a Map 10 · Q1b: Matrix of a Map 11 · Q2a: Matrix of a Map 12 · Q2b: Matrix of a Map 13 · Q2c: Matrix of a Map 14 · Q3: Homomorphisms 14 · Q4: Matrix Algebra 9 · Q5: Change of Basis 3 · Q6a: Projection 6 · Q6b: Projection 7 · Q7: Determinant 9
+**Sheet 8.** Q1a: Matrix of a Map 10 · Q1b: Matrix of a Map 11 · Q2a: Matrix of a Map 12 · Q2b: Matrix of a Map 13 · Q2c: Matrix of a Map 14 · Q3: Homomorphisms 14 · Q4: Matrix Algebra 9 · Q5: Change of Basis 3 · Q6 (part 1 of 2): Projection 6 · Q6 (part 2 of 2): Projection 7 · Q7: Determinant 9
 
-**Sheet 9.** Q1: Determinant 15 · Q2: Volume 3 · Q3: Determinant 14 · Q4: Determinant 13 · Q5: Eigen 2 · Q6: Eigen 4 · Q7a: Eigen 7 · Q7b: Eigen 8 · Q7c: Eigen 9 · Q8a: Eigen 11 · Q8b: Eigen 12
+**Sheet 9.** Q1: Determinant 15 · Q2: Volume 3 · Q3: Determinant 14 · Q4: Determinant 13 · Q5: Eigen 2 · Q6: Eigen 4 · Q7 (part 1 of 3): Eigen 7 · Q7 (part 2 of 3): Eigen 8 · Q7 (part 3 of 3): Eigen 9 · Q8 (part 1 of 2): Eigen 11 · Q8 (part 2 of 2): Eigen 12
 
-**Sheet 10.** Q1a: Volume 4 · Q1b: Volume 5 · Q1c: Volume 6 · Q1d: Volume 7 · Q2a: Diagonalisation 4 · Q2b: Diagonalisation 5 · Q2c: Diagonalisation 6 · Q3: Diagonalisation 7 · Q4: Eigen 15 · Q5: Diagonalisation 8 · Q6a: Eigen 13 · Q6b: Eigen 14 · Q7: Diagonalisation 12 · Q8a: Diagonalisation 9 · Q8b: Diagonalisation 10 · Q8c: Diagonalisation 11
+**Sheet 10.** Q1a: Volume 4 · Q1b: Volume 5 · Q1c: Volume 6 · Q1d: Volume 7 · Q2 (part 1 of 3): Diagonalisation 4 · Q2 (part 2 of 3): Diagonalisation 5 · Q2 (part 3 of 3): Diagonalisation 6 · Q3: Diagonalisation 7 · Q4: Eigen 15 · Q5: Diagonalisation 8 · Q6 (part 1 of 2): Eigen 13 · Q6 (part 2 of 2): Eigen 14 · Q7: Diagonalisation 12 · Q8a: Diagonalisation 9 · Q8b: Diagonalisation 10 · Q8c: Diagonalisation 11
 "
 
 /-! Information to be displayed on the servers landing page. -/

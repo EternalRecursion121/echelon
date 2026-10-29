@@ -99,9 +99,21 @@ for n in (2, 8):
         check("ENDOFLONGLINE" in txt, "sheet 2 PDF: 200-char line wrapped, not clipped")
         check("✓" in txt, "sheet 2 PDF: ✓ mark present")
         check("Test *Student*" in flat, "sheet 2 PDF: name printed literally")
+    check(not re.search(r"^Statement [A-Za-z_]", md, re.M), f"sheet {n} hand-in: no internal statement names")
     if n == 8:
+        check("## Question 6 (part 1 of 2)" in md and "Question 6a" not in md,
+              "sheet 8 hand-in: unlettered sheet question shown as parts, not letters")
         check("sorry" in txt, "sheet 8 PDF: sorry proof printed")
         check("undefinedcontrolsequence" in flat, "sheet 8 PDF: broken maths printed as text")
+
+# 3. Hand-in of a named statement (Sheet 9 Q7a) prints `Statement :` without the internal name.
+w4, l4 = level_of(9, "7a")
+put(w4, l4, "sorry", False, [])
+ents = E.collect(9, progress)
+hdr = next(e[4] for e in ents if e[0] == "7a")
+check(hdr.startswith("Statement") and "sheet9_q7a" not in hdr, "sheet 9 hand-in: statement name stripped")
+check(E.headings(ents, 9)[[e[0] for e in ents].index("7a")] == "Question 7 (part 1 of 3)",
+      "sheet 9: unlettered Q7 printed as part 1 of 3")
 
 subprocess.run(["pdftoppm", "-r", "60", "-png", "-f", "1", "-l", "3", str(DIR / "sheet2-hand-in.pdf"),
                 str(DIR / "sheet2-page")])

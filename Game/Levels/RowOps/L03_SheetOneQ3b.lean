@@ -35,6 +35,9 @@ Statement : ∃ p : Fin 2 → ℝ, ∀ x y : ℝ, (x + y = 1 ∧ x - y = -1) ↔
     Hint (hidden := true) "`rowop h2 : y = 1 := (h1 - h2) / 2`"
     rowop h2 : y = 1 := (h1 - h2) / 2
     rowop h1 : x = 0 := h1 - h2
+    Hint "Now prove the vector equation entry by entry. The entries (`![x, y] 0` and so on) are
+    not evaluated yet: in each entry run `norm_num` before anything else (a warning that it
+    did nothing in some entry is harmless)."
     Hint (hidden := true) "`entrywise`, then in each case `norm_num` and `exact`."
     entrywise
     · norm_num

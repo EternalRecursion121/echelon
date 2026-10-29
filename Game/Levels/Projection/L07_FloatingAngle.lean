@@ -36,7 +36,7 @@ starting `-- Explain:` inside your proof.
 namespace LinearAlgebraGame
 
 open Matrix in
-/-- There is one number $c > 0$ (so: not orthogonal) that is $\cos^2$ of the angle between the computed
+/-- There is one number $c > 0$ that is $\cos^2$ of the angle between the computed
 $\vec\kappa_2, \vec\kappa_3$ for every $\varepsilon > 0$, and stays the same when $\vec\kappa_2$
 is scaled by any $k > 0$. -/
 Statement : ∃ c : ℝ, 0 < c ∧ ∀ ε : ℝ, 0 < ε →

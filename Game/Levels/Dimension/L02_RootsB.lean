@@ -50,6 +50,10 @@ Statement : ∃ k : ℕ, ∃ b : Fin k → Poly 2,
         of your basis."
         intro p hp
         obtain ⟨h5, h3⟩ := hp
+        Hint "`{h5}` reads `p ∈ ↑(ker …)`: the `↑` views the subspace as a set, so `LinearMap.mem_ker`
+          does not match yet. `rw [SetLike.mem_coe, LinearMap.mem_ker, Poly.evalAt_apply] at {h5}`
+          removes it, or `simp [Poly.evalAt_apply, Poly.eval, Fin.sum_univ_three] at {h5}` writes it
+          out as an equation in the coefficients (same for the others)."
         simp [Poly.evalAt_apply, Poly.eval, Fin.sum_univ_three] at h5 h3
         rw [Submodule.mem_span_range_iff_exists_fun]
         Hint (hidden := true) "`refine ⟨![p 2], ?_⟩`, then compare coefficients with `linarith`."

@@ -17,8 +17,11 @@ expansion to find the coefficient of $x^n$ in the characteristic polynomial $p(x
 
 *Formulation.* Mathlib has already done the permutation-expansion bookkeeping for its
 characteristic polynomial $\\det(xI - A)$ (`Matrix.charpoly`): it is *monic* of degree $n$
-(`Matrix.charpoly_monic`, `Matrix.charpoly_natDegree_eq_dim`); `charpolyH_eq` relates
-Hefferon's $|A - xI|$ to it.
+(`Matrix.charpoly_monic`, `Matrix.charpoly_natDegree_eq_dim`; the latter says the degree is
+`Fintype.card (Fin n)`, which `Fintype.card_fin` turns into `n`); `charpolyH_eq` relates
+Hefferon's $|A - xI|$ to it. Coefficients: `Polynomial.coeff_C_mul` pulls out a *constant*
+polynomial `C a`, but `charpolyH_eq` gives `(-1) ^ n * …` with `(-1) ^ n` a polynomial; rewrite
+it first, e.g. with `show ((-1 : ℝ[X]) ^ n) = C ((-1) ^ n) by simp`.
 
 So Lean checks your formula, but the permutation-expansion argument is yours: this is an
 **explain level**. Inside your proof write that argument as a comment

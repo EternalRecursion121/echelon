@@ -36,6 +36,7 @@ induction hs with
 | tail _ hstep ih => …   -- s is reached by one more meeting `hstep`; `ih` holds before it
 ```
 In the second case, `rcases hstep with … | … | …` splits the meeting into its three kinds.
+(In a pattern, an underscore `_` stands for a piece you do not need to name, as in `tail _`.)
 States are triples, so the goal contains projections like `(r - 1, g - 1, b + 2).2.1`;
 `simp only at ih ⊢` evaluates them to `g - 1` before you compute.
 "

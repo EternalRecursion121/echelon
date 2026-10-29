@@ -43,7 +43,9 @@ Statement {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℝ) (b : Fin m → ℝ) :
   Hint (hidden := true) "`rw [h] at hu`, then `rcases hu with h3 | h3`."
   rw [h] at hu
   rcases hu with h3 | h3
-  · Hint "`{h3}` is an equation of vectors. Prove `v = w` entry by entry, then contradict `{hne}`."
+  · Hint "`{h3}` is an equation of vectors. Prove `v = w` entry by entry with `ext i`
+    (`entrywise` needs a concrete size like `Fin 3`; here the size is a letter), then contradict
+    `{hne}`."
     Hint (hidden := true) "`have hvw : v = w := by` then (indented) `ext i`,
     `have hi := congrFun {h3} i`, `norm_num at hi`, `linear_combination hi`. Finish with
     `exact {hne} hvw`."

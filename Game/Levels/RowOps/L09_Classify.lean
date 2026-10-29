@@ -7,7 +7,8 @@ Title "How many solutions?"
 Introduction "
 Sheet 2 asks you to *classify* systems: no solution, exactly one, or infinitely many. In this
 game a system is a condition on a vector `v`, written `fun v : Fin 2 → ℝ => …` (read: \"the
-condition, as a function of `v`\"); `v 0, v 1, v 2` play the roles of $x, y, z$.
+condition, as a function of `v`\"); `v 0, v 1` play the roles of $x, y$ (with three
+unknowns, `v : Fin 3 → ℝ` and `v 2` is $z$).
 
 `Classify S` means `NoSolution S ∨ UniqueSolution S ∨ InfinitelyMany S` (Definitions tab). You
 choose with `left` (none), `right` then `left` (unique), or `right` twice (infinitely many).

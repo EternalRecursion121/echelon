@@ -72,16 +72,18 @@ Statement {V W : Type*} [AddCommGroup V] [Module ℝ V] [AddCommGroup W] [Module
     rw [Finsupp.smul_apply, smul_eq_mul, smul_smul]
   · intro u v h
     Hint "Key fact: the $D$-coordinates of $\\hat f(\\vec x)$ are the $B$-coordinates of $\\vec x$.
-    State it as a separate fact first."
-    Hint (hidden := true) "`have key : ∀ x, D.repr (fhat x) = B.repr x := by …`
-    (inside: `intro x`, `ext i`, `rw [hfhat, Module.Basis.repr_sum_self]`)."
-    have key : ∀ x, D.repr (fhat x) = B.repr x := by
-      intro x
-      ext i
+    State it as a separate fact first, coordinate by coordinate: for every `x` and `i`,
+    `D.repr (fhat x) i = B.repr x i` (both sides are numbers; `D.repr (fhat x)` alone is a
+    finitely supported function, which `rw` cannot match)."
+    Hint (hidden := true) "`have key : ∀ x i, D.repr (fhat x) i = B.repr x i := by …`
+    (inside: `intro x i`, `rw [hfhat, Module.Basis.repr_sum_self]`)."
+    have key : ∀ x i, D.repr (fhat x) i = B.repr x i := by
+      intro x i
       rw [hfhat, Module.Basis.repr_sum_self]
-    Hint (strict := true) (hidden := true) "Vectors with equal coordinates are equal: `apply B.repr.injective`, then
-    `rw [← key, ← key, {h}]`."
+    Hint (strict := true) (hidden := true) "Vectors with equal coordinates are equal: `apply B.repr.injective`,
+    `ext i`, then `rw [← key, ← key, {h}]`."
     apply B.repr.injective
+    ext i
     rw [← key, ← key, h]
   · intro w
     Hint "$D$ spans $W$: use the $D$-coordinates of $\\vec w$ as $B$-coordinates."

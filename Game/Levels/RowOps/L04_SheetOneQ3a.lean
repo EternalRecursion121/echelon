@@ -45,7 +45,8 @@ Statement : ∃ p d : Fin 2 → ℝ, ∀ x y : ℝ,
     use y
     entrywise
     · Hint "The entries are still unevaluated (`(p + t • d) 0` and so on): `norm_num` evaluates
-      them first, then the entry is ordinary algebra."
+      them first, then the entry is ordinary algebra. (If an entry needs no evaluating, Lean may
+      warn that `norm_num` did nothing: harmless.)"
       norm_num
       Hint (hidden := true) "This is row 2 rearranged: `linear_combination h2`."
       linear_combination h2

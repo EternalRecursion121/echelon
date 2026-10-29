@@ -8,6 +8,9 @@ Introduction "
 `rw [h]` uses an equation `h : a = b` to replace `a` by `b` in the goal.
 `rw [← h]` replaces `b` by `a` instead.
 
+Two more ways to use an equation: `h.symm` is `h` flipped (`b = a`), and if also
+`h' : b = c` then `h.trans h'` is `a = c`. Both are in your inventory (`symm`, `trans`).
+
 **Typing symbols.** Type a backslash code and then a space: `\\l` gives `←`, `\\R` gives `ℝ`,
 `\\to` gives `→`. Hover over any symbol in the editor to see how to type it. The full table
 is under **Game Info** in the menu.
@@ -21,4 +24,5 @@ Statement (x y : ℝ) (h1 : x = y) (h2 : y = 5) : x = 5 := by
   exact h2
 
 NewTactic rw
+NewTheorem «symm» «trans»
 NewHiddenTactic rewrite

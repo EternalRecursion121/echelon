@@ -17,6 +17,13 @@ DefinitionDoc Fin as "Fin"
 
 /-- `u ⬝ᵥ v`: the dot product. -/
 DefinitionDoc dotProduct as "⬝ᵥ"
+/-- Flip an equation: if `h : a = b` then `h.symm : b = a` (also for `≠`). Write it after
+any proof, e.g. `(foo x).symm`. (The inventory shows the general form: it works for every
+symmetric relation.) -/
+TheoremDoc «symm» as "symm" in "Logic"
+/-- Chain two equations: if `h1 : a = b` and `h2 : b = c` then `h1.trans h2 : a = c`. (The
+inventory shows the general form: it works for every transitive relation, e.g. `≤`.) -/
+TheoremDoc «trans» as "trans" in "Logic"
 /-- $\sum_{i<2} f(i) = f(0) + f(1)$. -/
 TheoremDoc Fin.sum_univ_two as "Fin.sum_univ_two" in "Vectors"
 /-- `A *ᵥ v`: the matrix–vector product. -/

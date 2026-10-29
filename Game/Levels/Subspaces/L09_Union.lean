@@ -64,6 +64,8 @@ Statement {V : Type*} [AddCommGroup V] [Module ℝ V] (A B : Submodule ℝ V) :
         rw [add_sub_cancel_left] at this
         exact this
       · apply haB
+        Hint (hidden := true) "The same with the roles swapped: `have := B.sub_mem {hab} {hb}`, then
+        `rw [add_sub_cancel_right] at this`."
         have := B.sub_mem hab hb
         rw [add_sub_cancel_right] at this
         exact this

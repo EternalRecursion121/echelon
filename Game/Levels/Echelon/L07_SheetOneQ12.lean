@@ -49,4 +49,3 @@ end LinearAlgebraGame
 
 Conclusion "**Answer: no.** $(1,-1,0)$ is in the null space of the first matrix but not the second."
 
-NewTheorem Submonoid.mul_mem Submonoid.subset_closure

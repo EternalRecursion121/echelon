@@ -46,7 +46,7 @@ Statement : ((¬ IsNonsingular !![(1 : ℝ), 2; 1, 3]) ∨ IsNonsingular !![(1 :
     entrywise
     · exact h0
     · exact h1
-  · Hint "(b): solve the homogeneous system again. Is $\\vec v = \\vec 0$ forced this time?"
+  · Hint "(b): solve the homogeneous system again. Is $\\vec v = \\vec 0$ forced?"
     left
     Hint "Row 2 is a multiple of row 1, so there is a nonzero solution. Assume nonsingularity
     and feed it that solution."

@@ -65,3 +65,4 @@ end LinearAlgebraGame
 
 Conclusion "Seven shapes for $2\\times 3$, four for $3\\times 2$ (with parameters $a, b$)."
 NewTactic refine
+NewTheorem Submonoid.mul_mem Submonoid.subset_closure

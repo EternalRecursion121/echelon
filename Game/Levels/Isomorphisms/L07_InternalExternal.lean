@@ -27,7 +27,10 @@ built as a linear map, so linearity is automatic; you prove one-to-one and onto.
 
 Granted: `injective_iff_map_eq_zero` — a linear map is one-to-one iff only $\\vec 0$ maps to
 $\\vec 0$ (you prove this yourself in the Homomorphisms world). An element of $U \\times W$ is a
-pair `(u, w)` with `u : U`, `w : W`; `(u : V)` is the underlying vector of `u`.
+pair `(u, w)` with `u : U`, `w : W`; `(u : V)` (also written `u.1`) is the underlying vector of
+`u`, and `u.2 : ↑u ∈ U` is the proof that it lies in $U$. Take a pair apart as `⟨u, w⟩` and use
+`u.2`, `w.2` when you need the memberships (splitting further into `⟨⟨u, hu⟩, …⟩` leaves
+projections Lean will not rewrite under).
 "
 
 namespace LinearAlgebraGame

@@ -11,7 +11,7 @@ basis $\vec v_1,\dots,\vec v_n$ of the whole space. Let $P^{-1}$ have columns $\
 and $B = PAP^{-1}$. For $j \le k$, column $j$ of $B$ is
 $B\vec e_j = PA\vec v_j = \lambda P\vec v_j = \lambda\vec e_j$. So the first $k$ columns of $B - xI$
 are $(\lambda - x)\vec e_j$, and expanding the determinant along them gives
-$|B - xI| = (\lambda - x)^k\,q(x)$. Since $B$ is similar to $A$ (Q3), $|A - xI| = |B - xI|$ is
+$|B - xI| = (\lambda - x)^k\,q(x)$. Since $B$ is similar to $A$ (Sheet 10 Q3), $|A - xI| = |B - xI|$ is
 divisible by $(x - \lambda)^k$, so the algebraic multiplicity of $\lambda$ is at least $k$.
 -/
 Introduction "
@@ -31,8 +31,8 @@ matrix $M$ is $M\\vec e_j$. Two pieces of bookkeeping are **granted** as hypothe
 * `hblock` — Laplace expansion: if $k \\le n$ and the first $k$ columns of $B$ are
   $\\lambda\\vec e_j$, then $(x - \\lambda)^k$ divides $|B - xI|$.
 
-The rest is yours: compute the first $k$ columns of $B = Q^{-1}AQ$, check $k \\le n$, use Q3
-(`charpolyH_similar`), and convert divisibility into multiplicity with
+The rest is yours: compute the first $k$ columns of $B = Q^{-1}AQ$, check $k \\le n$, use Sheet 10 Q3
+(`charpolyH_similar`, Diagonalisation level 7), and convert divisibility into multiplicity with
 `Polynomial.le_rootMultiplicity_iff`.
 
 Your hand-in should also justify the two granted steps in words: inside your proof write a

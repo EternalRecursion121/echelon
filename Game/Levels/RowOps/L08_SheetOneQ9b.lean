@@ -40,7 +40,8 @@ Statement : ∃ p d : Fin 3 → ℝ, ∀ x y z : ℝ,
     use z
     entrywise
     · Hint "The entries are still unevaluated (`(p + t • d) 0` and so on): `norm_num` evaluates
-      them first, then the entry is ordinary algebra."
+      them first, then the entry is ordinary algebra. (If an entry needs no evaluating, Lean may
+      warn that `norm_num` did nothing: harmless.)"
       norm_num
       linear_combination h1
     · norm_num

@@ -46,6 +46,10 @@ Statement : ∃ k : ℕ, ∃ b : Fin k → Poly 2,
       apply le_antisymm bot_le
       intro p hp
       obtain ⟨⟨h5, h3⟩, h1⟩ := hp
+      Hint "`{h5}` reads `p ∈ ↑(ker …)`: the `↑` views the subspace as a set, so `LinearMap.mem_ker`
+        does not match yet. `rw [SetLike.mem_coe, LinearMap.mem_ker, Poly.evalAt_apply] at {h5}`
+        removes it, or `simp [Poly.evalAt_apply, Poly.eval, Fin.sum_univ_three] at {h5}` writes it
+        out as an equation in the coefficients (same for the others)."
       simp [Poly.evalAt_apply, Poly.eval, Fin.sum_univ_three] at h5 h3 h1
       Hint (hidden := true) "`rw [Submodule.mem_bot]`: show $p = 0$."
       rw [Submodule.mem_bot]

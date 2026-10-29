@@ -20,9 +20,8 @@ Title "Basis & Dimension"
 Introduction "
 Hefferon Two.III. A *basis* is an independent spanning sequence; every vector has unique
 coordinates in it, and all bases have the same size — the *dimension* (the exchange lemma
-is why). You will find bases,
-compare dimensions of nested subspaces, and prove when a linear system is solvable in terms
-of rank.
+is why). You will find bases, compare dimensions of nested subspaces, and prove when a linear
+system is solvable in terms of rank.
 
 **Typing:** `ᵀ` is `\\^T`, `⊥` is `\\bot`, `⊤` is `\\top`.
 "

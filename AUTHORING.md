@@ -103,7 +103,8 @@ TheoremTab "<Tab>"
   player commits with `left` (false / no) or `right` (true / yes), then proves it. Say this
   convention in the Introduction. The title must not reveal the answer.
 - **Witness level** ("find / solve / compute"): state the answer as the claim
-  (e.g. `∃! p, …` or `A *ᵥ v = …`, or the solution set equals a stated set) so the player
+  (e.g. `∃ p, ∀ x, sys x ↔ x = p`, or `A *ᵥ v = …`, or the solution set equals a stated set;
+  the sheet levels use `∃ …, ∀ …, … ↔ …` rather than `∃!`) so the player
   supplies/checks it. Prefer doing the computation *in* Lean with `rowop` for systems.
   State results completely (e.g. eigenvalues are exactly 1 and 2, not just "1 is one").
 - **Explain level** (the sheet asks to sketch, explain, or the question is discursive): Lean
@@ -115,13 +116,16 @@ TheoremTab "<Tab>"
 
 The player chose tight. Unlock schedule (a tactic may be unlocked earlier only if it cannot
 bypass the lesson):
-- Lean Basics (done): exact rw norm_num constructor obtain use intro left right rcases ext
-  fin_cases have. Axioms (done): calc nth_rw (norm_num disabled there).
-- Chapter One: Row Ops: linear_combination, rowop (linarith stays LOCKED in Row Ops);
-  Dot Product: linarith, ring, nlinarith, positivity, induction; Echelon: simp, apply, refine.
-- Chapter Two onward: by_contra, by_cases, exfalso, specialize, field_simp, module, omega,
-  funext, unfold as needed. `simp`/`norm_num` may be unlocked but must be `DisabledTactic`
-  in any level they would solve outright.
+Current schedule (from the `NewTactic` lines, world order):
+- Lean Basics: exact rw norm_num use obtain intro constructor have left right rcases entrywise
+  ext fin_cases (also the theorems `symm`/`trans`, so `h.symm`/`(…).symm` work everywhere).
+- Row Ops: linear_combination rowop apply (linarith stays LOCKED in Row Ops);
+  Dot Product: congr ring linarith show nlinarith positivity induction; Echelon: simp refine.
+- Axioms: nth_rw by_contra calc by_cases (norm_num disabled there); Subspaces: rfl;
+  Independence: module funext exfalso; Basis & Dimension: rintro field_simp match_scalars
+  choose omega; Dimension: decide; Volume: unfold.
+- `simp`/`norm_num` may be unlocked but must be `DisabledTactic` in any level they would solve
+  outright.
 - Chapter Four: `eval_det` only after the hand-computation levels.
 - Never unlock: `exact?`, `aesop`, `decide` on non-finite goals, `tauto`.
 
@@ -141,7 +145,14 @@ lemmas whose statement *is* the level (e.g. `smul_eq_zero` for "r•v = 0 ↔ r 
   product `⬝ᵥ`; `EuclideanSpace` only when norms/inner products are essential.
 - Library you may use: `Game/Lib/` — `LinearAlgebraGame.VectorSpaceAxioms` (its bridge `axioms_of_module` is From Scratch level 1),
   `LinearAlgebraGame.Poly n` (𝒫ₙ as `Fin (n+1) → ℝ`, `Poly.eval`, `Poly.evalAt`, `Poly.deriv`),
-  `LinearAlgebraGame.charpolyH` (+ `charpolyH_eq`), the `rowop` tactic.
+  `LinearAlgebraGame.charpolyH` (+ `charpolyH_eq`), the `rowop` tactic, the `entrywise` tactic
+  (concrete sizes only; for `Fin n` use `ext i`).
+- **Engine quirk (`.symm`/`.trans`):** the server checks every identifier against the
+  inventory; in `(term).symm` the field `symm` resolves to the root theorem `symm` (likewise
+  `.trans`, and `.antisymm`, `.mt`, `.le_of_lt`, `.not_lt`, `.congr` → root theorems). `h.symm`
+  on a bare local name is not affected. `symm`/`trans` are unlocked in Lean Basics level 2, so
+  they are always allowed; avoid the other parenthesised projections in samples and hints (or
+  unlock the root theorem first).
 - Cross-chapter results: don't import other chapters' worlds (they are built in parallel).
   Use the Mathlib lemma instead, unlocked with `NewTheorem` and documented
   ("You proved a version of this in world X").

@@ -31,4 +31,9 @@ Statement (x : ℝ) (h : x = 1 ∨ x = 2) : x * x = 1 ∨ x * x = 4 := by
     rw [h2]
     norm_num
 
+Conclusion "
+A shortcut you will meet in hints: if `hp : P` then `Or.inl hp` is a proof of `P ∨ Q`
+(the same as `left` then `exact hp`), and `Or.inr hq` proves `P ∨ Q` from `hq : Q`.
+"
+
 NewTactic left right rcases
