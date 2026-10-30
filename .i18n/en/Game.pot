@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.35.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-29\n"
+"POT-Creation-Date: 2026-10-30\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -3574,7 +3574,7 @@ msgstr ""
 #: Game/Levels/LeanBasics/L07_Implies.lean:30
 #: Game/Levels/LeanBasics/L08_Not.lean:21
 #: Game/Levels/LeanBasics/L11_ForAll.lean:20
-#: Game/Levels/LeanBasics/L12_ForAllExists.lean:23
+#: Game/Levels/LeanBasics/L12_ForAllExists.lean:41
 #: Game/Levels/LeanBasics/L13_Vectors.lean:33
 #: Game/Levels/LeanBasics/L15_MatVec.lean:27
 #: Game/Levels/RowOps/L01_RowOps.lean:31
@@ -4251,28 +4251,54 @@ msgstr ""
 msgid "Feeding in a proof"
 msgstr ""
 
-#. §0: `h : ∀ a b : ℝ, a < b → P a b`
-#. §1: `h 1 2 proof`
-#. §2: `P 1 2`
-#. §3: `proof`
-#. §4: `1 < 2`
-#. §5: `(by norm_num)`
-#. §6: `h 1 2 (by norm_num)`
-#. §7: `P 1 2`
-#. §8: `obtain`
-#. §9: `obtain ⟨c, hc⟩ := …`
-#. §10: `c`
-#. §11: `hc`
+#. §0: `h : ∀ a b : ℝ, a < b → ∃ c, f c = a + b`
+#. §1: `a`
+#. §2: `b`
+#. §3: `a < b`
+#. §4: `(by norm_num)`
+#. §5: $5$
+#. §6: $7$
+#. §7: `have h57 := h 5 7 (by norm_num)`
+#. §8: `h57 : ∃ c, f c = 5 + 7`
+#. §9: `(by norm_num)`
+#. §10: `5 < 7`
+#. §11: `h`
+#. §12: `c`
+#. §13: `a < b`
+#. §14: `h 5 7`
+#. §15: `5 < 7 → ∃ c, f c = 5 + 7`
+#. §16: `5 < 7`
+#. §17: `(by norm_num)`
+#. §18: `obtain`
+#. §19: `obtain ⟨c, hc⟩ := h57`
+#. §20: `c`
+#. §21: `hc : f c = 5 + 7`
+#. §22: `obtain ⟨c, hc⟩ := h 5 7 (by norm_num)`
+#. §23: `:=`
 #: Game/Levels/LeanBasics/L12_ForAllExists.lean:7
-msgid "A \"for all\" can also ask for a *proof*: §0 wants two numbers\n"
-"and a proof that the first is smaller. Arguments are separated by spaces:\n"
-"§1 is the fact §2, where §3 shows §4.\n"
+msgid "A \"for all\" can also ask for a *proof*. Here\n"
+"§0 wants, in order:\n"
+"1. a number §1,\n"
+"2. a number §2,\n"
+"3. a proof that §3.\n"
 "\n"
-"A short proof can be written in place, in brackets: §5. So §6\n"
-"is §7.\n"
+"You feed all three with spaces between them, like a function. For a short proof you can write\n"
+"it in place, in brackets, as §4. For example, with the numbers §5 and §6:\n"
 "\n"
-"If the result is an \"exists\", take it apart with §8, just like an \"and\":\n"
-"§9 gives you the object §10 and its property §11."
+"§7\n"
+"\n"
+"gives §8. Here §9 is the proof of §10.\n"
+"\n"
+"Why the proof? §11 only promises a §12 *when* §13. Feeding just the numbers, §14, leaves\n"
+"the condition still to meet: §15. Lean never takes even §16 on trust,\n"
+"so §17 is the evidence that meets it.\n"
+"\n"
+"That result is an \"exists\". Take it apart with §18, just as you did with an \"and\":\n"
+"§19 gives you the number §20 and the fact §21.\n"
+"\n"
+"(Once this feels familiar, you can do both steps at once:\n"
+"§22. Everything to the right of §23 is the fact being\n"
+"taken apart.)"
 msgstr ""
 
 #. §0: $a < b$
@@ -4280,30 +4306,41 @@ msgstr ""
 #. §2: $f(c) = a + b$
 #. §3: $c$
 #. §4: $f(c) = 3$
-#: Game/Levels/LeanBasics/L12_ForAllExists.lean:19
+#: Game/Levels/LeanBasics/L12_ForAllExists.lean:33
 msgid "If between any two reals §0 there is some §1 with §2, then some §3\n"
 "has §4."
 msgstr ""
 
+#. §0: $3$
+#. §1: `«{h}»`
+#. §2: `have`
+#: Game/Levels/LeanBasics/L12_ForAllExists.lean:36
+msgid "Which two numbers add up to §0, with the first smaller than the second? Feed §1\n"
+"those two numbers and a proof that the first is smaller, and keep the result with §2."
+msgstr ""
+
 #. §0: $3 = 1 + 2$
 #. §1: $1 < 2$
-#. §2: `«{h}»`
-#. §3: $1$
-#. §4: $2$
-#. §5: $1 < 2$
-#: Game/Levels/LeanBasics/L12_ForAllExists.lean:22
-msgid "§0 and §1. Feed §2 the numbers §3, §4 and a proof of §5."
+#. §2: `have h12 := «{h}» 1 2 (by norm_num)`
+#: Game/Levels/LeanBasics/L12_ForAllExists.lean:38
+msgid "§0 and §1: §2"
+msgstr ""
+
+#. §0: `«{h12}»`
+#. §1: `obtain`
+#: Game/Levels/LeanBasics/L12_ForAllExists.lean:40
+msgid "§0 says some number works. Take it apart with §1."
 msgstr ""
 
 #. §0: `«{c}»`
-#: Game/Levels/LeanBasics/L12_ForAllExists.lean:25
+#: Game/Levels/LeanBasics/L12_ForAllExists.lean:43
 msgid "Now §0 is the number you need."
 msgstr ""
 
 #. §0: `use «{c}»`
 #. §1: `rw [«{hc}»]`
 #. §2: `norm_num`
-#: Game/Levels/LeanBasics/L12_ForAllExists.lean:26
+#: Game/Levels/LeanBasics/L12_ForAllExists.lean:44
 #: Game/Levels/RowOps/L03_SheetOneQ3b.lean:28
 #: Game/Levels/RowOps/L07_SheetOneQ9a.lean:28
 #: Game/Levels/RowOps/L13_SheetTwoQ3Generic.lean:52
@@ -4317,7 +4354,7 @@ msgstr ""
 msgid "§0, then §1 and §2."
 msgstr ""
 
-#: Game/Levels/LeanBasics/L12_ForAllExists.lean:31
+#: Game/Levels/LeanBasics/L12_ForAllExists.lean:49
 msgid "Applying a \"for all\" to the objects you care about is how you *use* a general\n"
 "fact. You will do it constantly: in Row Ops you will feed a claim about all matrices your\n"
 "own counterexample."
